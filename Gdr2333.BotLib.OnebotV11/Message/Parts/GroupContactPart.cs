@@ -18,36 +18,43 @@ using Gdr2333.BotLib.OnebotV11.Message.Parts.Base;
 using Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Message.Parts.TmpAlt;
+namespace Gdr2333.BotLib.OnebotV11.Message.Parts;
 
-internal class ContactPartAlt : ContactPartBase
+/// <summary>
+/// 群聊推荐消息段
+/// </summary>
+public class GroupContactPart : ContactPartBase
 {
     [JsonInclude, JsonRequired, JsonPropertyName("data")]
     private ContactPayload? _data;
 
-    public override string ToString()
+    [JsonConstructor]
+    private GroupContactPart() : base("group")
     {
-        throw new InvalidOperationException("为什么你调用到了这个类的ToString方法？");
     }
 
+    /// <summary>
+    /// 新建一个群推荐消息段
+    /// </summary>
+    /// <param name="id">要推荐的群号</param>
+    public GroupContactPart(long id) : base("group", id)
+    {
+    }
+
+    /// <inheritdoc/>
     public override void OnDeserialized()
     {
+        if (_data!.Type != "group")
+            throw new InvalidOperationException("data的类型不是group，你选错了反序列化的目标类型。");
         AfterJsonDeserialization(_data!);
         _data = null;
     }
 
-    public override void OnSerializing()
-    {
+    /// <inheritdoc/>
+    public override void OnSerializing() =>
         BeforeJsonSerialization(out _data);
-    }
 
-    public ContactPartBase GetRealPart()
-    {
-        if (ContactType == "qq")
-            return new FriendContactPart(Id);
-        else if (ContactType == "group")
-            return new GroupContactPart(Id);
-        else
-            throw new FormatException($"标准规定推荐类型只能是qq或group，但我们见到了{ContactType}。");
-    }
+    /// <inheritdoc/>
+    public override string ToString() =>
+        $"[推荐群聊：{Id}]";
 }

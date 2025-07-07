@@ -15,23 +15,46 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Message.Parts.Base;
+using Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
+using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Message.Parts;
 
+/// <summary>
+/// 好友推荐消息段
+/// </summary>
 public class FriendContactPart : ContactPartBase
 {
+    [JsonInclude, JsonRequired, JsonPropertyName("data")]
+    private ContactPayload? _data;
+
+    [JsonConstructor]
+    private FriendContactPart() : base("qq")
+    {
+    }
+
+    /// <summary>
+    /// 新建一个好友推荐消息段
+    /// </summary>
+    /// <param name="uid">要推荐的好友ID</param>
+    public FriendContactPart(long uid) : base("qq", uid)
+    {
+    }
+
+    /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        throw new NotImplementedException();
+        if (_data!.Type != "qq")
+            throw new InvalidOperationException("data的类型不是qq，你选错了反序列化的目标类型。");
+        AfterJsonDeserialization(_data!);
+        _data = null;
     }
 
-    public override void OnSerializing()
-    {
-        throw new NotImplementedException();
-    }
+    /// <inheritdoc/>
+    public override void OnSerializing() =>
+        BeforeJsonSerialization(out _data!);
 
-    public override string ToString()
-    {
-        throw new NotImplementedException();
-    }
+    /// <inheritdoc/>
+    public override string ToString() =>
+        $"[推荐好友：{Id}]";
 }
