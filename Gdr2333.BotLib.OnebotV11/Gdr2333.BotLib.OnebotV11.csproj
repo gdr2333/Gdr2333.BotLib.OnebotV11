@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>$(AssemblyName)</Title>
+    <Version>0.0.1</Version>
+    <Authors>df1050</Authors>
+    <Company />
+    <Description>Onebot v11支持库 by df1050</Description>
+    <PackageProjectUrl>https://github.com/gdr2333/Gdr2333.BotLib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/gdr2333/Gdr2333.BotLib</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Onebot, Onebotv11, qqbot</PackageTags>
+    <NeutralLanguage>zh-CN</NeutralLanguage>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+</Project>
