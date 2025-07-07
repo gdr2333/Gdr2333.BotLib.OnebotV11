@@ -41,13 +41,13 @@ public class FilePayload
     /// （发送时）是否使用缓存
     /// </summary>
     [JsonInclude, JsonPropertyName("cache"), JsonConverter(typeof(OB11JsonBoolConvter))]
-    public bool UseCache { get; set; }
+    public bool? UseCache { get; set; }
 
     /// <summary>
     /// （发送时）是否使用代理
     /// </summary>
     [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof (OB11JsonBoolConvter))]
-    public bool UseProxy { get; set; }
+    public bool? UseProxy { get; set; }
 
     /// <summary>
     /// （发送时）超时时间0

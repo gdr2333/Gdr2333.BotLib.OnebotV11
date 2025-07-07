@@ -57,14 +57,6 @@ public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
     }
 
     /// <summary>
-    /// 不初始化消息段类型的构造函数，只应用于反序列化。
-    /// </summary>
-    [JsonConstructor]
-    protected MessagePartBase()
-    {
-    }
-
-    /// <summary>
     /// JSON反序列化后的钩子
     /// </summary>
     public abstract void OnDeserialized();

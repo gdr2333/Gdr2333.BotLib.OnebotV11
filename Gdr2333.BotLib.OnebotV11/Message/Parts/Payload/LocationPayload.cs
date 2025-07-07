@@ -14,13 +14,21 @@
    limitations under the License.
 */
 
-using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
 
-internal class AnonymousPayload
+internal class LocationPayload
 {
-    [JsonInclude, JsonPropertyName("ignore"), JsonConverter(typeof(OB11JsonBoolConvter))]
-    public bool? Ignore { get; set; }
+    [JsonInclude, JsonRequired, JsonPropertyName("lon"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Longitude { get; set; }
+
+    [JsonInclude, JsonRequired, JsonPropertyName("lat"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Latitude { get; set; }
+
+    [JsonInclude, JsonPropertyName("title")]
+    public string? Title { get; set; }
+
+    [JsonInclude, JsonPropertyName("content")]
+    public string? Content { get; set; }
 }
