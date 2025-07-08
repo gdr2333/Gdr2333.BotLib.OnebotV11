@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using Gdr2333.BotLib.OnebotV11.Message.Parts.TmpAlt;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Base;
@@ -36,10 +37,17 @@ namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Base;
 [JsonDerivedType(typeof(PokePart), typeDiscriminator: "poke")]
 [JsonDerivedType(typeof(AnonymousPart), typeDiscriminator: "anonymous")]
 [JsonDerivedType(typeof(SharePart), typeDiscriminator: "share")]
+[JsonDerivedType(typeof(ContactPartAlt), typeDiscriminator: "contact")]
 [JsonDerivedType(typeof(LocationPart), typeDiscriminator: "location")]
 
 [JsonDerivedType(typeof(FilePartBase))]
-[JsonDerivedType(typeof(MessagePartBase))]
+[JsonDerivedType(typeof(ContactPartBase))]
+[JsonDerivedType(typeof(MusicSharePartBase))]
+
+[JsonDerivedType(typeof(FriendContactPart))]
+[JsonDerivedType(typeof(GroupContactPart))]
+[JsonDerivedType(typeof(MusicSharePart))]
+[JsonDerivedType(typeof(CustomMusicSharePart))]
 public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
