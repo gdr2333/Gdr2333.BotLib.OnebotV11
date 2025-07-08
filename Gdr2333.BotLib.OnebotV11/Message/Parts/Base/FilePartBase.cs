@@ -86,7 +86,7 @@ public abstract class FilePartBase : MessagePartBase
     /// JSON反序列化后的内部钩子
     /// </summary>
     /// <param name="data">文件相关数据</param>
-    protected void AfterJsonDeserialization(FilePayload data)
+    internal void AfterJsonDeserialization(FilePayload data)
     {
         FileName = data.File;
         Url = data.Url;
@@ -99,7 +99,7 @@ public abstract class FilePartBase : MessagePartBase
     /// JSON序列化前的内部钩子
     /// </summary>
     /// <param name="data">文件相关数据</param>
-    protected void BeforeJsonSerialization(FilePayload data)
+    internal void BeforeJsonSerialization(FilePayload data)
     {
         data.File = FileName;
         data.Url = Url;

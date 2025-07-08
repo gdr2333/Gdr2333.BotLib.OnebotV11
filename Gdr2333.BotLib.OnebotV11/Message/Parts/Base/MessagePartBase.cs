@@ -36,6 +36,7 @@ namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Base;
 [JsonDerivedType(typeof(PokePart), typeDiscriminator: "poke")]
 [JsonDerivedType(typeof(AnonymousPart), typeDiscriminator: "anonymous")]
 [JsonDerivedType(typeof(SharePart), typeDiscriminator: "share")]
+[JsonDerivedType(typeof(LocationPart), typeDiscriminator: "location")]
 
 [JsonDerivedType(typeof(FilePartBase))]
 [JsonDerivedType(typeof(MessagePartBase))]

@@ -18,7 +18,7 @@ using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
 
-public class ContactPayload
+internal class ContactPayload
 {
     [JsonInclude, JsonRequired, JsonPropertyName("type")]
     public string Type { get; set; }

@@ -22,7 +22,7 @@ namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
 /// <summary>
 /// 文件负载类
 /// </summary>
-public class FilePayload
+internal class FilePayload
 {
     /// <summary>
     /// 文件名
@@ -40,13 +40,13 @@ public class FilePayload
     /// <summary>
     /// （发送时）是否使用缓存
     /// </summary>
-    [JsonInclude, JsonPropertyName("cache"), JsonConverter(typeof(OB11JsonBoolConvter))]
+    [JsonInclude, JsonPropertyName("cache"), JsonConverter(typeof(OB11JsonBoolConverter))]
     public bool? UseCache { get; set; }
 
     /// <summary>
     /// （发送时）是否使用代理
     /// </summary>
-    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof (OB11JsonBoolConvter))]
+    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof (OB11JsonBoolConverter))]
     public bool? UseProxy { get; set; }
 
     /// <summary>

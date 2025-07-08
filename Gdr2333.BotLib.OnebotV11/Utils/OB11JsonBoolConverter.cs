@@ -20,15 +20,17 @@ using System.Text.Json.Serialization;
 namespace Gdr2333.BotLib.OnebotV11.Utils;
 
 // true和false是标准的JSON格式，1和0是C语言流传下来的格式，那请问**的Yes和No是什么鬼？？？害的我还得写这个破玩意
-internal class OB11JsonBoolConvter : JsonConverter<bool>
+internal class OB11JsonBoolConverter : JsonConverter<bool>
 {
     public override bool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         switch (reader.TokenType)
         {
             case JsonTokenType.True:
+                reader.Read();
                 return true;
             case JsonTokenType.False:
+                reader.Read();
                 return false;
             case JsonTokenType.Number:
                 var num = reader.GetInt64();
@@ -47,6 +49,7 @@ internal class OB11JsonBoolConvter : JsonConverter<bool>
                 else
                     throw new FormatException($"{str}是个啥啊？？？");
             case JsonTokenType.Null:
+                reader.Read();
                 return false;
             default:
                 throw new FormatException($"{reader.TokenType}又是啥？？？");

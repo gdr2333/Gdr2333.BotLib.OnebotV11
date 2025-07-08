@@ -68,7 +68,7 @@ public abstract class ContactPartBase : MessagePartBase
     /// JSON反序列化后的内部钩子
     /// </summary>
     /// <param name="data">邀请相关数据</param>
-    protected void AfterJsonDeserialization(ContactPayload data)
+    internal void AfterJsonDeserialization(ContactPayload data)
     {
         ContactType = data.Type;
         Id = data.Id;
@@ -78,7 +78,7 @@ public abstract class ContactPartBase : MessagePartBase
     /// JSON序列化前的内部钩子
     /// </summary>
     /// <param name="data">邀请相关数据</param>
-    protected void BeforeJsonSerialization(out ContactPayload data)
+    internal void BeforeJsonSerialization(out ContactPayload data)
     {
         data = new()
         {

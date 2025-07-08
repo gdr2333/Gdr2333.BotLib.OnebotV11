@@ -13,14 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
-using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Message.Parts.Payload;
 
-internal class RecordPayload : FilePayload
+internal class MusicSharePayload : MusicSharePayloadBase
 {
-    [JsonInclude, JsonPropertyName("magic"), JsonConverter(typeof(OB11JsonBoolConverter))]
-    public bool? UseMagic { get; set; }
+    [JsonInclude, JsonRequired, JsonPropertyName("id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public long Id { get; set; }
 }
