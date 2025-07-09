@@ -33,14 +33,18 @@ internal static class CqCodeToJsonNode
             var nowBegin = 4;
             var nowEnd = cqCode.IndexOf(',', nowBegin);
             if (nowEnd == -1)
-                nowEnd = cqCode.Length - 1;
-            ret.Add("type", cqCode[nowBegin..nowEnd]);
-            nowBegin = nowEnd + 1;
-            nowEnd = cqCode.IndexOf(',', nowBegin);
-            if (nowEnd == -1)
-                nowEnd = cqCode.Length - 1;
-            while (nowEnd != -1 && nowEnd < cqCode.Length - 1)
             {
+                nowEnd = cqCode.Length - 1;
+                ret.Add("type", cqCode[nowBegin..nowEnd]);
+                return ret;
+            }
+            ret.Add("type", cqCode[nowBegin..nowEnd]);
+            do
+            {
+                nowBegin = nowEnd + 1;
+                nowEnd = cqCode.IndexOf(',', nowBegin);
+                if (nowEnd == -1)
+                    nowEnd = cqCode.Length - 1;
                 var propstr = cqCode[nowBegin..nowEnd];
                 if (propstr.Contains('='))
                 {
@@ -51,11 +55,7 @@ internal static class CqCodeToJsonNode
                 }
                 else
                     ret.Add(propstr, null);
-                nowBegin = nowEnd + 1;
-                nowEnd = cqCode.IndexOf(',', nowBegin);
-                if (nowEnd == -1)
-                    nowEnd = cqCode.Length - 1;
-            }
+            } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
             return ret;
         }
         else
