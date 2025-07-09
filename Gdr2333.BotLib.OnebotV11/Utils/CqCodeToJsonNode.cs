@@ -22,52 +22,74 @@ internal static class CqCodeToJsonNode
 {
     public static JsonNode Convert(string cqCode)
     {
-        static string PropValueDecode(string value) => value
-            .Replace("&amp;", "&")
-            .Replace("&#91;", "[")
-            .Replace("&#93;", "]")
-            .Replace("&#44;", ",");
-        if (cqCode.StartsWith('[') && cqCode.EndsWith(']'))
+        static JsonNode ConvertPart(string cqCode)
         {
-            var ret = new JsonObject();
-            // [CQ:
-            var nowBegin = 4;
-            var nowEnd = cqCode.IndexOf(',', nowBegin);
-            if (nowEnd == -1)
+            static string PropValueDecode(string value) =>
+                value
+                    .Replace("&amp;", "&")
+                    .Replace("&#91;", "[")
+                    .Replace("&#93;", "]")
+                    .Replace("&#44;", ",");
+            static string TextDecode(string text) =>
+                text
+                    .Replace("&amp;", "&")
+                    .Replace("&#91;", "[")
+                    .Replace("&#93;", "]");
+            if (cqCode.StartsWith('[') && cqCode.EndsWith(']'))
             {
-                nowEnd = cqCode.Length - 1;
+                var ret = new JsonObject();
+                // [CQ:
+                var nowBegin = 4;
+                var nowEnd = cqCode.IndexOf(',', nowBegin);
+                if (nowEnd == -1)
+                {
+                    nowEnd = cqCode.Length - 1;
+                    ret.Add("type", cqCode[nowBegin..nowEnd]);
+                    return ret;
+                }
                 ret.Add("type", cqCode[nowBegin..nowEnd]);
+                do
+                {
+                    nowBegin = nowEnd + 1;
+                    nowEnd = cqCode.IndexOf(',', nowBegin);
+                    if (nowEnd == -1)
+                        nowEnd = cqCode.Length - 1;
+                    var propstr = cqCode[nowBegin..nowEnd];
+                    if (propstr.Contains('='))
+                    {
+                        var splitIndex = propstr.IndexOf('=');
+                        var propName = propstr[..splitIndex];
+                        var propValue = PropValueDecode(propstr[(splitIndex + 1)..]);
+                        ret.Add(propName, propValue);
+                    }
+                    else
+                        ret.Add(propstr, null);
+                } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
                 return ret;
             }
-            ret.Add("type", cqCode[nowBegin..nowEnd]);
-            do
-            {
-                nowBegin = nowEnd + 1;
-                nowEnd = cqCode.IndexOf(',', nowBegin);
-                if (nowEnd == -1)
-                    nowEnd = cqCode.Length - 1;
-                var propstr = cqCode[nowBegin..nowEnd];
-                if (propstr.Contains('='))
+            else
+                return new JsonObject()
                 {
-                    var splitIndex = propstr.IndexOf('=');
-                    var propName = propstr[..splitIndex];
-                    var propValue = PropValueDecode(propstr[(splitIndex + 1)..]);
-                    ret.Add(propName, propValue);
-                }
-                else
-                    ret.Add(propstr, null);
-            } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
-            return ret;
-        }
-        else
-            return new JsonObject()
-            {
-                { "type", "text" },
-                { "data", new JsonObject()
-                    {
-                        { "text", PropValueDecode(cqCode) }
+                    { "type", "text" },
+                    { "data", new JsonObject()
+                        {
+                            { "text", TextDecode(cqCode) }
+                        }
                     }
-                }
-            };
+                };
+        }
+        var nowBegin = 0;
+        var nowEnd = 0;
+        var ret = new JsonArray();
+        do
+        {
+            var readingCqCode = cqCode[nowBegin] == '[';
+            nowEnd = readingCqCode ? cqCode.IndexOf(']', nowBegin) + 1 : cqCode.IndexOf('[', nowBegin);
+            if (nowEnd < 0)
+                nowEnd = cqCode.Length - 1;
+            ret.Add(ConvertPart(cqCode[nowBegin..nowEnd]));
+            nowBegin = nowEnd;
+        } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
+        return ret;
     }
 }
