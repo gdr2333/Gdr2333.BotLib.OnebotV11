@@ -64,7 +64,7 @@ internal static class CqCodeToJsonNode
                     }
                     else
                         ret.Add(propstr, null);
-                } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
+                } while (nowEnd < cqCode.Length - 1);
                 return ret;
             }
             else
@@ -89,7 +89,7 @@ internal static class CqCodeToJsonNode
                 nowEnd = cqCode.Length - 1;
             ret.Add(ConvertPart(cqCode[nowBegin..nowEnd]));
             nowBegin = nowEnd;
-        } while (nowEnd != -1 && nowEnd < cqCode.Length - 1);
+        } while (nowEnd < cqCode.Length - 1);
         return ret;
     }
 }
