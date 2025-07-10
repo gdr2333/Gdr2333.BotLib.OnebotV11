@@ -1,0 +1,56 @@
+﻿/*
+   Copyright 2025 All contributors of Gdr2333.BotLib
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
+
+namespace Gdr2333.BotLib.OnebotV11.Messages;
+
+/// <summary>
+/// 消息类
+/// </summary>
+public class Message : List<MessagePartBase>
+{
+    /// <summary>
+    /// 使用一些消息段初始化一条消息
+    /// </summary>
+    /// <param name="parts">消息段</param>
+    public Message(IEnumerable<MessagePartBase> parts) : base(parts)
+    {
+    }
+
+    /// <summary>
+    /// 使用一个消息段初始化一条消息
+    /// </summary>
+    /// <param name="part">消息段</param>
+    public Message(MessagePartBase part) : base([part])
+    {
+    }
+
+    /// <summary>
+    /// 初始化一个具有指定容量的消息
+    /// </summary>
+    /// <param name="capacity">容量</param>
+    public Message(int capacity) : base(capacity)
+    {
+    }
+
+    /// <summary>
+    /// 将消息转为文本表现形式
+    /// </summary>
+    /// <returns>消息文本</returns>
+    public override string ToString() =>
+        // LINQ的奇怪用法增加了
+        string.Concat(from part in this select part.ToString());
+}

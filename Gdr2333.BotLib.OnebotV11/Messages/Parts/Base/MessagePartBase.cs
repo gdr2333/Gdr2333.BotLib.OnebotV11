@@ -41,6 +41,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 [JsonDerivedType(typeof(LocationPart), typeDiscriminator: "location")]
 [JsonDerivedType(typeof(ReplyPart), typeDiscriminator: "reply")]
 [JsonDerivedType(typeof(ForwardMessagePart), typeDiscriminator: "forward")]
+[JsonDerivedType(typeof(CustomForwardNodePart), typeDiscriminator: "node")]
 
 [JsonDerivedType(typeof(FilePartBase))]
 [JsonDerivedType(typeof(ContactPartBase))]
@@ -50,6 +51,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 [JsonDerivedType(typeof(GroupContactPart))]
 [JsonDerivedType(typeof(MusicSharePart))]
 [JsonDerivedType(typeof(CustomMusicSharePart))]
+[JsonDerivedType(typeof(CustomForwardNodePart))]
 public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
