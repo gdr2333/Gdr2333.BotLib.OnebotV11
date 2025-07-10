@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-using Gdr2333.BotLib.OnebotV11.Message.Parts;
+using Gdr2333.BotLib.OnebotV11.Messages.Parts;
 using Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 using Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
 using System.Text.Json.Serialization;

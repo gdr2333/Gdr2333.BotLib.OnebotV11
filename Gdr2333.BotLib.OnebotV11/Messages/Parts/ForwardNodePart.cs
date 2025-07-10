@@ -19,8 +19,14 @@ using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages.Parts;
 
+/// <summary>
+/// 转发消息节点消息段
+/// </summary>
 public class ForwardNodePart : MessagePartBase
 {
+    /// <summary>
+    /// 转发的消息Id
+    /// </summary>
     [JsonIgnore]
     public long Id { get; set; }
 
@@ -32,17 +38,23 @@ public class ForwardNodePart : MessagePartBase
     {
     }
 
+    /// <summary>
+    /// 构建一个转发消息节点消息段
+    /// </summary>
+    /// <param name="messageId">转发的消息Id</param>
     public ForwardNodePart(long messageId) : base("node")
     {
         Id = messageId;
     }
 
+    /// <inheritdoc/>
     public override void OnDeserialized()
     {
         Id = _data!.Id;
         _data = null;
     }
 
+    /// <inheritdoc/>
     public override void OnSerializing()
     {
         _data = new()
@@ -51,6 +63,7 @@ public class ForwardNodePart : MessagePartBase
         };
     }
 
+    /// <inheritdoc/>
     public override string ToString() =>
         "转发消息";
 }
