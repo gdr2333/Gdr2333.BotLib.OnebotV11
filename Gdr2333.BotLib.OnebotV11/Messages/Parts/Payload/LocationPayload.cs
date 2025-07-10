@@ -1,0 +1,34 @@
+﻿/*
+   Copyright 2025 All contributors of Gdr2333.BotLib
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
+using System.Text.Json.Serialization;
+
+namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
+
+internal class LocationPayload
+{
+    [JsonInclude, JsonRequired, JsonPropertyName("lon"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Longitude { get; set; }
+
+    [JsonInclude, JsonRequired, JsonPropertyName("lat"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public double Latitude { get; set; }
+
+    [JsonInclude, JsonPropertyName("title")]
+    public string? Title { get; set; }
+
+    [JsonInclude, JsonPropertyName("content")]
+    public string? Content { get; set; }
+}
