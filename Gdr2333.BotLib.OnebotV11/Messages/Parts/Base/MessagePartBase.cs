@@ -42,6 +42,8 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 [JsonDerivedType(typeof(ReplyPart), typeDiscriminator: "reply")]
 [JsonDerivedType(typeof(ForwardMessagePart), typeDiscriminator: "forward")]
 [JsonDerivedType(typeof(CustomForwardNodePart), typeDiscriminator: "node")]
+[JsonDerivedType(typeof(XmlPart), typeDiscriminator: "xml")]
+[JsonDerivedType(typeof(JsonPart), typeDiscriminator: "json")]
 
 [JsonDerivedType(typeof(FilePartBase))]
 [JsonDerivedType(typeof(ContactPartBase))]
