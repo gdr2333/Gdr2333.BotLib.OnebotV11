@@ -24,12 +24,21 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts;
 /// </summary>
 public class CustomForwardNodePart : MessagePartBase
 {
+    /// <summary>
+    /// 发送者UID
+    /// </summary>
     [JsonIgnore]
     public long UserId { get; set; }
 
+    /// <summary>
+    /// 发送者昵称
+    /// </summary>
     [JsonIgnore]
     public string NickName { get; set; }
 
+    /// <summary>
+    /// 转发的内容
+    /// </summary>
     [JsonIgnore]
     public required Message Content { get; set; }
 
@@ -44,9 +53,9 @@ public class CustomForwardNodePart : MessagePartBase
     /// <summary>
     /// 构造一个自定义转发消息节点
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="nickName"></param>
-    /// <param name="uid"></param>
+    /// <param name="message">转发的内容</param>
+    /// <param name="nickName">发送者昵称</param>
+    /// <param name="uid">发送者UID</param>
     public CustomForwardNodePart(Message message, string nickName, long uid) : base("node")
     {
         UserId = uid;
