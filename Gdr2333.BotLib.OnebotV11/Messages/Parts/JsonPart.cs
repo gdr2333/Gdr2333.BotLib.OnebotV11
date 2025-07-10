@@ -53,13 +53,13 @@ public class JsonPart : MessagePartBase
     /// <param name="data">XML字符串</param>
     public JsonPart(string data) : base("json")
     {
-        Data = JsonNode.Parse(data);
+        Data = JsonNode.Parse(data) ?? throw new FormatException("JSON解析失败");
     }
 
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        Data = JsonNode.Parse(_doc);
+        Data = JsonNode.Parse(_doc) ?? throw new FormatException("JSON解析失败");
         _doc = string.Empty;
     }
 

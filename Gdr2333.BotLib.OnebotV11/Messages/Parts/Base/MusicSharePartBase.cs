@@ -27,5 +27,5 @@ public abstract class MusicSharePartBase() : MessagePartBase("music")
     /// 音乐分享类型
     /// </summary>
     [JsonIgnore]
-    public string MusicShareType { get; internal set; }
+    public string MusicShareType { get; internal set; } = string.Empty;
 }

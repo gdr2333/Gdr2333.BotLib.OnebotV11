@@ -21,7 +21,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
 internal class ContactPayload
 {
     [JsonInclude, JsonRequired, JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string Type { get; set; } = string.Empty;
 
     [JsonInclude, JsonRequired, JsonPropertyName("id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long Id { get; set; }

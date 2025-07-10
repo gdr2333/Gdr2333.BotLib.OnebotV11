@@ -28,7 +28,7 @@ internal class FilePayload
     /// 文件名
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("file")]
-    public string File { get; set; }
+    public string File { get; set; } = string.Empty;
 
     /// <summary>
     /// 文件URL

@@ -24,5 +24,5 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
 internal class MusicSharePayloadBase
 {
     [JsonInclude, JsonRequired, JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string Type { get; set; } = string.Empty;
 }

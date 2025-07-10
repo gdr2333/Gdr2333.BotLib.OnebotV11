@@ -52,8 +52,8 @@ public class MusicSharePart : MusicSharePartBase
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        MusicShareType = _data.Type;
-        MusicId = _data.Id;
+        MusicShareType = _data!.Type;
+        MusicId = _data!.Id;
         _data = null;
     }
 

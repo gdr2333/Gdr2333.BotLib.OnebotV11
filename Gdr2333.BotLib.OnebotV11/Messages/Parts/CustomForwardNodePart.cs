@@ -34,7 +34,7 @@ public class CustomForwardNodePart : MessagePartBase
     /// 发送者昵称
     /// </summary>
     [JsonIgnore]
-    public string NickName { get; set; }
+    public string NickName { get; set; } = string.Empty;
 
     /// <summary>
     /// 转发的内容

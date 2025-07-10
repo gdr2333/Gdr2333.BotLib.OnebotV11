@@ -28,7 +28,7 @@ public abstract class ContactPartBase : MessagePartBase
     /// 邀请类型
     /// </summary>
     [JsonIgnore]
-    public string ContactType { get; set; }
+    public string ContactType { get; set; } = string.Empty;
 
     /// <summary>
     /// 邀请目标ID

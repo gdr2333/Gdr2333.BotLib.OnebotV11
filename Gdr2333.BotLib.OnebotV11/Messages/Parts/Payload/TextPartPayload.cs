@@ -21,5 +21,5 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
 internal class TextPartPayload
 {
     [JsonInclude, JsonRequired, JsonPropertyName("text")]
-    public string Text { get; set; }
+    public string Text { get; set; } = string.Empty;
 }

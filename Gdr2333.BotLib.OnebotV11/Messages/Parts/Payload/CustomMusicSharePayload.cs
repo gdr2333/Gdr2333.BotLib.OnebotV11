@@ -26,7 +26,7 @@ internal class CustomMusicSharePayload : MusicSharePayloadBase
     public Uri AudioUrl { get; set; }
 
     [JsonInclude, JsonRequired, JsonPropertyName("title")]
-    public string Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
     [JsonInclude, JsonPropertyName("content")]
     public string? Content { get; set; }

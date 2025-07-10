@@ -75,10 +75,10 @@ public class LocationPart : MessagePartBase
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        Longitude = _data.Longitude;
-        Latitude = _data.Latitude;
-        Title = _data.Title;
-        Content = _data.Content;
+        Longitude = _data!.Longitude;
+        Latitude = _data!.Latitude;
+        Title = _data!.Title;
+        Content = _data!.Content;
         _data = null;
     }
 

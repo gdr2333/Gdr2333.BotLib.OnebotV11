@@ -40,7 +40,7 @@ public class CustomMusicSharePart : MusicSharePartBase
     /// 分享标题
     /// </summary>
     [JsonIgnore]
-    public string Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
     /// <summary>
     /// 分享内容介绍
