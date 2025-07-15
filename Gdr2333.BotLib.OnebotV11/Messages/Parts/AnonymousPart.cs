@@ -16,6 +16,7 @@
 
 using Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 using Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages.Parts;
@@ -27,8 +28,8 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts;
 /// 创建一个匿名消息段
 /// </remarks>
 /// <param name="ignore">无法匿名时是否继续发送</param>
-[Obsolete("anonymous消息段在几乎所有实现中都不再有用。我仍然按标准实现了它，但你不该用。")]
-[method: Obsolete("anonymous消息段在几乎所有实现中都不再有用。我仍然按标准实现了它，但你不该用。")]
+[Obsolete(StaticData.AnonymousWarning)]
+[method: Obsolete(StaticData.AnonymousWarning)]
 public class AnonymousPart(bool ignore) : MessagePartBase("anonymous")
 {
     /// <summary>

@@ -13,13 +13,17 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
+using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages;
 
 /// <summary>
 /// 消息类
 /// </summary>
+[JsonConverter(typeof(MessageConverter))]
 public class Message : List<MessagePartBase>
 {
     /// <summary>
@@ -53,4 +57,18 @@ public class Message : List<MessagePartBase>
     public override string ToString() =>
         // LINQ的奇怪用法增加了
         string.Concat(from part in this select part.ToString());
+}
+
+internal class MessageConverter : JsonConverter<Message>
+{
+    public override Message? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        new(reader.TokenType switch
+        {
+            JsonTokenType.StartArray => JsonSerializer.Deserialize<MessagePartBase[]>(ref reader, options) ?? throw new InvalidDataException("消息段解码失败！"),
+            JsonTokenType.String => CqCodeToJsonNode.Convert(reader.GetString()!).Deserialize<MessagePartBase[]>() ?? throw new FormatException("消息段无法解码！"),
+            _ => throw new FormatException("这什么消息段编码方式？")
+        });
+
+    public override void Write(Utf8JsonWriter writer, Message value, JsonSerializerOptions options) =>
+        JsonSerializer.Serialize<List<MessagePartBase>>(writer, value);
 }

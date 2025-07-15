@@ -1,4 +1,4 @@
-﻿/*
+/*
    Copyright 2025 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +13,23 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System.Text.Json.Serialization;
+using Gdr2333.BotLib.OnebotV11.Events.Base;
+using Gdr2333.BotLib.OnebotV11.Events.Data;
 
-namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Payload;
+namespace Gdr2333.BotLib.OnebotV11.Events;
 
-[JsonDerivedType(typeof(MusicSharePayload))]
-[JsonDerivedType(typeof(CustomMusicSharePayload))]
-internal class MusicSharePayloadBase
+/// <summary>
+/// 私聊消息接收事件
+/// </summary>
+public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase
 {
-    [JsonInclude, JsonRequired, JsonPropertyName("type")]
-    public string Type { get; set; } = string.Empty;
+    /// <inheritdoc/>
+    [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
+    public override string SubType { get; internal set; } = string.Empty;
+
+    /// <inheritdoc/>
+    [JsonInclude, JsonPropertyName("sender")]
+    public override Sender? Sender { get; internal set; } = null;
 }
