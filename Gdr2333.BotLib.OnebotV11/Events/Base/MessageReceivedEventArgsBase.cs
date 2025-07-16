@@ -96,12 +96,12 @@ public enum MessageType
 internal class MessageTypeConverter : JsonConverter<MessageType>
 {
     public override MessageType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-    reader.GetString()?.ToLower() switch
-    {
-        "private" => MessageType.Private,
-        "group" => MessageType.Group,
-        _ => throw new FormatException("类型错误！")
-    };
+        reader.GetString()?.ToLower() switch
+        {
+            "private" => MessageType.Private,
+            "group" => MessageType.Group,
+            _ => throw new FormatException("类型错误！")
+        };
 
     public override void Write(Utf8JsonWriter writer, MessageType value, JsonSerializerOptions options)
     {
