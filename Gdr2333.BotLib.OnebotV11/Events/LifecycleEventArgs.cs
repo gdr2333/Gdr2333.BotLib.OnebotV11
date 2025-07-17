@@ -17,6 +17,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
+using Gdr2333.BotLib.OnebotV11.Utils;
 
 /// <summary>
 /// 生命周期通报事件参数
@@ -58,7 +59,7 @@ internal class LifecycleEventSubTypeConverter : JsonConverter<LifecycleEventSubT
             "enable" => LifecycleEventSubType.Enable,
             "disable" => LifecycleEventSubType.Disable,
             "connect" => LifecycleEventSubType.Connect,
-            _ => throw new InvalidCastException("未知枚举类型！")
+            _ => throw new InvalidCastException(StaticData.BadEnumValueMessage)
         };
 
     public override void Write(Utf8JsonWriter writer, LifecycleEventSubType value, JsonSerializerOptions options)
@@ -68,7 +69,7 @@ internal class LifecycleEventSubTypeConverter : JsonConverter<LifecycleEventSubT
             LifecycleEventSubType.Enable => "enable",
             LifecycleEventSubType.Disable => "disable",
             LifecycleEventSubType.Connect => "connect",
-            _ => throw new InvalidDataException("未知枚举类型！")
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         });
     }
 }

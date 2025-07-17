@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
@@ -30,7 +31,7 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase
     /// 群消息子类型
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
-    public override string SubType { get; internal set; } = string.Empty;
+    public GroupMessageReceivedSubType SubType { get; internal set; }
 
     /// <inheritdoc/>
     [Obsolete("该Sender是基类的实现，建议使用GroupSender。")]
@@ -85,4 +86,48 @@ public class AnonymousInfo
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("flag")]
     public string Flag { get; internal set; } = string.Empty;
+}
+
+/// <summary>
+/// 群聊消息子类型
+/// </summary>
+[JsonConverter(typeof(GroupMessageReceivedSubTypeConverter))]
+public enum GroupMessageReceivedSubType
+{
+    /// <summary>
+    /// 正常消息
+    /// </summary>
+    Normal,
+    /// <summary>
+    /// 匿名消息
+    /// </summary>
+    [Obsolete(StaticData.AnonymousWarning)]
+    Anonymous,
+    /// <summary>
+    /// 通知
+    /// </summary>
+    Notice
+};
+
+internal class GroupMessageReceivedSubTypeConverter : JsonConverter<GroupMessageReceivedSubType>
+{
+    public override GroupMessageReceivedSubType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.GetString()?.ToLower() switch
+        {
+            "normal" => GroupMessageReceivedSubType.Normal,
+            "anonumous" => GroupMessageReceivedSubType.Anonymous,
+            "notice" => GroupMessageReceivedSubType.Notice,
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
+        };
+
+    public override void Write(Utf8JsonWriter writer, GroupMessageReceivedSubType value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value switch
+        {
+            GroupMessageReceivedSubType.Normal => "normal",
+            GroupMessageReceivedSubType.Notice => "notice",
+            GroupMessageReceivedSubType.Anonymous => "anonumous",
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
+        });
+    }
 }

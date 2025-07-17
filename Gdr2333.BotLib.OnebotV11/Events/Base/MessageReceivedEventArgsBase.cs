@@ -18,6 +18,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
 using Gdr2333.BotLib.OnebotV11.Messages;
+using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 
@@ -33,12 +34,6 @@ public abstract class MessageReceivedEventArgsBase : OnebotV11EventArgsBase
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("message_type")]
     public MessageType MessageType { get; internal set; }
-
-    /// <summary>
-    /// 消息子类型
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
-    public abstract string SubType { get; internal set; }
 
     /// <summary>
     /// 消息ID
@@ -100,7 +95,7 @@ internal class MessageTypeConverter : JsonConverter<MessageType>
         {
             "private" => MessageType.Private,
             "group" => MessageType.Group,
-            _ => throw new FormatException("类型错误！")
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         };
 
     public override void Write(Utf8JsonWriter writer, MessageType value, JsonSerializerOptions options)
@@ -109,7 +104,7 @@ internal class MessageTypeConverter : JsonConverter<MessageType>
         {
             MessageType.Private => "private",
             MessageType.Group => "group",
-            _ => throw new InvalidDataException("错误的枚举！")
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         });
     }
 }

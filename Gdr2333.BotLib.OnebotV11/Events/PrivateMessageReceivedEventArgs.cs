@@ -14,9 +14,11 @@
    limitations under the License.
 */
 
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
+using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
@@ -25,11 +27,54 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// </summary>
 public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase
 {
-    /// <inheritdoc/>
+    /// <summary>
+    /// 私聊消息子类型
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
-    public override string SubType { get; internal set; } = string.Empty;
+    public PrivateMessageReceivedSubType SubType { get; internal set; }
 
     /// <inheritdoc/>
     [JsonInclude, JsonPropertyName("sender")]
     public override Sender? Sender { get; internal set; } = null;
+}
+
+/// <summary>
+/// 私聊消息子类型
+/// </summary>
+public enum PrivateMessageReceivedSubType
+{
+    /// <summary>
+    /// 好友发的消息
+    /// </summary>
+    Friend,
+    /// <summary>
+    /// 群临时会话消息
+    /// </summary>
+    Group,
+    /// <summary>
+    /// 其他
+    /// </summary>
+    Other
+}
+
+internal class PrivateMessageReceivedSubTypeConverter : JsonConverter<PrivateMessageReceivedSubType>
+{
+    public override PrivateMessageReceivedSubType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.GetString()?.ToLower() switch
+        {
+            "friend" => PrivateMessageReceivedSubType.Friend,
+            "group" => PrivateMessageReceivedSubType.Group,
+            _ => PrivateMessageReceivedSubType.Other
+        };
+
+    public override void Write(Utf8JsonWriter writer, PrivateMessageReceivedSubType value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value switch
+        {
+            PrivateMessageReceivedSubType.Friend => "friend",
+            PrivateMessageReceivedSubType.Group => "group",
+            PrivateMessageReceivedSubType.Other => "other",
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
+        });
+    }
 }

@@ -16,6 +16,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 
@@ -56,7 +57,7 @@ internal class MetaEventTypeConverter : JsonConverter<MetaEventType>
         {
             "lifecycle" => MetaEventType.Lifecycle,
             "heartbeat" => MetaEventType.Heartbeat,
-            _ => throw new InvalidCastException("未知枚举类型！")
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         };
 
     public override void Write(Utf8JsonWriter writer, MetaEventType value, JsonSerializerOptions options)
@@ -65,7 +66,7 @@ internal class MetaEventTypeConverter : JsonConverter<MetaEventType>
         {
             MetaEventType.Heartbeat => "heartbeat",
             MetaEventType.Lifecycle => "lifecycle",
-            _ => throw new InvalidDataException("未知枚举类型！")
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         });
     }
 }
