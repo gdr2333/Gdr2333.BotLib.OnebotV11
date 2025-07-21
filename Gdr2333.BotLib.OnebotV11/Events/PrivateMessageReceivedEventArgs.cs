@@ -18,6 +18,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
+using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -25,7 +26,7 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// <summary>
 /// 私聊消息接收事件
 /// </summary>
-public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase
+public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUserEventArgs
 {
     /// <summary>
     /// 私聊消息子类型

@@ -18,6 +18,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
+using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -25,7 +26,7 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// <summary>
 /// 群消息接收事件
 /// </summary>
-public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase
+public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUserEventArgs, IGroupEventArgs
 {
     /// <summary>
     /// 群消息子类型
@@ -61,31 +62,6 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase
     /// </summary>
     [JsonInclude, JsonPropertyName("sender")]
     public GroupSender? GroupSender { get; internal set; }
-}
-
-/// <summary>
-/// 匿名信息
-/// </summary>
-[Obsolete(StaticData.AnonymousWarning)]
-public class AnonymousInfo
-{
-    /// <summary>
-    /// 匿名ID
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long Id { get; internal set; }
-
-    /// <summary>
-    /// 匿名后的名称
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("name")]
-    public string Name { get; internal set; } = string.Empty;
-
-    /// <summary>
-    /// 匿名用户flag
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("flag")]
-    public string Flag { get; internal set; } = string.Empty;
 }
 
 /// <summary>

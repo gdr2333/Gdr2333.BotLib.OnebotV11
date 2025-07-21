@@ -29,6 +29,10 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 [JsonDerivedType(typeof(LifecycleEventArgs))]
 [JsonDerivedType(typeof(HeartbeatEventArgs))]
 [JsonDerivedType(typeof(MetaEventArgsBase))]
+
+[JsonDerivedType(typeof(GroupFileUploadedEventArgs))]
+[JsonDerivedType(typeof(GroupAdminChangedEventArgs))]
+[JsonDerivedType(typeof(NoticeEventArgsBase))]
 public abstract class OnebotV11EventArgsBase
 {
     /// <summary>
