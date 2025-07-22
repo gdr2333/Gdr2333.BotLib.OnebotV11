@@ -14,16 +14,12 @@
    limitations under the License.
 */
 
-using System.Text.Json.Serialization;
-
 namespace Gdr2333.BotLib.OnebotV11.Utils;
 
 internal static class StaticData
 {
     public const bool CqUseProxyDefault = true;
     public const bool CqUseCahceDefault = true;
-
-    public static readonly JsonConverter[] Converters = [new MusicSharePayloadConverter()];
 
     public const string AnonymousWarning = "新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。";
     public const string BadEnumValueMessage = "无法接受的枚举类型！";
