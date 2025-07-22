@@ -24,7 +24,7 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 public interface IUserEventArgs
 {
     /// <summary>
-    /// 涉及到的用户ID，如果涉及到多个用户则为发起操作的用户ID
+    /// 涉及到的用户ID，如果涉及到多个用户则为目标用户的ID
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("user_id")]
     public long UserId { get; }
