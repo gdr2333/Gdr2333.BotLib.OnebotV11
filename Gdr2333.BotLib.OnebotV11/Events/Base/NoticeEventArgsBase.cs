@@ -25,6 +25,12 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 /// </summary>
 [JsonDerivedType(typeof(GroupFileUploadedEventArgs))]
 [JsonDerivedType(typeof(GroupAdminChangedEventArgs))]
+[JsonDerivedType(typeof(GroupMemberDecreaseEventArgs))]
+[JsonDerivedType(typeof(GroupMemberIncreaseEventArgs))]
+[JsonDerivedType(typeof(GroupBanStatusChangedEventArgs))]
+[JsonDerivedType(typeof(FriendAddedEventArgs))]
+[JsonDerivedType(typeof(GroupMessageRecalledEventArgs))]
+[JsonDerivedType(typeof(FriendMessageRecalledEventArgs))]
 public abstract class NoticeEventArgsBase : OnebotV11EventArgsBase
 {
     /// <summary>
