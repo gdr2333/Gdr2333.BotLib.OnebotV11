@@ -73,17 +73,9 @@ public enum NoticeType
     /// </summary>
     FriendMessageRecalled,
     /// <summary>
-    /// 群里被戳一戳
+    /// “通知”类型，至于通知了什么自己翻Subtype去
     /// </summary>
-    GroupPoked,
-    /// <summary>
-    /// 群红包手气王增加
-    /// </summary>
-    GroupLuckyKingChanged,
-    /// <summary>
-    /// 群荣誉更改
-    /// </summary>
-    GroupHonorChanged
+    Notify
 }
 
 internal class NoticeTypeConverter : JsonConverter<NoticeType>
@@ -99,9 +91,7 @@ internal class NoticeTypeConverter : JsonConverter<NoticeType>
             "friend_add" => NoticeType.FriendAdded,
             "group_recall" => NoticeType.GroupMessageRecalled,
             "friend_recall" => NoticeType.FriendMessageRecalled,
-            "poke" => NoticeType.GroupPoked,
-            "lucky_king" => NoticeType.GroupLuckyKingChanged,
-            "honor" => NoticeType.GroupHonorChanged,
+            "notify" => NoticeType.Notify,
             _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         };
 
@@ -117,9 +107,7 @@ internal class NoticeTypeConverter : JsonConverter<NoticeType>
             NoticeType.FriendAdded => "friend_add",
             NoticeType.GroupMessageRecalled => "group_recall",
             NoticeType.FriendMessageRecalled => "friend_recall",
-            NoticeType.GroupPoked => "poke",
-            NoticeType.GroupLuckyKingChanged => "lucky_king",
-            NoticeType.GroupHonorChanged => "honor",
+            NoticeType.Notify => "notify",
             _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
         });
     }
