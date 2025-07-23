@@ -14,6 +14,8 @@
    limitations under the License.
 */
 
+namespace Gdr2333.BotLib.OnebotV11.Events;
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
