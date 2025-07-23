@@ -117,3 +117,60 @@ internal class PostTypeConverter : JsonConverter<PostType>
         });
     }
 }
+
+internal class OnebotV11EventArgsConverter : JsonConverter<OnebotV11EventArgsBase>
+{
+    private static JsonConverter<OnebotV11EventArgsBase> _defconv = (JsonConverter<OnebotV11EventArgsBase>)JsonSerializerOptions.Default.GetConverter(typeof(OnebotV11EventArgsBase));
+
+    public override OnebotV11EventArgsBase? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        var json = JsonElement.ParseValue(ref reader);
+        // 对的，switch表达式堆屎山，想不到吧
+        return json.GetProperty("post_type").GetString()?.ToLower() switch
+        {
+            "message" => json.GetProperty("message_type").GetString()?.ToLower() switch
+            {
+                "private" => JsonSerializer.Deserialize<PrivateMessageReceivedEventArgs>(json, options),
+                "group" => JsonSerializer.Deserialize<GroupMessageReceivedEventArgs>(json, options),
+                _ => throw new InvalidDataException($"未知消息事件类型{json.GetProperty("message_type").GetString()?.ToLower()}"),
+            },
+            "notice" => json.GetProperty("notice_type").GetString()?.ToLower() switch
+            {
+                "group_upload" => JsonSerializer.Deserialize<GroupFileUploadedEventArgs>(json, options),
+                "group_admin" => JsonSerializer.Deserialize<GroupAdminChangedEventArgs>(json, options),
+                "group_decrease" => JsonSerializer.Deserialize<GroupMemberDecreaseEventArgs>(json, options),
+                "group_increase" => JsonSerializer.Deserialize<GroupMemberIncreaseEventArgs>(json, options),
+                "group_ban" => JsonSerializer.Deserialize<GroupBanStatusChangedEventArgs>(json, options),
+                "friend_add" => JsonSerializer.Deserialize<FriendAddedEventArgs>(json, options),
+                "group_recall" => JsonSerializer.Deserialize<GroupMessageRecalledEventArgs>(json, options),
+                "friend_recall" => JsonSerializer.Deserialize<FriendMessageRecalledEventArgs>(json, options),
+                "norify" => (json.GetProperty("sub_type").GetString()?.ToLower()) switch
+                {
+                    "poke" => JsonSerializer.Deserialize<GroupPokedEventArgs>(json, options),
+                    "lucky_king" => JsonSerializer.Deserialize<GroupLuckyKingChangedEventArgs>(json, options),
+                    "honor" => JsonSerializer.Deserialize<GroupMemberHonorChangedEventArgs>(json, options),
+                    _ => throw new InvalidDataException($"未知通知：：notify事件类型{json.GetProperty("sub_type").GetString()?.ToLower()}"),
+                },
+                _ => throw new InvalidDataException($"未知通知事件类型{json.GetProperty("notice_type").GetString()?.ToLower()}")
+            },
+            "meta_event" => json.GetProperty("meta_event_type").GetString()?.ToLower() switch
+            {
+                "heartbeat" => JsonSerializer.Deserialize<HeartbeatEventArgs>(json, options),
+                "lifecycle" => JsonSerializer.Deserialize<LifecycleEventArgs>(json, options),
+                _ => throw new InvalidDataException($"未知meta事件类型{json.GetProperty("meta_event_type").GetString()?.ToLower()}")
+            },
+            "request" => json.GetProperty("request_type").ToString()?.ToLower() switch
+            {
+                "friend" => JsonSerializer.Deserialize<NewFriendRequestEventArgs>(json, options),
+                "group" => JsonSerializer.Deserialize<GroupAddRequestEventArgs>(json, options),
+                _ => throw new InvalidDataException($"未知请求事件类型{json.GetProperty("request_type").GetString()?.ToLower()}")
+            },
+            _ => throw new InvalidDataException($"未知事件类型{json.GetProperty("post_type").GetString()?.ToLower()}")
+        };
+    }
+
+    public override void Write(Utf8JsonWriter writer, OnebotV11EventArgsBase value, JsonSerializerOptions options)
+    {
+        _defconv.Write(writer, value, options);
+    }
+}
