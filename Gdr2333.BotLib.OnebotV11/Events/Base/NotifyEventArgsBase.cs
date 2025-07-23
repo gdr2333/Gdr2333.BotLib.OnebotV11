@@ -23,6 +23,9 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 /// <summary>
 /// “通知”事件数据基类。鬼知道为什么有这个东西。
 /// </summary>
+[JsonDerivedType(typeof(GroupPokedEventArgs))]
+[JsonDerivedType(typeof(GroupLuckyKingChangedEventArgs))]
+[JsonDerivedType(typeof(GroupMemberHonorChangedEventArgs))]
 public abstract class NotifyEventArgsBase : NoticeEventArgsBase
 {
     /// <summary>
