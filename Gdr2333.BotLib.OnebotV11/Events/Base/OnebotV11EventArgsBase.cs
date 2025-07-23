@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
@@ -65,5 +66,54 @@ public abstract class OnebotV11EventArgsBase
     /// 事件类型
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("post_type")]
-    public string PostType { get; internal set; }
+    public PostType PostType { get; internal set; }
+}
+
+/// <summary>
+/// 事件类型
+/// </summary>
+[JsonConverter(typeof(PostTypeConverter))]
+public enum PostType
+{
+    /// <summary>
+    /// 消息事件
+    /// </summary>
+    Message,
+    /// <summary>
+    /// 通知事件
+    /// </summary>
+    Notice,
+    /// <summary>
+    /// 请求事件
+    /// </summary>
+    Request,
+    /// <summary>
+    /// 元事件
+    /// </summary>
+    MetaEvent
+}
+
+internal class PostTypeConverter : JsonConverter<PostType>
+{
+    public override PostType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+        reader.GetString()?.ToLower() switch
+        {
+            "message" => PostType.Message,
+            "notice" => PostType.Notice,
+            "request" => PostType.Request,
+            "meta_event" => PostType.MetaEvent,
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
+        };
+
+    public override void Write(Utf8JsonWriter writer, PostType value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value switch
+        {
+            PostType.Message => "message",
+            PostType.Notice => "notice",
+            PostType.Request => "request",
+            PostType.MetaEvent => "meta_event",
+            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
+        });
+    }
 }
