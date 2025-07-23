@@ -43,6 +43,10 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 [JsonDerivedType(typeof(GroupMemberHonorChangedEventArgs))]
 [JsonDerivedType(typeof(NotifyEventArgsBase))]
 [JsonDerivedType(typeof(NoticeEventArgsBase))]
+
+[JsonDerivedType(typeof(NewFriendRequestEventArgs))]
+[JsonDerivedType(typeof(GroupAddRequestEventArgs))]
+[JsonDerivedType(typeof(RequestEventArgsBase))]
 public abstract class OnebotV11EventArgsBase
 {
     /// <summary>

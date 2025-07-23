@@ -24,6 +24,8 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 /// <summary>
 /// 请求事件基类
 /// </summary>
+[JsonDerivedType(typeof(NewFriendRequestEventArgs))]
+[JsonDerivedType(typeof(GroupAddRequestEventArgs))]
 public abstract class RequestEventArgsBase : OnebotV11EventArgsBase, IUserEventArgs
 {
     /// <summary>
