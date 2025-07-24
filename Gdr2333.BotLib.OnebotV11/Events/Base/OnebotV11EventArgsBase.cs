@@ -130,39 +130,39 @@ internal class OnebotV11EventArgsConverter : JsonConverter<OnebotV11EventArgsBas
         {
             "message" => json.GetProperty("message_type").GetString()?.ToLower() switch
             {
-                "private" => JsonSerializer.Deserialize<PrivateMessageReceivedEventArgs>(json, options),
-                "group" => JsonSerializer.Deserialize<GroupMessageReceivedEventArgs>(json, options),
+                "private" => json.Deserialize<PrivateMessageReceivedEventArgs>(options),
+                "group" => json.Deserialize<GroupMessageReceivedEventArgs>(options),
                 _ => throw new InvalidDataException($"未知消息事件类型{json.GetProperty("message_type").GetString()?.ToLower()}"),
             },
             "notice" => json.GetProperty("notice_type").GetString()?.ToLower() switch
             {
-                "group_upload" => JsonSerializer.Deserialize<GroupFileUploadedEventArgs>(json, options),
-                "group_admin" => JsonSerializer.Deserialize<GroupAdminChangedEventArgs>(json, options),
-                "group_decrease" => JsonSerializer.Deserialize<GroupMemberDecreaseEventArgs>(json, options),
-                "group_increase" => JsonSerializer.Deserialize<GroupMemberIncreaseEventArgs>(json, options),
-                "group_ban" => JsonSerializer.Deserialize<GroupBanStatusChangedEventArgs>(json, options),
-                "friend_add" => JsonSerializer.Deserialize<FriendAddedEventArgs>(json, options),
-                "group_recall" => JsonSerializer.Deserialize<GroupMessageRecalledEventArgs>(json, options),
-                "friend_recall" => JsonSerializer.Deserialize<FriendMessageRecalledEventArgs>(json, options),
+                "group_upload" => json.Deserialize<GroupFileUploadedEventArgs>(options),
+                "group_admin" => json.Deserialize<GroupAdminChangedEventArgs>(options),
+                "group_decrease" => json.Deserialize<GroupMemberDecreaseEventArgs>(options),
+                "group_increase" => json.Deserialize<GroupMemberIncreaseEventArgs>(options),
+                "group_ban" => json.Deserialize<GroupBanStatusChangedEventArgs>(options),
+                "friend_add" => json.Deserialize<FriendAddedEventArgs>(options),
+                "group_recall" => json.Deserialize<GroupMessageRecalledEventArgs>(options),
+                "friend_recall" => json.Deserialize<FriendMessageRecalledEventArgs>(options),
                 "norify" => (json.GetProperty("sub_type").GetString()?.ToLower()) switch
                 {
-                    "poke" => JsonSerializer.Deserialize<GroupPokedEventArgs>(json, options),
-                    "lucky_king" => JsonSerializer.Deserialize<GroupLuckyKingChangedEventArgs>(json, options),
-                    "honor" => JsonSerializer.Deserialize<GroupMemberHonorChangedEventArgs>(json, options),
+                    "poke" => json.Deserialize<GroupPokedEventArgs>(options),
+                    "lucky_king" => json.Deserialize<GroupLuckyKingChangedEventArgs>(options),
+                    "honor" => json.Deserialize<GroupMemberHonorChangedEventArgs>(options),
                     _ => throw new InvalidDataException($"未知通知：：notify事件类型{json.GetProperty("sub_type").GetString()?.ToLower()}"),
                 },
                 _ => throw new InvalidDataException($"未知通知事件类型{json.GetProperty("notice_type").GetString()?.ToLower()}")
             },
             "meta_event" => json.GetProperty("meta_event_type").GetString()?.ToLower() switch
             {
-                "heartbeat" => JsonSerializer.Deserialize<HeartbeatEventArgs>(json, options),
-                "lifecycle" => JsonSerializer.Deserialize<LifecycleEventArgs>(json, options),
+                "heartbeat" => json.Deserialize<HeartbeatEventArgs>(options),
+                "lifecycle" => json.Deserialize<LifecycleEventArgs>(options),
                 _ => throw new InvalidDataException($"未知meta事件类型{json.GetProperty("meta_event_type").GetString()?.ToLower()}")
             },
             "request" => json.GetProperty("request_type").ToString()?.ToLower() switch
             {
-                "friend" => JsonSerializer.Deserialize<NewFriendRequestEventArgs>(json, options),
-                "group" => JsonSerializer.Deserialize<GroupAddRequestEventArgs>(json, options),
+                "friend" => json.Deserialize<NewFriendRequestEventArgs>(options),
+                "group" => json.Deserialize<GroupAddRequestEventArgs>(options),
                 _ => throw new InvalidDataException($"未知请求事件类型{json.GetProperty("request_type").GetString()?.ToLower()}")
             },
             _ => throw new InvalidDataException($"未知事件类型{json.GetProperty("post_type").GetString()?.ToLower()}")
