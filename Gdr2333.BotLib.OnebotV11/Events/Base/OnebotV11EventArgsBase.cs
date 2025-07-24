@@ -144,7 +144,7 @@ internal class OnebotV11EventArgsConverter : JsonConverter<OnebotV11EventArgsBas
                 "friend_add" => json.Deserialize<FriendAddedEventArgs>(options),
                 "group_recall" => json.Deserialize<GroupMessageRecalledEventArgs>(options),
                 "friend_recall" => json.Deserialize<FriendMessageRecalledEventArgs>(options),
-                "norify" => (json.GetProperty("sub_type").GetString()?.ToLower()) switch
+                "notify" => (json.GetProperty("sub_type").GetString()?.ToLower()) switch
                 {
                     "poke" => json.Deserialize<GroupPokedEventArgs>(options),
                     "lucky_king" => json.Deserialize<GroupLuckyKingChangedEventArgs>(options),
