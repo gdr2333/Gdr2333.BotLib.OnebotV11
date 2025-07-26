@@ -15,32 +15,14 @@
 */
 
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
-using Gdr2333.BotLib.OnebotV11.Events.Base;
-using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 
-namespace Gdr2333.BotLib.OnebotV11.Events;
+namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
 
-/// <summary>
-/// 群成员荣誉变更事件参数
-/// </summary>
-public class GroupMemberHonorChangedEventArgs : NotifyEventArgsBase, IUserEventArgs, IGroupEventArgs
+public class GetLoginInfoResult
 {
-    /// <summary>
-    /// 群Id
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long GroupId { get; internal set; }
-
-    /// <summary>
-    /// 荣誉类型
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("honor_type")]
-    public GroupHonorType HonorType { get; internal set; }
-
-    /// <summary>
-    /// 用户Id
-    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long UserId { get; internal set; }
+
+    [JsonInclude, JsonRequired, JsonPropertyName("nickname")]
+    public string Nickname { get; internal set; }
 }

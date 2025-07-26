@@ -15,32 +15,20 @@
 */
 
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
-using Gdr2333.BotLib.OnebotV11.Events.Base;
-using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 
-namespace Gdr2333.BotLib.OnebotV11.Events;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
-/// <summary>
-/// （加群请求 或 邀请加群）事件参数
-/// </summary>
-public class GroupAddRequestEventArgs : RequestEventArgsBase, IGroupEventArgs
+public class GroupInfo
 {
-    /// <summary>
-    /// 子类型（加群请求 或 邀请加群）
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
-    public GroupAddRequestType Subtype { get; internal set; }
-
-    /// <summary>
-    /// 群聊Id
-    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long GroupId { get; internal set; }
 
-    /// <summary>
-    /// 验证信息
-    /// </summary>
-    [JsonInclude, JsonPropertyName("comment")]
-    public string? Comment { get; internal set; }
+    [JsonInclude, JsonRequired, JsonPropertyName("group_name")]
+    public string GroupName { get; internal set; }
+
+    [JsonInclude, JsonRequired, JsonPropertyName("member_count"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public int MemberCount { get; internal set; }
+
+    [JsonInclude, JsonRequired, JsonPropertyName("max_member_count"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public int MemberCapacity { get; internal set; }
 }

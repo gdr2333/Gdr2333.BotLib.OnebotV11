@@ -16,6 +16,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
 using Gdr2333.BotLib.OnebotV11.Events.Data;
 using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
@@ -38,7 +39,7 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUser
     [Obsolete("该Sender是基类的实现，建议使用GroupSender。")]
     [JsonIgnore]
     // 你问警告是吧？我看见了但我就这么设计的
-    public override Sender? Sender
+    public override UserInfo? Sender
     {
         get => GroupSender;
         internal set => throw new InvalidOperationException();
@@ -61,7 +62,7 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUser
     /// 群消息发送者信息
     /// </summary>
     [JsonInclude, JsonPropertyName("sender")]
-    public GroupSender? GroupSender { get; internal set; }
+    public GroupMemberInfo? GroupSender { get; internal set; }
 }
 
 /// <summary>

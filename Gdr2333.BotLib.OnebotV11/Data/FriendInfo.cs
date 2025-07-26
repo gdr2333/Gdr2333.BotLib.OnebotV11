@@ -15,32 +15,29 @@
 */
 
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
-using Gdr2333.BotLib.OnebotV11.Events.Base;
-using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 
-namespace Gdr2333.BotLib.OnebotV11.Events;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
-/// （加群请求 或 邀请加群）事件参数
+/// 好友信息
 /// </summary>
-public class GroupAddRequestEventArgs : RequestEventArgsBase, IGroupEventArgs
+public class FriendInfo
 {
     /// <summary>
-    /// 子类型（加群请求 或 邀请加群）
+    /// 用户ID
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
-    public GroupAddRequestType Subtype { get; internal set; }
+    [JsonInclude, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public long UserId { get; internal set; } = -1;
 
     /// <summary>
-    /// 群聊Id
+    /// 昵称
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long GroupId { get; internal set; }
+    [JsonInclude, JsonPropertyName("nickname")]
+    public string Nickname { get; internal set; } = string.Empty;
 
     /// <summary>
-    /// 验证信息
+    /// 备注
     /// </summary>
-    [JsonInclude, JsonPropertyName("comment")]
-    public string? Comment { get; internal set; }
+    [JsonInclude, JsonPropertyName("remark")]
+    public string Remark { get; internal set; } = string.Empty;
 }

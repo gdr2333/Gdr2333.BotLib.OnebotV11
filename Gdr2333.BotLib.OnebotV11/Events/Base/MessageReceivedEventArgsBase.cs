@@ -14,12 +14,10 @@
    limitations under the License.
 */
 
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Events.Data;
+using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 using Gdr2333.BotLib.OnebotV11.Messages;
-using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 
@@ -70,42 +68,5 @@ public abstract class MessageReceivedEventArgsBase : OnebotV11EventArgsBase, IUs
     /// 消息发送者信息
     /// </summary>
     [JsonIgnore]
-    public abstract Sender? Sender { get; internal set; }
-}
-
-/// <summary>
-/// 消息类型
-/// </summary>
-[JsonConverter(typeof(MessageTypeConverter))]
-public enum MessageType
-{
-    /// <summary>
-    /// 私聊消息
-    /// </summary>
-    Private,
-    /// <summary>
-    /// 群聊消息
-    /// </summary>
-    Group
-}
-
-internal class MessageTypeConverter : JsonConverter<MessageType>
-{
-    public override MessageType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
-        {
-            "private" => MessageType.Private,
-            "group" => MessageType.Group,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, MessageType value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value switch
-        {
-            MessageType.Private => "private",
-            MessageType.Group => "group",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
-    }
+    public abstract UserInfo? Sender { get; internal set; }
 }

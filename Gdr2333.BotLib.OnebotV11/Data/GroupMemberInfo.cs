@@ -17,12 +17,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Events.Data;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
 /// 群消息发送者信息
 /// </summary>
-public class GroupSender : Sender
+public class GroupMemberInfo : UserInfo
 {
     /// <summary>
     /// 群卡片内容
@@ -46,7 +46,7 @@ public class GroupSender : Sender
     /// 群角色（群主/管理/成员）
     /// </summary>
     [JsonInclude, JsonPropertyName("role")]
-    public Role? Role { get; internal set; } = null;
+    public MemberRole? Role { get; internal set; } = null;
 
     /// <summary>
     /// 群头衔
@@ -58,8 +58,8 @@ public class GroupSender : Sender
 /// <summary>
 /// 群角色
 /// </summary>
-[JsonConverter(typeof(RoleConverter))]
-public enum Role
+[JsonConverter(typeof(MemberRoleConverter))]
+public enum MemberRole
 {
     /// <summary>
     /// 群主
@@ -75,22 +75,22 @@ public enum Role
     Member
 };
 
-internal class RoleConverter : JsonConverter<Role>
+internal class MemberRoleConverter : JsonConverter<MemberRole>
 {
-    public override Role Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+    public override MemberRole Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
     reader.GetString()?.ToLower() switch
     {
-        "owner" => Role.Owner,
-        "admin" => Role.Admin,
-        _ => Role.Member,
+        "owner" => MemberRole.Owner,
+        "admin" => MemberRole.Admin,
+        _ => MemberRole.Member,
     };
 
-    public override void Write(Utf8JsonWriter writer, Role value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, MemberRole value, JsonSerializerOptions options)
     {
         writer.WriteStringValue(value switch
         {
-            Role.Owner => "owner",
-            Role.Admin => "admin",
+            MemberRole.Owner => "owner",
+            MemberRole.Admin => "admin",
             _ => "member"
         });
     }

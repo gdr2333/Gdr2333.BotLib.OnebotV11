@@ -17,13 +17,13 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Events.Data;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
-/// 消息发送者信息
+/// 用户信息
 /// </summary>
-[JsonDerivedType(typeof(GroupSender))]
-public class Sender
+[JsonDerivedType(typeof(GroupMemberInfo))]
+public class UserInfo
 {
     /// <summary>
     /// 用户ID

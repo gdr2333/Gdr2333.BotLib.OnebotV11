@@ -17,7 +17,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
-using Gdr2333.BotLib.OnebotV11.Events.Data;
+using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
@@ -36,7 +36,7 @@ public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUs
 
     /// <inheritdoc/>
     [JsonInclude, JsonPropertyName("sender")]
-    public override Sender? Sender { get; internal set; } = null;
+    public override UserInfo? Sender { get; internal set; } = null;
 }
 
 /// <summary>
