@@ -611,7 +611,7 @@ public abstract class OnebotV11ClientBase
     /// <param name="apiName">API名称</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>响应数据</returns>
-    public abstract Task<TResult> InvoleApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null);
+    public abstract Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null);
 
     /// <summary>
     /// 调用API
