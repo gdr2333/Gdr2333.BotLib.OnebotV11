@@ -19,52 +19,100 @@ using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
 
+/// <summary>
+/// “获取群荣耀信息”结果
+/// </summary>
 public class GetGroupHonorInfoResult
 {
+    /// <summary>
+    /// 群Id
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long GroupId { get; internal set; }
 
+    /// <summary>
+    /// 当前龙王
+    /// </summary>
     [JsonInclude, JsonPropertyName("current_talkative")]
     public TalkAtiveInfo? CurrentTalkative { get; internal set; }
 
+    /// <summary>
+    /// 历史龙王列表
+    /// </summary>
     [JsonInclude, JsonPropertyName("talkative_list")]
     public TalkAtiveInfo[]? TalkativeHistory { get; internal set; }
 
+    /// <summary>
+    /// 历史“群聊之火”列表
+    /// </summary>
     [JsonInclude, JsonPropertyName("performer_list")]
     public HonorInfo[]? PerformerHistory { get; internal set; }
 
+    /// <summary>
+    /// 历史“群聊炽焰”列表
+    /// </summary>
     [JsonInclude, JsonPropertyName("legend_list")]
     public HonorInfo[]? LegendHistory { get; internal set; }
 
+    /// <summary>
+    /// 历史“冒尖小春笋”列表
+    /// </summary>
     [JsonInclude, JsonPropertyName("strong_newbie_list")]
     public HonorInfo[]? StrongNewbieHistory { get; internal set; }
 
+    /// <summary>
+    /// 历史“快乐之源”列表
+    /// </summary>
     [JsonInclude, JsonPropertyName("emotion_list")]
     public HonorInfo[]? EmotionHistory { get; internal set; }
 }
 
+/// <summary>
+/// 群荣耀信息基类
+/// </summary>
 [JsonDerivedType(typeof(TalkAtiveInfo))]
 [JsonDerivedType(typeof(HonorInfo))]
 public abstract class HonorInfoBase
 {
+    /// <summary>
+    /// 获得该荣耀称号的用户Id
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long UserId { get; internal set; }
 
+    /// <summary>
+    /// 获得该荣耀称号的用户昵称
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("nickname")]
     public string Nickname { get; internal set; }
 
+    /// <summary>
+    /// 获得该荣耀称号的用户头像URL
+    /// </summary>
     [JsonInclude, JsonPropertyName("avatar")]
     public Uri? AvatarUrl { get; internal set; }
 }
 
+/// <summary>
+/// 龙王信息
+/// </summary>
 public class TalkAtiveInfo : HonorInfoBase
 {
+    /// <summary>
+    /// 当上龙王的总时长
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("day_count"), JsonConverter(typeof(DayToTimeSpanConverter))]
     public TimeSpan Duration { get; internal set; }
 }
 
+/// <summary>
+/// 其他荣耀称号信息
+/// </summary>
 public class HonorInfo : HonorInfoBase
 {
+    /// <summary>
+    /// 称号描述
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("description")]
     public string Description { get; internal set; }
 }

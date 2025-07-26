@@ -18,11 +18,20 @@ using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
 
+/// <summary>
+/// 获取客户端机密信息结果
+/// </summary>
 public class GetCredentialsResult
 {
+    /// <summary>
+    /// 对该网站的cookies
+    /// </summary>
     [JsonInclude, JsonPropertyName("cookies")]
     public string? Cookies { get; internal set; }
 
+    /// <summary>
+    /// csrf令牌
+    /// </summary>
     [JsonInclude, JsonPropertyName("csrf_token"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public int? CsrfToken { get; internal set; }
 }

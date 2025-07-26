@@ -21,23 +21,44 @@ using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
 
+/// <summary>
+/// “获取消息”结果
+/// </summary>
 public class GetMessageResult
 {
+    /// <summary>
+    /// 发送时间
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("time"), JsonConverter(typeof(UnixTimeToDateTimeConverter))]
     public DateTime SendTime { get; internal set; }
 
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("message_type")]
     public MessageType MessageType { get; internal set; }
 
+    /// <summary>
+    /// 消息Id
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("message_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long MessageId { get; internal set; }
 
+    /// <summary>
+    /// 消息的“真实”Id
+    /// </summary>
     [JsonInclude, JsonPropertyName("real_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long? RealId { get; internal set; }
 
+    /// <summary>
+    /// 消息发送者信息
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("sender"), JsonConverter(typeof(AutoDecisionUserInfoConverter))]
     public UserInfo Sender { get; internal set; }
 
+    /// <summary>
+    /// 消息内容
+    /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("message")]
     public Message Messsage { get; internal set; }
 }
