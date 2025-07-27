@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Clients.Result;
 using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
@@ -27,6 +28,276 @@ namespace Gdr2333.BotLib.OnebotV11.Clients;
 /// </summary>
 public abstract class OnebotV11ClientBase
 {
+    private struct MessageIdData
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("message_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long MessageId;
+    }
+
+    private struct DoGroupEnableRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("enable"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool Enable;
+    }
+
+    private struct FileData
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("file")]
+        public required string File;
+    }
+
+    private struct CheckStatusResult
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("yes"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public bool YesWeCan;
+    }
+
+    private struct SendPrivateMessageRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("message")]
+        public required Message Message;
+    }
+
+    private struct SendGroupMessageRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("message")]
+        public required Message Message;
+    }
+
+    private struct GetForwardMessageRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("id")]
+        public required string Id;
+    }
+
+    private struct GetForwardMessageResult
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("message")]
+        public required Message Message;
+    }
+
+    private struct SendLikeRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("times"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required int Times;
+    }
+
+    private struct DoGroupKickRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("reject_add_request"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool RejectJoinRequests;
+    }
+
+    private struct DoGroupBanRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("duration"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long Seconds;
+    }
+
+    private struct DoGroupAnonymousBanRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("anonymous_flag")]
+        public required string Flag;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("duration"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long Seconds;
+    }
+
+    private struct ALT_SetGroupAdminRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("enable"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool Enable;
+    }
+
+    private struct SetGroupCardRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonPropertyName("card")]
+        public required string? Card;
+    }
+
+    private struct SetGroupNameRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("group_name")]
+        public required string Name;
+    }
+
+    private struct LeaveFromGroupRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("is_dismiss"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool Dismiss;
+    }
+
+    private struct SetGroupSpecialTitleRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonPropertyName("special_title")]
+        public required string? SpecialTitle;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("duration"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long Seconds;
+    }
+
+    private struct ALT_ProcessFriendAddRequestRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("flag")]
+        public required string Flag;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("approve"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool Approve;
+
+        [JsonInclude, JsonPropertyName("remark")]
+        public required string? Remark;
+    }
+
+    private struct ALT_ProcessGroupAddRequestRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("flag")]
+        public required string Flag;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("sub_type")]
+        public required GroupAddRequestType Subtype;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("approve"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool Approve;
+
+        [JsonInclude, JsonPropertyName("reason")]
+        public required string? Reason;
+    }
+
+    private struct GetStrangerInfoRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("no_cache"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool NoCache;
+    }
+
+    private struct GetGroupInfoRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("no_cache"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool NoCache;
+    }
+
+    private struct GetGroupMemberInfoRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long UserId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("no_cache"), JsonConverter(typeof(OB11JsonBoolConverter))]
+        public required bool NoCache;
+    }
+
+    private struct GetGroupMemberListRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+    }
+
+    private struct ALT_GetGroupHonorInfoRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required long GroupId;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("type")]
+        public required string Type;
+    }
+
+    private struct GetCookiesRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("domain")]
+        public required string Domain;
+    }
+
+    private struct GetCookiesResult
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("cookies")]
+        public required string Cookies;
+    }
+
+    private struct GetCsrfTokenResult
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("token"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public int Token;
+    }
+
+    private struct GetCredentialsRequest
+    {
+        [JsonInclude, JsonPropertyName("domain")]
+        public required string? Domain;
+    }
+
+    private struct GetRecordRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("file")]
+        public required string File;
+
+        [JsonInclude, JsonRequired, JsonPropertyName("out_format")]
+        public required string Format;
+    }
+
+    private struct DoRestartRequest
+    {
+        [JsonInclude, JsonRequired, JsonPropertyName("delay"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public required int MsDelay;
+    }
+
     /// <summary>
     /// 发送私聊消息
     /// </summary>
@@ -34,7 +305,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="message">消息内容</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>消息Id</returns>
-    public abstract Task<long> SendPrivateMessageAsync(long userId, Message message, CancellationToken? cancellationToken = null);
+    public async Task<long> SendPrivateMessageAsync(long userId, Message message, CancellationToken? cancellationToken = null) =>
+        (await InvokeApiAsync<SendPrivateMessageRequest, MessageIdData>("send_private_msg", new() { UserId = userId, Message = message }, cancellationToken)).MessageId;
 
     /// <summary>
     /// 发送群聊消息
@@ -43,7 +315,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="message">消息内容</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>消息Id</returns>
-    public abstract Task<long> SendGroupMessage(long groupId, Message message, CancellationToken? cancellationToken = null);
+    public async Task<long> SendGroupMessageAsync(long groupId, Message message, CancellationToken? cancellationToken = null) =>
+        (await InvokeApiAsync<SendGroupMessageRequest, MessageIdData>("send_group_msg", new() { GroupId = groupId, Message = message }, cancellationToken)).MessageId;
 
     /// <summary>
     /// 发送消息
@@ -54,9 +327,12 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>消息Id</returns>
     /// <remarks>
-    /// 同时传入<paramref name="groupId"/>和<paramref name="userId"/>会引发System.InvalidOperationException！都不传也一样！
+    /// 实际上我没调send_msg你信吗？
     /// </remarks>
-    public abstract Task<long> SendMessage(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null);
+    public Task<long> SendMessage(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null) =>
+        userId.HasValue ? SendPrivateMessageAsync(userId.Value, message, cancellationToken) :
+        groupId.HasValue ? SendGroupMessageAsync(groupId.Value, message, cancellationToken) :
+        throw new ArgumentNullException($"{nameof(userId)}和{nameof(groupId)}都是{null}！");
 
     /// <summary>
     /// 撤回消息
@@ -64,7 +340,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="messageId">要撤回的消息Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task RecallMessageAsync(long messageId, CancellationToken? cancellationToken = null);
+    public Task RecallMessageAsync(long messageId, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<MessageIdData>("delete_msg", new() { MessageId = messageId }, cancellationToken);
 
     /// <summary>
     /// 获取消息信息
@@ -72,7 +349,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="messageId">要获取的消息的Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>消息信息</returns>
-    public abstract Task<GetMessageResult> GetMessageAsync(long messageId, CancellationToken? cancellationToken = null);
+    public Task<GetMessageResult> GetMessageAsync(long messageId, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<MessageIdData, GetMessageResult>("get_msg", new() { MessageId = messageId }, cancellationToken);
 
     /// <summary>
     /// 获取转发消息信息
@@ -80,7 +358,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="forwardId">转发消息Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>转发消息内容</returns>
-    public abstract Task<Message> GetForwardMessageAsync(string forwardId, CancellationToken? cancellationToken = null);
+    public async Task<Message> GetForwardMessageAsync(string forwardId, CancellationToken? cancellationToken = null) =>
+        (await InvokeApiAsync<GetForwardMessageRequest, GetForwardMessageResult>("get_forward_msg", new() { Id = forwardId }, cancellationToken)).Message;
 
     /// <summary>
     /// 给好友点赞
@@ -89,7 +368,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="times">点赞次数</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task SendLikeAsync(long userId, int times = 1, CancellationToken? cancellationToken = null);
+    public Task SendLikeAsync(long userId, int times = 1, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<SendLikeRequest>("send_like", new() { UserId = userId, Times = times }, cancellationToken);
 
     /// <summary>
     /// 从群聊里踢人
@@ -98,8 +378,9 @@ public abstract class OnebotV11ClientBase
     /// <param name="userId">要踢的用户Id</param>
     /// <param name="rejectJoinRequests">拒绝别人的加群请求</param>
     /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>人物</returns>
-    public abstract Task DoGroupKickAsync(long groupId, long userId, bool rejectJoinRequests = false, CancellationToken? cancellationToken = null);
+    /// <returns>任务</returns>
+    public Task DoGroupKickAsync(long groupId, long userId, bool rejectJoinRequests = false, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoGroupKickRequest>("set_group_kick", new() { GroupId = groupId, UserId = userId, RejectJoinRequests = rejectJoinRequests }, cancellationToken);
 
     /// <summary>
     /// 从群聊里禁言
@@ -109,7 +390,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="seconds">禁言秒数</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task DoGroupBanAsync(long groupId, long userId, int seconds = 1800, CancellationToken? cancellationToken = null);
+    public Task DoGroupBanAsync(long groupId, long userId, int seconds = 1800, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoGroupBanRequest>("set_group_ban", new() { GroupId = groupId, UserId = userId, Seconds = seconds }, cancellationToken);
 
     /// <summary>
     /// 从群聊里禁言
@@ -141,7 +423,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete(StaticData.AnonymousWarning)]
-    public abstract Task DoGroupAnonymousBanAsync(long groupId, string flag, int seconds = 1800, CancellationToken? cancellationToken = null);
+    public Task DoGroupAnonymousBanAsync(long groupId, string flag, int seconds = 1800, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoGroupAnonymousBanRequest>("set_group_anonymous_ban", new() { GroupId = groupId, Flag = flag, Seconds = seconds }, cancellationToken);
 
     /// <summary>
     /// 执行群聊匿名禁言
@@ -162,7 +445,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="doit">是否执行全群禁言</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    protected abstract Task ALT_DoWholeGroupBanAsync(long groupId, bool doit, CancellationToken? cancellationToken = null);
+    protected Task ALT_DoWholeGroupBanAsync(long groupId, bool doit, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoGroupEnableRequest>("set_group_whole_ban", new() { GroupId = groupId, Enable = doit }, cancellationToken);
 
     /// <summary>
     /// 执行全群禁言
@@ -190,7 +474,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="enable">是否使用</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    protected abstract Task ALT_SetGroupAdminAsync(long groupId, long UserId, bool enable, CancellationToken? cancellationToken = null);
+    protected Task ALT_SetGroupAdminAsync(long groupId, long UserId, bool enable, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<ALT_SetGroupAdminRequest>("set_group_admin", new() { GroupId = groupId, UserId = UserId, Enable = enable }, cancellationToken);
 
     /// <summary>
     /// 设置群管理员
@@ -220,7 +505,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete(StaticData.AnonymousWarning)]
-    protected abstract Task ALT_SetGroupAnonymousAsync(long groupId, bool enable, CancellationToken? cancellationToken = null);
+    protected Task ALT_SetGroupAnonymousAsync(long groupId, bool enable, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoGroupEnableRequest>("set_group_anonymous", new() { GroupId = groupId, Enable = enable }, cancellationToken);
 
     /// <summary>
     /// 允许匿名发言
@@ -250,7 +536,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="card">卡片内容</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task SetGroupCardAsync(long groupId, long userId, string? card, CancellationToken? cancellationToken = null);
+    public Task SetGroupCardAsync(long groupId, long userId, string? card, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<SetGroupCardRequest>("set_group_card", new() { GroupId = groupId, UserId = userId, Card = card }, cancellationToken);
 
     /// <summary>
     /// 删除群聊卡片
@@ -267,8 +554,10 @@ public abstract class OnebotV11ClientBase
     /// </summary>
     /// <param name="groupId">群聊Id</param>
     /// <param name="name">新群名</param>
+    /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task SetGroupNameAsync(long groupId, string name);
+    public Task SetGroupNameAsync(long groupId, string name, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<SetGroupNameRequest>("set_group_name", new() { GroupId = groupId, Name = name }, cancellationToken);
 
     /// <summary>
     /// 退出群聊
@@ -278,7 +567,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete("绝大多数实现不支持解散群聊。")]
-    public abstract Task LeaveFromGroupAsync(long groupId, bool dismiss = false, CancellationToken? cancellationToken = null);
+    public Task LeaveFromGroupAsync(long groupId, bool dismiss = false, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<LeaveFromGroupRequest>("set_group_leave", new() { GroupId = groupId, Dismiss = dismiss }, cancellationToken);
 
     /// <summary>
     /// 退出群聊
@@ -299,7 +589,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete("新版本QQ不支持设置头衔有效时间")]
-    public abstract Task SetGroupSpecialTitleAsync(long groupId, long userId, string? specialTitle, int seconds = -1, CancellationToken? cancellationToken = null);
+    public Task SetGroupSpecialTitleAsync(long groupId, long userId, string? specialTitle, int seconds = -1, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<SetGroupSpecialTitleRequest>("set_group_special_title", new() { GroupId = groupId, UserId = userId, SpecialTitle = specialTitle, Seconds = seconds }, cancellationToken);
 
     /// <summary>
     /// 设置群头衔
@@ -330,7 +621,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="remark">备注</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    protected abstract Task ALT_ProcessFriendAddRequestAsync(string flag, bool approve = true, string? remark = null, CancellationToken? cancellationToken = null);
+    protected Task ALT_ProcessFriendAddRequestAsync(string flag, bool approve = true, string? remark = null, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<ALT_ProcessFriendAddRequestRequest>("set_friend_add_request", new() { Flag = flag, Approve = approve, Remark = remark }, cancellationToken);
 
     /// <summary>
     /// 接受加好友请求
@@ -360,7 +652,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="reason">拒绝原因</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    protected abstract Task ALT_ProcessGroupAddRequestAsync(string flag, GroupAddRequestType type, bool accept, string? reason, CancellationToken? cancellationToken = null);
+    protected Task ALT_ProcessGroupAddRequestAsync(string flag, GroupAddRequestType type, bool accept, string? reason, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<ALT_ProcessGroupAddRequestRequest>("set_group_add_request", new() { Flag = flag, Subtype = type, Approve = accept, Reason = reason }, cancellationToken);
 
     /// <summary>
     /// 接受加群请求
@@ -405,7 +698,8 @@ public abstract class OnebotV11ClientBase
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>登录信息</returns>
-    public abstract Task<GetLoginInfoResult> GetLoginInfoAsync(CancellationToken? cancellationToken = null);
+    public Task<GetLoginInfoResult> GetLoginInfoAsync(CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetLoginInfoResult>("get_login_info", cancellationToken);
 
     /// <summary>
     /// 获取陌生人信息
@@ -414,14 +708,16 @@ public abstract class OnebotV11ClientBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>用户信息</returns>
-    public abstract Task<UserInfo> GetStrangerInfoAsync(long userId, bool useCache = true, CancellationToken? cancellationToken = null);
+    public Task<UserInfo> GetStrangerInfoAsync(long userId, bool useCache = true, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetStrangerInfoRequest, UserInfo>("get_stranger_info", new() { UserId = userId, NoCache = !useCache }, cancellationToken);
 
     /// <summary>
     /// 获取好友列表
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>好友列表</returns>
-    public abstract Task<FriendInfo[]> GetFriendListAsync(CancellationToken? cancellationToken = null);
+    public Task<FriendInfo[]> GetFriendListAsync(CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<FriendInfo[]>("get_friend_list", cancellationToken);
 
     /// <summary>
     /// 获取群聊信息
@@ -430,14 +726,16 @@ public abstract class OnebotV11ClientBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>群聊信息</returns>
-    public abstract Task<GroupInfo> GetGroupInfoAsync(long groupId, bool useCache = true, CancellationToken? cancellationToken = null);
+    public Task<GroupInfo> GetGroupInfoAsync(long groupId, bool useCache = true, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetGroupInfoRequest, GroupInfo>("get_group_info", new() { GroupId = groupId, NoCache = !useCache }, cancellationToken);
 
     /// <summary>
     /// 获取群聊列表
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>群聊列表</returns>
-    public abstract Task<GroupInfo[]> GetGroupList(CancellationToken? cancellationToken = null);
+    public Task<GroupInfo[]> GetGroupList(CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GroupInfo[]>("get_group_list", cancellationToken);
 
     /// <summary>
     /// 获取群成员信息
@@ -447,7 +745,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>群成员信息</returns>
-    public abstract Task<GroupMemberInfoEx> GetGroupMemberInfoAsync(long groupId, long userId, bool useCache = true, CancellationToken? cancellationToken = null);
+    public Task<GroupMemberInfoEx> GetGroupMemberInfoAsync(long groupId, long userId, bool useCache = true, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetGroupMemberInfoRequest, GroupMemberInfoEx>("get_group_member_info", new() { GroupId = groupId, UserId = userId, NoCache = !useCache }, cancellationToken);
 
     /// <summary>
     /// 获取群成员信息列表
@@ -455,7 +754,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="groupId">群聊Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>群成员信息列表</returns>
-    public abstract Task<GroupMemberInfoEx[]> GetGroupMemberListAsync(long groupId, CancellationToken? cancellationToken = null);
+    public Task<GroupMemberInfoEx[]> GetGroupMemberListAsync(long groupId, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetGroupMemberListRequest, GroupMemberInfoEx[]>("get_group_member_list", new() { GroupId = groupId }, cancellationToken);
 
     /// <summary>
     /// 替代函数：获取群荣耀信息
@@ -464,7 +764,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="type">要获取的群荣耀类型</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>群荣耀信息</returns>
-    protected abstract Task<GetGroupHonorInfoResult> ALT_GetGroupHonorInfoAsync(long groupId, string type, CancellationToken? cancellationToken = null);
+    protected Task<GetGroupHonorInfoResult> ALT_GetGroupHonorInfoAsync(long groupId, string type, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<ALT_GetGroupHonorInfoRequest, GetGroupHonorInfoResult>("get_group_honor_info", new() { GroupId = groupId, Type = type }, cancellationToken);
 
     /// <summary>
     /// 获取指定类型的群荣耀信息
@@ -500,14 +801,16 @@ public abstract class OnebotV11ClientBase
     /// <param name="domain">要获取Cookies的域名</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>Cookies</returns>
-    public abstract Task<string> GetCookiesAsync(string domain, CancellationToken? cancellationToken);
+    public async Task<string> GetCookiesAsync(string domain, CancellationToken? cancellationToken) =>
+        (await InvokeApiAsync<GetCookiesRequest, GetCookiesResult>("get_cookies", new() { Domain = domain }, cancellationToken)).Cookies;
 
     /// <summary>
     /// 获取CSRF令牌
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>CSRF令牌</returns>
-    public abstract Task<int> GetCsrfTokenAsync(CancellationToken? cancellationToken);
+    public async Task<int> GetCsrfTokenAsync(CancellationToken? cancellationToken) =>
+        (await InvokeApiAsync<GetCsrfTokenResult>("get_csrf_token", cancellationToken)).Token;
 
     /// <summary>
     /// 获取机密信息
@@ -515,7 +818,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="domain">要获取Cookies的域名</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>机密信息</returns>
-    public abstract Task<GetCredentialsResult> GetCredentialsAsync(string? domain = null, CancellationToken? cancellationToken = null);
+    public Task<GetCredentialsResult> GetCredentialsAsync(string? domain = null, CancellationToken? cancellationToken = null) =>
+        InvokeApiAsync<GetCredentialsRequest, GetCredentialsResult>("get_credentials", new() { Domain = domain }, cancellationToken);
 
     /// <summary>
     /// 获取转码后的本地录音文件
@@ -524,7 +828,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="format">输出格式</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>文件信息</returns>
-    public abstract Task<FileInfo> GetRecordAsync(string file, string format = "wav", CancellationToken? cancellationToken = null);
+    public async Task<FileInfo> GetRecordAsync(string file, string format = "wav", CancellationToken? cancellationToken = null) =>
+        new((await InvokeApiAsync<GetRecordRequest, FileData>("get_record", new() { File = file, Format = format }, cancellationToken)).File);
 
     /// <summary>
     /// 获取图片文件
@@ -532,35 +837,40 @@ public abstract class OnebotV11ClientBase
     /// <param name="file">收到的文件名</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>文件信息</returns>
-    public abstract Task<FileInfo> GetImageAsync(string file, CancellationToken? cancellationToken = null);
+    public async Task<FileInfo> GetImageAsync(string file, CancellationToken? cancellationToken = null) =>
+        new((await InvokeApiAsync<FileData, FileData>("get_image", new() { File = file }, cancellationToken)).File);
 
     /// <summary>
     /// 检测是否可以发送图片
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>指示是否可以发送图片</returns>
-    public abstract Task<bool> CheckCanSendImageAsync(CancellationToken? cancellationToken);
+    public async Task<bool> CheckCanSendImageAsync(CancellationToken? cancellationToken) =>
+        (await InvokeApiAsync<CheckStatusResult>("can_send_image", cancellationToken)).YesWeCan;
 
     /// <summary>
     /// 检测是否可以发送录音
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>指示是否可以发送语音</returns>
-    public abstract Task<bool> CheckCanSendRecordAsync(CancellationToken? cancellationToken);
+    public async Task<bool> CheckCanSendRecordAsync(CancellationToken? cancellationToken) =>
+        (await InvokeApiAsync<CheckStatusResult>("can_send_record", cancellationToken)).YesWeCan;
 
     /// <summary>
     /// 获取onebot运行状态
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>运行状态指示</returns>
-    public abstract Task<OnebotV11ServerStatus> GetStatusAsync(CancellationToken? cancellationToken);
+    public Task<OnebotV11ServerStatus> GetStatusAsync(CancellationToken? cancellationToken) =>
+        InvokeApiAsync<OnebotV11ServerStatus>("get_status", cancellationToken);
 
     /// <summary>
     /// 获取版本信息
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>版本信息</returns>
-    public abstract Task<GetVersionInfoResult> GetVersionInfoAsync(CancellationToken? cancellationToken);
+    public Task<GetVersionInfoResult> GetVersionInfoAsync(CancellationToken? cancellationToken) =>
+        InvokeApiAsync<GetVersionInfoResult>("get_version_info", cancellationToken);
 
     /// <summary>
     /// 调用重启
@@ -568,7 +878,8 @@ public abstract class OnebotV11ClientBase
     /// <param name="msDelay">重启延迟</param>
     /// <param name="cancellationToken">取消令牌（不能取消重启）</param>
     /// <returns>任务</returns>
-    public abstract Task DoRestartAsync(int msDelay = 0, CancellationToken? cancellationToken = null);
+    public Task DoRestartAsync(int msDelay = 0, CancellationToken? cancellationToken = null) =>
+        CallApiAsync<DoRestartRequest>("set_restart", new() { MsDelay = msDelay }, cancellationToken);
 
     /// <summary>
     /// 调用重启
@@ -584,7 +895,8 @@ public abstract class OnebotV11ClientBase
     /// </summary>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
-    public abstract Task DoCleanCache(CancellationToken? cancellationToken = null);
+    public Task DoCleanCache(CancellationToken? cancellationToken = null) =>
+        CallApiAsync("clean_cache", cancellationToken);
 
     /// <summary>
     /// 调用API
