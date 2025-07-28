@@ -23,7 +23,7 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// <summary>
 /// 群内戳一戳事件参数
 /// </summary>
-public class GroupPokedEventArgs : NoticeEventArgsBase, IUserEventArgs, IGroupEventArgs
+public class GroupPokedEventArgs : NotifyEventArgsBase, IUserEventArgs, IGroupEventArgs
 {
     /// <summary>
     /// 群Id
