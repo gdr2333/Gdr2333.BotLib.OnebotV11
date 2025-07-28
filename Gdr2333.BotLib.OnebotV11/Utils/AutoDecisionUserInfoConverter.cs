@@ -22,7 +22,7 @@ namespace Gdr2333.BotLib.OnebotV11.Utils;
 
 internal class AutoDecisionUserInfoConverter : JsonConverter<UserInfo>
 {
-    private static JsonConverter<UserInfo> _defaultconv = (JsonConverter<UserInfo>)JsonSerializerOptions.Default.GetConverter(typeof(UserInfo));
+    private static readonly JsonConverter<UserInfo> _defaultconv = (JsonConverter<UserInfo>)JsonSerializerOptions.Default.GetConverter(typeof(UserInfo));
 
     public override UserInfo? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

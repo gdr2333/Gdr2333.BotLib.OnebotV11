@@ -120,7 +120,7 @@ internal class PostTypeConverter : JsonConverter<PostType>
 
 internal class OnebotV11EventArgsConverter : JsonConverter<OnebotV11EventArgsBase>
 {
-    private static JsonConverter<OnebotV11EventArgsBase> _defconv = (JsonConverter<OnebotV11EventArgsBase>)JsonSerializerOptions.Default.GetConverter(typeof(OnebotV11EventArgsBase));
+    private static readonly JsonConverter<OnebotV11EventArgsBase> _defconv = (JsonConverter<OnebotV11EventArgsBase>)JsonSerializerOptions.Default.GetConverter(typeof(OnebotV11EventArgsBase));
 
     public override OnebotV11EventArgsBase? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

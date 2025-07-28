@@ -28,6 +28,8 @@ namespace Gdr2333.BotLib.OnebotV11.Clients;
 /// </summary>
 public abstract class OnebotV11ClientBase
 {
+
+    #region 沟槽的请求和响应类型
     private struct MessageIdData
     {
         [JsonInclude, JsonRequired, JsonPropertyName("message_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
@@ -297,7 +299,8 @@ public abstract class OnebotV11ClientBase
         [JsonInclude, JsonRequired, JsonPropertyName("delay"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public required int MsDelay;
     }
-
+    #endregion
+    
     /// <summary>
     /// 发送私聊消息
     /// </summary>
@@ -939,5 +942,10 @@ public abstract class OnebotV11ClientBase
     /// <summary>
     /// 当接受到Onebot事件时触发的事件
     /// </summary>
-    public abstract event EventHandler<OnebotV11EventArgsBase> OnEventOccurrence;
+    public abstract event EventHandler<OnebotV11EventArgsBase>? OnEventOccurrence;
+
+    /// <summary>
+    /// 当事件接收器出现异常时触发的事件
+    /// </summary>
+    public abstract event EventHandler<Exception>? OnExceptionOccurrence;
 }
