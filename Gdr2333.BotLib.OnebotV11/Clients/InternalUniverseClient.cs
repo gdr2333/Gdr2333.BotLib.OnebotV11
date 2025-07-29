@@ -15,6 +15,7 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Events.Base;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Text.Json;
@@ -32,15 +33,17 @@ internal class InternalUniverseClient : OnebotV11ClientBase
 
     private readonly Channel<OnebotV11ApiRequest> _apiRequests = Channel.CreateUnbounded<OnebotV11ApiRequest>();
 
+    private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
+
     /// <summary>
     /// 当接受到Onebot事件时触发的事件
     /// </summary>
-    public override event EventHandler<OnebotV11EventArgsBase>? OnEventOccurrence;
+    public override event OnebotEventOccurrence? OnEventOccurrence;
 
     /// <summary>
     /// 当事件接收器出现异常时触发的事件
     /// </summary>
-    public override event EventHandler<Exception>? OnExceptionOccurrence;
+    public override event OnExceptionInLoop? OnExceptionOccurrence;
 
     public InternalUniverseClient(WebSocket universeWebSocket, CancellationToken cancellationToken)
     {
@@ -59,30 +62,31 @@ internal class InternalUniverseClient : OnebotV11ClientBase
         while (!_cancellationToken.IsCancellationRequested)
         {
             var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
-            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request);
+            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, _opt);
             await _universeWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
         }
     }
 
     private async void ReceiveLoop()
     {
-        var buffer = new byte[10240];
+        var buffer = new byte[40960];
         Memory<byte> bufferMem = new(buffer);
         do
         {
             try
             {
-                await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var node = JsonDocument.Parse(buffer);
+                Array.Clear(buffer);
+                var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                var node = JsonDocument.Parse(buffer[..res.Count]);
                 if (node.RootElement.TryGetProperty("echo", out _))
                 {
-                    var result = node.Deserialize<OnebotV11ApiResult>();
+                    var result = node.Deserialize<OnebotV11ApiResult>(_opt);
                     if (_apiCallResults.TryRemove(result.Guid, out var action))
                         action(result);
                 }
                 else
                 {
-                    var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer);
+                    var result = node.Deserialize<OnebotV11EventArgsBase>(_opt);
                     if (result is not null)
                         OnEventOccurrence?.Invoke(this, result);
                     else

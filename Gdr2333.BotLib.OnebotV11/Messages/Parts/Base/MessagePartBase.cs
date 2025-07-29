@@ -45,21 +45,17 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
 [JsonDerivedType(typeof(XmlPart), typeDiscriminator: "xml")]
 [JsonDerivedType(typeof(JsonPart), typeDiscriminator: "json")]
 
-[JsonDerivedType(typeof(FilePartBase))]
-[JsonDerivedType(typeof(ContactPartBase))]
-[JsonDerivedType(typeof(MusicSharePartBase))]
-
 [JsonDerivedType(typeof(FriendContactPart))]
 [JsonDerivedType(typeof(GroupContactPart))]
 [JsonDerivedType(typeof(MusicSharePart))]
 [JsonDerivedType(typeof(CustomMusicSharePart))]
-[JsonDerivedType(typeof(CustomForwardNodePart))]
+[JsonDerivedType(typeof(ForwardNodePart))]
 public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
     /// 消息类型
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("type")]
+    [JsonInclude, JsonPropertyName("type")]
     public string Type { get; protected set; }
 
     /// <summary>

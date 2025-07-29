@@ -942,10 +942,24 @@ public abstract class OnebotV11ClientBase
     /// <summary>
     /// 当接受到Onebot事件时触发的事件
     /// </summary>
-    public abstract event EventHandler<OnebotV11EventArgsBase>? OnEventOccurrence;
+    /// <param name="sender">接收到消息的客户端</param>
+    /// <param name="e">事件内容</param>
+    public delegate void OnebotEventOccurrence(OnebotV11ClientBase sender, OnebotV11EventArgsBase e);
+
+    /// <summary>
+    /// 当接受到Onebot事件时触发的事件
+    /// </summary>
+    public abstract event OnebotEventOccurrence? OnEventOccurrence;
 
     /// <summary>
     /// 当事件接收器出现异常时触发的事件
     /// </summary>
-    public abstract event EventHandler<Exception>? OnExceptionOccurrence;
+    /// <param name="sender">接收到消息的客户端</param>
+    /// <param name="e">异常内容</param>
+    public delegate void OnExceptionInLoop(OnebotV11ClientBase sender, Exception e);
+
+    /// <summary>
+    /// 当事件接收器出现异常时触发的事件
+    /// </summary>
+    public abstract event OnExceptionInLoop OnExceptionOccurrence;
 }

@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Text.Json;
@@ -30,6 +31,8 @@ internal class InternalApiClient
     private readonly Channel<OnebotV11ApiRequest> _apiRequests = Channel.CreateUnbounded<OnebotV11ApiRequest>();
 
     private readonly WebSocket _apiWebSocket;
+
+    private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
 
     public InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken)
     {
@@ -48,7 +51,7 @@ internal class InternalApiClient
         while (!_cancellationToken.IsCancellationRequested)
         {
             var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
-            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request);
+            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, _opt);
             await _apiWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
         }
     }
@@ -60,7 +63,7 @@ internal class InternalApiClient
         do
         {
             await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-            var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer);
+            var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer, _opt);
             if (_apiCallResults.TryRemove(result.Guid, out var action))
                 action(result);
         } while (!_cancellationToken.IsCancellationRequested);

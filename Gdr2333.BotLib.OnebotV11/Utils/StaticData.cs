@@ -14,6 +14,9 @@
    limitations under the License.
 */
 
+using Gdr2333.BotLib.OnebotV11.Events.Base;
+using System.Text.Json;
+
 namespace Gdr2333.BotLib.OnebotV11.Utils;
 
 internal static class StaticData
@@ -23,4 +26,11 @@ internal static class StaticData
 
     public const string AnonymousWarning = "新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。";
     public const string BadEnumValueMessage = "无法接受的枚举类型！";
+
+    public static JsonSerializerOptions GetOptions()
+    {
+        var options = new JsonSerializerOptions();
+        options.Converters.Add(new OnebotV11EventArgsConverter());
+        return options;
+    }
 }

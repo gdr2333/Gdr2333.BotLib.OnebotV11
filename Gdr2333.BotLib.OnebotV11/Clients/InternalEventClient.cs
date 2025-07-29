@@ -15,8 +15,10 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Events.Base;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Net.WebSockets;
 using System.Text.Json;
+using static Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
@@ -28,6 +30,8 @@ internal class InternalEventClient
 
     private readonly CancellationToken _cancellationToken;
 
+    private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
+
     public InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase srcClient, CancellationToken cancellationToken)
     {
         _eventWebSocket = eventWebSocket;
@@ -38,23 +42,24 @@ internal class InternalEventClient
     /// <summary>
     /// 当接受到Onebot事件时触发的事件
     /// </summary>
-    public event EventHandler<OnebotV11EventArgsBase>? OnEventOccurrence;
+    public event OnebotEventOccurrence? OnEventOccurrence;
 
     /// <summary>
     /// 当事件接收器出现异常时触发的事件
     /// </summary>
-    public event EventHandler<Exception>? OnExceptionOccurrence;
+    public event OnExceptionInLoop? OnExceptionOccurrence;
 
     public async void StartEventLoop()
     {
-        var buffer = new byte[10240];
+        var buffer = new byte[40960];
         Memory<byte> bufferMem = new(buffer);
         while (!_cancellationToken.IsCancellationRequested)
         {
             try
             {
-                await _eventWebSocket.ReceiveAsync(bufferMem, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer);
+                Array.Clear(buffer);
+                var res = await _eventWebSocket.ReceiveAsync(bufferMem, _cancellationToken);
+                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer, _opt);
                 if (result is not null)
                     OnEventOccurrence?.Invoke(_srcClient, result);
                 else

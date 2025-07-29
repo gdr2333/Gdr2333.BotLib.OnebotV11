@@ -25,11 +25,9 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 /// </summary>
 [JsonDerivedType(typeof(GroupMessageReceivedEventArgs))]
 [JsonDerivedType(typeof(PrivateMessageReceivedEventArgs))]
-[JsonDerivedType(typeof(MessageReceivedEventArgsBase))]
 
 [JsonDerivedType(typeof(LifecycleEventArgs))]
 [JsonDerivedType(typeof(HeartbeatEventArgs))]
-[JsonDerivedType(typeof(MetaEventArgsBase))]
 
 [JsonDerivedType(typeof(GroupFileUploadedEventArgs))]
 [JsonDerivedType(typeof(GroupAdminChangedEventArgs))]
@@ -42,12 +40,9 @@ namespace Gdr2333.BotLib.OnebotV11.Events.Base;
 [JsonDerivedType(typeof(GroupPokedEventArgs))]
 [JsonDerivedType(typeof(GroupLuckyKingChangedEventArgs))]
 [JsonDerivedType(typeof(GroupMemberHonorChangedEventArgs))]
-[JsonDerivedType(typeof(NotifyEventArgsBase))]
-[JsonDerivedType(typeof(NoticeEventArgsBase))]
 
 [JsonDerivedType(typeof(NewFriendRequestEventArgs))]
 [JsonDerivedType(typeof(GroupAddRequestEventArgs))]
-[JsonDerivedType(typeof(RequestEventArgsBase))]
 public abstract class OnebotV11EventArgsBase
 {
     /// <summary>
