@@ -76,7 +76,7 @@ internal class InternalUniverseClient : OnebotV11ClientBase
             try
             {
                 var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var node = JsonDocument.Parse(buffer[..res.Count]);
+                var node = JsonDocument.Parse(buffer.AsMemory()[..res.Count]);
                 if (node.RootElement.TryGetProperty("echo", out _))
                 {
                     var result = node.Deserialize<OnebotV11ApiResult>(_opt);

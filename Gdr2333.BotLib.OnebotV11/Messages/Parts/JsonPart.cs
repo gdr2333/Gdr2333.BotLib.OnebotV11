@@ -24,13 +24,10 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Parts;
 /// </summary>
 public class JsonPart : MessagePartBase
 {
-    [JsonInclude, JsonRequired, JsonPropertyName("data")]
-    private string _doc = string.Empty;
-
     /// <summary>
     /// JSON数据
     /// </summary>
-    [JsonIgnore]
+    [JsonInclude, JsonRequired, JsonPropertyName("data")]
     public JsonNode Data { get; set; }
 
     [JsonConstructor]
@@ -59,14 +56,11 @@ public class JsonPart : MessagePartBase
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        Data = JsonNode.Parse(_doc) ?? throw new FormatException("JSON解析失败");
-        _doc = string.Empty;
     }
 
     /// <inheritdoc/>
     public override void OnSerializing()
     {
-        _doc = Data.ToJsonString();
     }
 
     /// <inheritdoc/>
