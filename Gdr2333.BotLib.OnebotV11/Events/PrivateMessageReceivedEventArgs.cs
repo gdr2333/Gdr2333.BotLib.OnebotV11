@@ -42,6 +42,7 @@ public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUs
 /// <summary>
 /// 私聊消息子类型
 /// </summary>
+[JsonConverter(typeof(PrivateMessageReceivedSubTypeConverter))]
 public enum PrivateMessageReceivedSubType
 {
     /// <summary>
