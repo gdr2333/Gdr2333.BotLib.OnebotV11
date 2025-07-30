@@ -96,6 +96,112 @@ if (human)
                 await client.SendLikeAsync(long.Parse(s[1]), s.Length >= 3 ? int.Parse(s[2]) : 1);
                 Console.WriteLine("DONE!");
                 break;
+            case "dogroupkick":
+                if (s.Length < 3)
+                    goto default;
+                await client.DoGroupKickAsync(long.Parse(s[1]), long.Parse(s[2]), s.Length >= 4 ? bool.Parse(s[4]):false);
+                break;
+            case "dogroupban":
+                if (s.Length < 4)
+                    goto default;
+                await client.DoGroupBanAsync(long.Parse(s[1]), long.Parse(s[2]),int.Parse(s[4]));
+                break;
+            case "cancelgroupban":
+                if(s.Length < 3)
+                    goto default;
+                await client.CancelGroupBanAsync(long.Parse(s[1]), long.Parse(s[2]));
+                break;
+            case "dowholegroupban":
+                if(s.Length<2)
+                    goto default;
+                await client.DoWholeGroupBanAsync(long.Parse(s[1]));
+                break;
+            case "cancelwholegroupban":
+                if (s.Length < 2)
+                    goto default;
+                await client.CancelWholeGroupBanAsync(long.Parse(s[1]));
+                break;
+            case "setgroupadmin":
+                if(s.Length<3)
+                    goto default;
+                await client.SetGroupAdminAsync(long.Parse(s[1]), long.Parse(s[2]));
+                break;
+            case "dismissgroupadmin":
+                if (s.Length < 3)
+                    goto default;
+                await client.DismissGroupAdminAsync(long.Parse(s[1]), long.Parse(s[2]));
+                break;
+            case "setgroupcard":
+                if (s.Length < 4)
+                    goto default;
+                await client.SetGroupCardAsync(long.Parse(s[1]), long.Parse(s[2]), s[3]);
+                break;
+            case "deletegroupcard":
+                if(s.Length<3)
+                    goto default;
+                await client.DeleteGroupCardAsync(long.Parse(s[1]), long.Parse(s[2]));
+                break;
+            case "setgroupname":
+                if (s.Length < 3)
+                    goto default;
+                await client.SetGroupNameAsync(long.Parse(s[1]), s[2]);
+                break;
+            case "leavefromgroup":
+                if (s.Length < 2)
+                    goto default;
+                await client.LeaveFromGroupAsync(long.Parse(s[1]));
+                break;
+            case "setgroupspecialtitle":
+                if(s.Length < 4)
+                    goto default;
+                await client.SetGroupSpecialTitleAsync(long.Parse(s[1]), long.Parse(s[2]), s[3]);
+                break;
+            case "deletegroupspecialtitle":
+                if(s.Length < 3)
+                    goto default;
+                await client.DeleteGroupSpecialTitleAsync(long.Parse(s[1]), long.Parse(s[2]));
+                break;
+            case "acceptfriendaddrequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.AcceptFriendAddRequestAsync(s[1], s.Length >= 3 ? s[2] : null);
+                break;
+            case "rejectfriendaddrequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.RejectFriendAddRequestAsync(s[1]);
+                break;
+            case "acceptgrupjoinrequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.AcceptGroupJoinRequestAsync(s[1]);
+                break;
+            case "rejectgroupjoinrequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.RejectGroupJoinRequestAsync(s[1], s.Length >= 3 ? s[2] : null);
+                break;
+            case "acceptgrupinviterequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.AcceptGroupInviteRequestAsync(s[1]);
+                break;
+            case "rejectgroupinviterequest":
+                if (s.Length < 2)
+                    goto default;
+                await client.RejectGroupInviteRequestAsync(s[1], s.Length >= 3 ? s[2] : null);
+                break;
+            case "getlogininfo":
+                Console.WriteLine(GetObjectProps(await client.GetLoginInfoAsync()));
+                break;
+            case "getstrangerinfo":
+                if(s.Length < 2)
+                    goto default;
+                Console.WriteLine(GetObjectProps(await client.GetStrangerInfoAsync(long.Parse(s[1]), s.Length >= 3 ? bool.Parse(s[2]) : true)));
+                break;
+            case "getgrouplist":
+                Console.WriteLine(string.Concat(Array.ConvertAll(await client.GetGroupList(), (l) => $"【{GetObjectProps(l)}】")));
+                break;
             default:
                 Console.WriteLine("无效方法或无效参数！");
                 break;

@@ -570,7 +570,7 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete("绝大多数实现不支持解散群聊。")]
-    public Task LeaveFromGroupAsync(long groupId, bool dismiss = false, CancellationToken? cancellationToken = null) =>
+    public Task LeaveFromGroupAsync(long groupId, bool dismiss, CancellationToken? cancellationToken = null) =>
         CallApiAsync<LeaveFromGroupRequest>("set_group_leave", new() { GroupId = groupId, Dismiss = dismiss }, cancellationToken);
 
     /// <summary>
@@ -592,7 +592,7 @@ public abstract class OnebotV11ClientBase
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
     [Obsolete("新版本QQ不支持设置头衔有效时间")]
-    public Task SetGroupSpecialTitleAsync(long groupId, long userId, string? specialTitle, int seconds = -1, CancellationToken? cancellationToken = null) =>
+    public Task SetGroupSpecialTitleAsync(long groupId, long userId, string? specialTitle, int seconds, CancellationToken? cancellationToken = null) =>
         CallApiAsync<SetGroupSpecialTitleRequest>("set_group_special_title", new() { GroupId = groupId, UserId = userId, SpecialTitle = specialTitle, Seconds = seconds }, cancellationToken);
 
     /// <summary>

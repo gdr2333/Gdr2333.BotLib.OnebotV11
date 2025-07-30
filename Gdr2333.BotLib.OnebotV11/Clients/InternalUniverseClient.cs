@@ -62,7 +62,7 @@ internal class InternalUniverseClient : OnebotV11ClientBase
         while (!_cancellationToken.IsCancellationRequested)
         {
             var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
-            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, _opt);
+            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, request.GetType(), _opt);
             await _universeWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
         }
     }

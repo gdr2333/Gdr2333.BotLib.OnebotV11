@@ -19,7 +19,6 @@ using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-[JsonDerivedType(typeof(OnebotV11ApiRequest<>))]
 internal class OnebotV11ApiRequest
 {
     [JsonInclude, JsonRequired, JsonPropertyName("action")]
