@@ -14,7 +14,6 @@
    limitations under the License.
 */
 
-using Gdr2333.BotLib.OnebotV11.Clients.Result;
 using System.Net.WebSockets;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
@@ -78,15 +77,19 @@ public class WebSocketClient : OnebotV11ClientBase
         }
     }
 
+    /// <inheritdoc/>
     public override Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null) =>
         _client.CallApiAsync(apiName, cancellationToken);
 
+    /// <inheritdoc/>
     public override Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
         _client.CallApiAsync(apiName, requestData, cancellationToken);
 
+    /// <inheritdoc/>
     public override Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null) =>
         _client.InvokeApiAsync<TResult>(apiName, cancellationToken);
 
+    /// <inheritdoc/>
     public override Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
         _client.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken);
 }

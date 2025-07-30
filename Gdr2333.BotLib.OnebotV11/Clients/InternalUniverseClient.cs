@@ -21,7 +21,7 @@ using System.Net.WebSockets;
 using System.Text.Json;
 using System.Threading.Channels;
 
-namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
+namespace Gdr2333.BotLib.OnebotV11.Clients;
 
 internal class InternalUniverseClient : OnebotV11ClientBase
 {
