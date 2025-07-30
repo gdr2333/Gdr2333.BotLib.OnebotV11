@@ -1,32 +1,32 @@
-**±¾ÏîÄ¿Ä¿Ç°´¦ÓÚAlpha×´Ì¬¡£²»±£Ö¤¼æÈÝÐÔºÍÎÈ¶¨ÐÔ¡£²»½¨ÒéÓÃÓÚÉú²ú»·¾³¡£**
+**æœ¬é¡¹ç›®ç›®å‰å¤„äºŽAlphaçŠ¶æ€ã€‚ä¸ä¿è¯å…¼å®¹æ€§å’Œç¨³å®šæ€§ã€‚ä¸å»ºè®®ç”¨äºŽç”Ÿäº§çŽ¯å¢ƒã€‚**
 
-Ä³¸öÐ¡º¢×öµÄOnebotV11Ð­ÒéÊµÏÖ¿â¡£
+æŸä¸ªå°å­©åšçš„OnebotV11åè®®å®žçŽ°åº“ã€‚
 
-±¾¿âµÄÖ÷Ö¼ÊÇ¾¡Á¿*¼òµ¥*£¬ËùÒÔÕû¸ö¿âµÄºËÐÄ¹¦ÄÜÖ»¾Û½¹ÔÚÒÔÏÂ¼¸¸öÃüÃû¿Õ¼ä£¨Ê¡ÂÔ¿âÃûÇ°×º£©£º
+æœ¬åº“çš„ä¸»æ—¨æ˜¯å°½é‡*ç®€å•*ï¼Œæ‰€ä»¥æ•´ä¸ªåº“çš„æ ¸å¿ƒåŠŸèƒ½åªèšç„¦åœ¨ä»¥ä¸‹å‡ ä¸ªå‘½åç©ºé—´ï¼ˆçœç•¥åº“åå‰ç¼€ï¼‰ï¼š
 
-|ÃüÃû¿Õ¼ä|ÄÚÈÝ|
+|å‘½åç©ºé—´|å†…å®¹|
 |---|---|
-|Clients|¿Í»§¶ËÊµÏÖ|
-|Events|ÊÂ¼þÄÚÈÝ|
-|Messages.Parts|ÏûÏ¢¶ÎÄÚÈÝ|
+|Clients|å®¢æˆ·ç«¯å®žçŽ°|
+|Events|äº‹ä»¶å†…å®¹|
+|Messages.Parts|æ¶ˆæ¯æ®µå†…å®¹|
 
-*ÎÒ²ÅÀÁµÃÈ¥ÅªÊ²Ã´[Sender](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/Sender/CqWsActionSender.cs)ºÍ[Action](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/CqGetCookiesAction.cs)¡£*
+*æˆ‘æ‰æ‡’å¾—åŽ»å¼„ä»€ä¹ˆ[Sender](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/Sender/CqWsActionSender.cs)å’Œ[Action](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/CqGetCookiesAction.cs)ã€‚*
 
-¹¦ÄÜÊµÏÖ×´Ì¬£º
+åŠŸèƒ½å®žçŽ°çŠ¶æ€ï¼š
 
 |||
 |---|---|
-|OnebotV11¹æ¶¨µÄËùÓÐÏûÏ¢¶Î|Íê³É|
-|OnebotV11¹æ¶¨µÄËùÓÐ²Ù×÷|Íê³É|
-|ÕýÏòWebsocketÁ¬½Óµ½Universeal¿Í»§¶Ë|Íê³É|
-|·´ÏòWebsocketÁ´½Ó|ÕýÔÚÊµÏÖ|
-|ÕýÏòHTTPÁ´½Ó|²»ÔÚ¼Æ»®ÄÚ|
-|·´ÏòHTTPÁ´½Ó|²»ÔÚ¼Æ»®ÄÚ|
-|NapcatQQµÄÀ©Õ¹ÏûÏ¢¶Î|ÒÑ¹æ»®|
-|NapcatQQµÄÀ©Õ¹API|ÒÑ¹æ»®|
+|OnebotV11è§„å®šçš„æ‰€æœ‰æ¶ˆæ¯æ®µ|å®Œæˆ|
+|OnebotV11è§„å®šçš„æ‰€æœ‰æ“ä½œ|å®Œæˆ|
+|æ­£å‘Websocketè¿žæŽ¥åˆ°Universealå®¢æˆ·ç«¯|å®Œæˆ|
+|åå‘Websocketé“¾æŽ¥|æ­£åœ¨å®žçŽ°|
+|æ­£å‘HTTPé“¾æŽ¥|ä¸åœ¨è®¡åˆ’å†…|
+|åå‘HTTPé“¾æŽ¥|ä¸åœ¨è®¡åˆ’å†…|
+|NapcatQQçš„æ‰©å±•æ¶ˆæ¯æ®µ|å·²è§„åˆ’|
+|NapcatQQçš„æ‰©å±•API|å·²è§„åˆ’|
 
-ÆäËüÒ»Ð©¶«Î÷£º
+å…¶å®ƒä¸€äº›ä¸œè¥¿ï¼š
 
 |||
 |---|---|
-|¹«¿ªAPIµÄMarkdownÎÄµµ|ÒÑ¹æ»®|
+|å…¬å¼€APIçš„Markdownæ–‡æ¡£|å·²è§„åˆ’|
