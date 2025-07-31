@@ -23,9 +23,12 @@ OnebotV11ClientBase client;
 Uri url;
 string? ak = "";
 bool human = false;
+bool rws = false;
 
 if (!File.Exists("AutoTest.txt"))
 {
+    Console.WriteLine("是否使用反向Websocket链接？是输入Y。");
+    rws = Console.ReadLine().Equals("Y", StringComparison.CurrentCultureIgnoreCase);
     Console.WriteLine("请输入目标URL：");
     url = new(Console.ReadLine());
     Console.WriteLine("请输入目标AccessToken，没有则留空：");
@@ -35,14 +38,24 @@ if (!File.Exists("AutoTest.txt"))
 else
 {
     var lines = File.ReadAllLines("AutoTest.txt");
-    url = new(lines[0]);
-    if (lines.Length > 1)
-        ak = lines[1];
+    rws = lines[0].Equals("Y", StringComparison.CurrentCultureIgnoreCase);
+    url = new(lines[1]);
+    if (lines.Length > 2)
+        ak = lines[2];
 }
 
-var wsclient = new WebSocketClient(url, 5, ak);
-await wsclient.Link();
-client = wsclient;
+if (!rws)
+{
+    var wsclient = new WebSocketClient(url, 5, ak);
+    await wsclient.LinkAsync();
+    client = wsclient;
+}
+else
+{
+    var rwsclient = new ReverseWebSocketClient(url, ak);
+    rwsclient.Start();
+    client = rwsclient;
+}
 client.OnEventOccurrence += (sender, e) =>
 {
     StringBuilder sb = new("事件：");
@@ -99,20 +112,20 @@ if (human)
             case "dogroupkick":
                 if (s.Length < 3)
                     goto default;
-                await client.DoGroupKickAsync(long.Parse(s[1]), long.Parse(s[2]), s.Length >= 4 ? bool.Parse(s[4]):false);
+                await client.DoGroupKickAsync(long.Parse(s[1]), long.Parse(s[2]), s.Length >= 4 ? bool.Parse(s[4]) : false);
                 break;
             case "dogroupban":
                 if (s.Length < 4)
                     goto default;
-                await client.DoGroupBanAsync(long.Parse(s[1]), long.Parse(s[2]),int.Parse(s[4]));
+                await client.DoGroupBanAsync(long.Parse(s[1]), long.Parse(s[2]), int.Parse(s[4]));
                 break;
             case "cancelgroupban":
-                if(s.Length < 3)
+                if (s.Length < 3)
                     goto default;
                 await client.CancelGroupBanAsync(long.Parse(s[1]), long.Parse(s[2]));
                 break;
             case "dowholegroupban":
-                if(s.Length<2)
+                if (s.Length < 2)
                     goto default;
                 await client.DoWholeGroupBanAsync(long.Parse(s[1]));
                 break;
@@ -122,7 +135,7 @@ if (human)
                 await client.CancelWholeGroupBanAsync(long.Parse(s[1]));
                 break;
             case "setgroupadmin":
-                if(s.Length<3)
+                if (s.Length < 3)
                     goto default;
                 await client.SetGroupAdminAsync(long.Parse(s[1]), long.Parse(s[2]));
                 break;
@@ -137,7 +150,7 @@ if (human)
                 await client.SetGroupCardAsync(long.Parse(s[1]), long.Parse(s[2]), s[3]);
                 break;
             case "deletegroupcard":
-                if(s.Length<3)
+                if (s.Length < 3)
                     goto default;
                 await client.DeleteGroupCardAsync(long.Parse(s[1]), long.Parse(s[2]));
                 break;
@@ -152,12 +165,12 @@ if (human)
                 await client.LeaveFromGroupAsync(long.Parse(s[1]));
                 break;
             case "setgroupspecialtitle":
-                if(s.Length < 4)
+                if (s.Length < 4)
                     goto default;
                 await client.SetGroupSpecialTitleAsync(long.Parse(s[1]), long.Parse(s[2]), s[3]);
                 break;
             case "deletegroupspecialtitle":
-                if(s.Length < 3)
+                if (s.Length < 3)
                     goto default;
                 await client.DeleteGroupSpecialTitleAsync(long.Parse(s[1]), long.Parse(s[2]));
                 break;
@@ -195,7 +208,7 @@ if (human)
                 Console.WriteLine(GetObjectProps(await client.GetLoginInfoAsync()));
                 break;
             case "getstrangerinfo":
-                if(s.Length < 2)
+                if (s.Length < 2)
                     goto default;
                 Console.WriteLine(GetObjectProps(await client.GetStrangerInfoAsync(long.Parse(s[1]), s.Length >= 3 ? bool.Parse(s[2]) : true)));
                 break;

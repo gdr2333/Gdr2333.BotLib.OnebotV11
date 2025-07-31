@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Gdr2333.BotLib.OnebotV11.Test": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}

@@ -41,7 +41,7 @@ public class WebSocketClient : OnebotV11ClientBase
         _tokenSource = new();
     }
 
-    public async Task Link()
+    public async Task LinkAsync()
     {
         if (_tokenSource.IsCancellationRequested)
             _tokenSource = new();
@@ -57,7 +57,7 @@ public class WebSocketClient : OnebotV11ClientBase
             {
                 if (e is WebSocketException)
                 {
-                    await Link();
+                    await LinkAsync();
                 }
                 else
                 {
@@ -71,7 +71,7 @@ public class WebSocketClient : OnebotV11ClientBase
             websocket.Dispose();
             _retry++;
             if (_retry < _maxRetry)
-                await Link();
+                await LinkAsync();
             else
                 throw new WebSocketException("无法连接！");
         }
