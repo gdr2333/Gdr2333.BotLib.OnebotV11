@@ -16,16 +16,22 @@
 
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Events.Interfaces;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
-/// 关于用户的事件接口
+/// 获取客户端机密信息结果
 /// </summary>
-public interface IUserEventArgs
+public class GetCredentialsResult
 {
     /// <summary>
-    /// 涉及到的用户ID，如果涉及到多个用户则为目标用户的ID
+    /// 对该网站的cookies
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("user_id")]
-    public long UserId { get; }
+    [JsonInclude, JsonPropertyName("cookies")]
+    public string? Cookies { get; internal set; }
+
+    /// <summary>
+    /// csrf令牌
+    /// </summary>
+    [JsonInclude, JsonPropertyName("csrf_token"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public int? CsrfToken { get; internal set; }
 }

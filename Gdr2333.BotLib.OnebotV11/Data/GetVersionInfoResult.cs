@@ -17,7 +17,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
 /// “获取版本”结果

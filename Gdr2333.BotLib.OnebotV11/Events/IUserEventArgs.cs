@@ -16,22 +16,16 @@
 
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
+namespace Gdr2333.BotLib.OnebotV11.Events;
 
 /// <summary>
-/// “获取登录信息”结果
+/// 关于用户的事件接口
 /// </summary>
-public class GetLoginInfoResult
+public interface IUserEventArgs
 {
     /// <summary>
-    /// 当前账号Id
+    /// 涉及到的用户ID，如果涉及到多个用户则为目标用户的ID
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long UserId { get; internal set; }
-
-    /// <summary>
-    /// 当前账号昵称
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("nickname")]
-    public string Nickname { get; internal set; }
+    [JsonInclude, JsonRequired, JsonPropertyName("user_id")]
+    public long UserId { get; }
 }

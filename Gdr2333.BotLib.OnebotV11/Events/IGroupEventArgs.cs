@@ -15,31 +15,17 @@
 */
 
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Utils;
 
-namespace Gdr2333.BotLib.OnebotV11.Events.Data;
+namespace Gdr2333.BotLib.OnebotV11.Events;
 
 /// <summary>
-/// 匿名信息
+/// 关于群的事件接口
 /// </summary>
-[Obsolete(StaticData.AnonymousWarning)]
-public class AnonymousInfo
+public interface IGroupEventArgs
 {
     /// <summary>
-    /// 匿名ID
+    /// 涉及到的群ID
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long Id { get; internal set; }
-
-    /// <summary>
-    /// 匿名后的名称
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("name")]
-    public string Name { get; internal set; } = string.Empty;
-
-    /// <summary>
-    /// 匿名用户flag
-    /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("flag")]
-    public string Flag { get; internal set; } = string.Empty;
+    [JsonInclude, JsonRequired, JsonPropertyName("group_id")]
+    public long GroupId { get; }
 }

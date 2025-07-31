@@ -16,7 +16,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Gdr2333.BotLib.OnebotV11.Events.Data;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
 /// 群文件信息

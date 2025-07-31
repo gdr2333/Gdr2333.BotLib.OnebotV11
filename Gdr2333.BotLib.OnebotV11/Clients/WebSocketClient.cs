@@ -53,11 +53,11 @@ public class WebSocketClient : OnebotV11ClientBase
         {
             _client = new(websocket, _tokenSource.Token);
             _client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
-            _client.OnExceptionOccurrence += (_, e) =>
+            _client.OnExceptionOccurrence += async (_, e) =>
             {
                 if (e is WebSocketException)
                 {
-                    Link();
+                    await Link();
                 }
                 else
                 {

@@ -15,11 +15,10 @@
 */
 
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Messages;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
-namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
 /// “获取消息”结果

@@ -16,7 +16,6 @@
 
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Events.Base;
-using Gdr2333.BotLib.OnebotV11.Events.Interfaces;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 

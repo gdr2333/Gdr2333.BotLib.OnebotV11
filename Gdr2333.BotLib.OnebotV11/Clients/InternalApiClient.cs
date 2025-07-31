@@ -34,6 +34,11 @@ internal class InternalApiClient
 
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
 
+    /// <summary>
+    /// 当事件接收器出现异常时触发的事件
+    /// </summary>
+    public event EventHandler<Exception>? OnExceptionOccurrence;
+
     public InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken)
     {
         _apiWebSocket = apiWebSocket;
@@ -50,9 +55,16 @@ internal class InternalApiClient
     {
         while (!_cancellationToken.IsCancellationRequested)
         {
-            var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
-            var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, request.GetType(), _opt);
-            await _apiWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
+            try
+            {
+                var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
+                var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, request.GetType(), _opt);
+                await _apiWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
+            }
+            catch (Exception e)
+            {
+                OnExceptionOccurrence?.Invoke(null, e);
+            }
         }
     }
 
@@ -62,10 +74,17 @@ internal class InternalApiClient
         Memory<byte> bufferMem = new(buffer);
         do
         {
-            await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-            var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer, _opt);
-            if (_apiCallResults.TryRemove(result.Guid, out var action))
-                action(result);
+            try
+            {
+                await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer, _opt);
+                if (_apiCallResults.TryRemove(result.Guid, out var action))
+                    action(result);
+            }
+            catch(Exception e)
+            {
+                OnExceptionOccurrence?.Invoke(null, e);
+            }
         } while (!_cancellationToken.IsCancellationRequested);
     }
 
@@ -153,10 +172,10 @@ internal class InternalApiClient
             switch (res.Retcode)
             {
                 case 0:
-                    if(res.Data is not null)
+                    if (res.Data is not null)
                     {
                         var result = res.Data.Value.Deserialize<TResult>();
-                        if(result is not null)
+                        if (result is not null)
                         {
                             taskSource.SetResult(result);
                             break;

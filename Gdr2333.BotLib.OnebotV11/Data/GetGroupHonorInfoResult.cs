@@ -17,7 +17,7 @@
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
-namespace Gdr2333.BotLib.OnebotV11.Clients.Result;
+namespace Gdr2333.BotLib.OnebotV11.Data;
 
 /// <summary>
 /// “获取群荣耀信息”结果
