@@ -19,7 +19,7 @@
 |OnebotV11规定的所有消息段|完成|
 |OnebotV11规定的所有操作|完成|
 |正向Websocket连接到Universeal客户端|完成|
-|反向Websocket链接|正在实现|
+|反向Websocket链接|完成|
 |正向HTTP链接|不在计划内|
 |反向HTTP链接|不在计划内|
 |NapcatQQ的扩展消息段|已规划|
