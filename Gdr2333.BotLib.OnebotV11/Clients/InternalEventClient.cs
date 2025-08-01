@@ -58,7 +58,7 @@ internal class InternalEventClient
             try
             {
                 var res = await _eventWebSocket.ReceiveAsync(bufferMem, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer, _opt);
+                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer.AsSpan()[..res.Count], _opt);
                 if (result is not null)
                     OnEventOccurrence?.Invoke(_srcClient, result);
                 else
