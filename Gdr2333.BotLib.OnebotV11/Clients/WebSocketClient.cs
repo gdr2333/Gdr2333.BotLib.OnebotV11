@@ -18,6 +18,9 @@ using System.Net.WebSockets;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
+/// <summary>
+/// 正向Websocket客户端
+/// </summary>
 public class WebSocketClient : OnebotV11ClientBase
 {
     private InternalUniverseClient? _client;
@@ -33,14 +36,25 @@ public class WebSocketClient : OnebotV11ClientBase
     /// <inheritdoc/>
     public override event OnExceptionInLoop? OnExceptionOccurrence;
 
+    /// <summary>
+    /// 初始化一个正向Websocket客户端
+    /// </summary>
+    /// <param name="target">目标服务器URL</param>
+    /// <param name="maxRetry">最大重试次数</param>
+    /// <param name="accessToken">访问令牌</param>
     public WebSocketClient(Uri target, int maxRetry = 5, string? accessToken = null)
     {
         _target = target;
-        _retry = maxRetry;
+        _maxRetry = maxRetry;
         _accessToken = accessToken;
         _tokenSource = new();
     }
 
+    /// <summary>
+    /// 启动Web
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="WebSocketException"></exception>
     public async Task LinkAsync()
     {
         if (_tokenSource.IsCancellationRequested)
@@ -57,6 +71,9 @@ public class WebSocketClient : OnebotV11ClientBase
             {
                 if (e is WebSocketException)
                 {
+                    _retry++;
+                    if (_retry >= _maxRetry)
+                        throw e;
                     await LinkAsync();
                 }
                 else
@@ -79,17 +96,17 @@ public class WebSocketClient : OnebotV11ClientBase
 
     /// <inheritdoc/>
     public override Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null) =>
-        _client.CallApiAsync(apiName, cancellationToken);
+        _client is null ? throw new InvalidOperationException($"必须先调用{nameof(LinkAsync)}才能进行API调用。") : _client.CallApiAsync(apiName, cancellationToken);
 
     /// <inheritdoc/>
     public override Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
-        _client.CallApiAsync(apiName, requestData, cancellationToken);
+        _client is null ? throw new InvalidOperationException($"必须先调用{nameof(LinkAsync)}才能进行API调用。") : _client.CallApiAsync(apiName, requestData, cancellationToken);
 
     /// <inheritdoc/>
     public override Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null) =>
-        _client.InvokeApiAsync<TResult>(apiName, cancellationToken);
+        _client is null ? throw new InvalidOperationException($"必须先调用{nameof(LinkAsync)}才能进行API调用。") : _client.InvokeApiAsync<TResult>(apiName, cancellationToken);
 
     /// <inheritdoc/>
     public override Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
-        _client.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken);
+        _client is null ? throw new InvalidOperationException($"必须先调用{nameof(LinkAsync)}才能进行API调用。") : _client.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken);
 }

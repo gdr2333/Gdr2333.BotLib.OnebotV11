@@ -14,11 +14,11 @@
    limitations under the License.
 */
 
-using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Events;
 using Gdr2333.BotLib.OnebotV11.Messages;
 using Gdr2333.BotLib.OnebotV11.Utils;
+using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
@@ -53,7 +53,13 @@ public abstract class OnebotV11ClientBase
     private struct CheckStatusResult
     {
         [JsonInclude, JsonRequired, JsonPropertyName("yes"), JsonConverter(typeof(OB11JsonBoolConverter))]
-        public bool YesWeCan;
+        public bool YesWeCan = false;
+
+        // fix 意义不明的CS8983
+        // ROSLYN FK U
+        public CheckStatusResult()
+        {
+        }
     }
 
     private struct SendPrivateMessageRequest
@@ -299,7 +305,7 @@ public abstract class OnebotV11ClientBase
         public required int MsDelay;
     }
     #endregion
-    
+
     /// <summary>
     /// 发送私聊消息
     /// </summary>
@@ -578,8 +584,11 @@ public abstract class OnebotV11ClientBase
     /// <param name="groupId">群聊Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
+    // 行了 我知道 这都是我写的 我故意的 好吗？
+#pragma warning disable CS0618
     public Task LeaveFromGroupAsync(long groupId, CancellationToken? cancellationToken = null) =>
         LeaveFromGroupAsync(groupId, false, cancellationToken);
+#pragma warning restore CS0618
 
     /// <summary>
     /// 设置群头衔
@@ -602,8 +611,10 @@ public abstract class OnebotV11ClientBase
     /// <param name="specialTitle">新头衔</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
+#pragma warning disable CS0618
     public Task SetGroupSpecialTitleAsync(long groupId, long userId, string specialTitle, CancellationToken? cancellationToken = null) =>
         SetGroupSpecialTitleAsync(groupId, userId, specialTitle, -1, cancellationToken);
+#pragma warning restore CS0618
 
     /// <summary>
     /// 删除群头衔
@@ -612,8 +623,10 @@ public abstract class OnebotV11ClientBase
     /// <param name="userId">用户Id</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>任务</returns>
+#pragma warning disable CS0618
     public Task DeleteGroupSpecialTitleAsync(long groupId, long userId, CancellationToken? cancellationToken = null) =>
         SetGroupSpecialTitleAsync(groupId, userId, null, -1, cancellationToken);
+#pragma warning restore CS0618
 
     /// <summary>
     /// 替代函数：处理加好友请求

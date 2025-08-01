@@ -83,10 +83,11 @@ internal class InternalUniverseClient : OnebotV11ClientBase
             try
             {
                 var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var node = JsonDocument.Parse(buffer.AsMemory()[..res.Count]);
+                var node = JsonDocument.Parse(buffer.AsMemory(0,res.Count));
                 if (node.RootElement.TryGetProperty("echo", out _))
                 {
-                    var result = node.Deserialize<OnebotV11ApiResult>(_opt);
+                    var result = node.Deserialize<OnebotV11ApiResult>(_opt)
+                        ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(buffer[..res.Count])}");
                     if (_apiCallResults.TryRemove(result.Guid, out var action))
                         action(result);
                 }

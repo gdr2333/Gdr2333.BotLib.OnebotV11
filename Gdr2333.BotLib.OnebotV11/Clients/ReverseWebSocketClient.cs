@@ -27,7 +27,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
     /// <inheritdoc/>
     public override event OnebotEventOccurrence? OnEventOccurrence;
     /// <inheritdoc/>
-    public override event OnExceptionInLoop OnExceptionOccurrence;
+    public override event OnExceptionInLoop? OnExceptionOccurrence;
 
     private readonly List<InternalApiClient> _apiClients = [];
     private readonly ReaderWriterLockSlim _apiClientsLock = new();
@@ -75,7 +75,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
             try
             {
                 var content = await _httpLisenter.GetContextAsync();
-                if (content == null)
+                if (content is null)
                     continue;
                 if (!string.IsNullOrEmpty(_accessToken) && content.Request.Headers["Authorization"] != $"Bearer {_accessToken}")
                 {
@@ -83,7 +83,10 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                     content.Response.Close();
                 }
                 var webSocket = await content.AcceptWebSocketAsync(null);
-                if (content.Request.Url.Segments[^1].StartsWith("api"))
+                if (content.Request.Url is null)
+                    // 那我们就当是universe好了，反正错不了，大概
+                    ProcessUniverseClient(new(webSocket.WebSocket, _cancellationToken));
+                else if (content.Request.Url.Segments[^1].StartsWith("api"))
                     ProcessApiClient(new(webSocket.WebSocket, _cancellationToken));
                 else if (content.Request.Url.Segments[^1].StartsWith("event"))
                     ProcessEventClient(new(webSocket.WebSocket, this, _cancellationToken));
@@ -114,7 +117,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                 }
             }
             else
-                OnExceptionOccurrence.Invoke(this, e);
+                OnExceptionOccurrence?.Invoke(this, e);
         };
         try
         {
@@ -145,7 +148,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                 }
             }
             else
-                OnExceptionOccurrence.Invoke(this, e);
+                OnExceptionOccurrence?.Invoke(this, e);
         };
         eventClient.OnEventOccurrence += (sender, e) =>
         {
@@ -180,7 +183,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                 }
             }
             else
-                OnExceptionOccurrence.Invoke(this, e);
+                OnExceptionOccurrence?.Invoke(this, e);
         };
         universeClient.OnEventOccurrence += (sender, e) =>
         {
