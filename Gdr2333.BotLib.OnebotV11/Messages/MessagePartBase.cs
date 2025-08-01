@@ -22,6 +22,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// <summary>
 /// 消息段基类
 /// </summary>
+/// <param name="type">消息段类型</param>
 // System.Text.Json限制了我们这里的JsonDerivedType不能套娃，但我们可以手动套娃。
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 
@@ -35,7 +36,9 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 [JsonDerivedType(typeof(DicePart), typeDiscriminator: "dice")]
 [JsonDerivedType(typeof(ShakePart), typeDiscriminator: "shake")]
 [JsonDerivedType(typeof(PokePart), typeDiscriminator: "poke")]
+#pragma warning disable CS0618
 [JsonDerivedType(typeof(AnonymousPart), typeDiscriminator: "anonymous")]
+#pragma warning restore CS0618
 [JsonDerivedType(typeof(SharePart), typeDiscriminator: "share")]
 [JsonDerivedType(typeof(ContactPartAlt), typeDiscriminator: "contact")]
 [JsonDerivedType(typeof(LocationPart), typeDiscriminator: "location")]
@@ -50,22 +53,13 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 [JsonDerivedType(typeof(MusicSharePart))]
 [JsonDerivedType(typeof(CustomMusicSharePart))]
 [JsonDerivedType(typeof(ForwardNodePart))]
-public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
+public abstract class MessagePartBase(string type) : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
     /// 消息类型
     /// </summary>
     [JsonInclude, JsonPropertyName("type")]
-    public string Type { get; protected set; }
-
-    /// <summary>
-    /// 构建消息段基类初始化函数
-    /// </summary>
-    /// <param name="type">消息段类型</param>
-    public MessagePartBase(string type)
-    {
-        Type = type;
-    }
+    public string Type { get; protected set; } = type;
 
     /// <summary>
     /// JSON反序列化后的钩子

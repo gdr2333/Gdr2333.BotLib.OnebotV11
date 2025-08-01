@@ -22,15 +22,15 @@ using System.Threading.Channels;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalApiClient
+internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken)
 {
-    private readonly CancellationToken _cancellationToken;
+    private readonly CancellationToken _cancellationToken = cancellationToken;
 
     private readonly ConcurrentDictionary<Guid, Action<OnebotV11ApiResult>> _apiCallResults = new();
 
     private readonly Channel<OnebotV11ApiRequest> _apiRequests = Channel.CreateUnbounded<OnebotV11ApiRequest>();
 
-    private readonly WebSocket _apiWebSocket;
+    private readonly WebSocket _apiWebSocket = apiWebSocket;
 
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
 
@@ -38,12 +38,6 @@ internal class InternalApiClient
     /// 当事件接收器出现异常时触发的事件
     /// </summary>
     public event EventHandler<Exception>? OnExceptionOccurrence;
-
-    public InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken)
-    {
-        _apiWebSocket = apiWebSocket;
-        _cancellationToken = cancellationToken;
-    }
 
     public void Start()
     {

@@ -34,23 +34,24 @@ internal class OnebotV11ApiRequest<T> : OnebotV11ApiRequest
     public required T Params { get; set; }
 }
 
-internal class OnebotV11ApiResult
+[method: JsonConstructor]
+internal class OnebotV11ApiResult(string status, int retcode, JsonElement? data, Guid guid, string? errorMessage, string? errorMessageEx)
 {
     [JsonInclude, JsonRequired, JsonPropertyName("status")]
-    public string Status { get; set; }
+    public string Status { get; set; } = status;
 
     [JsonInclude, JsonRequired, JsonPropertyName("retcode"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public int Retcode { get; set; }
+    public int Retcode { get; set; } = retcode;
 
     [JsonInclude, JsonPropertyName("data")]
-    public JsonElement? Data { get; set; }
+    public JsonElement? Data { get; set; } = data;
 
     [JsonInclude, JsonRequired, JsonPropertyName("echo")]
-    public required Guid Guid { get; set; }
+    public required Guid Guid { get; set; } = guid;
 
     [JsonInclude, JsonPropertyName("message")]
-    public string? ErrorMessage { get; set; }
+    public string? ErrorMessage { get; set; } = errorMessage;
 
     [JsonInclude, JsonPropertyName("wording")]
-    public string? ErrorMessageEx { get; set; }
+    public string? ErrorMessageEx { get; set; } = errorMessageEx;
 }

@@ -23,6 +23,15 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 /// </summary>
 public class GroupFileInfo
 {
+    [JsonConstructor]
+    internal GroupFileInfo(string id, string name, long size, long? busId)
+    {
+        Id = id;
+        Name = name;
+        Size = size;
+        BusId = busId;
+    }
+
     /// <summary>
     /// 文件Id
     /// </summary>

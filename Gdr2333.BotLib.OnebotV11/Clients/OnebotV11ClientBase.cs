@@ -86,10 +86,11 @@ public abstract class OnebotV11ClientBase
         public required string Id;
     }
 
-    private struct GetForwardMessageResult
+    [method: JsonConstructor]
+    private struct GetForwardMessageResult(Message message)
     {
         [JsonInclude, JsonRequired, JsonPropertyName("message")]
-        public required Message Message;
+        public required Message Message = message;
     }
 
     private struct SendLikeRequest
@@ -272,16 +273,18 @@ public abstract class OnebotV11ClientBase
         public required string Domain;
     }
 
-    private struct GetCookiesResult
+    [method: JsonConstructor]
+    private struct GetCookiesResult(string cookies)
     {
         [JsonInclude, JsonRequired, JsonPropertyName("cookies")]
-        public required string Cookies;
+        public required string Cookies = cookies;
     }
 
-    private struct GetCsrfTokenResult
+    [method: JsonConstructor]
+    private struct GetCsrfTokenResult(int token)
     {
         [JsonInclude, JsonRequired, JsonPropertyName("token"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-        public int Token;
+        public int Token = token;
     }
 
     private struct GetCredentialsRequest

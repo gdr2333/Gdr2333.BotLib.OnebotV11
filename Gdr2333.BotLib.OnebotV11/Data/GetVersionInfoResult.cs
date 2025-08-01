@@ -24,6 +24,15 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 /// </summary>
 public class GetVersionInfoResult
 {
+    [JsonConstructor]
+    internal GetVersionInfoResult(string name, string version, string protocolVersion, Dictionary<string, JsonElement> others)
+    {
+        Name = name;
+        Version = version;
+        ProtocolVersion = protocolVersion;
+        Others = others;
+    }
+
     /// <summary>
     /// 实现名称
     /// </summary>

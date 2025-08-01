@@ -17,6 +17,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Data;
+using Gdr2333.BotLib.OnebotV11.Messages;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -26,6 +27,19 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// </summary>
 public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUserEventArgs, IGroupEventArgs
 {
+    [JsonConstructor]
+#pragma warning disable CS0618
+    internal GroupMessageReceivedEventArgs(GroupMessageReceivedSubType subType, long groupId, AnonymousInfo? anonymous,
+                                           GroupMemberInfo? groupSender, MessageType messageType, long messageId,
+                                           long userId, Message message, string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)
+    {
+        SubType = subType;
+        GroupId = groupId;
+        Anonymous = anonymous;
+        GroupSender = groupSender;
+    }
+#pragma warning restore CS0618
+
     /// <summary>
     /// 群消息子类型
     /// </summary>
@@ -35,12 +49,14 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUser
     /// <inheritdoc/>
     [Obsolete("该Sender是基类的实现，建议使用GroupSender。")]
     [JsonIgnore]
+#pragma warning disable CS0809
     // 你问警告是吧？我看见了但我就这么设计的
     public override UserInfo? Sender
     {
         get => GroupSender;
         internal set => throw new InvalidOperationException();
     }
+#pragma warning restore
 
     /// <summary>
     /// 群ID
@@ -83,6 +99,7 @@ public enum GroupMessageReceivedSubType
     Notice
 };
 
+#pragma warning disable CS0618
 internal class GroupMessageReceivedSubTypeConverter : JsonConverter<GroupMessageReceivedSubType>
 {
     public override GroupMessageReceivedSubType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
@@ -105,3 +122,4 @@ internal class GroupMessageReceivedSubTypeConverter : JsonConverter<GroupMessage
         });
     }
 }
+#pragma warning restore

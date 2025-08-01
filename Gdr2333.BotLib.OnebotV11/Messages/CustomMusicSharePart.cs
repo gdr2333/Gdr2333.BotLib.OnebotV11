@@ -56,12 +56,6 @@ public class CustomMusicSharePart : MusicSharePartBase
     [JsonInclude, JsonRequired, JsonPropertyName("data")]
     private CustomMusicSharePayload? _data;
 
-    [JsonConstructor]
-    private CustomMusicSharePart()
-    {
-        MusicShareType = "costum";
-    }
-
     /// <summary>
     /// 新建一个自定义音乐分享消息段
     /// </summary>
@@ -80,28 +74,27 @@ public class CustomMusicSharePart : MusicSharePartBase
         ImageUrl = imageUrl;
     }
 
+    [JsonConstructor]
+    internal CustomMusicSharePart(CustomMusicSharePayload data)
+    {
+        _data = data;
+        ToUrl = data!.Url;
+        AudioUrl = data!.AudioUrl;
+        Title = data!.Title;
+        Content = data!.Content;
+        ImageUrl = data!.ImageUrl;
+        MusicShareType = "costum";
+    }
+
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        ToUrl = _data!.Url;
-        AudioUrl = _data!.AudioUrl;
-        Title = _data!.Title;
-        Content = _data!.Content;
-        ImageUrl = _data!.ImageUrl;
-        _data = null;
     }
 
     /// <inheritdoc/>
     public override void OnSerializing()
     {
-        _data = new()
-        {
-            Url = ToUrl,
-            AudioUrl = _data!.AudioUrl,
-            Title = _data!.Title,
-            Content = _data!.Content,
-            ImageUrl = _data!.ImageUrl,
-        };
+        _data = new(ToUrl, AudioUrl, Title, Content, ImageUrl);
     }
 
     /// <inheritdoc/>

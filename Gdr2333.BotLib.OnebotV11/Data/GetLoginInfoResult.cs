@@ -23,6 +23,13 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 /// </summary>
 public class GetLoginInfoResult
 {
+    [JsonConstructor]
+    internal GetLoginInfoResult(long userId, string nickname)
+    {
+        UserId = userId;
+        Nickname = nickname;
+    }
+
     /// <summary>
     /// 当前账号Id
     /// </summary>

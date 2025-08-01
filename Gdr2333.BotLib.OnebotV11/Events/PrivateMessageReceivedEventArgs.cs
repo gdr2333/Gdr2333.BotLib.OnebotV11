@@ -14,10 +14,11 @@
    limitations under the License.
 */
 
+using Gdr2333.BotLib.OnebotV11.Data;
+using Gdr2333.BotLib.OnebotV11.Messages;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
-using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
@@ -26,6 +27,15 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// </summary>
 public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUserEventArgs
 {
+    [JsonConstructor]
+    internal PrivateMessageReceivedEventArgs(PrivateMessageReceivedSubType subType, UserInfo? sender,
+                                             MessageType messageType, long messageId, long userId, Message message,
+                                             string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)
+    {
+        SubType = subType;
+        Sender = sender;
+    }
+
     /// <summary>
     /// 私聊消息子类型
     /// </summary>

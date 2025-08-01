@@ -23,11 +23,11 @@ using System.Threading.Channels;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalUniverseClient : OnebotV11ClientBase
+internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationToken cancellationToken) : OnebotV11ClientBase
 {
-    private readonly WebSocket _universeWebSocket;
+    private readonly WebSocket _universeWebSocket = universeWebSocket;
 
-    private readonly CancellationToken _cancellationToken;
+    private readonly CancellationToken _cancellationToken = cancellationToken;
 
     private readonly ConcurrentDictionary<Guid, Action<OnebotV11ApiResult>> _apiCallResults = new();
 
@@ -44,12 +44,6 @@ internal class InternalUniverseClient : OnebotV11ClientBase
     /// 当事件接收器出现异常时触发的事件
     /// </summary>
     public override event OnExceptionInLoop? OnExceptionOccurrence;
-
-    public InternalUniverseClient(WebSocket universeWebSocket, CancellationToken cancellationToken)
-    {
-        _universeWebSocket = universeWebSocket;
-        _cancellationToken = cancellationToken;
-    }
 
     public void Start()
     {

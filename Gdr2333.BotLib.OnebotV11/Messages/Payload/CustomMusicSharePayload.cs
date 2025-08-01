@@ -17,20 +17,21 @@ using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages.Payload;
 
-internal class CustomMusicSharePayload : MusicSharePayloadBase
+[method: JsonConstructor]
+internal class CustomMusicSharePayload(Uri url, Uri audioUrl, string title, string? content, Uri? imageUrl) : MusicSharePayloadBase
 {
     [JsonInclude, JsonRequired, JsonPropertyName("url")]
-    public Uri Url { get; set; }
+    public Uri Url { get; set; } = url;
 
     [JsonInclude, JsonRequired, JsonPropertyName("audio")]
-    public Uri AudioUrl { get; set; }
+    public Uri AudioUrl { get; set; } = audioUrl;
 
     [JsonInclude, JsonRequired, JsonPropertyName("title")]
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; set; } = title;
 
     [JsonInclude, JsonPropertyName("content")]
-    public string? Content { get; set; }
+    public string? Content { get; set; } = content;
 
     [JsonInclude, JsonPropertyName("image")]
-    public Uri? ImageUrl { get; set; }
+    public Uri? ImageUrl { get; set; } = imageUrl;
 }

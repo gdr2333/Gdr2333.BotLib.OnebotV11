@@ -36,4 +36,11 @@ public class HeartbeatEventArgs : MetaEventArgsBase
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("interval"), JsonConverter(typeof(MillisecondToTimeSpanConverter))]
     public TimeSpan Interval { get; internal set; }
+
+    [JsonConstructor]
+    internal HeartbeatEventArgs(OnebotV11ServerStatus status, TimeSpan interval)
+    {
+        Status = status;
+        Interval = interval;
+    }
 }

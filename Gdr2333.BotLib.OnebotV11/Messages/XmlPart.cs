@@ -33,11 +33,6 @@ public class XmlPart : MessagePartBase
     [JsonIgnore]
     public XmlDocument Data { get; set; }
 
-    [JsonConstructor]
-    private XmlPart() : base("xml")
-    {
-    }
-
     /// <summary>
     /// 构建一个XML消息段
     /// </summary>

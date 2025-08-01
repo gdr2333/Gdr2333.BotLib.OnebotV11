@@ -23,6 +23,15 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 /// </summary>
 public class GroupInfo
 {
+    [JsonConstructor]
+    internal GroupInfo(long groupId, string groupName, int memberCount, int memberCapacity)
+    {
+        GroupId = groupId;
+        GroupName = groupName;
+        MemberCount = memberCount;
+        MemberCapacity = memberCapacity;
+    }
+
     /// <summary>
     /// 群号
     /// </summary>

@@ -22,22 +22,15 @@ using static Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalEventClient
+internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase srcClient, CancellationToken cancellationToken)
 {
-    private readonly WebSocket _eventWebSocket;
+    private readonly WebSocket _eventWebSocket = eventWebSocket;
 
-    private readonly OnebotV11ClientBase _srcClient;
+    private readonly OnebotV11ClientBase _srcClient = srcClient;
 
-    private readonly CancellationToken _cancellationToken;
+    private readonly CancellationToken _cancellationToken = cancellationToken;
 
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
-
-    public InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase srcClient, CancellationToken cancellationToken)
-    {
-        _eventWebSocket = eventWebSocket;
-        _srcClient = srcClient;
-        _cancellationToken = cancellationToken;
-    }
 
     /// <summary>
     /// 当接受到Onebot事件时触发的事件

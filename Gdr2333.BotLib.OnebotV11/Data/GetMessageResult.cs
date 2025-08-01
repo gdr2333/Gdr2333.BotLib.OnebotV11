@@ -25,6 +25,17 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 /// </summary>
 public class GetMessageResult
 {
+    [JsonConstructor]
+    internal GetMessageResult(DateTime sendTime, MessageType messageType, long messageId, long? realId, UserInfo sender, Message messsage)
+    {
+        SendTime = sendTime;
+        MessageType = messageType;
+        MessageId = messageId;
+        RealId = realId;
+        Sender = sender;
+        Messsage = messsage;
+    }
+
     /// <summary>
     /// 发送时间
     /// </summary>

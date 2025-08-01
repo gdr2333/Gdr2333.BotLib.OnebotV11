@@ -52,8 +52,13 @@ public class SharePart : MessagePartBase
     private SharePayload? _data;
 
     [JsonConstructor]
-    private SharePart() : base("share")
+    private SharePart(SharePayload data) : base("share")
     {
+        _data = data;
+        Url = _data!.Url;
+        Title = _data!.Title;
+        Content = _data!.Content;
+        ImageUrl = _data!.ImageUrl;
     }
 
     /// <summary>
@@ -78,11 +83,6 @@ public class SharePart : MessagePartBase
     /// <inheritdoc/>
     public override void OnDeserialized()
     {
-        Url = _data!.Url;
-        Title = _data!.Title;
-        Content = _data!.Content;
-        ImageUrl = _data!.ImageUrl;
-        _data = null;
     }
 
     /// <inheritdoc/>

@@ -21,14 +21,17 @@ namespace Gdr2333.BotLib.OnebotV11.Clients;
 /// <summary>
 /// 正向Websocket客户端
 /// </summary>
-public class WebSocketClient : OnebotV11ClientBase
+/// <param name="target">目标服务器URL</param>
+/// <param name="maxRetry">最大重试次数</param>
+/// <param name="accessToken">访问令牌</param>
+public class WebSocketClient(Uri target, int maxRetry = 5, string? accessToken = null) : OnebotV11ClientBase
 {
     private InternalUniverseClient? _client;
-    private readonly Uri _target;
+    private readonly Uri _target = target;
     private int _retry = 0;
-    private readonly int _maxRetry;
-    private readonly string? _accessToken;
-    private CancellationTokenSource _tokenSource;
+    private readonly int _maxRetry = maxRetry;
+    private readonly string? _accessToken = accessToken;
+    private CancellationTokenSource _tokenSource = new();
 
     /// <inheritdoc/>
     public override event OnebotEventOccurrence? OnEventOccurrence;
@@ -37,21 +40,7 @@ public class WebSocketClient : OnebotV11ClientBase
     public override event OnExceptionInLoop? OnExceptionOccurrence;
 
     /// <summary>
-    /// 初始化一个正向Websocket客户端
-    /// </summary>
-    /// <param name="target">目标服务器URL</param>
-    /// <param name="maxRetry">最大重试次数</param>
-    /// <param name="accessToken">访问令牌</param>
-    public WebSocketClient(Uri target, int maxRetry = 5, string? accessToken = null)
-    {
-        _target = target;
-        _maxRetry = maxRetry;
-        _accessToken = accessToken;
-        _tokenSource = new();
-    }
-
-    /// <summary>
-    /// 启动Web
+    /// 启动WebSocket客户端
     /// </summary>
     /// <returns></returns>
     /// <exception cref="WebSocketException"></exception>

@@ -14,8 +14,8 @@
    limitations under the License.
 */
 
-using System.Text.Json.Serialization;
 using Gdr2333.BotLib.OnebotV11.Utils;
+using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Data;
 
@@ -72,25 +72,26 @@ public class GetGroupHonorInfoResult
 /// </summary>
 [JsonDerivedType(typeof(TalkAtiveInfo))]
 [JsonDerivedType(typeof(HonorInfo))]
-public abstract class HonorInfoBase
+[method: JsonConstructor]
+public abstract class HonorInfoBase(long userId, string nickname, Uri? avatarUrl)
 {
     /// <summary>
     /// 获得该荣耀称号的用户Id
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long UserId { get; internal set; }
+    public long UserId { get; internal set; } = userId;
 
     /// <summary>
     /// 获得该荣耀称号的用户昵称
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("nickname")]
-    public string Nickname { get; internal set; }
+    public string Nickname { get; internal set; } = nickname;
 
     /// <summary>
     /// 获得该荣耀称号的用户头像URL
     /// </summary>
     [JsonInclude, JsonPropertyName("avatar")]
-    public Uri? AvatarUrl { get; internal set; }
+    public Uri? AvatarUrl { get; internal set; } = avatarUrl;
 }
 
 /// <summary>
@@ -98,6 +99,12 @@ public abstract class HonorInfoBase
 /// </summary>
 public class TalkAtiveInfo : HonorInfoBase
 {
+    [JsonConstructor]
+    internal TalkAtiveInfo(TimeSpan duration, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)
+    {
+        Duration = duration;
+    }
+
     /// <summary>
     /// 当上龙王的总时长
     /// </summary>
@@ -110,6 +117,12 @@ public class TalkAtiveInfo : HonorInfoBase
 /// </summary>
 public class HonorInfo : HonorInfoBase
 {
+    [JsonConstructor]
+    internal HonorInfo(string description, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)
+    {
+        Description = description;
+    }
+
     /// <summary>
     /// 称号描述
     /// </summary>

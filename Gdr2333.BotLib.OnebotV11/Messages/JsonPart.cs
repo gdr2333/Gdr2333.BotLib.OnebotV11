@@ -29,15 +29,11 @@ public class JsonPart : MessagePartBase
     [JsonInclude, JsonRequired, JsonPropertyName("data")]
     public JsonNode Data { get; set; }
 
-    [JsonConstructor]
-    private JsonPart() : base("json")
-    {
-    }
-
     /// <summary>
     /// 构建一个JSON消息段
     /// </summary>
     /// <param name="data">JSON数据</param>
+    [JsonConstructor]
     public JsonPart(JsonNode data) : base("json")
     {
         Data = data;
@@ -46,7 +42,7 @@ public class JsonPart : MessagePartBase
     /// <summary>
     /// 构建一个JSON消息段
     /// </summary>
-    /// <param name="data">XML字符串</param>
+    /// <param name="data">JSON字符串</param>
     public JsonPart(string data) : base("json")
     {
         Data = JsonNode.Parse(data) ?? throw new FormatException("JSON解析失败");

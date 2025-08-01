@@ -24,6 +24,14 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 /// </summary>
 public class GroupFileUploadedEventArgs : NoticeEventArgsBase, IUserEventArgs, IGroupEventArgs
 {
+    [JsonConstructor]
+    internal GroupFileUploadedEventArgs(long groupId, long userId, GroupFileInfo fileInfo)
+    {
+        GroupId = groupId;
+        UserId = userId;
+        FileInfo = fileInfo;
+    }
+
     /// <summary>
     /// 群ID
     /// </summary>

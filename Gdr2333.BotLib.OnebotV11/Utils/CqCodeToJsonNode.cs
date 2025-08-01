@@ -79,8 +79,8 @@ internal static class CqCodeToJsonNode
                 };
         }
         var nowBegin = 0;
-        var nowEnd = 0;
         var ret = new JsonArray();
+        int nowEnd;
         do
         {
             var readingCqCode = cqCode[nowBegin] == '[';
