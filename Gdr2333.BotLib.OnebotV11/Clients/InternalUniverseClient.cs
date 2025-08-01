@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-using Gdr2333.BotLib.OnebotV11.Events.Base;
+using Gdr2333.BotLib.OnebotV11.Events;
 using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;

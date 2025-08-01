@@ -15,7 +15,7 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Clients;
-using Gdr2333.BotLib.OnebotV11.Messages.Parts;
+using Gdr2333.BotLib.OnebotV11.Messages;
 using System.Text;
 
 OnebotV11ClientBase client;

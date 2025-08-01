@@ -15,8 +15,7 @@
 */
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Messages.Parts.Base;
-using Gdr2333.BotLib.OnebotV11.Messages.Parts.TmpAlt;
+using Gdr2333.BotLib.OnebotV11.Messages.TmpAlt;
 using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages;
