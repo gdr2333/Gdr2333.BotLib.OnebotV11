@@ -8,7 +8,7 @@
 |---|---|
 |Clients|客户端实现|
 |Events|事件内容|
-|Messages.Parts|消息段内容|
+|Messages|消息内容|
 
 *我才懒得去弄什么[Sender](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/Sender/CqWsActionSender.cs)和[Action](https://github.com/OrgEleCho/EleCho.GoCqHttpSdk/blob/master/src/EleCho.GoCqHttpSdk/Action/CqGetCookiesAction.cs)。*
 
