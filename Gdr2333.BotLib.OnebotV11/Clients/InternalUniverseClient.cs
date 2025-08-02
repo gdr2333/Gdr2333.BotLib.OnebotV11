@@ -61,7 +61,7 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
                 var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, request.GetType(), _opt);
                 await _universeWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(this, e);
             }
@@ -77,7 +77,7 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
             try
             {
                 var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var node = JsonDocument.Parse(buffer.AsMemory(0,res.Count));
+                var node = JsonDocument.Parse(buffer.AsMemory(0, res.Count));
                 if (node.RootElement.TryGetProperty("echo", out _))
                 {
                     var result = node.Deserialize<OnebotV11ApiResult>(_opt)

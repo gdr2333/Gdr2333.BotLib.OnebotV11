@@ -65,8 +65,8 @@ public class PokePart : MessagePartBase
     public override string ToString() =>
         $"[{Name ?? "戳一戳"}]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         PokeType = _data!.Type;
         Id = _data!.Id;
@@ -74,8 +74,8 @@ public class PokePart : MessagePartBase
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing() =>
+    /// <inheritdoc/>
+    public override void OnSerializing() =>
         _data = new()
         {
             Type = PokeType,

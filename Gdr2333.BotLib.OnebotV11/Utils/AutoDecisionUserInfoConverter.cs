@@ -14,9 +14,9 @@
    limitations under the License.
 */
 
+using Gdr2333.BotLib.OnebotV11.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Data;
 
 namespace Gdr2333.BotLib.OnebotV11.Utils;
 

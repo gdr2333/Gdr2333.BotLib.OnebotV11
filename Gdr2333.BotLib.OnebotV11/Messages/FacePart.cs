@@ -52,13 +52,13 @@ public class FacePart : MessagePartBase
     public override string ToString() =>
         "[表情]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         FaceId = _data!.Id;
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing() => _data = new() { Id = FaceId };
+    /// <inheritdoc/>
+    public override void OnSerializing() => _data = new() { Id = FaceId };
 }

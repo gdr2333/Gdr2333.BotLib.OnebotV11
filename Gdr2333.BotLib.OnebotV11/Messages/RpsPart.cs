@@ -31,13 +31,13 @@ public class RpsPart() : MessagePartBase("rps")
     public override string ToString() =>
         "[猜拳]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing()
+    /// <inheritdoc/>
+    public override void OnSerializing()
     {
     }
 }

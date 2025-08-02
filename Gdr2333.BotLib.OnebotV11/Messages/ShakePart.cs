@@ -28,13 +28,13 @@ public class ShakePart() : MessagePartBase("shake")
     public override string ToString() =>
         "[窗口抖动]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing()
+    /// <inheritdoc/>
+    public override void OnSerializing()
     {
     }
 }

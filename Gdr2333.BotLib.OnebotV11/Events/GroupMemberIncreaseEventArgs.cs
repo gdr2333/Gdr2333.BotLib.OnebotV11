@@ -16,9 +16,9 @@
 
 // 你的直觉没错，是从群成员减少事件直接改的
 
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Utils;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 

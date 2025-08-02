@@ -80,16 +80,16 @@ public class ImagePart : FilePartBase
     public override string ToString() =>
         "[图片]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         AfterJsonDeserialization(_data!);
         IsFlash = _data?.Type == "flash";
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing()
+    /// <inheritdoc/>
+    public override void OnSerializing()
     {
         var data = new ImagePayload()
         {

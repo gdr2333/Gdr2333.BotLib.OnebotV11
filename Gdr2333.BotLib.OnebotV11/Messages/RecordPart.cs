@@ -80,16 +80,16 @@ public class RecordPart : FilePartBase
     public override string ToString() =>
         "[语音]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         AfterJsonDeserialization(_data!);
         UseMagic = _data!.UseMagic ?? false;
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing()
+    /// <inheritdoc/>
+    public override void OnSerializing()
     {
         _data = new() { UseMagic = UseMagic };
         BeforeJsonSerialization(_data!);

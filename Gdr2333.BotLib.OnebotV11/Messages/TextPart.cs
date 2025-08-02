@@ -50,15 +50,15 @@ public class TextPart : MessagePartBase
         Text = text;
     }
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         Text = _data!.Text;
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing() =>
+    /// <inheritdoc/>
+    public override void OnSerializing() =>
         _data = new() { Text = Text };
 
     /// <summary>

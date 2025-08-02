@@ -16,9 +16,9 @@
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Gdr2333.BotLib.OnebotV11.Utils;
 
 /// <summary>
 /// 生命周期通报事件参数

@@ -51,14 +51,14 @@ public class AtPart : MessagePartBase
     public override string ToString() =>
         $"@{UserId}";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
         UserId = _data!.Id;
         _data = null;
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing() =>
+    /// <inheritdoc/>
+    public override void OnSerializing() =>
         _data = new() { Id = UserId };
 }

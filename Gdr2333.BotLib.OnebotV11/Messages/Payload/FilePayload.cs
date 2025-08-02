@@ -46,7 +46,7 @@ internal class FilePayload
     /// <summary>
     /// （发送时）是否使用代理
     /// </summary>
-    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof (OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof(OB11JsonBoolConverter))]
     public bool? UseProxy { get; set; }
 
     /// <summary>

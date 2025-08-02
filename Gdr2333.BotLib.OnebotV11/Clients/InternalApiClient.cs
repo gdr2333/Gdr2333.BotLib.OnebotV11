@@ -71,12 +71,12 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
             try
             {
                 var res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer.AsSpan(0,res.Count), _opt)
+                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer.AsSpan(0, res.Count), _opt)
                     ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(buffer[..res.Count])}");
                 if (_apiCallResults.TryRemove(result.Guid, out var action))
                     action(result);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(null, e);
             }

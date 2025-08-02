@@ -57,7 +57,7 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
                 else
                     throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(buffer)}");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(_srcClient, e);
             }

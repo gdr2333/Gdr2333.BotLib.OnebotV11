@@ -42,7 +42,7 @@ public class AnonymousPart(bool ignore) : MessagePartBase("anonymous")
     /// </summary>
     [Obsolete("anonymous消息段在几乎所有实现中都不再有用。我仍然按标准实现了它，但你不该用。")]
     [JsonConstructor]
-    public AnonymousPart() : this(false) 
+    public AnonymousPart() : this(false)
     {
     }
 

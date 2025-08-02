@@ -31,13 +31,13 @@ public class DicePart() : MessagePartBase("dice")
     public override string ToString() =>
         "[掷骰子]";
 
-	/// <inheritdoc/>
-	public override void OnDeserialized()
+    /// <inheritdoc/>
+    public override void OnDeserialized()
     {
     }
 
-	/// <inheritdoc/>
-	public override void OnSerializing()
+    /// <inheritdoc/>
+    public override void OnSerializing()
     {
     }
 }
