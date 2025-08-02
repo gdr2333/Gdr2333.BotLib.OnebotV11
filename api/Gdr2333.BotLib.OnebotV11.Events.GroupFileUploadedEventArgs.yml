@@ -1,0 +1,647 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  id: GroupFileUploadedEventArgs
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  children:
+  - Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+  - Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+  - Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+  langs:
+  - csharp
+  - vb
+  name: GroupFileUploadedEventArgs
+  nameWithType: GroupFileUploadedEventArgs
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  type: Class
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupFileUploadedEventArgs
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+    startLine: 24
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 群文件上传事件
+  example: []
+  syntax:
+    content: 'public class GroupFileUploadedEventArgs : NoticeEventArgsBase, IUserEventArgs, IGroupEventArgs'
+    content.vb: Public Class GroupFileUploadedEventArgs Inherits NoticeEventArgsBase Implements IUserEventArgs, IGroupEventArgs
+  inheritance:
+  - System.Object
+  - Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  - Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase
+  implements:
+  - Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs
+  - Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  inheritedMembers:
+  - Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.NoticeType
+  - Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.Time
+  - Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.BotId
+  - Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.PostType
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+  id: GroupId
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: GroupId
+  nameWithType: GroupFileUploadedEventArgs.GroupId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupId
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+    startLine: 37
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 群ID
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("group_id")]
+
+      public long GroupId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("group_id")>
+
+      Public Property GroupId As Long
+  overload: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId*
+  implements:
+  - Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: group_id
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+  id: UserId
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: GroupFileUploadedEventArgs.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: UserId
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+    startLine: 43
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 用户ID
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("user_id")]
+
+      public long UserId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("user_id")>
+
+      Public Property UserId As Long
+  overload: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId*
+  implements:
+  - Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.UserId
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: user_id
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+  id: FileInfo
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs
+  langs:
+  - csharp
+  - vb
+  name: FileInfo
+  nameWithType: GroupFileUploadedEventArgs.FileInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: FileInfo
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupFileUploadedEventArgs.cs
+    startLine: 49
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 文件信息
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("file")]
+
+      public GroupFileInfo FileInfo { get; }
+    parameters: []
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("file")>
+
+      Public Property FileInfo As GroupFileInfo
+  overload: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: file
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Events
+  commentId: N:Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Events
+  nameWithType: Gdr2333.BotLib.OnebotV11.Events
+  fullName: Gdr2333.BotLib.OnebotV11.Events
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html
+  name: OnebotV11EventArgsBase
+  nameWithType: OnebotV11EventArgsBase
+  fullName: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+- uid: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.html
+  name: NoticeEventArgsBase
+  nameWithType: NoticeEventArgsBase
+  fullName: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase
+- uid: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.html
+  name: IUserEventArgs
+  nameWithType: IUserEventArgs
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs
+- uid: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.html
+  name: IGroupEventArgs
+  nameWithType: IGroupEventArgs
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+- uid: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.NoticeType
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.NoticeType
+  parent: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase
+  href: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.html#Gdr2333_BotLib_OnebotV11_Events_NoticeEventArgsBase_NoticeType
+  name: NoticeType
+  nameWithType: NoticeEventArgsBase.NoticeType
+  fullName: Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.NoticeType
+- uid: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.Time
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.Time
+  parent: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  href: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html#Gdr2333_BotLib_OnebotV11_Events_OnebotV11EventArgsBase_Time
+  name: Time
+  nameWithType: OnebotV11EventArgsBase.Time
+  fullName: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.Time
+- uid: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.BotId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.BotId
+  parent: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  href: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html#Gdr2333_BotLib_OnebotV11_Events_OnebotV11EventArgsBase_BotId
+  name: BotId
+  nameWithType: OnebotV11EventArgsBase.BotId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.BotId
+- uid: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.PostType
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.PostType
+  parent: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  href: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html#Gdr2333_BotLib_OnebotV11_Events_OnebotV11EventArgsBase_PostType
+  name: PostType
+  nameWithType: OnebotV11EventArgsBase.PostType
+  fullName: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.PostType
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+  href: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_GroupFileUploadedEventArgs_GroupId
+  name: GroupId
+  nameWithType: GroupFileUploadedEventArgs.GroupId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.GroupId
+- uid: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  parent: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  href: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_IGroupEventArgs_GroupId
+  name: GroupId
+  nameWithType: IGroupEventArgs.GroupId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+  href: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_GroupFileUploadedEventArgs_UserId
+  name: UserId
+  nameWithType: GroupFileUploadedEventArgs.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.UserId
+- uid: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.UserId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.UserId
+  parent: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs
+  href: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_IUserEventArgs_UserId
+  name: UserId
+  nameWithType: IUserEventArgs.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.UserId
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+  href: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_GroupFileUploadedEventArgs_FileInfo
+  name: FileInfo
+  nameWithType: GroupFileUploadedEventArgs.FileInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.FileInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo.html
+  name: GroupFileInfo
+  nameWithType: GroupFileInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html

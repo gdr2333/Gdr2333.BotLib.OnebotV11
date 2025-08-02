@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Clients
+  commentId: N:Gdr2333.BotLib.OnebotV11.Clients
+  id: Gdr2333.BotLib.OnebotV11.Clients
+  children:
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+  - Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient
+  - Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient
+  langs:
+  - csharp
+  - vb
+  name: Gdr2333.BotLib.OnebotV11.Clients
+  nameWithType: Gdr2333.BotLib.OnebotV11.Clients
+  fullName: Gdr2333.BotLib.OnebotV11.Clients
+  type: Namespace
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+  parent: Gdr2333.BotLib.OnebotV11.Clients
+  href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  name: OnebotV11ClientBase
+  nameWithType: OnebotV11ClientBase
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+  commentId: T:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+  parent: Gdr2333.BotLib.OnebotV11.Clients
+  href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  name: OnebotV11ClientBase.OnebotEventOccurrence
+  nameWithType: OnebotV11ClientBase.OnebotEventOccurrence
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+  spec.csharp:
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+    name: OnebotV11ClientBase
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+    name: OnebotEventOccurrence
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.html
+  spec.vb:
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+    name: OnebotV11ClientBase
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence
+    name: OnebotEventOccurrence
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.html
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+  commentId: T:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+  parent: Gdr2333.BotLib.OnebotV11.Clients
+  href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  name: OnebotV11ClientBase.OnExceptionInLoop
+  nameWithType: OnebotV11ClientBase.OnExceptionInLoop
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+  spec.csharp:
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+    name: OnebotV11ClientBase
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+    name: OnExceptionInLoop
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.html
+  spec.vb:
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+    name: OnebotV11ClientBase
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop
+    name: OnExceptionInLoop
+    href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.html
+- uid: Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient
+  commentId: T:Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient
+  href: Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient.html
+  name: ReverseWebSocketClient
+  nameWithType: ReverseWebSocketClient
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient
+- uid: Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient
+  commentId: T:Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient
+  href: Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient.html
+  name: WebSocketClient
+  nameWithType: WebSocketClient
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient
+- uid: Gdr2333.BotLib.OnebotV11.Clients
+  commentId: N:Gdr2333.BotLib.OnebotV11.Clients
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Clients
+  nameWithType: Gdr2333.BotLib.OnebotV11.Clients
+  fullName: Gdr2333.BotLib.OnebotV11.Clients
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients
+    name: Clients
+    href: Gdr2333.BotLib.OnebotV11.Clients.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Clients
+    name: Clients
+    href: Gdr2333.BotLib.OnebotV11.Clients.html

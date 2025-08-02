@@ -1,0 +1,227 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  id: GroupHonorType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  children:
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Emotion
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Legend
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Performer
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.StrongNewbie
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Talkative
+  langs:
+  - csharp
+  - vb
+  name: GroupHonorType
+  nameWithType: GroupHonorType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  type: Enum
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupHonorType
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 25
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 荣誉类型
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(GroupHonorTypeConverter))]
+
+      public enum GroupHonorType
+    content.vb: >-
+      <JsonConverter(GetType(GroupHonorTypeConverter))>
+
+      Public Enum GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Talkative
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Talkative
+  id: Talkative
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  langs:
+  - csharp
+  - vb
+  name: Talkative
+  nameWithType: GroupHonorType.Talkative
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Talkative
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Talkative
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 33
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 龙王
+  example: []
+  syntax:
+    content: Talkative = 0
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Performer
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Performer
+  id: Performer
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  langs:
+  - csharp
+  - vb
+  name: Performer
+  nameWithType: GroupHonorType.Performer
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Performer
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Performer
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 37
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 群聊之火
+  example: []
+  syntax:
+    content: Performer = 1
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Emotion
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Emotion
+  id: Emotion
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  langs:
+  - csharp
+  - vb
+  name: Emotion
+  nameWithType: GroupHonorType.Emotion
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Emotion
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Emotion
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 41
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 快乐源泉
+  example: []
+  syntax:
+    content: Emotion = 2
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Legend
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Legend
+  id: Legend
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  langs:
+  - csharp
+  - vb
+  name: Legend
+  nameWithType: GroupHonorType.Legend
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.Legend
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Legend
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 45
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 群聊炽焰
+  example: []
+  syntax:
+    content: Legend = 3
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.StrongNewbie
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.StrongNewbie
+  id: StrongNewbie
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  langs:
+  - csharp
+  - vb
+  name: StrongNewbie
+  nameWithType: GroupHonorType.StrongNewbie
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.StrongNewbie
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: StrongNewbie
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupHonorType.cs
+    startLine: 49
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 冒尖小春笋
+  example: []
+  syntax:
+    content: StrongNewbie = 4
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.html
+  name: GroupHonorType
+  nameWithType: GroupHonorType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType

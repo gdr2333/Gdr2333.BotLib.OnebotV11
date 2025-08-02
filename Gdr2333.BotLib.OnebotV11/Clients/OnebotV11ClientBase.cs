@@ -449,14 +449,7 @@ public abstract class OnebotV11ClientBase
     public Task DoGroupAnonymousBanAsync(long groupId, string flag, TimeSpan duration, CancellationToken? cancellationToken = null) =>
         DoGroupAnonymousBanAsync(groupId, flag, (int)duration.TotalSeconds, cancellationToken);
 
-    /// <summary>
-    /// 替代函数：执行全群禁言
-    /// </summary>
-    /// <param name="groupId">群聊Id</param>
-    /// <param name="doit">是否执行全群禁言</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>任务</returns>
-    protected Task ALT_DoWholeGroupBanAsync(long groupId, bool doit, CancellationToken? cancellationToken = null) =>
+    private Task ALT_DoWholeGroupBanAsync(long groupId, bool doit, CancellationToken? cancellationToken = null) =>
         CallApiAsync<DoGroupEnableRequest>("set_group_whole_ban", new() { GroupId = groupId, Enable = doit }, cancellationToken);
 
     /// <summary>
@@ -477,15 +470,7 @@ public abstract class OnebotV11ClientBase
     public Task CancelWholeGroupBanAsync(long groupId, CancellationToken? cancellationToken = null) =>
         ALT_DoWholeGroupBanAsync(groupId, false, cancellationToken);
 
-    /// <summary>
-    /// 替代函数：更改管理员状态
-    /// </summary>
-    /// <param name="groupId">群聊Id</param>
-    /// <param name="UserId">要更改的用户Id</param>
-    /// <param name="enable">是否使用</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>任务</returns>
-    protected Task ALT_SetGroupAdminAsync(long groupId, long UserId, bool enable, CancellationToken? cancellationToken = null) =>
+    private Task ALT_SetGroupAdminAsync(long groupId, long UserId, bool enable, CancellationToken? cancellationToken = null) =>
         CallApiAsync<ALT_SetGroupAdminRequest>("set_group_admin", new() { GroupId = groupId, UserId = UserId, Enable = enable }, cancellationToken);
 
     /// <summary>
@@ -508,15 +493,8 @@ public abstract class OnebotV11ClientBase
     public Task DismissGroupAdminAsync(long groupId, long userId, CancellationToken? cancellationToken = null) =>
         ALT_SetGroupAdminAsync(groupId, userId, false, cancellationToken);
 
-    /// <summary>
-    /// 替代函数：更改群匿名规则
-    /// </summary>
-    /// <param name="groupId">群聊Id</param>
-    /// <param name="enable">是否允许匿名</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>任务</returns>
     [Obsolete(StaticData.AnonymousWarning)]
-    protected Task ALT_SetGroupAnonymousAsync(long groupId, bool enable, CancellationToken? cancellationToken = null) =>
+    private Task ALT_SetGroupAnonymousAsync(long groupId, bool enable, CancellationToken? cancellationToken = null) =>
         CallApiAsync<DoGroupEnableRequest>("set_group_anonymous", new() { GroupId = groupId, Enable = enable }, cancellationToken);
 
     /// <summary>
@@ -631,15 +609,7 @@ public abstract class OnebotV11ClientBase
         SetGroupSpecialTitleAsync(groupId, userId, null, -1, cancellationToken);
 #pragma warning restore CS0618
 
-    /// <summary>
-    /// 替代函数：处理加好友请求
-    /// </summary>
-    /// <param name="flag">请求标识</param>
-    /// <param name="approve">是否接受</param>
-    /// <param name="remark">备注</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>任务</returns>
-    protected Task ALT_ProcessFriendAddRequestAsync(string flag, bool approve = true, string? remark = null, CancellationToken? cancellationToken = null) =>
+    private Task ALT_ProcessFriendAddRequestAsync(string flag, bool approve = true, string? remark = null, CancellationToken? cancellationToken = null) =>
         CallApiAsync<ALT_ProcessFriendAddRequestRequest>("set_friend_add_request", new() { Flag = flag, Approve = approve, Remark = remark }, cancellationToken);
 
     /// <summary>
@@ -661,16 +631,7 @@ public abstract class OnebotV11ClientBase
     public Task RejectFriendAddRequestAsync(string flag, CancellationToken? cancellationToken = null) =>
         ALT_ProcessFriendAddRequestAsync(flag, false, null, cancellationToken);
 
-    /// <summary>
-    /// 替代函数：处理加群请求/进群邀请
-    /// </summary>
-    /// <param name="flag">请求标识</param>
-    /// <param name="type">请求类型</param>
-    /// <param name="accept">是否接受</param>
-    /// <param name="reason">拒绝原因</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>任务</returns>
-    protected Task ALT_ProcessGroupAddRequestAsync(string flag, GroupAddRequestType type, bool accept, string? reason, CancellationToken? cancellationToken = null) =>
+    private Task ALT_ProcessGroupAddRequestAsync(string flag, GroupAddRequestType type, bool accept, string? reason, CancellationToken? cancellationToken = null) =>
         CallApiAsync<ALT_ProcessGroupAddRequestRequest>("set_group_add_request", new() { Flag = flag, Subtype = type, Approve = accept, Reason = reason }, cancellationToken);
 
     /// <summary>
@@ -775,14 +736,7 @@ public abstract class OnebotV11ClientBase
     public Task<GroupMemberInfoEx[]> GetGroupMemberListAsync(long groupId, CancellationToken? cancellationToken = null) =>
         InvokeApiAsync<GetGroupMemberListRequest, GroupMemberInfoEx[]>("get_group_member_list", new() { GroupId = groupId }, cancellationToken);
 
-    /// <summary>
-    /// 替代函数：获取群荣耀信息
-    /// </summary>
-    /// <param name="groupId">群聊Id</param>
-    /// <param name="type">要获取的群荣耀类型</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>群荣耀信息</returns>
-    protected Task<GetGroupHonorInfoResult> ALT_GetGroupHonorInfoAsync(long groupId, string type, CancellationToken? cancellationToken = null) =>
+    private Task<GetGroupHonorInfoResult> ALT_GetGroupHonorInfoAsync(long groupId, string type, CancellationToken? cancellationToken = null) =>
         InvokeApiAsync<ALT_GetGroupHonorInfoRequest, GetGroupHonorInfoResult>("get_group_honor_info", new() { GroupId = groupId, Type = type }, cancellationToken);
 
     /// <summary>

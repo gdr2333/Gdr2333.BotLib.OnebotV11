@@ -1,0 +1,784 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  id: GroupMemberInfoEx
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  children:
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+  langs:
+  - csharp
+  - vb
+  name: GroupMemberInfoEx
+  nameWithType: GroupMemberInfoEx
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  type: Class
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupMemberInfoEx
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 24
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 扩展的群成员信息
+  example: []
+  syntax:
+    content: 'public class GroupMemberInfoEx : GroupMemberInfo'
+    content.vb: Public Class GroupMemberInfoEx Inherits GroupMemberInfo
+  inheritance:
+  - System.Object
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  inheritedMembers:
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.CardInfo
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Area
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Level
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Role
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Title
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo.UserId
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo.Nickname
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo.Gender
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo.Age
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+  id: JoinTime
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  langs:
+  - csharp
+  - vb
+  name: JoinTime
+  nameWithType: GroupMemberInfoEx.JoinTime
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: JoinTime
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 29
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 加入时间
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("join_time")]
+
+      [JsonConverter(typeof(UnixTimeToDateTimeConverter))]
+
+      public DateTime? JoinTime { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("join_time")>
+
+      <JsonConverter(GetType(UnixTimeToDateTimeConverter))>
+
+      Public Property JoinTime As Date?
+  overload: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: join_time
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+  id: LastSpeakingTime
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  langs:
+  - csharp
+  - vb
+  name: LastSpeakingTime
+  nameWithType: GroupMemberInfoEx.LastSpeakingTime
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: LastSpeakingTime
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 35
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 最后发言时间
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("last_sent_time")]
+
+      [JsonConverter(typeof(UnixTimeToDateTimeConverter))]
+
+      public DateTime? LastSpeakingTime { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("last_sent_time")>
+
+      <JsonConverter(GetType(UnixTimeToDateTimeConverter))>
+
+      Public Property LastSpeakingTime As Date?
+  overload: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: last_sent_time
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+  id: IsUnfriendly
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  langs:
+  - csharp
+  - vb
+  name: IsUnfriendly
+  nameWithType: GroupMemberInfoEx.IsUnfriendly
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: IsUnfriendly
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 41
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 被TX封过号
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("unfriendly")]
+
+      [JsonConverter(typeof(OB11JsonBoolConverter))]
+
+      public bool? IsUnfriendly { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("unfriendly")>
+
+      <JsonConverter(GetType(OB11JsonBoolConverter))>
+
+      Public Property IsUnfriendly As Boolean?
+  overload: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: unfriendly
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+  id: TitleExpires
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  langs:
+  - csharp
+  - vb
+  name: TitleExpires
+  nameWithType: GroupMemberInfoEx.TitleExpires
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: TitleExpires
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 50
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 头衔过期时间
+  remarks: 经典问题之NTQQ里没用
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("title_expire_time")]
+
+      [JsonConverter(typeof(UnixTimeToDateTimeConverter))]
+
+      public DateTime? TitleExpires { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("title_expire_time")>
+
+      <JsonConverter(GetType(UnixTimeToDateTimeConverter))>
+
+      Public Property TitleExpires As Date?
+  overload: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: title_expire_time
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard
+  id: CanChangeCard
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  langs:
+  - csharp
+  - vb
+  name: CanChangeCard
+  nameWithType: GroupMemberInfoEx.CanChangeCard
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: CanChangeCard
+    path: Gdr2333.BotLib.OnebotV11/Data/GroupMemberInfoEx.cs
+    startLine: 56
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 是否可以更改这位的群聊卡片
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("card_changeable")]
+
+      [JsonConverter(typeof(OB11JsonBoolConverter))]
+
+      public bool? CanChangeCard { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("card_changeable")>
+
+      <JsonConverter(GetType(OB11JsonBoolConverter))>
+
+      Public Property CanChangeCard As Boolean?
+  overload: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: card_changeable
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html
+  name: UserInfo
+  nameWithType: UserInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html
+  name: GroupMemberInfo
+  nameWithType: GroupMemberInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.CardInfo
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.CardInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfo_CardInfo
+  name: CardInfo
+  nameWithType: GroupMemberInfo.CardInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.CardInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Area
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Area
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfo_Area
+  name: Area
+  nameWithType: GroupMemberInfo.Area
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Area
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Level
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Level
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfo_Level
+  name: Level
+  nameWithType: GroupMemberInfo.Level
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Level
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Role
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Role
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfo_Role
+  name: Role
+  nameWithType: GroupMemberInfo.Role
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Role
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Title
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Title
+  parent: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfo_Title
+  name: Title
+  nameWithType: GroupMemberInfo.Title
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.Title
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo.UserId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.UserInfo.UserId
+  parent: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html#Gdr2333_BotLib_OnebotV11_Data_UserInfo_UserId
+  name: UserId
+  nameWithType: UserInfo.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo.UserId
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Nickname
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.UserInfo.Nickname
+  parent: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html#Gdr2333_BotLib_OnebotV11_Data_UserInfo_Nickname
+  name: Nickname
+  nameWithType: UserInfo.Nickname
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Nickname
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Gender
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.UserInfo.Gender
+  parent: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html#Gdr2333_BotLib_OnebotV11_Data_UserInfo_Gender
+  name: Gender
+  nameWithType: UserInfo.Gender
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Gender
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Age
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.UserInfo.Age
+  parent: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html#Gdr2333_BotLib_OnebotV11_Data_UserInfo_Age
+  name: Age
+  nameWithType: UserInfo.Age
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo.Age
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfoEx_JoinTime
+  name: JoinTime
+  nameWithType: GroupMemberInfoEx.JoinTime
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.JoinTime
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfoEx_LastSpeakingTime
+  name: LastSpeakingTime
+  nameWithType: GroupMemberInfoEx.LastSpeakingTime
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.LastSpeakingTime
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfoEx_IsUnfriendly
+  name: IsUnfriendly
+  nameWithType: GroupMemberInfoEx.IsUnfriendly
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.IsUnfriendly
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfoEx_TitleExpires
+  name: TitleExpires
+  nameWithType: GroupMemberInfoEx.TitleExpires
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.TitleExpires
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html#Gdr2333_BotLib_OnebotV11_Data_GroupMemberInfoEx_CanChangeCard
+  name: CanChangeCard
+  nameWithType: GroupMemberInfoEx.CanChangeCard
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.CanChangeCard

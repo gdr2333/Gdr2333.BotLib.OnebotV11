@@ -1,0 +1,182 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  id: GroupMessageReceivedSubType
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  children:
+  - Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Anonymous
+  - Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Normal
+  - Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Notice
+  langs:
+  - csharp
+  - vb
+  name: GroupMessageReceivedSubType
+  nameWithType: GroupMessageReceivedSubType
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  type: Enum
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupMessageReceivedSubType
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+    startLine: 83
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 群聊消息子类型
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(GroupMessageReceivedSubTypeConverter))]
+
+      public enum GroupMessageReceivedSubType
+    content.vb: >-
+      <JsonConverter(GetType(GroupMessageReceivedSubTypeConverter))>
+
+      Public Enum GroupMessageReceivedSubType
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Normal
+  commentId: F:Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Normal
+  id: Normal
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: GroupMessageReceivedSubType.Normal
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Normal
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Normal
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+    startLine: 89
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 正常消息
+  example: []
+  syntax:
+    content: Normal = 0
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Anonymous
+  commentId: F:Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Anonymous
+  id: Anonymous
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  langs:
+  - csharp
+  - vb
+  name: Anonymous
+  nameWithType: GroupMessageReceivedSubType.Anonymous
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Anonymous
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Anonymous
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+    startLine: 93
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 匿名消息
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。")]
+
+      Anonymous = 1
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+    content.vb: >-
+      <Obsolete("新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。")>
+
+      Anonymous = 1
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: 新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Notice
+  commentId: F:Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Notice
+  id: Notice
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  langs:
+  - csharp
+  - vb
+  name: Notice
+  nameWithType: GroupMessageReceivedSubType.Notice
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.Notice
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Notice
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupMessageReceivedEventArgs.cs
+    startLine: 98
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 通知
+  example: []
+  syntax:
+    content: Notice = 2
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Events
+  commentId: N:Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Events
+  nameWithType: Gdr2333.BotLib.OnebotV11.Events
+  fullName: Gdr2333.BotLib.OnebotV11.Events
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.html
+  name: GroupMessageReceivedSubType
+  nameWithType: GroupMessageReceivedSubType
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType

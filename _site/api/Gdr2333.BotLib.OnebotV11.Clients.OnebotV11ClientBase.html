@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class OnebotV11ClientBase | Gdr2333.BotLib.OnebotV11 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class OnebotV11ClientBase | Gdr2333.BotLib.OnebotV11 ">
+      
+      <meta name="description" content="OnebotV11客户端基类">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gdr2333/Gdr2333.BotLib/new/master/apiSpec/new?filename=Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase.md&amp;value=---%0Auid%3A%20Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Gdr2333.BotLib.OnebotV11">
+            Gdr2333.BotLib.OnebotV11
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase">
+
+
+
+  <h1 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase" class="text-break">
+Class OnebotV11ClientBase  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Gdr2333.html">Gdr2333</a>.<a class="xref" href="Gdr2333.BotLib.html">BotLib</a>.<a class="xref" href="Gdr2333.BotLib.OnebotV11.html">OnebotV11</a>.<a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.html">Clients</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Gdr2333.BotLib.OnebotV11.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>OnebotV11客户端基类</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class OnebotV11ClientBase</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">OnebotV11ClientBase</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient.html">ReverseWebSocketClient</a></div>
+      <div><a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient.html">WebSocketClient</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptFriendAddRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptFriendAddRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptFriendAddRequestAsync_System_String_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptFriendAddRequestAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})">
+  AcceptFriendAddRequestAsync(string, string?, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L622"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>接受加好友请求</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AcceptFriendAddRequestAsync(string flag, string? remark = null, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>remark</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>备注</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptGroupInviteRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptGroupInviteRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptGroupInviteRequestAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptGroupInviteRequestAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  AcceptGroupInviteRequestAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L662"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>接受加群邀请</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AcceptGroupInviteRequestAsync(string flag, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptGroupJoinRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptGroupJoinRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AcceptGroupJoinRequestAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AcceptGroupJoinRequestAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  AcceptGroupJoinRequestAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>接受加群请求</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AcceptGroupJoinRequestAsync(string flag, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AllowAnonymousAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AllowAnonymousAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_AllowAnonymousAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.AllowAnonymousAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  AllowAnonymousAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L506"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>允许匿名发言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。&quot;)]
+public Task AllowAnonymousAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CallApiAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CallApiAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CallApiAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CallApiAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  CallApiAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L879"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用API</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>apiName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API名称</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CallApiAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CallApiAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CallApiAsync__1_System_String___0_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CallApiAsync``1(System.String,``0,System.Nullable{System.Threading.CancellationToken})">
+  CallApiAsync&lt;TRequest&gt;(string, TRequest, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L889"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用API</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task CallApiAsync&lt;TRequest&gt;(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>apiName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API名称</p>
+</dd>
+    <dt><code>requestData</code> <span class="xref">TRequest</span></dt>
+    <dd><p>请求数据</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TRequest</code></dt>
+    <dd><p>请求内容类型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CancelGroupBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CancelGroupBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CancelGroupBanAsync_System_Int64_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CancelGroupBanAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  CancelGroupBanAsync(long, long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>从群聊里取消禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CancelGroupBanAsync(long groupId, long userId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要取消禁言的用户Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CancelWholeGroupBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CancelWholeGroupBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CancelWholeGroupBanAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CancelWholeGroupBanAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  CancelWholeGroupBanAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L470"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>取消全群禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CancelWholeGroupBanAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CheckCanSendImageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CheckCanSendImageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CheckCanSendImageAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CheckCanSendImageAsync(System.Nullable{System.Threading.CancellationToken})">
+  CheckCanSendImageAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L820"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>检测是否可以发送图片</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; CheckCanSendImageAsync(CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>指示是否可以发送图片</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CheckCanSendRecordAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CheckCanSendRecordAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_CheckCanSendRecordAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.CheckCanSendRecordAsync(System.Nullable{System.Threading.CancellationToken})">
+  CheckCanSendRecordAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L828"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>检测是否可以发送录音</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; CheckCanSendRecordAsync(CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>指示是否可以发送语音</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DeleteGroupCardAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DeleteGroupCardAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DeleteGroupCardAsync_System_Int64_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DeleteGroupCardAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  DeleteGroupCardAsync(long, long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>删除群聊卡片</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteGroupCardAsync(long groupId, long userId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DeleteGroupSpecialTitleAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DeleteGroupSpecialTitleAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DeleteGroupSpecialTitleAsync_System_Int64_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DeleteGroupSpecialTitleAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  DeleteGroupSpecialTitleAsync(long, long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L608"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>删除群头衔</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteGroupSpecialTitleAsync(long groupId, long userId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DisallowAnonmyousAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DisallowAnonmyousAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DisallowAnonmyousAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DisallowAnonmyousAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  DisallowAnonmyousAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L516"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>禁止匿名发言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。&quot;)]
+public Task DisallowAnonmyousAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DismissGroupAdminAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DismissGroupAdminAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DismissGroupAdminAsync_System_Int64_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DismissGroupAdminAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  DismissGroupAdminAsync(long, long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L493"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>罢免群管理员</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DismissGroupAdminAsync(long groupId, long userId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要罢免的管理员用户Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoCleanCache_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoCleanCache*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoCleanCache_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoCleanCache(System.Nullable{System.Threading.CancellationToken})">
+  DoCleanCache(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L870"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用清理缓存</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoCleanCache(CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupAnonymousBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupAnonymousBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupAnonymousBanAsync_System_Int64_System_String_System_Int32_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupAnonymousBanAsync(System.Int64,System.String,System.Int32,System.Nullable{System.Threading.CancellationToken})">
+  DoGroupAnonymousBanAsync(long, string, int, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L436"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>执行群聊匿名禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。&quot;)]
+public Task DoGroupAnonymousBanAsync(long groupId, string flag, int seconds = 1800, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>匿名标识</p>
+</dd>
+    <dt><code>seconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>禁言秒数</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupAnonymousBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupAnonymousBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupAnonymousBanAsync_System_Int64_System_String_System_TimeSpan_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupAnonymousBanAsync(System.Int64,System.String,System.TimeSpan,System.Nullable{System.Threading.CancellationToken})">
+  DoGroupAnonymousBanAsync(long, string, TimeSpan, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L448"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>执行群聊匿名禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。&quot;)]
+public Task DoGroupAnonymousBanAsync(long groupId, string flag, TimeSpan duration, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>匿名标识</p>
+</dd>
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>禁言时长</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupBanAsync_System_Int64_System_Int64_System_Int32_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupBanAsync(System.Int64,System.Int64,System.Int32,System.Nullable{System.Threading.CancellationToken})">
+  DoGroupBanAsync(long, long, int, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L404"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>从群聊里禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoGroupBanAsync(long groupId, long userId, int seconds = 1800, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要禁言的用户Id</p>
+</dd>
+    <dt><code>seconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>禁言秒数</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupBanAsync_System_Int64_System_Int64_System_TimeSpan_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupBanAsync(System.Int64,System.Int64,System.TimeSpan,System.Nullable{System.Threading.CancellationToken})">
+  DoGroupBanAsync(long, long, TimeSpan, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L415"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>从群聊里禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoGroupBanAsync(long groupId, long userId, TimeSpan duration, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要禁言的用户Id</p>
+</dd>
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>禁言时长</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupKickAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupKickAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoGroupKickAsync_System_Int64_System_Int64_System_Boolean_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoGroupKickAsync(System.Int64,System.Int64,System.Boolean,System.Nullable{System.Threading.CancellationToken})">
+  DoGroupKickAsync(long, long, bool, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>从群聊里踢人</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoGroupKickAsync(long groupId, long userId, bool rejectJoinRequests = false, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要踢的用户Id</p>
+</dd>
+    <dt><code>rejectJoinRequests</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>拒绝别人的加群请求</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoRestartAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoRestartAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoRestartAsync_System_Int32_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoRestartAsync(System.Int32,System.Nullable{System.Threading.CancellationToken})">
+  DoRestartAsync(int, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L853"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用重启</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoRestartAsync(int msDelay = 0, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>msDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>重启延迟</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌（不能取消重启）</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoRestartAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoRestartAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoRestartAsync_System_TimeSpan_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoRestartAsync(System.TimeSpan,System.Nullable{System.Threading.CancellationToken})">
+  DoRestartAsync(TimeSpan, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L862"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用重启</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoRestartAsync(TimeSpan delay, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>重启延迟</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌（不能取消重启）</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoWholeGroupBanAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoWholeGroupBanAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_DoWholeGroupBanAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.DoWholeGroupBanAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  DoWholeGroupBanAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L461"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>执行全群禁言</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DoWholeGroupBanAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCookiesAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCookiesAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCookiesAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCookiesAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  GetCookiesAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L776"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取Cookies</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetCookiesAsync(string domain, CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>要获取Cookies的域名</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Cookies</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCredentialsAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCredentialsAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCredentialsAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCredentialsAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  GetCredentialsAsync(string?, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L793"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取机密信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetCredentialsResult&gt; GetCredentialsAsync(string? domain = null, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>要获取Cookies的域名</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult.html">GetCredentialsResult</a>&gt;</dt>
+    <dd><p>机密信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCsrfTokenAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCsrfTokenAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetCsrfTokenAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetCsrfTokenAsync(System.Nullable{System.Threading.CancellationToken})">
+  GetCsrfTokenAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L784"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取CSRF令牌</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; GetCsrfTokenAsync(CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>CSRF令牌</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetForwardMessageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetForwardMessageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetForwardMessageAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetForwardMessageAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  GetForwardMessageAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L372"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取转发消息信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Message&gt; GetForwardMessageAsync(string forwardId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forwardId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>转发消息Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Messages.Message.html">Message</a>&gt;</dt>
+    <dd><p>转发消息内容</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetFriendListAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetFriendListAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetFriendListAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetFriendListAsync(System.Nullable{System.Threading.CancellationToken})">
+  GetFriendListAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L698"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取好友列表</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;FriendInfo[]&gt; GetFriendListAsync(CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.FriendInfo.html">FriendInfo</a>[]&gt;</dt>
+    <dd><p>好友列表</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupHonorInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupHonorInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupHonorInfoAsync_System_Int64_Gdr2333_BotLib_OnebotV11_Data_GroupHonorType_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupHonorInfoAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Data.GroupHonorType,System.Nullable{System.Threading.CancellationToken})">
+  GetGroupHonorInfoAsync(long, GroupHonorType, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L750"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取指定类型的群荣耀信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetGroupHonorInfoResult&gt; GetGroupHonorInfoAsync(long groupId, GroupHonorType honorType, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>honorType</code> <a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.html">GroupHonorType</a></dt>
+    <dd><p>群荣耀类型</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.html">GetGroupHonorInfoResult</a>&gt;</dt>
+    <dd><p>群荣耀信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.invaliddataexception">InvalidDataException</a></dt>
+    <dd><p>无法接受的群荣耀类型</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupHonorInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupHonorInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupHonorInfoAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupHonorInfoAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  GetGroupHonorInfoAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L767"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取所有群荣耀信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetGroupHonorInfoResult&gt; GetGroupHonorInfoAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.html">GetGroupHonorInfoResult</a>&gt;</dt>
+    <dd><p>群荣耀信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupInfoAsync_System_Int64_System_Boolean_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupInfoAsync(System.Int64,System.Boolean,System.Nullable{System.Threading.CancellationToken})">
+  GetGroupInfoAsync(long, bool, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L708"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取群聊信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GroupInfo&gt; GetGroupInfoAsync(long groupId, bool useCache = true, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>useCache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>是否使用缓存</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GroupInfo.html">GroupInfo</a>&gt;</dt>
+    <dd><p>群聊信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupList_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupList*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupList_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupList(System.Nullable{System.Threading.CancellationToken})">
+  GetGroupList(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L716"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取群聊列表</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GroupInfo[]&gt; GetGroupList(CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GroupInfo.html">GroupInfo</a>[]&gt;</dt>
+    <dd><p>群聊列表</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupMemberInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupMemberInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupMemberInfoAsync_System_Int64_System_Int64_System_Boolean_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupMemberInfoAsync(System.Int64,System.Int64,System.Boolean,System.Nullable{System.Threading.CancellationToken})">
+  GetGroupMemberInfoAsync(long, long, bool, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L727"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取群成员信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GroupMemberInfoEx&gt; GetGroupMemberInfoAsync(long groupId, long userId, bool useCache = true, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>useCache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>是否使用缓存</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html">GroupMemberInfoEx</a>&gt;</dt>
+    <dd><p>群成员信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupMemberListAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupMemberListAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetGroupMemberListAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetGroupMemberListAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  GetGroupMemberListAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L736"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取群成员信息列表</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GroupMemberInfoEx[]&gt; GetGroupMemberListAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html">GroupMemberInfoEx</a>[]&gt;</dt>
+    <dd><p>群成员信息列表</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetImageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetImageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetImageAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetImageAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  GetImageAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L812"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取图片文件</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;FileInfo&gt; GetImageAsync(string file, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>file</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>收到的文件名</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a>&gt;</dt>
+    <dd><p>文件信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetLoginInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetLoginInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetLoginInfoAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetLoginInfoAsync(System.Nullable{System.Threading.CancellationToken})">
+  GetLoginInfoAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L680"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取登录信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetLoginInfoResult&gt; GetLoginInfoAsync(CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult.html">GetLoginInfoResult</a>&gt;</dt>
+    <dd><p>登录信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetMessageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetMessageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetMessageAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  GetMessageAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L363"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取消息信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetMessageResult&gt; GetMessageAsync(long messageId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要获取的消息的Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetMessageResult.html">GetMessageResult</a>&gt;</dt>
+    <dd><p>消息信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetRecordAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetRecordAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetRecordAsync_System_String_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetRecordAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})">
+  GetRecordAsync(string, string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L803"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取转码后的本地录音文件</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;FileInfo&gt; GetRecordAsync(string file, string format = &quot;wav&quot;, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>file</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>收到的文件名</p>
+</dd>
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>输出格式</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.fileinfo">FileInfo</a>&gt;</dt>
+    <dd><p>文件信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetStatusAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetStatusAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetStatusAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetStatusAsync(System.Nullable{System.Threading.CancellationToken})">
+  GetStatusAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L836"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取onebot运行状态</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OnebotV11ServerStatus&gt; GetStatusAsync(CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus.html">OnebotV11ServerStatus</a>&gt;</dt>
+    <dd><p>运行状态指示</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetStrangerInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetStrangerInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetStrangerInfoAsync_System_Int64_System_Boolean_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetStrangerInfoAsync(System.Int64,System.Boolean,System.Nullable{System.Threading.CancellationToken})">
+  GetStrangerInfoAsync(long, bool, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L690"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取陌生人信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UserInfo&gt; GetStrangerInfoAsync(long userId, bool useCache = true, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>useCache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>是否使用缓存</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.UserInfo.html">UserInfo</a>&gt;</dt>
+    <dd><p>用户信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetVersionInfoAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetVersionInfoAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_GetVersionInfoAsync_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.GetVersionInfoAsync(System.Nullable{System.Threading.CancellationToken})">
+  GetVersionInfoAsync(CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L844"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>获取版本信息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GetVersionInfoResult&gt; GetVersionInfoAsync(CancellationToken? cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult.html">GetVersionInfoResult</a>&gt;</dt>
+    <dd><p>版本信息</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_InvokeApiAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.InvokeApiAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_InvokeApiAsync__1_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.InvokeApiAsync``1(System.String,System.Nullable{System.Threading.CancellationToken})">
+  InvokeApiAsync&lt;TResult&gt;(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L898"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用API</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task&lt;TResult&gt; InvokeApiAsync&lt;TResult&gt;(string apiName, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>apiName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API名称</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;TResult&gt;</dt>
+    <dd><p>响应数据</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TResult</code></dt>
+    <dd><p>响应内容类型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_InvokeApiAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.InvokeApiAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_InvokeApiAsync__2_System_String___0_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.InvokeApiAsync``2(System.String,``0,System.Nullable{System.Threading.CancellationToken})">
+  InvokeApiAsync&lt;TRequest, TResult&gt;(string, TRequest, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L909"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>调用API</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task&lt;TResult&gt; InvokeApiAsync&lt;TRequest, TResult&gt;(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>apiName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API名称</p>
+</dd>
+    <dt><code>requestData</code> <span class="xref">TRequest</span></dt>
+    <dd><p>请求数据</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;TResult&gt;</dt>
+    <dd><p>响应数据</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TRequest</code></dt>
+    <dd><p>请求内容类型</p>
+</dd>
+    <dt><code>TResult</code></dt>
+    <dd><p>响应内容类型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_LeaveFromGroupAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.LeaveFromGroupAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_LeaveFromGroupAsync_System_Int64_System_Boolean_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.LeaveFromGroupAsync(System.Int64,System.Boolean,System.Nullable{System.Threading.CancellationToken})">
+  LeaveFromGroupAsync(long, bool, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L558"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>退出群聊</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;绝大多数实现不支持解散群聊。&quot;)]
+public Task LeaveFromGroupAsync(long groupId, bool dismiss, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>dismiss</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>是否解散群聊</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_LeaveFromGroupAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.LeaveFromGroupAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_LeaveFromGroupAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.LeaveFromGroupAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  LeaveFromGroupAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L570"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>退出群聊</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task LeaveFromGroupAsync(long groupId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RecallMessageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RecallMessageAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  RecallMessageAsync(long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L354"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>撤回消息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RecallMessageAsync(long messageId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>messageId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要撤回的消息Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectFriendAddRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectFriendAddRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectFriendAddRequestAsync_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectFriendAddRequestAsync(System.String,System.Nullable{System.Threading.CancellationToken})">
+  RejectFriendAddRequestAsync(string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L631"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>拒绝加好友请求</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RejectFriendAddRequestAsync(string flag, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectGroupInviteRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupInviteRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectGroupInviteRequestAsync_System_String_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupInviteRequestAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})">
+  RejectGroupInviteRequestAsync(string, string?, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L672"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>拒绝加群邀请</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RejectGroupInviteRequestAsync(string flag, string? reason, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>拒绝原因</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectGroupJoinRequestAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupJoinRequestAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RejectGroupJoinRequestAsync_System_String_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupJoinRequestAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})">
+  RejectGroupJoinRequestAsync(string, string?, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L653"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>拒绝加群请求</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RejectGroupJoinRequestAsync(string flag, string? reason = null, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>请求标识</p>
+</dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>拒绝原因</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendGroupMessageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendGroupMessageAsync_System_Int64_Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})">
+  SendGroupMessageAsync(long, Message, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>发送群聊消息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; SendGroupMessageAsync(long groupId, Message message, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群Id</p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="Gdr2333.BotLib.OnebotV11.Messages.Message.html">Message</a></dt>
+    <dd><p>消息内容</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd><p>消息Id</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendLikeAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendLikeAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendLikeAsync_System_Int64_System_Int32_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendLikeAsync(System.Int64,System.Int32,System.Nullable{System.Threading.CancellationToken})">
+  SendLikeAsync(long, int, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L382"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>给好友点赞</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SendLikeAsync(long userId, int times = 1, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要点赞的好友</p>
+</dd>
+    <dt><code>times</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>点赞次数</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendMessage_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendMessage_System_Nullable_System_Int64__System_Nullable_System_Int64__Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})">
+  SendMessage(long?, long?, Message, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L343"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>发送消息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; SendMessage(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?</dt>
+    <dd><p>目标用户Id</p>
+</dd>
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?</dt>
+    <dd><p>目标群Id</p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="Gdr2333.BotLib.OnebotV11.Messages.Message.html">Message</a></dt>
+    <dd><p>消息内容</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd><p>消息Id</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendMessage_System_Nullable_System_Int64__System_Nullable_System_Int64__Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>实际上我没调send_msg你信吗？</p>
+</div>
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendPrivateMessageAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendPrivateMessageAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendPrivateMessageAsync_System_Int64_Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendPrivateMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})">
+  SendPrivateMessageAsync(long, Message, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L319"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>发送私聊消息</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; SendPrivateMessageAsync(long userId, Message message, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>目标用户Id</p>
+</dd>
+    <dt><code>message</code> <a class="xref" href="Gdr2333.BotLib.OnebotV11.Messages.Message.html">Message</a></dt>
+    <dd><p>消息内容</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd><p>消息Id</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupAdminAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupAdminAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupAdminAsync_System_Int64_System_Int64_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupAdminAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})">
+  SetGroupAdminAsync(long, long, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L483"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>设置群管理员</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetGroupAdminAsync(long groupId, long userId, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>要设为管理员的用户Id</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupCardAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupCardAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupCardAsync_System_Int64_System_Int64_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupCardAsync(System.Int64,System.Int64,System.String,System.Nullable{System.Threading.CancellationToken})">
+  SetGroupCardAsync(long, long, string?, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L528"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>更改群聊卡片</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetGroupCardAsync(long groupId, long userId, string? card, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>目标用户Id</p>
+</dd>
+    <dt><code>card</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>卡片内容</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupNameAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupNameAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupNameAsync_System_Int64_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupNameAsync(System.Int64,System.String,System.Nullable{System.Threading.CancellationToken})">
+  SetGroupNameAsync(long, string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L548"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>更改群名</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetGroupNameAsync(long groupId, string name, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>新群名</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupSpecialTitleAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupSpecialTitleAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupSpecialTitleAsync_System_Int64_System_Int64_System_String_System_Int32_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupSpecialTitleAsync(System.Int64,System.Int64,System.String,System.Int32,System.Nullable{System.Threading.CancellationToken})">
+  SetGroupSpecialTitleAsync(long, long, string?, int, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L583"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>设置群头衔</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;新版本QQ不支持设置头衔有效时间&quot;)]
+public Task SetGroupSpecialTitleAsync(long groupId, long userId, string? specialTitle, int seconds, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>specialTitle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>要设置的头衔</p>
+</dd>
+    <dt><code>seconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>有效秒数（NTQQ中无效）</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupSpecialTitleAsync_" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupSpecialTitleAsync*"></a>
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SetGroupSpecialTitleAsync_System_Int64_System_Int64_System_String_System_Nullable_System_Threading_CancellationToken__" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupSpecialTitleAsync(System.Int64,System.Int64,System.String,System.Nullable{System.Threading.CancellationToken})">
+  SetGroupSpecialTitleAsync(long, long, string, CancellationToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L596"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>设置群头衔</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetGroupSpecialTitleAsync(long groupId, long userId, string specialTitle, CancellationToken? cancellationToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>群聊Id</p>
+</dd>
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>用户Id</p>
+</dd>
+    <dt><code>specialTitle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>新头衔</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>?</dt>
+    <dd><p>取消令牌</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>任务</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_OnEventOccurrence" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnEventOccurrence">
+  OnEventOccurrence
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L921"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>当接受到Onebot事件时触发的事件</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract event OnebotV11ClientBase.OnebotEventOccurrence? OnEventOccurrence</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html">OnebotV11ClientBase</a>.<a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.html">OnebotEventOccurrence</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_OnExceptionOccurrence" data-uid="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionOccurrence">
+  OnExceptionOccurrence
+  <a class="header-action link-secondary" title="View source" href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L933"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>当事件接收器出现异常时触发的事件</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract event OnebotV11ClientBase.OnExceptionInLoop OnExceptionOccurrence</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html">OnebotV11ClientBase</a>.<a class="xref" href="Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.html">OnExceptionInLoop</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gdr2333/Gdr2333.BotLib/blob/master/Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs/#L28" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

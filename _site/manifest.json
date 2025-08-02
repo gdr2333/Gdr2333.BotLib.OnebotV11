@@ -1,0 +1,1423 @@
+{
+  "source_base_path": "C:/Users/gdr23/source/repos/gdr2333/Gdr2333.BotLib",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "Readme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnExceptionInLoop.yml\" sourcestartlinenumber=\"1\">当事件接收器出现异常时触发的事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.OnebotEventOccurrence.yml\" sourcestartlinenumber=\"1\">当接受到Onebot事件时触发的事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.yml\" sourcestartlinenumber=\"1\">OnebotV11客户端基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Clients.ReverseWebSocketClient.yml\" sourcestartlinenumber=\"1\">反向WebSocket客户端</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Clients.WebSocketClient.yml\" sourcestartlinenumber=\"1\">正向Websocket客户端</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Clients.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Clients",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo.yml\" sourcestartlinenumber=\"1\">匿名信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.FriendInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.FriendInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.FriendInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.FriendInfo.yml\" sourcestartlinenumber=\"1\">好友信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.Gender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.Gender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.Gender",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.Gender.yml\" sourcestartlinenumber=\"1\">性别枚举</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult.yml\" sourcestartlinenumber=\"1\">获取客户端机密信息结果</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.yml\" sourcestartlinenumber=\"1\">“获取群荣耀信息”结果</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult.yml\" sourcestartlinenumber=\"1\">“获取登录信息”结果</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetMessageResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetMessageResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GetMessageResult",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GetMessageResult.yml\" sourcestartlinenumber=\"1\">“获取消息”结果</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult.yml\" sourcestartlinenumber=\"1\">“获取版本”结果</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType.yml\" sourcestartlinenumber=\"1\">加群相关请求子类型（加群请求 或 邀请加群）</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo.yml\" sourcestartlinenumber=\"1\">群文件信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupHonorType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.yml\" sourcestartlinenumber=\"1\">荣誉类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupInfo.yml\" sourcestartlinenumber=\"1\">群聊信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.yml\" sourcestartlinenumber=\"1\">群消息发送者信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.yml\" sourcestartlinenumber=\"1\">扩展的群成员信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.HonorInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.HonorInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.HonorInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.HonorInfo.yml\" sourcestartlinenumber=\"1\">其他荣耀称号信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.yml\" sourcestartlinenumber=\"1\">群荣耀信息基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.MemberRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.MemberRole.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.MemberRole",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.MemberRole.yml\" sourcestartlinenumber=\"1\">群角色</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.MessageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.MessageType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.MessageType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.MessageType.yml\" sourcestartlinenumber=\"1\">消息类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus.yml\" sourcestartlinenumber=\"1\">服务器状态上报数据</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo.yml\" sourcestartlinenumber=\"1\">龙王信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.UserInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.UserInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data.UserInfo",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Data.UserInfo.yml\" sourcestartlinenumber=\"1\">用户信息</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.FriendAddedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.FriendAddedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.FriendAddedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.FriendAddedEventArgs.yml\" sourcestartlinenumber=\"1\">好友已添加事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.FriendMessageRecalledEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.FriendMessageRecalledEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.FriendMessageRecalledEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.FriendMessageRecalledEventArgs.yml\" sourcestartlinenumber=\"1\">好友消息撤回事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAddRequestEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAddRequestEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupAddRequestEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupAddRequestEventArgs.yml\" sourcestartlinenumber=\"1\">（加群请求 或 邀请加群）事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedEventArgs.yml\" sourcestartlinenumber=\"1\">群管理员变更事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.yml\" sourcestartlinenumber=\"1\">群管理员变更事件子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedEventArgs.yml\" sourcestartlinenumber=\"1\">群成员禁言状态变更事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedSubtype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedSubtype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedSubtype",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupBanStatusChangedSubtype.yml\" sourcestartlinenumber=\"1\">群成员禁言状态变更事件子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupFileUploadedEventArgs.yml\" sourcestartlinenumber=\"1\">群文件上传事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupLuckyKingChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupLuckyKingChangedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupLuckyKingChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupLuckyKingChangedEventArgs.yml\" sourcestartlinenumber=\"1\">群红包运气王事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseEventArgs.yml\" sourcestartlinenumber=\"1\">群成员减少事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseSubtype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseSubtype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseSubtype",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberDecreaseSubtype.yml\" sourcestartlinenumber=\"1\">群成员减少事件子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberHonorChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberHonorChangedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMemberHonorChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberHonorChangedEventArgs.yml\" sourcestartlinenumber=\"1\">群成员荣誉变更事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseEventArgs.yml\" sourcestartlinenumber=\"1\">群成员增加事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseSubtype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseSubtype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseSubtype",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMemberIncreaseSubtype.yml\" sourcestartlinenumber=\"1\">群成员增加事件子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageRecalledEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageRecalledEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMessageRecalledEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageRecalledEventArgs.yml\" sourcestartlinenumber=\"1\">群消息撤回事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedEventArgs.yml\" sourcestartlinenumber=\"1\">群消息接收事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupMessageReceivedSubType.yml\" sourcestartlinenumber=\"1\">群聊消息子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupPokedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.GroupPokedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.GroupPokedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.GroupPokedEventArgs.yml\" sourcestartlinenumber=\"1\">群内戳一戳事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.HeartbeatEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.HeartbeatEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.HeartbeatEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.HeartbeatEventArgs.yml\" sourcestartlinenumber=\"1\">心跳事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.yml\" sourcestartlinenumber=\"1\">关于群的事件接口</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.IUserEventArgs.yml\" sourcestartlinenumber=\"1\">关于用户的事件接口</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.LifecycleEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventArgs.yml\" sourcestartlinenumber=\"1\">生命周期通报事件参数</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventSubType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventSubType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.LifecycleEventSubType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.LifecycleEventSubType.yml\" sourcestartlinenumber=\"1\">生命周期通报子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MessageReceivedEventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MessageReceivedEventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.MessageReceivedEventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.MessageReceivedEventArgsBase.yml\" sourcestartlinenumber=\"1\">消息接收事件基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MetaEventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MetaEventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.MetaEventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.MetaEventArgsBase.yml\" sourcestartlinenumber=\"1\">元消息事件数据基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MetaEventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.MetaEventType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.MetaEventType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.MetaEventType.yml\" sourcestartlinenumber=\"1\">元消息类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NewFriendRequestEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NewFriendRequestEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.NewFriendRequestEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.NewFriendRequestEventArgs.yml\" sourcestartlinenumber=\"1\">加好友请求事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.NoticeEventArgsBase.yml\" sourcestartlinenumber=\"1\">消息事件上报基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NoticeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NoticeType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.NoticeType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.NoticeType.yml\" sourcestartlinenumber=\"1\">消息类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NotifyEventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NotifyEventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.NotifyEventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.NotifyEventArgsBase.yml\" sourcestartlinenumber=\"1\">“通知”事件数据基类。鬼知道为什么有这个东西。</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NotifySubtype.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.NotifySubtype.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.NotifySubtype",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.NotifySubtype.yml\" sourcestartlinenumber=\"1\">通知子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.yml\" sourcestartlinenumber=\"1\">事件参数基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PostType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PostType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.PostType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.PostType.yml\" sourcestartlinenumber=\"1\">事件类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedEventArgs",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedEventArgs.yml\" sourcestartlinenumber=\"1\">私聊消息接收事件</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedSubType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedSubType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedSubType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.PrivateMessageReceivedSubType.yml\" sourcestartlinenumber=\"1\">私聊消息子类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.RequestEventArgsBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.RequestEventArgsBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.RequestEventArgsBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.RequestEventArgsBase.yml\" sourcestartlinenumber=\"1\">请求事件基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.RequestType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.RequestType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events.RequestType",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Events.RequestType.yml\" sourcestartlinenumber=\"1\">请求类型</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Events.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Events",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.AnonymousPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.AnonymousPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.AnonymousPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.AnonymousPart.yml\" sourcestartlinenumber=\"1\">[弃用的]匿名消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.AtPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.AtPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.AtPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.AtPart.yml\" sourcestartlinenumber=\"1\">@消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ContactPartBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ContactPartBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ContactPartBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ContactPartBase.yml\" sourcestartlinenumber=\"1\">好友/群邀请消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.CustomForwardNodePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.CustomForwardNodePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.CustomForwardNodePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.CustomForwardNodePart.yml\" sourcestartlinenumber=\"1\">自定义转发消息节点</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.CustomMusicSharePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.CustomMusicSharePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.CustomMusicSharePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.CustomMusicSharePart.yml\" sourcestartlinenumber=\"1\">自定义音乐分享消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.DicePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.DicePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.DicePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.DicePart.yml\" sourcestartlinenumber=\"1\">掷骰子魔法表情*消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FacePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FacePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.FacePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.FacePart.yml\" sourcestartlinenumber=\"1\">表情消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FilePartBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FilePartBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.FilePartBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.FilePartBase.yml\" sourcestartlinenumber=\"1\">有关文件的消息段基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ForwardMessagePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ForwardMessagePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ForwardMessagePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ForwardMessagePart.yml\" sourcestartlinenumber=\"1\">合并转发消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ForwardNodePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ForwardNodePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ForwardNodePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ForwardNodePart.yml\" sourcestartlinenumber=\"1\">转发消息节点消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FriendContactPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.FriendContactPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.FriendContactPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.FriendContactPart.yml\" sourcestartlinenumber=\"1\">好友推荐消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.GroupContactPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.GroupContactPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.GroupContactPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.GroupContactPart.yml\" sourcestartlinenumber=\"1\">群聊推荐消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ImagePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ImagePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ImagePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ImagePart.yml\" sourcestartlinenumber=\"1\">图片消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.JsonPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.JsonPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.JsonPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.JsonPart.yml\" sourcestartlinenumber=\"1\">JSON消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.LocationPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.LocationPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.LocationPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.LocationPart.yml\" sourcestartlinenumber=\"1\">位置分享消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.Message.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.Message",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.Message.yml\" sourcestartlinenumber=\"1\">消息类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.yml\" sourcestartlinenumber=\"1\">消息段基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.MusicSharePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePart.yml\" sourcestartlinenumber=\"1\">（预定义）音乐分享消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePartBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePartBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.MusicSharePartBase",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.MusicSharePartBase.yml\" sourcestartlinenumber=\"1\">音乐分享消息段基类</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.PokePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.PokePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.PokePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.PokePart.yml\" sourcestartlinenumber=\"1\">戳一戳消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.RecordPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.RecordPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.RecordPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.RecordPart.yml\" sourcestartlinenumber=\"1\">录音消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ReplyPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ReplyPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ReplyPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ReplyPart.yml\" sourcestartlinenumber=\"1\">回复消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.RpsPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.RpsPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.RpsPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.RpsPart.yml\" sourcestartlinenumber=\"1\">猜拳魔法表情*消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ShakePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.ShakePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.ShakePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.ShakePart.yml\" sourcestartlinenumber=\"1\">窗口抖动消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.SharePart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.SharePart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.SharePart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.SharePart.yml\" sourcestartlinenumber=\"1\">链接分享消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.TextPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.TextPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.TextPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.TextPart.yml\" sourcestartlinenumber=\"1\">文本消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.VideoPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.VideoPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.VideoPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.VideoPart.yml\" sourcestartlinenumber=\"1\">视频消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.XmlPart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.XmlPart.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages.XmlPart",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.Messages.XmlPart.yml\" sourcestartlinenumber=\"1\">XML消息段</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.Messages.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.Messages",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.OnebotV11ClientException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.OnebotV11ClientException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11.OnebotV11ClientException",
+      "Summary": "<p sourcefile=\"api/Gdr2333.BotLib.OnebotV11.OnebotV11ClientException.yml\" sourcestartlinenumber=\"1\">客户端内部异常</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Gdr2333.BotLib.OnebotV11.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Gdr2333.BotLib.OnebotV11.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gdr2333.BotLib.OnebotV11",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

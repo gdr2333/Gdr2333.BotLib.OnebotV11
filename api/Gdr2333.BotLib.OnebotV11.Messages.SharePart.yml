@@ -1,0 +1,806 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  commentId: T:Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  id: SharePart
+  parent: Gdr2333.BotLib.OnebotV11.Messages
+  children:
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor(System.Uri,System.String,System.String,System.Uri)
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString
+  - Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+  langs:
+  - csharp
+  - vb
+  name: SharePart
+  nameWithType: SharePart
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  type: Class
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: SharePart
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 24
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 链接分享消息段
+  example: []
+  syntax:
+    content: 'public class SharePart : MessagePartBase, IJsonOnSerializing, IJsonOnDeserialized'
+    content.vb: Public Class SharePart Inherits MessagePartBase Implements IJsonOnSerializing, IJsonOnDeserialized
+  inheritance:
+  - System.Object
+  - Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  implements:
+  - System.Text.Json.Serialization.IJsonOnSerializing
+  - System.Text.Json.Serialization.IJsonOnDeserialized
+  inheritedMembers:
+  - Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.Type
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+  commentId: P:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+  id: Url
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: Url
+  nameWithType: SharePart.Url
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Url
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 29
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 要分享的链接
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Uri Url { get; set; }
+    parameters: []
+    return:
+      type: System.Uri
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Url As Uri
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+  commentId: P:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+  id: Title
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: SharePart.Title
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Title
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 35
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 分享标题
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Title As String
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+  commentId: P:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+  id: Content
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: Content
+  nameWithType: SharePart.Content
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Content
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 41
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 分享内容介绍
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public string? Content { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Content As String
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+  commentId: P:Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+  id: ImageUrl
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: ImageUrl
+  nameWithType: SharePart.ImageUrl
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: ImageUrl
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 47
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 内容图片URL
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Uri? ImageUrl { get; set; }
+    parameters: []
+    return:
+      type: System.Uri
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property ImageUrl As Uri
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor(System.Uri,System.String,System.String,System.Uri)
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor(System.Uri,System.String,System.String,System.Uri)
+  id: '#ctor(System.Uri,System.String,System.String,System.Uri)'
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: SharePart(Uri, string, string?, Uri?)
+  nameWithType: SharePart.SharePart(Uri, string, string?, Uri?)
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.SharePart(System.Uri, string, string?, System.Uri?)
+  type: Constructor
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: .ctor
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 70
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 构建一个链接分享消息段
+  example: []
+  syntax:
+    content: public SharePart(Uri url, string title, string? content = null, Uri? imageUrl = null)
+    parameters:
+    - id: url
+      type: System.Uri
+      description: 要分享的链接
+    - id: title
+      type: System.String
+      description: 分享标题
+    - id: content
+      type: System.String
+      description: 分享内容介绍
+    - id: imageUrl
+      type: System.Uri
+      description: 内容图片URL
+    content.vb: Public Sub New(url As Uri, title As String, content As String = Nothing, imageUrl As Uri = Nothing)
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor*
+  nameWithType.vb: SharePart.New(Uri, String, String, Uri)
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.SharePart.New(System.Uri, String, String, System.Uri)
+  name.vb: New(Uri, String, String, Uri)
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString
+  id: ToString
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: SharePart.ToString()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString()
+  type: Method
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: ToString
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 79
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 返回消息段的文本表现形式
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: 文本表现形式
+    content.vb: Public Overrides Function ToString() As String
+  overridden: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString*
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized
+  id: OnDeserialized
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: OnDeserialized()
+  nameWithType: SharePart.OnDeserialized()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized()
+  type: Method
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: OnDeserialized
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 83
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: JSON反序列化后的钩子
+  example: []
+  syntax:
+    content: public override void OnDeserialized()
+    content.vb: Public Overrides Sub OnDeserialized()
+  overridden: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized*
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing
+  id: OnSerializing
+  parent: Gdr2333.BotLib.OnebotV11.Messages.SharePart
+  langs:
+  - csharp
+  - vb
+  name: OnSerializing()
+  nameWithType: SharePart.OnSerializing()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing()
+  type: Method
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: OnSerializing
+    path: Gdr2333.BotLib.OnebotV11/Messages/SharePart.cs
+    startLine: 88
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: JSON序列化之前的钩子
+  example: []
+  syntax:
+    content: public override void OnSerializing()
+    content.vb: Public Overrides Sub OnSerializing()
+  overridden: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing
+  overload: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing*
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Messages
+  commentId: N:Gdr2333.BotLib.OnebotV11.Messages
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Messages
+  nameWithType: Gdr2333.BotLib.OnebotV11.Messages
+  fullName: Gdr2333.BotLib.OnebotV11.Messages
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Messages
+    name: Messages
+    href: Gdr2333.BotLib.OnebotV11.Messages.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Messages
+    name: Messages
+    href: Gdr2333.BotLib.OnebotV11.Messages.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  parent: Gdr2333.BotLib.OnebotV11.Messages
+  href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html
+  name: MessagePartBase
+  nameWithType: MessagePartBase
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+- uid: System.Text.Json.Serialization.IJsonOnSerializing
+  commentId: T:System.Text.Json.Serialization.IJsonOnSerializing
+  parent: System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.ijsononserializing
+  name: IJsonOnSerializing
+  nameWithType: IJsonOnSerializing
+  fullName: System.Text.Json.Serialization.IJsonOnSerializing
+- uid: System.Text.Json.Serialization.IJsonOnDeserialized
+  commentId: T:System.Text.Json.Serialization.IJsonOnDeserialized
+  parent: System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization.ijsonondeserialized
+  name: IJsonOnDeserialized
+  nameWithType: IJsonOnDeserialized
+  fullName: System.Text.Json.Serialization.IJsonOnDeserialized
+- uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.Type
+  commentId: P:Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.Type
+  parent: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_Type
+  name: Type
+  nameWithType: MessagePartBase.Type
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.Type
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Text.Json.Serialization
+  commentId: N:System.Text.Json.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text.Json.Serialization
+  nameWithType: System.Text.Json.Serialization
+  fullName: System.Text.Json.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  - name: .
+  - uid: System.Text.Json
+    name: Json
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json
+  - name: .
+  - uid: System.Text.Json.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.serialization
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_Url
+  name: Url
+  nameWithType: SharePart.Url
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Url
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uri
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_Title
+  name: Title
+  nameWithType: SharePart.Title
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_Content
+  name: Content
+  nameWithType: SharePart.Content
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.Content
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_ImageUrl
+  name: ImageUrl
+  nameWithType: SharePart.ImageUrl
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ImageUrl
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.#ctor
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart__ctor_System_Uri_System_String_System_String_System_Uri_
+  name: SharePart
+  nameWithType: SharePart.SharePart
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.SharePart
+  nameWithType.vb: SharePart.New
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.SharePart.New
+  name.vb: New
+- uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString
+  parent: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_ToString
+  name: ToString()
+  nameWithType: MessagePartBase.ToString()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString()
+  spec.csharp:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString
+    name: ToString
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.ToString
+    name: ToString
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_ToString
+  - name: (
+  - name: )
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_ToString
+  name: ToString
+  nameWithType: SharePart.ToString
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.ToString
+- uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized
+  parent: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnDeserialized
+  name: OnDeserialized()
+  nameWithType: MessagePartBase.OnDeserialized()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized()
+  spec.csharp:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized
+    name: OnDeserialized
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnDeserialized
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnDeserialized
+    name: OnDeserialized
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnDeserialized
+  - name: (
+  - name: )
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_OnDeserialized
+  name: OnDeserialized
+  nameWithType: SharePart.OnDeserialized
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnDeserialized
+- uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing
+  parent: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase
+  href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnSerializing
+  name: OnSerializing()
+  nameWithType: MessagePartBase.OnSerializing()
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing()
+  spec.csharp:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing
+    name: OnSerializing
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnSerializing
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.OnSerializing
+    name: OnSerializing
+    href: Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.html#Gdr2333_BotLib_OnebotV11_Messages_MessagePartBase_OnSerializing
+  - name: (
+  - name: )
+- uid: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing
+  href: Gdr2333.BotLib.OnebotV11.Messages.SharePart.html#Gdr2333_BotLib_OnebotV11_Messages_SharePart_OnSerializing
+  name: OnSerializing
+  nameWithType: SharePart.OnSerializing
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.SharePart.OnSerializing

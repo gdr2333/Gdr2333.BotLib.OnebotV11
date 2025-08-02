@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.MessageType
+  id: MessageType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  children:
+  - Gdr2333.BotLib.OnebotV11.Data.MessageType.Group
+  - Gdr2333.BotLib.OnebotV11.Data.MessageType.Private
+  langs:
+  - csharp
+  - vb
+  name: MessageType
+  nameWithType: MessageType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  type: Enum
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: MessageType
+    path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+    startLine: 25
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 消息类型
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(MessageTypeConverter))]
+
+      public enum MessageType
+    content.vb: >-
+      <JsonConverter(GetType(MessageTypeConverter))>
+
+      Public Enum MessageType
+- uid: Gdr2333.BotLib.OnebotV11.Data.MessageType.Private
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.MessageType.Private
+  id: Private
+  parent: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  langs:
+  - csharp
+  - vb
+  name: Private
+  nameWithType: MessageType.Private
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MessageType.Private
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Private
+    path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+    startLine: 31
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 私聊消息
+  example: []
+  syntax:
+    content: Private = 0
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.MessageType
+- uid: Gdr2333.BotLib.OnebotV11.Data.MessageType.Group
+  commentId: F:Gdr2333.BotLib.OnebotV11.Data.MessageType.Group
+  id: Group
+  parent: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  langs:
+  - csharp
+  - vb
+  name: Group
+  nameWithType: MessageType.Group
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MessageType.Group
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Group
+    path: Gdr2333.BotLib.OnebotV11/Data/MessageType.cs
+    startLine: 35
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 群聊消息
+  example: []
+  syntax:
+    content: Group = 1
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Data.MessageType
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+- uid: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.MessageType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.MessageType.html
+  name: MessageType
+  nameWithType: MessageType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MessageType

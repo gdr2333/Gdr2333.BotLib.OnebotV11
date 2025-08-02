@@ -1,0 +1,214 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  id: Gdr2333.BotLib.OnebotV11.Data
+  children:
+  - Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo
+  - Gdr2333.BotLib.OnebotV11.Data.FriendInfo
+  - Gdr2333.BotLib.OnebotV11.Data.Gender
+  - Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult
+  - Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult
+  - Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult
+  - Gdr2333.BotLib.OnebotV11.Data.GetMessageResult
+  - Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult
+  - Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType
+  - Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+  - Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  - Gdr2333.BotLib.OnebotV11.Data.GroupInfo
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  - Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  - Gdr2333.BotLib.OnebotV11.Data.MemberRole
+  - Gdr2333.BotLib.OnebotV11.Data.MessageType
+  - Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus
+  - Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+  - Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  langs:
+  - csharp
+  - vb
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  type: Namespace
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo.html
+  name: AnonymousInfo
+  nameWithType: AnonymousInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.AnonymousInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.FriendInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.FriendInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.FriendInfo.html
+  name: FriendInfo
+  nameWithType: FriendInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.FriendInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult
+  href: Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult.html
+  name: GetCredentialsResult
+  nameWithType: GetCredentialsResult
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GetCredentialsResult
+- uid: Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult
+  href: Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult.html
+  name: GetGroupHonorInfoResult
+  nameWithType: GetGroupHonorInfoResult
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GetGroupHonorInfoResult
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html
+  name: HonorInfoBase
+  nameWithType: HonorInfoBase
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+- uid: Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo.html
+  name: TalkAtiveInfo
+  nameWithType: TalkAtiveInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfo.html
+  name: HonorInfo
+  nameWithType: HonorInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult
+  href: Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult.html
+  name: GetLoginInfoResult
+  nameWithType: GetLoginInfoResult
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GetLoginInfoResult
+- uid: Gdr2333.BotLib.OnebotV11.Data.GetMessageResult
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GetMessageResult
+  href: Gdr2333.BotLib.OnebotV11.Data.GetMessageResult.html
+  name: GetMessageResult
+  nameWithType: GetMessageResult
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GetMessageResult
+- uid: Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult
+  href: Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult.html
+  name: GetVersionInfoResult
+  nameWithType: GetVersionInfoResult
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GetVersionInfoResult
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType.html
+  name: GroupAddRequestType
+  nameWithType: GroupAddRequestType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupAddRequestType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo.html
+  name: GroupFileInfo
+  nameWithType: GroupFileInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupFileInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType.html
+  name: GroupHonorType
+  nameWithType: GroupHonorType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupHonorType
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupInfo
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupInfo.html
+  name: GroupInfo
+  nameWithType: GroupInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo.html
+  name: GroupMemberInfo
+  nameWithType: GroupMemberInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.MemberRole
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.MemberRole
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.MemberRole.html
+  name: MemberRole
+  nameWithType: MemberRole
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MemberRole
+- uid: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+  href: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx.html
+  name: GroupMemberInfoEx
+  nameWithType: GroupMemberInfoEx
+  fullName: Gdr2333.BotLib.OnebotV11.Data.GroupMemberInfoEx
+- uid: Gdr2333.BotLib.OnebotV11.Data.MessageType
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.MessageType
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.MessageType.html
+  name: MessageType
+  nameWithType: MessageType
+  fullName: Gdr2333.BotLib.OnebotV11.Data.MessageType
+- uid: Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus.html
+  name: OnebotV11ServerStatus
+  nameWithType: OnebotV11ServerStatus
+  fullName: Gdr2333.BotLib.OnebotV11.Data.OnebotV11ServerStatus
+- uid: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.UserInfo
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.UserInfo.html
+  name: UserInfo
+  nameWithType: UserInfo
+  fullName: Gdr2333.BotLib.OnebotV11.Data.UserInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.Gender
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.Gender
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.BotLib.OnebotV11.Data.Gender.html
+  name: Gender
+  nameWithType: Gender
+  fullName: Gdr2333.BotLib.OnebotV11.Data.Gender
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html

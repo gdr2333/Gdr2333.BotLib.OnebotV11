@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  id: IGroupEventArgs
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  children:
+  - Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  langs:
+  - csharp
+  - vb
+  name: IGroupEventArgs
+  nameWithType: IGroupEventArgs
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  type: Interface
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/IGroupEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: IGroupEventArgs
+    path: Gdr2333.BotLib.OnebotV11/Events/IGroupEventArgs.cs
+    startLine: 23
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 关于群的事件接口
+  example: []
+  syntax:
+    content: public interface IGroupEventArgs
+    content.vb: Public Interface IGroupEventArgs
+- uid: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  id: GroupId
+  parent: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs
+  langs:
+  - csharp
+  - vb
+  name: GroupId
+  nameWithType: IGroupEventArgs.GroupId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/IGroupEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupId
+    path: Gdr2333.BotLib.OnebotV11/Events/IGroupEventArgs.cs
+    startLine: 28
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 涉及到的群ID
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("group_id")]
+
+      long GroupId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("group_id")>
+
+      ReadOnly Property GroupId As Long
+  overload: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: group_id
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Events
+  commentId: N:Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Events
+  nameWithType: Gdr2333.BotLib.OnebotV11.Events
+  fullName: Gdr2333.BotLib.OnebotV11.Events
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+- uid: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+  href: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.html#Gdr2333_BotLib_OnebotV11_Events_IGroupEventArgs_GroupId
+  name: GroupId
+  nameWithType: IGroupEventArgs.GroupId
+  fullName: Gdr2333.BotLib.OnebotV11.Events.IGroupEventArgs.GroupId
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

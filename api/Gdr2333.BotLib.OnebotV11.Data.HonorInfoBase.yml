@@ -1,0 +1,622 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  id: HonorInfoBase
+  parent: Gdr2333.BotLib.OnebotV11.Data
+  children:
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor(System.Int64,System.String,System.Uri)
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+  langs:
+  - csharp
+  - vb
+  name: HonorInfoBase
+  nameWithType: HonorInfoBase
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  type: Class
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: HonorInfoBase
+    path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+    startLine: 72
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 群荣耀信息基类
+  example: []
+  syntax:
+    content: >-
+      [JsonDerivedType(typeof(TalkAtiveInfo))]
+
+      [JsonDerivedType(typeof(HonorInfo))]
+
+      public abstract class HonorInfoBase
+    content.vb: >-
+      <JsonDerivedType(GetType(TalkAtiveInfo))>
+
+      <JsonDerivedType(GetType(HonorInfo))>
+
+      Public MustInherit Class HonorInfoBase
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+  - Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.Text.Json.Serialization.JsonDerivedTypeAttribute
+    ctor: System.Text.Json.Serialization.JsonDerivedTypeAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Gdr2333.BotLib.OnebotV11.Data.TalkAtiveInfo
+  - type: System.Text.Json.Serialization.JsonDerivedTypeAttribute
+    ctor: System.Text.Json.Serialization.JsonDerivedTypeAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Gdr2333.BotLib.OnebotV11.Data.HonorInfo
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor(System.Int64,System.String,System.Uri)
+  commentId: M:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor(System.Int64,System.String,System.Uri)
+  id: '#ctor(System.Int64,System.String,System.Uri)'
+  parent: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  langs:
+  - csharp
+  - vb
+  name: HonorInfoBase(long, string, Uri?)
+  nameWithType: HonorInfoBase.HonorInfoBase(long, string, Uri?)
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.HonorInfoBase(long, string, System.Uri?)
+  type: Constructor
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: .ctor
+    path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+    startLine: 72
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 群荣耀信息基类
+  example: []
+  syntax:
+    content: >-
+      [JsonConstructor]
+
+      protected HonorInfoBase(long userId, string nickname, Uri? avatarUrl)
+    parameters:
+    - id: userId
+      type: System.Int64
+    - id: nickname
+      type: System.String
+    - id: avatarUrl
+      type: System.Uri
+    content.vb: >-
+      <JsonConstructor>
+
+      Protected Sub New(userId As Long, nickname As String, avatarUrl As Uri)
+  overload: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConstructorAttribute
+    ctor: System.Text.Json.Serialization.JsonConstructorAttribute.#ctor
+    arguments: []
+  nameWithType.vb: HonorInfoBase.New(Long, String, Uri)
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.New(Long, String, System.Uri)
+  name.vb: New(Long, String, Uri)
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+  id: UserId
+  parent: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: HonorInfoBase.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: UserId
+    path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+    startLine: 80
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 获得该荣耀称号的用户Id
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("user_id")]
+
+      [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+
+      public long UserId { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("user_id")>
+
+      <JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)>
+
+      Public Property UserId As Long
+  overload: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: user_id
+  - type: System.Text.Json.Serialization.JsonNumberHandlingAttribute
+    ctor: System.Text.Json.Serialization.JsonNumberHandlingAttribute.#ctor(System.Text.Json.Serialization.JsonNumberHandling)
+    arguments:
+    - type: System.Text.Json.Serialization.JsonNumberHandling
+      value: 1
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+  id: Nickname
+  parent: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  langs:
+  - csharp
+  - vb
+  name: Nickname
+  nameWithType: HonorInfoBase.Nickname
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Nickname
+    path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+    startLine: 86
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 获得该荣耀称号的用户昵称
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonRequired]
+
+      [JsonPropertyName("nickname")]
+
+      public string Nickname { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonRequired>
+
+      <JsonPropertyName("nickname")>
+
+      Public Property Nickname As String
+  overload: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonRequiredAttribute
+    ctor: System.Text.Json.Serialization.JsonRequiredAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: nickname
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl
+  commentId: P:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl
+  id: AvatarUrl
+  parent: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase
+  langs:
+  - csharp
+  - vb
+  name: AvatarUrl
+  nameWithType: HonorInfoBase.AvatarUrl
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl
+  type: Property
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: AvatarUrl
+    path: Gdr2333.BotLib.OnebotV11/Data/GetGroupHonorInfoResult.cs
+    startLine: 92
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Data
+  summary: 获得该荣耀称号的用户头像URL
+  example: []
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      [JsonPropertyName("avatar")]
+
+      public Uri? AvatarUrl { get; }
+    parameters: []
+    return:
+      type: System.Uri
+    content.vb: >-
+      <JsonInclude>
+
+      <JsonPropertyName("avatar")>
+
+      Public Property AvatarUrl As Uri
+  overload: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: avatar
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Data
+  commentId: N:Gdr2333.BotLib.OnebotV11.Data
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Data
+  nameWithType: Gdr2333.BotLib.OnebotV11.Data
+  fullName: Gdr2333.BotLib.OnebotV11.Data
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Data
+    name: Data
+    href: Gdr2333.BotLib.OnebotV11.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.#ctor
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html#Gdr2333_BotLib_OnebotV11_Data_HonorInfoBase__ctor_System_Int64_System_String_System_Uri_
+  name: HonorInfoBase
+  nameWithType: HonorInfoBase.HonorInfoBase
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.HonorInfoBase
+  nameWithType.vb: HonorInfoBase.New
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.New
+  name.vb: New
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uri
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html#Gdr2333_BotLib_OnebotV11_Data_HonorInfoBase_UserId
+  name: UserId
+  nameWithType: HonorInfoBase.UserId
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.UserId
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html#Gdr2333_BotLib_OnebotV11_Data_HonorInfoBase_Nickname
+  name: Nickname
+  nameWithType: HonorInfoBase.Nickname
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.Nickname
+- uid: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl
+  href: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.html#Gdr2333_BotLib_OnebotV11_Data_HonorInfoBase_AvatarUrl
+  name: AvatarUrl
+  nameWithType: HonorInfoBase.AvatarUrl
+  fullName: Gdr2333.BotLib.OnebotV11.Data.HonorInfoBase.AvatarUrl

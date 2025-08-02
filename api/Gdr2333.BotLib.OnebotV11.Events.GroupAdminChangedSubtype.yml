@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  id: GroupAdminChangedSubtype
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  children:
+  - Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Appoint
+  - Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Dismiss
+  langs:
+  - csharp
+  - vb
+  name: GroupAdminChangedSubtype
+  nameWithType: GroupAdminChangedSubtype
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  type: Enum
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: GroupAdminChangedSubtype
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+    startLine: 50
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 群管理员变更事件子类型
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(GroupAdminChangedSubtypeConverter))]
+
+      public enum GroupAdminChangedSubtype
+    content.vb: >-
+      <JsonConverter(GetType(GroupAdminChangedSubtypeConverter))>
+
+      Public Enum GroupAdminChangedSubtype
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Appoint
+  commentId: F:Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Appoint
+  id: Appoint
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  langs:
+  - csharp
+  - vb
+  name: Appoint
+  nameWithType: GroupAdminChangedSubtype.Appoint
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Appoint
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Appoint
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+    startLine: 56
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 任命
+  example: []
+  syntax:
+    content: Appoint = 0
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Dismiss
+  commentId: F:Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Dismiss
+  id: Dismiss
+  parent: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  langs:
+  - csharp
+  - vb
+  name: Dismiss
+  nameWithType: GroupAdminChangedSubtype.Dismiss
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.Dismiss
+  type: Field
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: Dismiss
+    path: Gdr2333.BotLib.OnebotV11/Events/GroupAdminChangedEventArgs.cs
+    startLine: 60
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Events
+  summary: 撤销
+  example: []
+  syntax:
+    content: Dismiss = 1
+    return:
+      type: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+references:
+- uid: Gdr2333.BotLib.OnebotV11.Events
+  commentId: N:Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Events
+  nameWithType: Gdr2333.BotLib.OnebotV11.Events
+  fullName: Gdr2333.BotLib.OnebotV11.Events
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+- uid: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype.html
+  name: GroupAdminChangedSubtype
+  nameWithType: GroupAdminChangedSubtype
+  fullName: Gdr2333.BotLib.OnebotV11.Events.GroupAdminChangedSubtype
