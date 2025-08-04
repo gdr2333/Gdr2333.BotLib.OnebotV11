@@ -346,6 +346,18 @@ public abstract class OnebotV11ClientBase
         throw new ArgumentNullException($"{nameof(userId)}和{nameof(groupId)}都是{null}！");
 
     /// <summary>
+    /// 发送消息到事件所在会话
+    /// </summary>
+    /// <param name="src">事件</param>
+    /// <param name="message">消息内容</param>
+    /// <param name="cancellationToken">取消令牌</param>
+    /// <returns>消息Id</returns>
+    public Task<long> SendMessage(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null) =>
+        src is IGroupEventArgs groupEvent ? SendGroupMessageAsync(groupEvent.GroupId, message, cancellationToken) :
+        src is IUserEventArgs userEvent ? SendPrivateMessageAsync(userEvent.UserId, message, cancellationToken) :
+        throw new ArgumentException($"无法确认{nameof(src)}所处的会话！");
+
+    /// <summary>
     /// 撤回消息
     /// </summary>
     /// <param name="messageId">要撤回的消息Id</param>
