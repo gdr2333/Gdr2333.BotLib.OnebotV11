@@ -58,8 +58,8 @@ items:
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupJoinRequestAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendLikeAsync(System.Int64,System.Int32,System.Nullable{System.Threading.CancellationToken})
-  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
-  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendPrivateMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupAdminAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupCardAsync(System.Int64,System.Int64,System.String,System.Nullable{System.Threading.CancellationToken})
@@ -190,23 +190,23 @@ items:
   nameWithType.vb: OnebotV11ClientBase.SendGroupMessageAsync(Long, Message, CancellationToken?)
   fullName.vb: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync(Long, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
   name.vb: SendGroupMessageAsync(Long, Message, CancellationToken?)
-- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
-  commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
-  id: SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  id: SendMessageAsync(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   parent: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
   langs:
   - csharp
   - vb
-  name: SendMessage(long?, long?, Message, CancellationToken?)
-  nameWithType: OnebotV11ClientBase.SendMessage(long?, long?, Message, CancellationToken?)
-  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(long?, long?, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
+  name: SendMessageAsync(long?, long?, Message, CancellationToken?)
+  nameWithType: OnebotV11ClientBase.SendMessageAsync(long?, long?, Message, CancellationToken?)
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(long?, long?, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
   type: Method
   source:
     remote:
       path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
       branch: master
       repo: https://github.com/gdr2333/Gdr2333.BotLib
-    id: SendMessage
+    id: SendMessageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
     startLine: 342
   assemblies:
@@ -216,7 +216,7 @@ items:
   remarks: 实际上我没调send_msg你信吗？
   example: []
   syntax:
-    content: public Task<long> SendMessage(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null)
+    content: public Task<long> SendMessageAsync(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null)
     parameters:
     - id: userId
       type: System.Nullable{System.Int64}
@@ -233,28 +233,28 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Int64}
       description: 消息Id
-    content.vb: Public Function SendMessage(userId As Long?, groupId As Long?, message As Message, cancellationToken As CancellationToken? = Nothing) As Task(Of Long)
-  overload: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage*
-  nameWithType.vb: OnebotV11ClientBase.SendMessage(Long?, Long?, Message, CancellationToken?)
-  fullName.vb: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Long?, Long?, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
-  name.vb: SendMessage(Long?, Long?, Message, CancellationToken?)
-- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
-  commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
-  id: SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+    content.vb: Public Function SendMessageAsync(userId As Long?, groupId As Long?, message As Message, cancellationToken As CancellationToken? = Nothing) As Task(Of Long)
+  overload: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync*
+  nameWithType.vb: OnebotV11ClientBase.SendMessageAsync(Long?, Long?, Message, CancellationToken?)
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(Long?, Long?, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
+  name.vb: SendMessageAsync(Long?, Long?, Message, CancellationToken?)
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  id: SendMessageAsync(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   parent: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
   langs:
   - csharp
   - vb
-  name: SendMessage(OnebotV11EventArgsBase, Message, CancellationToken?)
-  nameWithType: OnebotV11ClientBase.SendMessage(OnebotV11EventArgsBase, Message, CancellationToken?)
-  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
+  name: SendMessageAsync(OnebotV11EventArgsBase, Message, CancellationToken?)
+  nameWithType: OnebotV11ClientBase.SendMessageAsync(OnebotV11EventArgsBase, Message, CancellationToken?)
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
   type: Method
   source:
     remote:
       path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
       branch: master
       repo: https://github.com/gdr2333/Gdr2333.BotLib
-    id: SendMessage
+    id: SendMessageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
     startLine: 354
   assemblies:
@@ -263,7 +263,7 @@ items:
   summary: 发送消息到事件所在会话
   example: []
   syntax:
-    content: public Task<long> SendMessage(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null)
+    content: public Task<long> SendMessageAsync(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null)
     parameters:
     - id: src
       type: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
@@ -277,8 +277,8 @@ items:
     return:
       type: System.Threading.Tasks.Task{System.Int64}
       description: 消息Id
-    content.vb: Public Function SendMessage(src As OnebotV11EventArgsBase, message As Message, cancellationToken As CancellationToken? = Nothing) As Task(Of Long)
-  overload: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage*
+    content.vb: Public Function SendMessageAsync(src As OnebotV11EventArgsBase, message As Message, cancellationToken As CancellationToken? = Nothing) As Task(Of Long)
+  overload: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync*
 - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
   commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
   id: RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
@@ -3222,12 +3222,12 @@ references:
   name: SendGroupMessageAsync
   nameWithType: OnebotV11ClientBase.SendGroupMessageAsync
   fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync
-- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage*
-  commentId: Overload:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage
-  href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html#Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendMessage_System_Nullable_System_Int64__System_Nullable_System_Int64__Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken__
-  name: SendMessage
-  nameWithType: OnebotV11ClientBase.SendMessage
-  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync*
+  commentId: Overload:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync
+  href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html#Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_SendMessageAsync_System_Nullable_System_Int64__System_Nullable_System_Int64__Gdr2333_BotLib_OnebotV11_Messages_Message_System_Nullable_System_Threading_CancellationToken__
+  name: SendMessageAsync
+  nameWithType: OnebotV11ClientBase.SendMessageAsync
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessageAsync
 - uid: System.Nullable{System.Int64}
   commentId: T:System.Nullable{System.Int64}
   parent: System
