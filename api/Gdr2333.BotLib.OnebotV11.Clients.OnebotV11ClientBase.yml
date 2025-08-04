@@ -58,6 +58,7 @@ items:
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RejectGroupJoinRequestAsync(System.String,System.String,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendGroupMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendLikeAsync(System.Int64,System.Int32,System.Nullable{System.Threading.CancellationToken})
+  - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(System.Nullable{System.Int64},System.Nullable{System.Int64},Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendPrivateMessageAsync(System.Int64,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
   - Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SetGroupAdminAsync(System.Int64,System.Int64,System.Nullable{System.Threading.CancellationToken})
@@ -237,6 +238,47 @@ items:
   nameWithType.vb: OnebotV11ClientBase.SendMessage(Long?, Long?, Message, CancellationToken?)
   fullName.vb: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Long?, Long?, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
   name.vb: SendMessage(Long?, Long?, Message, CancellationToken?)
+- uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  id: SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase,Gdr2333.BotLib.OnebotV11.Messages.Message,System.Nullable{System.Threading.CancellationToken})
+  parent: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase
+  langs:
+  - csharp
+  - vb
+  name: SendMessage(OnebotV11EventArgsBase, Message, CancellationToken?)
+  nameWithType: OnebotV11ClientBase.SendMessage(OnebotV11EventArgsBase, Message, CancellationToken?)
+  fullName: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage(Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase, Gdr2333.BotLib.OnebotV11.Messages.Message, System.Threading.CancellationToken?)
+  type: Method
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: SendMessage
+    path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
+    startLine: 354
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Clients
+  summary: 发送消息到事件所在会话
+  example: []
+  syntax:
+    content: public Task<long> SendMessage(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null)
+    parameters:
+    - id: src
+      type: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+      description: 事件
+    - id: message
+      type: Gdr2333.BotLib.OnebotV11.Messages.Message
+      description: 消息内容
+    - id: cancellationToken
+      type: System.Nullable{System.Threading.CancellationToken}
+      description: 取消令牌
+    return:
+      type: System.Threading.Tasks.Task{System.Int64}
+      description: 消息Id
+    content.vb: Public Function SendMessage(src As OnebotV11EventArgsBase, message As Message, cancellationToken As CancellationToken? = Nothing) As Task(Of Long)
+  overload: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.SendMessage*
 - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
   commentId: M:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
   id: RecallMessageAsync(System.Int64,System.Nullable{System.Threading.CancellationToken})
@@ -255,7 +297,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: RecallMessageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 353
+    startLine: 365
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -296,7 +338,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetMessageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 362
+    startLine: 374
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -337,7 +379,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetForwardMessageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 371
+    startLine: 383
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -378,7 +420,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SendLikeAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 381
+    startLine: 393
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -422,7 +464,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoGroupKickAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 392
+    startLine: 404
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -469,7 +511,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoGroupBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 403
+    startLine: 415
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -516,7 +558,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoGroupBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 414
+    startLine: 426
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -563,7 +605,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CancelGroupBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 424
+    startLine: 436
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -607,7 +649,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoGroupAnonymousBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 435
+    startLine: 447
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -666,7 +708,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoGroupAnonymousBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 447
+    startLine: 459
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -725,7 +767,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoWholeGroupBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 460
+    startLine: 472
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -766,7 +808,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CancelWholeGroupBanAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 469
+    startLine: 481
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -807,7 +849,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SetGroupAdminAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 482
+    startLine: 494
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -851,7 +893,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DismissGroupAdminAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 492
+    startLine: 504
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -895,7 +937,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: AllowAnonymousAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 505
+    startLine: 517
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -948,7 +990,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DisallowAnonmyousAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 515
+    startLine: 527
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1001,7 +1043,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SetGroupCardAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 527
+    startLine: 539
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1048,7 +1090,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DeleteGroupCardAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 537
+    startLine: 549
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1092,7 +1134,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SetGroupNameAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 547
+    startLine: 559
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1136,7 +1178,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: LeaveFromGroupAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 557
+    startLine: 569
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1192,7 +1234,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: LeaveFromGroupAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 569
+    startLine: 581
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1233,7 +1275,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SetGroupSpecialTitleAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 582
+    startLine: 594
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1295,7 +1337,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: SetGroupSpecialTitleAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 595
+    startLine: 607
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1342,7 +1384,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DeleteGroupSpecialTitleAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 607
+    startLine: 619
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1386,7 +1428,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: AcceptFriendAddRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 621
+    startLine: 633
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1430,7 +1472,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: RejectFriendAddRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 630
+    startLine: 642
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1471,7 +1513,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: AcceptGroupJoinRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 642
+    startLine: 654
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1512,7 +1554,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: RejectGroupJoinRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 652
+    startLine: 664
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1556,7 +1598,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: AcceptGroupInviteRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 661
+    startLine: 673
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1597,7 +1639,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: RejectGroupInviteRequestAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 671
+    startLine: 683
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1641,7 +1683,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetLoginInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 679
+    startLine: 691
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1676,7 +1718,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetStrangerInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 689
+    startLine: 701
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1720,7 +1762,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetFriendListAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 697
+    startLine: 709
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1755,7 +1797,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 707
+    startLine: 719
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1799,7 +1841,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupList
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 715
+    startLine: 727
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1834,7 +1876,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupMemberInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 726
+    startLine: 738
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1881,7 +1923,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupMemberListAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 735
+    startLine: 747
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1922,7 +1964,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupHonorInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 749
+    startLine: 761
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -1970,7 +2012,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetGroupHonorInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 766
+    startLine: 778
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2011,7 +2053,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetCookiesAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 775
+    startLine: 787
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2052,7 +2094,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetCsrfTokenAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 783
+    startLine: 795
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2087,7 +2129,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetCredentialsAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 792
+    startLine: 804
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2128,7 +2170,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetRecordAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 802
+    startLine: 814
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2172,7 +2214,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetImageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 811
+    startLine: 823
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2213,7 +2255,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CheckCanSendImageAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 819
+    startLine: 831
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2248,7 +2290,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CheckCanSendRecordAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 827
+    startLine: 839
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2283,7 +2325,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetStatusAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 835
+    startLine: 847
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2318,7 +2360,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: GetVersionInfoAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 843
+    startLine: 855
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2353,7 +2395,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoRestartAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 852
+    startLine: 864
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2394,7 +2436,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoRestartAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 861
+    startLine: 873
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2432,7 +2474,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: DoCleanCache
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 869
+    startLine: 881
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2467,7 +2509,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CallApiAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 878
+    startLine: 890
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2508,7 +2550,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: CallApiAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 888
+    startLine: 900
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2555,7 +2597,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: InvokeApiAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 897
+    startLine: 909
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2599,7 +2641,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: InvokeApiAsync
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 908
+    startLine: 920
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2648,7 +2690,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: OnEventOccurrence
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 920
+    startLine: 932
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -2677,7 +2719,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: OnExceptionOccurrence
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 932
+    startLine: 944
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
@@ -3209,6 +3251,51 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int64
   - name: '?'
+- uid: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  commentId: T:Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+  parent: Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase.html
+  name: OnebotV11EventArgsBase
+  nameWithType: OnebotV11EventArgsBase
+  fullName: Gdr2333.BotLib.OnebotV11.Events.OnebotV11EventArgsBase
+- uid: Gdr2333.BotLib.OnebotV11.Events
+  commentId: N:Gdr2333.BotLib.OnebotV11.Events
+  href: Gdr2333.html
+  name: Gdr2333.BotLib.OnebotV11.Events
+  nameWithType: Gdr2333.BotLib.OnebotV11.Events
+  fullName: Gdr2333.BotLib.OnebotV11.Events
+  spec.csharp:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
+  spec.vb:
+  - uid: Gdr2333
+    name: Gdr2333
+    href: Gdr2333.html
+  - name: .
+  - uid: Gdr2333.BotLib
+    name: BotLib
+    href: Gdr2333.BotLib.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11
+    name: OnebotV11
+    href: Gdr2333.BotLib.OnebotV11.html
+  - name: .
+  - uid: Gdr2333.BotLib.OnebotV11.Events
+    name: Events
+    href: Gdr2333.BotLib.OnebotV11.Events.html
 - uid: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync*
   commentId: Overload:Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.RecallMessageAsync
   href: Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase.html#Gdr2333_BotLib_OnebotV11_Clients_OnebotV11ClientBase_RecallMessageAsync_System_Int64_System_Nullable_System_Threading_CancellationToken__

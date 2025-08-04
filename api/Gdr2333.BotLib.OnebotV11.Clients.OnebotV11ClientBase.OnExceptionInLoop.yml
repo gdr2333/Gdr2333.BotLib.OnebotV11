@@ -19,7 +19,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: OnExceptionInLoop
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 927
+    startLine: 939
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients

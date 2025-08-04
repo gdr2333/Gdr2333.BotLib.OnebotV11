@@ -19,7 +19,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: OnebotEventOccurrence
     path: Gdr2333.BotLib.OnebotV11/Clients/OnebotV11ClientBase.cs
-    startLine: 915
+    startLine: 927
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Clients
