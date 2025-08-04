@@ -340,7 +340,7 @@ public abstract class OnebotV11ClientBase
     /// <remarks>
     /// 实际上我没调send_msg你信吗？
     /// </remarks>
-    public Task<long> SendMessage(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null) =>
+    public Task<long> SendMessageAsync(long? userId, long? groupId, Message message, CancellationToken? cancellationToken = null) =>
         userId.HasValue ? SendPrivateMessageAsync(userId.Value, message, cancellationToken) :
         groupId.HasValue ? SendGroupMessageAsync(groupId.Value, message, cancellationToken) :
         throw new ArgumentNullException($"{nameof(userId)}和{nameof(groupId)}都是{null}！");
@@ -352,7 +352,7 @@ public abstract class OnebotV11ClientBase
     /// <param name="message">消息内容</param>
     /// <param name="cancellationToken">取消令牌</param>
     /// <returns>消息Id</returns>
-    public Task<long> SendMessage(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null) =>
+    public Task<long> SendMessageAsync(OnebotV11EventArgsBase src, Message message, CancellationToken? cancellationToken = null) =>
         src is IGroupEventArgs groupEvent ? SendGroupMessageAsync(groupEvent.GroupId, message, cancellationToken) :
         src is IUserEventArgs userEvent ? SendPrivateMessageAsync(userEvent.UserId, message, cancellationToken) :
         throw new ArgumentException($"无法确认{nameof(src)}所处的会话！");
