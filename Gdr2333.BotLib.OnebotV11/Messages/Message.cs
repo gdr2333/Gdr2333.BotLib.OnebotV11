@@ -51,6 +51,14 @@ public class Message : List<MessagePartBase>
     }
 
     /// <summary>
+    /// 用指定文本初始化一条文本消息
+    /// </summary>
+    /// <param name="text">消息中的文本</param>
+    public Message(string text) : this([new TextPart(text)])
+    {
+    }
+
+    /// <summary>
     /// 将消息转为文本表现形式
     /// </summary>
     /// <returns>消息文本</returns>

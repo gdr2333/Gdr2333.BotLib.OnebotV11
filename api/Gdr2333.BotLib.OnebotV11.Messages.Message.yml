@@ -8,6 +8,7 @@ items:
   - Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase)
   - Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.Collections.Generic.IEnumerable{Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase})
   - Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.Int32)
+  - Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)
   - Gdr2333.BotLib.OnebotV11.Messages.Message.ToString
   langs:
   - csharp
@@ -213,6 +214,41 @@ items:
   nameWithType.vb: Message.New(Integer)
   fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.Message.New(Integer)
   name.vb: New(Integer)
+- uid: Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Gdr2333.BotLib.OnebotV11.Messages.Message
+  langs:
+  - csharp
+  - vb
+  name: Message(string)
+  nameWithType: Message.Message(string)
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.Message.Message(string)
+  type: Constructor
+  source:
+    remote:
+      path: Gdr2333.BotLib.OnebotV11/Messages/Message.cs
+      branch: master
+      repo: https://github.com/gdr2333/Gdr2333.BotLib
+    id: .ctor
+    path: Gdr2333.BotLib.OnebotV11/Messages/Message.cs
+    startLine: 56
+  assemblies:
+  - Gdr2333.BotLib.OnebotV11
+  namespace: Gdr2333.BotLib.OnebotV11.Messages
+  summary: 用指定文本初始化一条文本消息
+  example: []
+  syntax:
+    content: public Message(string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: 消息中的文本
+    content.vb: Public Sub New(text As String)
+  overload: Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor*
+  nameWithType.vb: Message.New(String)
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.Message.New(String)
+  name.vb: New(String)
 - uid: Gdr2333.BotLib.OnebotV11.Messages.Message.ToString
   commentId: M:Gdr2333.BotLib.OnebotV11.Messages.Message.ToString
   id: ToString
@@ -231,7 +267,7 @@ items:
       repo: https://github.com/gdr2333/Gdr2333.BotLib
     id: ToString
     path: Gdr2333.BotLib.OnebotV11/Messages/Message.cs
-    startLine: 56
+    startLine: 64
   assemblies:
   - Gdr2333.BotLib.OnebotV11
   namespace: Gdr2333.BotLib.OnebotV11.Messages
@@ -5073,6 +5109,17 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: System.Object.ToString
   commentId: M:System.Object.ToString
   parent: System.Object
@@ -5103,14 +5150,3 @@ references:
   name: ToString
   nameWithType: Message.ToString
   fullName: Gdr2333.BotLib.OnebotV11.Messages.Message.ToString
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String

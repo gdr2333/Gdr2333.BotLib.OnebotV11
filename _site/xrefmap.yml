@@ -4754,6 +4754,15 @@ references:
   fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.Message.New(Integer)
   nameWithType: Message.Message(int)
   nameWithType.vb: Message.New(Integer)
+- uid: Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)
+  name: Message(string)
+  href: api/Gdr2333.BotLib.OnebotV11.Messages.Message.html#Gdr2333_BotLib_OnebotV11_Messages_Message__ctor_System_String_
+  commentId: M:Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Gdr2333.BotLib.OnebotV11.Messages.Message.Message(string)
+  fullName.vb: Gdr2333.BotLib.OnebotV11.Messages.Message.New(String)
+  nameWithType: Message.Message(string)
+  nameWithType.vb: Message.New(String)
 - uid: Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor*
   name: Message
   href: api/Gdr2333.BotLib.OnebotV11.Messages.Message.html#Gdr2333_BotLib_OnebotV11_Messages_Message__ctor_

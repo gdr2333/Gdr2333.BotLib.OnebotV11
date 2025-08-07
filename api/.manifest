@@ -430,6 +430,7 @@
   "Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase)": "Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
   "Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.Collections.Generic.IEnumerable{Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase})": "Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
   "Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.Int32)": "Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
+  "Gdr2333.BotLib.OnebotV11.Messages.Message.#ctor(System.String)": "Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
   "Gdr2333.BotLib.OnebotV11.Messages.Message.ToString": "Gdr2333.BotLib.OnebotV11.Messages.Message.yml",
   "Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase": "Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.yml",
   "Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.#ctor(System.String)": "Gdr2333.BotLib.OnebotV11.Messages.MessagePartBase.yml",
