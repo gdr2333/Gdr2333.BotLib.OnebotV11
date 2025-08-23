@@ -43,7 +43,7 @@ public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUs
     public PrivateMessageReceivedSubType SubType { get; internal set; }
 
     /// <inheritdoc/>
-    [JsonInclude, JsonPropertyName("sender")]
+    [JsonIgnore]
     public override UserInfo? Sender { get; internal set; } = null;
 }
 
