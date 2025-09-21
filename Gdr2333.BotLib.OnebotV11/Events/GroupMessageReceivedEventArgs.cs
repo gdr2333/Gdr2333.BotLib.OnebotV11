@@ -56,7 +56,7 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUser
         get => GroupSender;
         internal set => throw new InvalidOperationException();
     }
-#pragma warning restore
+#pragma warning restore CS0809
 
     /// <summary>
     /// 群ID
@@ -122,4 +122,4 @@ internal class GroupMessageReceivedSubTypeConverter : JsonConverter<GroupMessage
         });
     }
 }
-#pragma warning restore
+#pragma warning restore CS0618
