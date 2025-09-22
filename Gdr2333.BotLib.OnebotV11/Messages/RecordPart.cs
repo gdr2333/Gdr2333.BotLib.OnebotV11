@@ -71,7 +71,7 @@ public class RecordPart : FilePartBase
     /// </summary>
     /// <param name="file">文件内容</param>
     /// <param name="useMagic">是否使用变声</param>
-    public RecordPart(byte[] file, bool useMagic)
+    public RecordPart(byte[] file, bool useMagic = false)
         : this($"base64://{Convert.ToBase64String(file)}", useMagic)
     {
     }
