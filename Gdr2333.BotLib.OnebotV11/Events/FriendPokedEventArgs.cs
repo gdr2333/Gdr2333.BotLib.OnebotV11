@@ -14,18 +14,22 @@
    limitations under the License.
 */
 
+
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
 /// <summary>
-/// 群内戳一戳事件参数
+/// 好友戳一戳事件
 /// </summary>
-public class GroupPokedEventArgs : PokedEventArgsBase, IGroupEventArgs
+public class FriendPokedEventArgs : PokedEventArgsBase
 {
     /// <summary>
-    /// 群Id
+    /// 发送者 QQ 号
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long GroupId { get; internal set; }
+    /// <remarks>
+    /// 你问我这玩意跟<c>UserId</c>有什么不一样？我不到啊，<a href="https://napneko.github.io/onebot/event#%E6%88%B3%E4%B8%80%E6%88%B3%E9%80%9A%E7%9F%A5">文档</a>这么写的
+    /// </remarks>
+    [JsonInclude, JsonPropertyName("sender_id")]
+    public long? SenderId { get; internal set; } = null;
 }

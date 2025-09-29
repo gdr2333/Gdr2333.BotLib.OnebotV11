@@ -19,13 +19,24 @@ using System.Text.Json.Serialization;
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
 /// <summary>
-/// 群内戳一戳事件参数
+/// 戳一戳事件基类
 /// </summary>
-public class GroupPokedEventArgs : PokedEventArgsBase, IGroupEventArgs
+public abstract class PokedEventArgsBase : NotifyEventArgsBase, IUserEventArgs
 {
     /// <summary>
-    /// 群Id
+    /// 发出戳一戳的用户Id
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("group_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long GroupId { get; internal set; }
+    /// <remarks>
+    /// 请注意：该字段与IUserEventArgs.UserId不同，后者实际上是本类中的TargetId字段。
+    /// </remarks>
+    [JsonInclude, JsonRequired, JsonPropertyName("user_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public long UserId { get; internal set; }
+
+    /// <summary>
+    /// 目标用户Id
+    /// </summary>
+    [JsonInclude, JsonRequired, JsonPropertyName("target_id"), JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+    public long TargetId { get; internal set; }
+
+    long IUserEventArgs.UserId => TargetId;
 }

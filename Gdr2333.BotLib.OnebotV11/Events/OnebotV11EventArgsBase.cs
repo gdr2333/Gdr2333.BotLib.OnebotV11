@@ -38,6 +38,7 @@ namespace Gdr2333.BotLib.OnebotV11.Events;
 [JsonDerivedType(typeof(GroupMessageRecalledEventArgs))]
 [JsonDerivedType(typeof(FriendMessageRecalledEventArgs))]
 [JsonDerivedType(typeof(GroupPokedEventArgs))]
+[JsonDerivedType(typeof(FriendPokedEventArgs))]
 [JsonDerivedType(typeof(GroupLuckyKingChangedEventArgs))]
 [JsonDerivedType(typeof(GroupMemberHonorChangedEventArgs))]
 
@@ -141,7 +142,7 @@ internal class OnebotV11EventArgsConverter : JsonConverter<OnebotV11EventArgsBas
                 "friend_recall" => json.Deserialize<FriendMessageRecalledEventArgs>(options),
                 "notify" => (json.GetProperty("sub_type").GetString()?.ToLower()) switch
                 {
-                    "poke" => json.Deserialize<GroupPokedEventArgs>(options),
+                    "poke" => json.TryGetProperty("group_id", out _) ? json.Deserialize<GroupPokedEventArgs>(options) : json.Deserialize<FriendPokedEventArgs>(options),
                     "lucky_king" => json.Deserialize<GroupLuckyKingChangedEventArgs>(options),
                     "honor" => json.Deserialize<GroupMemberHonorChangedEventArgs>(options),
                     _ => throw new InvalidDataException($"未知通知：：notify事件类型{json.GetProperty("sub_type").GetString()?.ToLower()}"),
