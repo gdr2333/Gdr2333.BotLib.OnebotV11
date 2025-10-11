@@ -71,7 +71,7 @@ public class ImagePart : FilePartBase
     /// </summary>
     /// <param name="file">文件内容</param>
     /// <param name="isFlash">是否为闪照</param>
-    public ImagePart(byte[] file, bool isFlash)
+    public ImagePart(byte[] file, bool isFlash = false)
         : this($"base64://{Convert.ToBase64String(file)}", isFlash)
     {
     }
