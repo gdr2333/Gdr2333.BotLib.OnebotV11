@@ -18,7 +18,7 @@ using System.Xml;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages;
 
-// 虽然反主流，但是说实话，我喜欢XML，特别是跟toml之类的反人类的玩意比
+// 虽然反主流，但是说实话，我喜欢XML，特别是跟yaml之类的反人类的玩意比
 /// <summary>
 /// XML消息段
 /// </summary>
