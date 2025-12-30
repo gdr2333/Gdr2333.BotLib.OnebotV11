@@ -7,7 +7,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Version>1.0.0.1</Version>
+    <Version>1.1.0-alpha1</Version>
     <Authors>df1050</Authors>
     <Company />
     <Description>Onebot v11支持库 by df1050</Description>
