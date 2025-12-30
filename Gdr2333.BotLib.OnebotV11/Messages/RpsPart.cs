@@ -25,7 +25,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// *：原文如此
 /// </remarks>
 [method: JsonConstructor]
-public class RpsPart() : MessagePartBase("rps")
+public class RpsPart() : MessagePartBase
 {
     /// <inheritdoc/>
     public override string ToString() =>

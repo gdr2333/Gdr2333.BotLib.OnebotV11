@@ -52,8 +52,7 @@ public class SharePart : MessagePartBase
     private SharePayload? _data;
 
     [JsonConstructor]
-    private SharePart(SharePayload data) : base("share")
-    {
+    private SharePart(SharePayload data) : base()    {
         _data = data;
         Url = _data!.Url;
         Title = _data!.Title;
@@ -68,8 +67,7 @@ public class SharePart : MessagePartBase
     /// <param name="title">分享标题</param>
     /// <param name="content">分享内容介绍</param>
     /// <param name="imageUrl">内容图片URL</param>
-    public SharePart(Uri url, string title, string? content = null, Uri? imageUrl = null) : base("share")
-    {
+    public SharePart(Uri url, string title, string? content = null, Uri? imageUrl = null) : base()    {
         Url = url;
         Title = title;
         Content = content;

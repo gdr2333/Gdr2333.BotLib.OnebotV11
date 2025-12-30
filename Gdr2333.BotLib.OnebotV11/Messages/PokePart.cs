@@ -46,8 +46,7 @@ public class PokePart : MessagePartBase
     private PokePayload? _data;
 
     [JsonConstructor]
-    private PokePart() : base("poke")
-    {
+    private PokePart() : base()    {
     }
 
     /// <summary>
@@ -55,8 +54,7 @@ public class PokePart : MessagePartBase
     /// </summary>
     /// <param name="type">戳一戳类型</param>
     /// <param name="id">戳一戳ID</param>
-    public PokePart(int type, int id) : base("poke")
-    {
+    public PokePart(int type, int id) : base()    {
         PokeType = type;
         Id = id;
     }

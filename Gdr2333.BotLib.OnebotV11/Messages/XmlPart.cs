@@ -19,6 +19,7 @@ using System.Xml;
 namespace Gdr2333.BotLib.OnebotV11.Messages;
 
 // 虽然反主流，但是说实话，我喜欢XML，特别是跟yaml之类的反人类的玩意比
+// 好吧我承认XML很烂了
 /// <summary>
 /// XML消息段
 /// </summary>
@@ -37,8 +38,7 @@ public class XmlPart : MessagePartBase
     /// 构建一个XML消息段
     /// </summary>
     /// <param name="data">XML数据</param>
-    public XmlPart(XmlDocument data) : base("xml")
-    {
+    public XmlPart(XmlDocument data) : base()    {
         Data = data;
     }
 
@@ -46,8 +46,7 @@ public class XmlPart : MessagePartBase
     /// 构建一个XML消息段
     /// </summary>
     /// <param name="data">XML字符串</param>
-    public XmlPart(string data) : base("xml")
-    {
+    public XmlPart(string data) : base()    {
         Data = new();
         Data.LoadXml(data);
     }

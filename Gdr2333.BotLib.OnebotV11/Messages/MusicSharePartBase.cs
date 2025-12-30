@@ -21,7 +21,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// 音乐分享消息段基类
 /// </summary>
 [method: JsonConstructor]
-public abstract class MusicSharePartBase() : MessagePartBase("music")
+public abstract class MusicSharePartBase() : MessagePartBase
 {
     /// <summary>
     /// 音乐分享类型

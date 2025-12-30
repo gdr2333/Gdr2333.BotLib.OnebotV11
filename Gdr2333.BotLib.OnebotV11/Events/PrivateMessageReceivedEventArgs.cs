@@ -30,8 +30,7 @@ public class PrivateMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUs
     [JsonConstructor]
     internal PrivateMessageReceivedEventArgs(PrivateMessageReceivedSubType subType, UserInfo? sender,
                                              MessageType messageType, long messageId, long userId, Message message,
-                                             string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)
-    {
+                                             string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)    {
         SubType = subType;
         Sender = sender;
     }

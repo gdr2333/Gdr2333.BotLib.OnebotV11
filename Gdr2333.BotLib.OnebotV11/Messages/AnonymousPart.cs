@@ -26,7 +26,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// <param name="ignore">无法匿名时是否继续发送</param>
 [Obsolete(StaticData.AnonymousWarning)]
 [method: Obsolete(StaticData.AnonymousWarning)]
-public class AnonymousPart(bool ignore) : MessagePartBase("anonymous")
+public class AnonymousPart(bool ignore) : MessagePartBase
 {
     /// <summary>
     /// 无法匿名时是否继续发送

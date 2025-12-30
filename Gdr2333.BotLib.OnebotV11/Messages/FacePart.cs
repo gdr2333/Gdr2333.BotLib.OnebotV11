@@ -34,8 +34,7 @@ public class FacePart : MessagePartBase
     private Int32IdPayload? _data;
 
     [JsonConstructor]
-    private FacePart() : base("face")
-    {
+    private FacePart() : base()    {
         FaceId = 0;
     }
 
@@ -43,8 +42,7 @@ public class FacePart : MessagePartBase
     /// 使用一个表情ID构造一个表情消息段
     /// </summary>
     /// <param name="faceId">表情ID</param>
-    public FacePart(int faceId) : base("face")
-    {
+    public FacePart(int faceId) : base()    {
         FaceId = faceId;
     }
 

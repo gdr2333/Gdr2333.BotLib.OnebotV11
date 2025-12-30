@@ -39,14 +39,13 @@ public class CustomForwardNodePart : MessagePartBase
     /// 转发的内容
     /// </summary>
     [JsonIgnore]
-    public required Message Content { get; set; }
+    public Message Content { get; set; }
 
     [JsonInclude, JsonRequired, JsonPropertyName("data")]
     private CustomForwardNodePayload? _data;
 
     [JsonConstructor]
-    private CustomForwardNodePart() : base("node")
-    {
+    private CustomForwardNodePart() : base()    {
     }
 
     /// <summary>
@@ -55,8 +54,7 @@ public class CustomForwardNodePart : MessagePartBase
     /// <param name="message">转发的内容</param>
     /// <param name="nickName">发送者昵称</param>
     /// <param name="uid">发送者UID</param>
-    public CustomForwardNodePart(Message message, string nickName, long uid) : base("node")
-    {
+    public CustomForwardNodePart(Message message, string nickName, long uid) : base()    {
         UserId = uid;
         NickName = nickName;
         Content = message;

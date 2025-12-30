@@ -52,8 +52,7 @@ public class LocationPart : MessagePartBase
     public string? Content { get; set; }
 
     [JsonConstructor]
-    private LocationPart() : base("location")
-    {
+    private LocationPart() : base()    {
     }
 
     /// <summary>
@@ -63,8 +62,7 @@ public class LocationPart : MessagePartBase
     /// <param name="latitude">纬度</param>
     /// <param name="title">标题</param>
     /// <param name="content">介绍</param>
-    public LocationPart(double longitude, double latitude, string? title, string? content) : base("location")
-    {
+    public LocationPart(double longitude, double latitude, string? title, string? content) : base()    {
         Longitude = longitude;
         Latitude = latitude;
         Title = title;

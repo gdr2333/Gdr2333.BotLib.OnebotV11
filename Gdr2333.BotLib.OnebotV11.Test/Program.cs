@@ -72,6 +72,8 @@ if (human)
 {
     while (true)
     {
+        while (!Console.KeyAvailable)
+            await Task.Delay(100);
         var s = Console.ReadLine().Split(' ');
         if (s.Length <= 0)
             break;

@@ -22,7 +22,7 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// 窗口抖动消息段
 /// </summary>
 [method: JsonConstructor]
-public class ShakePart() : MessagePartBase("shake")
+public class ShakePart() : MessagePartBase
 {
     /// <inheritdoc/>
     public override string ToString() =>

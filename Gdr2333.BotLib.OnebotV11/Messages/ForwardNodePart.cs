@@ -33,16 +33,14 @@ public class ForwardNodePart : MessagePartBase
     private Int64IdPayload? _data;
 
     [JsonConstructor]
-    private ForwardNodePart() : base("node")
-    {
+    private ForwardNodePart() : base()    {
     }
 
     /// <summary>
     /// 构建一个转发消息节点消息段
     /// </summary>
     /// <param name="messageId">转发的消息Id</param>
-    public ForwardNodePart(long messageId) : base("node")
-    {
+    public ForwardNodePart(long messageId) : base()    {
         Id = messageId;
     }
 

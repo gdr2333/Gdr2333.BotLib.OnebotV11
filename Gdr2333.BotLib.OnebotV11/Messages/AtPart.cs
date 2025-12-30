@@ -37,14 +37,12 @@ public class AtPart : MessagePartBase
     /// 构造一个at消息段
     /// </summary>
     /// <param name="userId">要@的人</param>
-    public AtPart(long userId) : base("at")
-    {
+    public AtPart(long userId) : base()    {
         UserId = userId;
     }
 
     [JsonConstructor]
-    private AtPart() : base("at")
-    {
+    private AtPart() : base()    {
     }
 
     /// <inheritdoc/>
