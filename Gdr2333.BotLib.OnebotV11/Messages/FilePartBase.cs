@@ -61,7 +61,8 @@ public abstract class FilePartBase : MessagePartBase
     /// 用于JSON构建的基类构建参数
     /// </summary>
     [JsonConstructor]
-    protected FilePartBase(string type) : base()    {
+    protected FilePartBase(string type) : base()
+    {
         FileName = "";
     }
 
@@ -73,7 +74,8 @@ public abstract class FilePartBase : MessagePartBase
     /// <param name="useProxy">是否使用代理发送</param>
     /// <param name="useCache">是否使用缓存发送</param>
     /// <param name="timeOut">超时时长设置（null=不超时）</param>
-    public FilePartBase(string type, string fileName, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null) : base()    {
+    public FilePartBase(string type, string fileName, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null) : base()
+    {
         FileName = fileName;
         UseProxy = useProxy;
         UseCache = useCache;

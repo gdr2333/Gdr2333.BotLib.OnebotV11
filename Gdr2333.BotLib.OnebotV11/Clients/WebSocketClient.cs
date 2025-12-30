@@ -65,7 +65,7 @@ public class WebSocketClient(Uri target, int maxRetry = 5, string? accessToken =
             _client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
             _client.OnExceptionOccurrence += async (_, e) =>
             {
-                    OnExceptionOccurrence?.Invoke(this, e);
+                OnExceptionOccurrence?.Invoke(this, e);
             };
             _client.Start();
         }

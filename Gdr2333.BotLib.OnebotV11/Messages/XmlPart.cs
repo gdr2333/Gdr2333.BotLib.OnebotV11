@@ -38,7 +38,8 @@ public class XmlPart : MessagePartBase
     /// 构建一个XML消息段
     /// </summary>
     /// <param name="data">XML数据</param>
-    public XmlPart(XmlDocument data) : base()    {
+    public XmlPart(XmlDocument data) : base()
+    {
         Data = data;
     }
 
@@ -46,7 +47,8 @@ public class XmlPart : MessagePartBase
     /// 构建一个XML消息段
     /// </summary>
     /// <param name="data">XML字符串</param>
-    public XmlPart(string data) : base()    {
+    public XmlPart(string data) : base()
+    {
         Data = new();
         Data.LoadXml(data);
     }

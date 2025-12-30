@@ -84,7 +84,7 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
             {
                 input.Clear();
                 var res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                while(!res.EndOfMessage)
+                while (!res.EndOfMessage)
                 {
                     input.AddRange(buffer[..res.Count]);
                     res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);

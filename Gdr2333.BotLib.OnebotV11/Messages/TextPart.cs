@@ -37,14 +37,16 @@ public class TextPart : MessagePartBase
     /// 构造一个空的文本消息段
     /// </summary>
     [JsonConstructor]
-    public TextPart() : base()    {
+    public TextPart() : base()
+    {
     }
 
     /// <summary>
     /// 使用指定文本构造一个文本消息段
     /// </summary>
     /// <param name="text">消息段内容</param>
-    public TextPart(string text) : base()    {
+    public TextPart(string text) : base()
+    {
         Text = text;
     }
 

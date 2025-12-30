@@ -90,7 +90,7 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
             {
                 input.Clear();
                 var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                while(!res.EndOfMessage)
+                while (!res.EndOfMessage)
                 {
                     input.AddRange(buffer[..res.Count]);
                     res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);

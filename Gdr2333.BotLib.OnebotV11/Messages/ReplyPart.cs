@@ -33,14 +33,16 @@ public class ReplyPart : MessagePartBase
     private Int64IdPayload? _data;
 
     [JsonConstructor]
-    private ReplyPart() : base()    {
+    private ReplyPart() : base()
+    {
     }
 
     /// <summary>
     /// 构造一个回复消息段
     /// </summary>
     /// <param name="id">要回复的消息ID</param>
-    public ReplyPart(long id) : base()    {
+    public ReplyPart(long id) : base()
+    {
         ReplyId = id;
     }
 

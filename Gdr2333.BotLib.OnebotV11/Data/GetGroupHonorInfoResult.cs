@@ -100,7 +100,8 @@ public abstract class HonorInfoBase(long userId, string nickname, Uri? avatarUrl
 public class TalkAtiveInfo : HonorInfoBase
 {
     [JsonConstructor]
-    internal TalkAtiveInfo(TimeSpan duration, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)    {
+    internal TalkAtiveInfo(TimeSpan duration, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)
+    {
         Duration = duration;
     }
 
@@ -117,7 +118,8 @@ public class TalkAtiveInfo : HonorInfoBase
 public class HonorInfo : HonorInfoBase
 {
     [JsonConstructor]
-    internal HonorInfo(string description, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)    {
+    internal HonorInfo(string description, long userId, string nickname, Uri? avatarUrl) : base(userId, nickname, avatarUrl)
+    {
         Description = description;
     }
 

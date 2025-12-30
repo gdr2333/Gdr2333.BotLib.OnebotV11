@@ -67,7 +67,7 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
             {
                 input.Clear();
                 var res = await _eventWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                while(!res.EndOfMessage)
+                while (!res.EndOfMessage)
                 {
                     input.AddRange(buffer[..res.Count]);
                     res = await _eventWebSocket.ReceiveAsync(buffer, _cancellationToken);

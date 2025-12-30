@@ -31,7 +31,8 @@ public class GroupMessageReceivedEventArgs : MessageReceivedEventArgsBase, IUser
 #pragma warning disable CS0618
     internal GroupMessageReceivedEventArgs(GroupMessageReceivedSubType subType, long groupId, AnonymousInfo? anonymous,
                                            GroupMemberInfo? groupSender, MessageType messageType, long messageId,
-                                           long userId, Message message, string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)    {
+                                           long userId, Message message, string rawMessage, int font) : base(messageType, messageId, userId, message, rawMessage, font)
+    {
         SubType = subType;
         GroupId = groupId;
         Anonymous = anonymous;

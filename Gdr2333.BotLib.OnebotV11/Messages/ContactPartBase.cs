@@ -40,14 +40,16 @@ public abstract class ContactPartBase : MessagePartBase
     /// JSON用初始化函数
     /// </summary>
     [JsonConstructor]
-    protected ContactPartBase() : base()    {
+    protected ContactPartBase() : base()
+    {
     }
 
     /// <summary>
     /// 新建一个好友/群邀请消息段（子类JSON序列化用）
     /// </summary>
     /// <param name="contactType">邀请类型</param>
-    protected ContactPartBase(string contactType) : base()    {
+    protected ContactPartBase(string contactType) : base()
+    {
         ContactType = contactType;
     }
 
@@ -56,7 +58,8 @@ public abstract class ContactPartBase : MessagePartBase
     /// </summary>
     /// <param name="contactType">邀请类型</param>
     /// <param name="id">邀请目标ID</param>
-    public ContactPartBase(string contactType, long id) : base()    {
+    public ContactPartBase(string contactType, long id) : base()
+    {
         ContactType = contactType;
         Id = id;
     }

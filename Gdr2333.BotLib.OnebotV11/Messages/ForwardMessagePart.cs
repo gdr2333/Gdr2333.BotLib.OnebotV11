@@ -33,7 +33,8 @@ public class ForwardMessagePart : MessagePartBase
     private Int64IdPayload? _data;
 
     [JsonConstructor]
-    private ForwardMessagePart() : base()    {
+    private ForwardMessagePart() : base()
+    {
     }
 
     /// <summary>
@@ -41,7 +42,8 @@ public class ForwardMessagePart : MessagePartBase
     /// </summary>
     /// <param name="id"></param>
     [Obsolete("标准没允许发这个消息段，这不在支持范围内。目前我没打算单独支持各种扩展，使用后果自负。")]
-    public ForwardMessagePart(long id) : base()    {
+    public ForwardMessagePart(long id) : base()
+    {
         ForwardId = id;
     }
 

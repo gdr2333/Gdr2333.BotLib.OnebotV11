@@ -45,7 +45,8 @@ public class CustomForwardNodePart : MessagePartBase
     private CustomForwardNodePayload? _data;
 
     [JsonConstructor]
-    private CustomForwardNodePart() : base()    {
+    private CustomForwardNodePart() : base()
+    {
     }
 
     /// <summary>
@@ -54,7 +55,8 @@ public class CustomForwardNodePart : MessagePartBase
     /// <param name="message">转发的内容</param>
     /// <param name="nickName">发送者昵称</param>
     /// <param name="uid">发送者UID</param>
-    public CustomForwardNodePart(Message message, string nickName, long uid) : base()    {
+    public CustomForwardNodePart(Message message, string nickName, long uid) : base()
+    {
         UserId = uid;
         NickName = nickName;
         Content = message;
