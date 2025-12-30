@@ -15,7 +15,6 @@
 */
 
 using System.Net;
-using System.Net.WebSockets;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
@@ -37,6 +36,8 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
 
     private readonly List<InternalUniverseClient> _universeClients = [];
     private readonly ReaderWriterLockSlim _universeClientsLock = new();
+
+    private readonly Dictionary<object, CancellationTokenSource> _subTaskCTS = [];
 
     private readonly HttpListener _httpLisenter;
     private readonly CancellationTokenSource _cancellationTokenSource;
@@ -83,15 +84,36 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                     content.Response.Close();
                 }
                 var webSocket = await content.AcceptWebSocketAsync(null);
+                CancellationTokenSource cts = new();
                 if (content.Request.Url is null)
+                {
+                    var client = new InternalUniverseClient(webSocket.WebSocket, cts.Token, FailUniverseClient);
+                    lock (_subTaskCTS)
+                        _subTaskCTS.Add(client, cts);
                     // 那我们就当是universe好了，反正错不了，大概
-                    ProcessUniverseClient(new(webSocket.WebSocket, _cancellationToken));
+                    ProcessUniverseClient(client);
+                }
                 else if (content.Request.Url.Segments[^1].StartsWith("api"))
-                    ProcessApiClient(new(webSocket.WebSocket, _cancellationToken));
+                {
+                    var client = new InternalApiClient(webSocket.WebSocket, cts.Token, FailApiClient);
+                    lock (_subTaskCTS)
+                        _subTaskCTS.Add(client, cts);
+                    ProcessApiClient(client);
+                }
                 else if (content.Request.Url.Segments[^1].StartsWith("event"))
-                    ProcessEventClient(new(webSocket.WebSocket, this, _cancellationToken));
+                {
+                    var client = new InternalEventClient(webSocket.WebSocket, this, cts.Token, FailEventClient);
+                    lock (_subTaskCTS)
+                        _subTaskCTS.Add(client, cts);
+                    ProcessEventClient(client);
+                }
                 else
-                    ProcessUniverseClient(new(webSocket.WebSocket, _cancellationToken));
+                {
+                    var client = new InternalUniverseClient(webSocket.WebSocket, cts.Token, FailUniverseClient);
+                    lock (_subTaskCTS)
+                        _subTaskCTS.Add(client, cts);
+                    ProcessUniverseClient(client);
+                }
             }
             catch (Exception e)
             {
@@ -102,23 +124,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
 
     private void ProcessApiClient(InternalApiClient apiClient)
     {
-        apiClient.OnExceptionOccurrence += (sender, e) =>
-        {
-            if (e is WebSocketException)
-            {
-                try
-                {
-                    _apiClientsLock.EnterWriteLock();
-                    _apiClients.Remove(apiClient);
-                }
-                finally
-                {
-                    _apiClientsLock.ExitWriteLock();
-                }
-            }
-            else
-                OnExceptionOccurrence?.Invoke(this, e);
-        };
+        apiClient.OnExceptionOccurrence += (sender, e) => OnExceptionOccurrence?.Invoke(this, e);
         try
         {
             _apiClientsLock.EnterWriteLock();
@@ -131,24 +137,29 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         apiClient.Start();
     }
 
+    private void FailApiClient(InternalApiClient apiClient)
+    {
+        try
+        {
+            _apiClientsLock.EnterWriteLock();
+            _apiClients.Remove(apiClient);
+            lock (_subTaskCTS)
+            {
+                _subTaskCTS[apiClient].Cancel();
+                _subTaskCTS.Remove(apiClient);
+            }
+        }
+        finally
+        {
+            _apiClientsLock.ExitWriteLock();
+        }
+    }
+
     private void ProcessEventClient(InternalEventClient eventClient)
     {
         eventClient.OnExceptionOccurrence += (sender, e) =>
         {
-            if (e is WebSocketException)
-            {
-                try
-                {
-                    _eventClientsLock.EnterWriteLock();
-                    _eventClients.Remove(eventClient);
-                }
-                finally
-                {
-                    _eventClientsLock.ExitWriteLock();
-                }
-            }
-            else
-                OnExceptionOccurrence?.Invoke(this, e);
+            OnExceptionOccurrence?.Invoke(this, e);
         };
         eventClient.OnEventOccurrence += (sender, e) =>
         {
@@ -166,24 +177,30 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         eventClient.StartEventLoop();
     }
 
+
+    private void FailEventClient(InternalEventClient eventClient)
+    {
+        try
+        {
+            _eventClientsLock.EnterWriteLock();
+            _eventClients.Remove(eventClient);
+            lock (_subTaskCTS)
+            {
+                _subTaskCTS[eventClient].Cancel();
+                _subTaskCTS.Remove(eventClient);
+            }
+        }
+        finally
+        {
+            _eventClientsLock.ExitWriteLock();
+        }
+    }
+
     private void ProcessUniverseClient(InternalUniverseClient universeClient)
     {
         universeClient.OnExceptionOccurrence += (sender, e) =>
         {
-            if (e is WebSocketException)
-            {
-                try
-                {
-                    _universeClientsLock.EnterWriteLock();
-                    _universeClients.Remove(universeClient);
-                }
-                finally
-                {
-                    _universeClientsLock.ExitWriteLock();
-                }
-            }
-            else
-                OnExceptionOccurrence?.Invoke(this, e);
+            OnExceptionOccurrence?.Invoke(this, e);
         };
         universeClient.OnEventOccurrence += (sender, e) =>
         {
@@ -201,12 +218,33 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         universeClient.Start();
     }
 
+    private void FailUniverseClient(InternalUniverseClient universeClient)
+    {
+        try
+        {
+            _universeClientsLock.EnterWriteLock();
+            _universeClients.Remove(universeClient);
+            lock (_subTaskCTS)
+            {
+                _subTaskCTS[universeClient].Cancel();
+                _subTaskCTS.Remove(universeClient);
+            }
+        }
+        finally
+        {
+            _universeClientsLock.ExitWriteLock();
+        }
+    }
+
     /// <summary>
     /// 停止整个反向WebSocket服务器
     /// </summary>
     public void Stop()
     {
         _cancellationTokenSource.Cancel();
+        lock (_subTaskCTS)
+            foreach (var i in _subTaskCTS)
+                i.Value.Cancel();
     }
 
     /// <inheritdoc/>

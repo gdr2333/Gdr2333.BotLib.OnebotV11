@@ -54,21 +54,18 @@ public class WebSocketClient(Uri target, int maxRetry = 5, string? accessToken =
         await websocket.ConnectAsync(_target, default);
         if (websocket.State == WebSocketState.Open)
         {
-            _client = new(websocket, _tokenSource.Token);
+            _client = new(websocket, _tokenSource.Token, async (client) =>
+            {
+                _retry++;
+                if (_retry < _maxRetry)
+                    await LinkAsync();
+                else
+                    throw new WebSocketException("无法连接！");
+            });
             _client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
             _client.OnExceptionOccurrence += async (_, e) =>
             {
-                if (e is WebSocketException)
-                {
-                    _retry++;
-                    if (_retry >= _maxRetry)
-                        throw e;
-                    await LinkAsync();
-                }
-                else
-                {
                     OnExceptionOccurrence?.Invoke(this, e);
-                }
             };
             _client.Start();
         }

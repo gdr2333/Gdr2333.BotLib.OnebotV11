@@ -22,7 +22,7 @@ using static Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase srcClient, CancellationToken cancellationToken)
+internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase srcClient, CancellationToken cancellationToken, Action<InternalEventClient> onFail)
 {
     private readonly WebSocket _eventWebSocket = eventWebSocket;
 
@@ -42,24 +42,48 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
     /// </summary>
     public event OnExceptionInLoop? OnExceptionOccurrence;
 
-    public async void StartEventLoop()
+    public void StartEventLoop()
     {
-        var buffer = new byte[40960];
-        Memory<byte> bufferMem = new(buffer);
+        EventLoop().ContinueWith((_) => OnLoopExit(EventLoop));
+    }
+
+    private void OnLoopExit(Func<Task> loop)
+    {
+        if (_cancellationToken.IsCancellationRequested)
+            return;
+        else if (_eventWebSocket.State != WebSocketState.Open)
+            onFail(this);
+        else
+            loop().ContinueWith((_) => OnLoopExit(loop));
+    }
+
+    private async Task EventLoop()
+    {
+        var buffer = new byte[8192];
+        var input = new List<byte>(8192);
         while (!_cancellationToken.IsCancellationRequested)
         {
             try
             {
-                var res = await _eventWebSocket.ReceiveAsync(bufferMem, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(buffer.AsSpan()[..res.Count], _opt);
+                input.Clear();
+                var res = await _eventWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                while(!res.EndOfMessage)
+                {
+                    input.AddRange(buffer[..res.Count]);
+                    res = await _eventWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                }
+                input.AddRange(buffer[..res.Count]);
+                var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(input.ToArray(), _opt);
                 if (result is not null)
                     OnEventOccurrence?.Invoke(_srcClient, result);
                 else
-                    throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(buffer)}");
+                    throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(input.ToArray())}");
             }
             catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(_srcClient, e);
+                if (e is WebSocketException)
+                    return;
             }
         }
     }

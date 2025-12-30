@@ -23,7 +23,7 @@ using System.Threading.Channels;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationToken cancellationToken) : OnebotV11ClientBase
+internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationToken cancellationToken, Action<InternalUniverseClient> onFail) : OnebotV11ClientBase
 {
     private readonly WebSocket _universeWebSocket = universeWebSocket;
 
@@ -47,11 +47,21 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
 
     public void Start()
     {
-        ApiCallLoop();
-        ReceiveLoop();
+        ApiCallLoop().ContinueWith((_) => OnLoopExit(ApiCallLoop));
+        ReceiveLoop().ContinueWith((_) => OnLoopExit(ReceiveLoop));
     }
 
-    private async void ApiCallLoop()
+    private void OnLoopExit(Func<Task> loop)
+    {
+        if (_cancellationToken.IsCancellationRequested)
+            return;
+        else if (_universeWebSocket.State != WebSocketState.Open)
+            onFail(this);
+        else
+            loop().ContinueWith((_) => OnLoopExit(loop));
+    }
+
+    private async Task ApiCallLoop()
     {
         while (!_cancellationToken.IsCancellationRequested)
         {
@@ -64,24 +74,33 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
             catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(this, e);
+                if (e is WebSocketException)
+                    return;
             }
         }
     }
 
-    private async void ReceiveLoop()
+    private async Task ReceiveLoop()
     {
-        var buffer = new byte[40960];
-        Memory<byte> bufferMem = new(buffer);
-        do
+        var buffer = new byte[8192];
+        var input = new List<byte>(8192);
+        while (!_cancellationToken.IsCancellationRequested)
         {
             try
             {
+                input.Clear();
                 var res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                using var node = JsonDocument.Parse(buffer.AsMemory(0, res.Count));
+                while(!res.EndOfMessage)
+                {
+                    input.AddRange(buffer[..res.Count]);
+                    res = await _universeWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                }
+                input.AddRange(buffer[..res.Count]);
+                using var node = JsonDocument.Parse(input.ToArray());
                 if (node.RootElement.TryGetProperty("echo", out _))
                 {
                     var result = node.Deserialize<OnebotV11ApiResult>(_opt)
-                        ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(buffer[..res.Count])}");
+                        ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(input.ToArray())}");
                     if (_apiCallResults.TryRemove(result.Guid, out var action))
                         action(result);
                 }
@@ -91,14 +110,16 @@ internal class InternalUniverseClient(WebSocket universeWebSocket, CancellationT
                     if (result is not null)
                         OnEventOccurrence?.Invoke(this, result);
                     else
-                        throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(buffer)}");
+                        throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(input.ToArray())}");
                 }
             }
             catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(this, e);
+                if (e is WebSocketException)
+                    return;
             }
-        } while (!_cancellationToken.IsCancellationRequested);
+        }
     }
 
     public override Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)

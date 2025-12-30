@@ -22,7 +22,7 @@ using System.Threading.Channels;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken)
+internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken, Action<InternalApiClient> onFail)
 {
     private readonly CancellationToken _cancellationToken = cancellationToken;
 
@@ -41,11 +41,21 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
 
     public void Start()
     {
-        ApiCallLoop();
-        ApiReceiveLoop();
+        ApiCallLoop().ContinueWith((_) => OnLoopExit(ApiCallLoop));
+        ApiReceiveLoop().ContinueWith((_) => OnLoopExit(ApiReceiveLoop));
     }
 
-    private async void ApiCallLoop()
+    private void OnLoopExit(Func<Task> loop)
+    {
+        if (_cancellationToken.IsCancellationRequested)
+            return;
+        else if (_apiWebSocket.State != WebSocketState.Open)
+            onFail(this);
+        else
+            loop().ContinueWith((_) => OnLoopExit(loop));
+    }
+
+    private async Task ApiCallLoop()
     {
         while (!_cancellationToken.IsCancellationRequested)
         {
@@ -58,21 +68,30 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
             catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(null, e);
+                if (e is WebSocketException)
+                    return;
             }
         }
     }
 
-    private async void ApiReceiveLoop()
+    private async Task ApiReceiveLoop()
     {
-        var buffer = new byte[10240];
-        Memory<byte> bufferMem = new(buffer);
-        do
+        var buffer = new byte[8192];
+        var input = new List<byte>(8192);
+        while (!_cancellationToken.IsCancellationRequested)
         {
             try
             {
+                input.Clear();
                 var res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(buffer.AsSpan(0, res.Count), _opt)
-                    ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(buffer[..res.Count])}");
+                while(!res.EndOfMessage)
+                {
+                    input.AddRange(buffer[..res.Count]);
+                    res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
+                }
+                input.AddRange(buffer[..res.Count]);
+                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(input.ToArray(), _opt)
+                    ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(input.ToArray())}");
                 if (_apiCallResults.TryRemove(result.Guid, out var action))
                     action(result);
             }
@@ -80,7 +99,7 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
             {
                 OnExceptionOccurrence?.Invoke(null, e);
             }
-        } while (!_cancellationToken.IsCancellationRequested);
+        }
     }
 
     public Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)
