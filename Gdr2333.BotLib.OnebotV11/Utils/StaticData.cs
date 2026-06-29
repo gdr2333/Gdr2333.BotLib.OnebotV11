@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -22,12 +22,16 @@ namespace Gdr2333.BotLib.OnebotV11.Utils;
 internal static class StaticData
 {
     public const bool CqUseProxyDefault = true;
-    public const bool CqUseCahceDefault = true;
+    public const bool CqUseCacheDefault = true;
 
     public const string AnonymousWarning = "新版QQ不再支持匿名消息，且微信等平台也不支持。目前应该没有实现继续使用该字段。";
     public const string BadEnumValueMessage = "无法接受的枚举类型！";
 
-    public static JsonSerializerOptions GetOptions()
+    private static readonly JsonSerializerOptions _options = BuildOptions();
+
+    public static JsonSerializerOptions GetOptions() => _options;
+
+    private static JsonSerializerOptions BuildOptions()
     {
         var options = new JsonSerializerOptions();
         options.Converters.Add(new OnebotV11EventArgsConverter());

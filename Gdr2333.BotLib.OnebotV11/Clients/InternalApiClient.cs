@@ -1,5 +1,5 @@
-﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+/*
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,24 +15,21 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Text.Json;
-using System.Threading.Channels;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
-internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken, Action<InternalApiClient> onFail)
+/// <summary>
+/// 单条 API WebSocket 连接的内部封装（反向 WebSocket 中的 /api 端点）。
+/// </summary>
+internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToken cancellationToken, Action<InternalApiClient> onFail)
 {
-    private readonly CancellationToken _cancellationToken = cancellationToken;
-
-    private readonly ConcurrentDictionary<Guid, Action<OnebotV11ApiResult>> _apiCallResults = new();
-
-    private readonly Channel<OnebotV11ApiRequest> _apiRequests = Channel.CreateUnbounded<OnebotV11ApiRequest>();
-
     private readonly WebSocket _apiWebSocket = apiWebSocket;
-
+    private readonly CancellationToken _cancellationToken = cancellationToken;
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
+    private readonly ApiRequestDispatcher _dispatcher = new(cancellationToken);
+    private bool _running;
 
     /// <summary>
     /// 当事件接收器出现异常时触发的事件
@@ -41,221 +38,82 @@ internal class InternalApiClient(WebSocket apiWebSocket, CancellationToken cance
 
     public void Start()
     {
-        ApiCallLoop().ContinueWith((_) => OnLoopExit(ApiCallLoop));
-        ApiReceiveLoop().ContinueWith((_) => OnLoopExit(ApiReceiveLoop));
-    }
-
-    private void OnLoopExit(Func<Task> loop)
-    {
-        if (_cancellationToken.IsCancellationRequested)
+        if (_running)
             return;
-        else if (_apiWebSocket.State != WebSocketState.Open)
-            onFail(this);
-        else
-            loop().ContinueWith((_) => OnLoopExit(loop));
+        _running = true;
+        _ = SendLoop();
+        _ = ReceiveLoop();
     }
 
-    private async Task ApiCallLoop()
+    private async Task SendLoop()
     {
-        while (!_cancellationToken.IsCancellationRequested)
+        try
         {
-            try
+            await foreach (var request in _dispatcher.Outbound.ReadAllAsync(_cancellationToken))
             {
-                var request = await _apiRequests.Reader.ReadAsync(_cancellationToken);
                 var requestBin = JsonSerializer.SerializeToUtf8Bytes(request, request.GetType(), _opt);
                 await _apiWebSocket.SendAsync(requestBin, WebSocketMessageType.Text, true, _cancellationToken);
             }
-            catch (Exception e)
-            {
-                OnExceptionOccurrence?.Invoke(null, e);
-                if (e is WebSocketException)
-                    return;
-            }
+        }
+        catch (OperationCanceledException) { }
+        catch (WebSocketException)
+        {
+            onFail(this);
+        }
+        catch (Exception e)
+        {
+            OnExceptionOccurrence?.Invoke(null, e);
+            onFail(this);
         }
     }
 
-    private async Task ApiReceiveLoop()
+    private async Task ReceiveLoop()
     {
         var buffer = new byte[8192];
-        var input = new List<byte>(8192);
-        while (!_cancellationToken.IsCancellationRequested)
+        try
         {
-            try
+            while (!_cancellationToken.IsCancellationRequested)
             {
-                input.Clear();
-                var res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                while (!res.EndOfMessage)
-                {
-                    input.AddRange(buffer[..res.Count]);
-                    res = await _apiWebSocket.ReceiveAsync(buffer, _cancellationToken);
-                }
-                input.AddRange(buffer[..res.Count]);
-                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(input.ToArray(), _opt)
-                    ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(input.ToArray())}");
-                if (_apiCallResults.TryRemove(result.Guid, out var action))
-                    action(result);
+                var bytes = await ReceiveMessageAsync(buffer, _apiWebSocket, _cancellationToken);
+                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(bytes, _opt)
+                    ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(bytes)}");
+                if (!_dispatcher.TryDeliver(result))
+                    throw new InvalidDataException($"收到未匹配的 API 响应 Guid={result.Guid}");
             }
-            catch (Exception e)
-            {
-                OnExceptionOccurrence?.Invoke(null, e);
-            }
+        }
+        catch (OperationCanceledException) { }
+        catch (WebSocketException)
+        {
+            onFail(this);
+        }
+        catch (Exception e)
+        {
+            OnExceptionOccurrence?.Invoke(null, e);
+            onFail(this);
         }
     }
 
-    public Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)
+    internal static async Task<byte[]> ReceiveMessageAsync(byte[] buffer, WebSocket socket, CancellationToken token)
     {
-        var realCancellationToken = cancellationToken ?? _cancellationToken;
-        var taskSource = new TaskCompletionSource();
-        var callGuid = Guid.NewGuid();
-        bool returned = false;
-        realCancellationToken.Register(() =>
+        using var ms = new MemoryStream();
+        while (true)
         {
-            if (!returned)
-            {
-                taskSource.SetCanceled();
-                _apiCallResults.TryRemove(callGuid, out _);
-            }
-        });
-        _apiCallResults.TryAdd(callGuid, (res) =>
-        {
-            returned = true;
-            switch (res.Retcode)
-            {
-                case 0:
-                case 1:
-                    taskSource.SetResult();
-                    break;
-                default:
-                    taskSource.SetException(new OnebotV11ClientException($"返回了错误结果！调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-            }
-        });
-        _apiRequests.Writer.WriteAsync(new() { Action = apiName, Guid = callGuid }, realCancellationToken).AsTask().Wait();
-        return taskSource.Task;
+            var res = await socket.ReceiveAsync(buffer, token);
+            ms.Write(buffer, 0, res.Count);
+            if (res.EndOfMessage)
+                return ms.ToArray();
+        }
     }
 
-    public Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
-    {
-        var realCancellationToken = cancellationToken ?? _cancellationToken;
-        var taskSource = new TaskCompletionSource();
-        var callGuid = Guid.NewGuid();
-        bool returned = false;
-        realCancellationToken.Register(() =>
-        {
-            if (!returned)
-            {
-                taskSource.SetCanceled();
-                _apiCallResults.TryRemove(callGuid, out _);
-            }
-        });
-        _apiCallResults.TryAdd(callGuid, (res) =>
-        {
-            returned = true;
-            switch (res.Retcode)
-            {
-                case 0:
-                case 1:
-                    taskSource.SetResult();
-                    break;
-                default:
-                    taskSource.SetException(new OnebotV11ClientException($"返回了错误结果！调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-            }
-        });
-        _apiRequests.Writer.WriteAsync(new OnebotV11ApiRequest<TRequest>() { Action = apiName, Params = requestData, Guid = callGuid }, realCancellationToken).AsTask().Wait();
-        return taskSource.Task;
-    }
+    public Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null) =>
+        _dispatcher.CallAsync(apiName, cancellationToken);
 
-    public Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null)
-    {
-        var realCancellationToken = cancellationToken ?? _cancellationToken;
-        var taskSource = new TaskCompletionSource<TResult>();
-        var callGuid = Guid.NewGuid();
-        bool returned = false;
-        realCancellationToken.Register(() =>
-        {
-            if (!returned)
-            {
-                taskSource.SetCanceled();
-                _apiCallResults.TryRemove(callGuid, out _);
-            }
-        });
-        _apiCallResults.TryAdd(callGuid, (res) =>
-        {
-            returned = true;
-            switch (res.Retcode)
-            {
-                case 0:
-                    if (res.Data is not null)
-                    {
-                        var result = res.Data.Value.Deserialize<TResult>();
-                        if (result is not null)
-                        {
-                            taskSource.SetResult(result);
-                            break;
-                        }
-                    }
-                    goto case 1;
-                case 1:
-                    taskSource.SetException(new OnebotV11ClientException($"服务端认为任务完成成功，但没有返回结果。调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-                default:
-                    taskSource.SetException(new OnebotV11ClientException($"返回了错误结果！调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-            }
-        });
-        _apiRequests.Writer.WriteAsync(new() { Action = apiName, Guid = callGuid }, realCancellationToken).AsTask().Wait();
-        return taskSource.Task;
-    }
+    public Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
+        _dispatcher.CallAsync(apiName, requestData, cancellationToken);
 
-    /// <summary>
-    /// 调用API
-    /// </summary>
-    /// <typeparam name="TRequest">请求内容类型</typeparam>
-    /// <typeparam name="TResult">响应内容类型</typeparam>
-    /// <param name="apiName">API名称</param>
-    /// <param name="requestData">请求数据</param>
-    /// <param name="cancellationToken">取消令牌</param>
-    /// <returns>响应数据</returns>
-    public Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
-    {
-        var realCancellationToken = cancellationToken ?? _cancellationToken;
-        var taskSource = new TaskCompletionSource<TResult>();
-        var callGuid = Guid.NewGuid();
-        bool returned = false;
-        realCancellationToken.Register(() =>
-        {
-            if (!returned)
-            {
-                taskSource.SetCanceled();
-                _apiCallResults.TryRemove(callGuid, out _);
-            }
-        });
-        _apiCallResults.TryAdd(callGuid, (res) =>
-        {
-            returned = true;
-            switch (res.Retcode)
-            {
-                case 0:
-                    if (res.Data is not null)
-                    {
-                        var result = res.Data.Value.Deserialize<TResult>();
-                        if (result is not null)
-                        {
-                            taskSource.SetResult(result);
-                            break;
-                        }
-                    }
-                    goto case 1;
-                case 1:
-                    taskSource.SetException(new OnebotV11ClientException($"服务端认为任务完成成功，但没有返回结果。调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-                default:
-                    taskSource.SetException(new OnebotV11ClientException($"返回了错误结果！调用ID={res.Guid}，错误码={res.Retcode}，错误={res.ErrorMessage}，错误描述={res.ErrorMessageEx}"));
-                    break;
-            }
-        });
-        _apiRequests.Writer.WriteAsync(new OnebotV11ApiRequest<TRequest>() { Action = apiName, Params = requestData, Guid = callGuid }, realCancellationToken).AsTask().Wait();
-        return taskSource.Task;
-    }
+    public Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null) =>
+        _dispatcher.InvokeAsync<TResult>(apiName, cancellationToken);
+
+    public Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null) =>
+        _dispatcher.InvokeAsync<TRequest, TResult>(apiName, requestData, cancellationToken);
 }

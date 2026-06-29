@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-using System.Text.Json;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Data;
@@ -41,7 +41,7 @@ public class UserInfo
     /// 性别
     /// </summary>
     [JsonInclude, JsonPropertyName("sex")]
-    public Gender Gender { get; internal set; } = Gender.Unknow;
+    public Gender Gender { get; internal set; } = Gender.Unknown;
 
     /// <summary>
     /// 年龄
@@ -67,26 +67,20 @@ public enum Gender
     /// <summary>
     /// 没写
     /// </summary>
-    Unknow
+    Unknown
 };
 
-internal class GenderConverter : JsonConverter<Gender>
+internal class GenderConverter : StringEnumJsonConverter<Gender>
 {
-    public override Gender Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-    reader.GetString()?.ToLower() switch
-    {
-        "male" => Gender.Male,
-        "female" => Gender.Female,
-        _ => Gender.Unknow,
-    };
-
-    public override void Write(Utf8JsonWriter writer, Gender value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value switch
+    public GenderConverter() : base(
+        fallback: Gender.Unknown,
+        throwOnUnknown: false,
+        mapping: new Dictionary<Gender, string>
         {
-            Gender.Male => "male",
-            Gender.Female => "female",
-            _ => "unknow"
-        });
+            { Gender.Male, "male" },
+            { Gender.Female, "female" },
+            { Gender.Unknown, "unknown" }
+        })
+    {
     }
 }

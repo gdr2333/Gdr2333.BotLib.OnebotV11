@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class VideoPart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public VideoPart(string fileName, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public VideoPart(string fileName, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : base("video", fileName, useCache, useProxy, timeOut)
     {
     }
@@ -56,7 +56,7 @@ public class VideoPart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public VideoPart(Uri file, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public VideoPart(Uri file, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : this(file.AbsoluteUri, useCache, useProxy, timeOut)
     {
     }
@@ -71,14 +71,14 @@ public class VideoPart : FilePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         AfterJsonDeserialization(_data!);
         _data = null;
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing()
+    protected override void OnSerializing()
     {
         _data = new();
         BeforeJsonSerialization(_data!);

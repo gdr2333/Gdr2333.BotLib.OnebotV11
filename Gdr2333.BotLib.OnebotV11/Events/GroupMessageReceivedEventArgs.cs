@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 using Gdr2333.BotLib.OnebotV11.Data;
 using Gdr2333.BotLib.OnebotV11.Messages;
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -100,26 +99,18 @@ public enum GroupMessageReceivedSubType
 };
 
 #pragma warning disable CS0618
-internal class GroupMessageReceivedSubTypeConverter : JsonConverter<GroupMessageReceivedSubType>
+internal sealed class GroupMessageReceivedSubTypeConverter : StringEnumJsonConverter<GroupMessageReceivedSubType>
 {
-    public override GroupMessageReceivedSubType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupMessageReceivedSubTypeConverter() : base(
+        fallback: GroupMessageReceivedSubType.Normal,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupMessageReceivedSubType, string>
         {
-            "normal" => GroupMessageReceivedSubType.Normal,
-            "anonumous" => GroupMessageReceivedSubType.Anonymous,
-            "notice" => GroupMessageReceivedSubType.Notice,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupMessageReceivedSubType value, JsonSerializerOptions options)
+            { GroupMessageReceivedSubType.Normal, "normal" },
+            { GroupMessageReceivedSubType.Anonymous, "anonumous" },
+            { GroupMessageReceivedSubType.Notice, "notice" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupMessageReceivedSubType.Normal => "normal",
-            GroupMessageReceivedSubType.Notice => "notice",
-            GroupMessageReceivedSubType.Anonymous => "anonumous",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }
 #pragma warning restore CS0618

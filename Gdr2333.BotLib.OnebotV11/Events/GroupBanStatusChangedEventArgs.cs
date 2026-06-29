@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -72,23 +71,16 @@ public enum GroupBanStatusChangedSubtype
     Unbanned
 }
 
-internal class GroupBanStatusChangedSubtypeConverter : JsonConverter<GroupBanStatusChangedSubtype>
+internal sealed class GroupBanStatusChangedSubtypeConverter : StringEnumJsonConverter<GroupBanStatusChangedSubtype>
 {
-    public override GroupBanStatusChangedSubtype Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupBanStatusChangedSubtypeConverter() : base(
+        fallback: GroupBanStatusChangedSubtype.Banned,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupBanStatusChangedSubtype, string>
         {
-            "ban" => GroupBanStatusChangedSubtype.Banned,
-            "lift_ban" => GroupBanStatusChangedSubtype.Unbanned,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupBanStatusChangedSubtype value, JsonSerializerOptions options)
+            { GroupBanStatusChangedSubtype.Banned, "ban" },
+            { GroupBanStatusChangedSubtype.Unbanned, "lift_ban" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupBanStatusChangedSubtype.Banned => "ban",
-            GroupBanStatusChangedSubtype.Unbanned => "lift_ban",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

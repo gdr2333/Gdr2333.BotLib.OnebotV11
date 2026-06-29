@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -61,23 +60,16 @@ public enum GroupAdminChangedSubtype
     Dismiss
 }
 
-internal class GroupAdminChangedSubtypeConverter : JsonConverter<GroupAdminChangedSubtype>
+internal sealed class GroupAdminChangedSubtypeConverter : StringEnumJsonConverter<GroupAdminChangedSubtype>
 {
-    public override GroupAdminChangedSubtype Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupAdminChangedSubtypeConverter() : base(
+        fallback: GroupAdminChangedSubtype.Appoint,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupAdminChangedSubtype, string>
         {
-            "set" => GroupAdminChangedSubtype.Appoint,
-            "unset" => GroupAdminChangedSubtype.Dismiss,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupAdminChangedSubtype value, JsonSerializerOptions options)
+            { GroupAdminChangedSubtype.Appoint, "set" },
+            { GroupAdminChangedSubtype.Dismiss, "unset" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupAdminChangedSubtype.Appoint => "set",
-            GroupAdminChangedSubtype.Dismiss => "unset",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

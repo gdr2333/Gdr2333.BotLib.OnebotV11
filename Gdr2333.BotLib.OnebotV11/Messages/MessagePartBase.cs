@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 /// <summary>
 /// 消息段基类
 /// </summary>
-/// <param name="srcType">消息段类型</param>
 // System.Text.Json限制了我们这里的JsonDerivedType不能套娃，但我们可以手动套娃。
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 
@@ -56,14 +55,18 @@ namespace Gdr2333.BotLib.OnebotV11.Messages;
 public abstract class MessagePartBase : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
-    /// JSON反序列化后的钩子
+    /// JSON反序列化后的钩子。由 <see cref="System.Text.Json.JsonSerializer"/> 调用，外部不应直接调用。
     /// </summary>
-    public abstract void OnDeserialized();
+    protected abstract void OnDeserialized();
 
     /// <summary>
-    /// JSON序列化之前的钩子
+    /// JSON序列化之前的钩子。由 <see cref="System.Text.Json.JsonSerializer"/> 调用，外部不应直接调用。
     /// </summary>
-    public abstract void OnSerializing();
+    protected abstract void OnSerializing();
+
+    void IJsonOnSerializing.OnSerializing() => OnSerializing();
+
+    void IJsonOnDeserialized.OnDeserialized() => OnDeserialized();
 
     /// <summary>
     /// 返回消息段的文本表现形式

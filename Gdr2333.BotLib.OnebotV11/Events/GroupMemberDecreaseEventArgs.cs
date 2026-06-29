@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -70,25 +69,17 @@ public enum GroupMemberDecreaseSubtype
     SelfKicked
 }
 
-internal class GroupMemberDecreaseSubtypeConverter : JsonConverter<GroupMemberDecreaseSubtype>
+internal sealed class GroupMemberDecreaseSubtypeConverter : StringEnumJsonConverter<GroupMemberDecreaseSubtype>
 {
-    public override GroupMemberDecreaseSubtype Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupMemberDecreaseSubtypeConverter() : base(
+        fallback: GroupMemberDecreaseSubtype.Leave,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupMemberDecreaseSubtype, string>
         {
-            "leave" => GroupMemberDecreaseSubtype.Leave,
-            "kick" => GroupMemberDecreaseSubtype.Kick,
-            "kick_me" => GroupMemberDecreaseSubtype.SelfKicked,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupMemberDecreaseSubtype value, JsonSerializerOptions options)
+            { GroupMemberDecreaseSubtype.Leave, "leave" },
+            { GroupMemberDecreaseSubtype.Kick, "kick" },
+            { GroupMemberDecreaseSubtype.SelfKicked, "kick_me" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupMemberDecreaseSubtype.Kick => "kick",
-            GroupMemberDecreaseSubtype.Leave => "leave",
-            GroupMemberDecreaseSubtype.SelfKicked => "kick_me",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

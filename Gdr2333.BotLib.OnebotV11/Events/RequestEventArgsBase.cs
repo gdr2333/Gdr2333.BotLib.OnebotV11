@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -62,23 +61,16 @@ public enum RequestType
     Group
 }
 
-internal class RequestTypeConverter : JsonConverter<RequestType>
+internal sealed class RequestTypeConverter : StringEnumJsonConverter<RequestType>
 {
-    public override RequestType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public RequestTypeConverter() : base(
+        fallback: RequestType.Friend,
+        throwOnUnknown: true,
+        mapping: new Dictionary<RequestType, string>
         {
-            "friend" => RequestType.Friend,
-            "group" => RequestType.Group,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, RequestType value, JsonSerializerOptions options)
+            { RequestType.Friend, "friend" },
+            { RequestType.Group, "group" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            RequestType.Friend => "friend",
-            RequestType.Group => "group",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

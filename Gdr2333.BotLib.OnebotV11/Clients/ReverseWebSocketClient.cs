@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ namespace Gdr2333.BotLib.OnebotV11.Clients;
 /// <summary>
 /// 反向WebSocket客户端
 /// </summary>
-public class ReverseWebSocketClient : OnebotV11ClientBase
+public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
 {
     /// <inheritdoc/>
     public override event OnebotEventOccurrence? OnEventOccurrence;
@@ -43,6 +43,7 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
     private readonly CancellationTokenSource _cancellationTokenSource;
     private readonly CancellationToken _cancellationToken;
     private readonly string? _accessToken;
+    private bool _disposed;
 
     /// <summary>
     /// 新建一个反向Websocket服务器
@@ -247,8 +248,51 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
                 i.Value.Cancel();
     }
 
+    /// <summary>
+    /// 释放反向WebSocket服务器持有的全部非托管资源（HTTP监听、取消令牌源、每个连接的取消令牌源等）。释放后不可再 <see cref="Start"/>。
+    /// </summary>
+    public void Dispose()
+    {
+        if (_disposed)
+            return;
+        _disposed = true;
+        try
+        {
+            if (_httpLisenter.IsListening)
+                _httpLisenter.Stop();
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+        try
+        {
+            _cancellationTokenSource.Cancel();
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+        lock (_subTaskCTS)
+        {
+            foreach (var cts in _subTaskCTS.Values)
+            {
+                try
+                {
+                    cts.Cancel();
+                }
+                catch (ObjectDisposedException)
+                {
+                }
+                cts.Dispose();
+            }
+            _subTaskCTS.Clear();
+        }
+        _httpLisenter.Close();
+        _cancellationTokenSource.Dispose();
+        GC.SuppressFinalize(this);
+    }
+
     /// <inheritdoc/>
-    public override Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)
+    public override async Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)
     {
         List<Task> tasks = [];
         Task last = Task.CompletedTask;
@@ -274,17 +318,18 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         }
         while (tasks.Count > 0)
         {
-            var t = Task.WhenAny(tasks);
-            t.Wait();
+            var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
-                return t.Result;
-            last = t.Result;
+                return;
+            last = t;
+            tasks.Remove(t);
         }
-        return last;
+        // 全部失败时，沿用旧的"返回最后一个失败 Task 让调用方 await"语义
+        await last;
     }
 
     /// <inheritdoc/>
-    public override Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
+    public override async Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
     {
         List<Task> tasks = [];
         Task last = Task.CompletedTask;
@@ -310,17 +355,17 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         }
         while (tasks.Count > 0)
         {
-            var t = Task.WhenAny(tasks);
-            t.Wait();
+            var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
-                return t.Result;
-            last = t.Result;
+                return;
+            last = t;
+            tasks.Remove(t);
         }
-        return last;
+        await last;
     }
 
     /// <inheritdoc/>
-    public override Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null)
+    public override async Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null)
     {
         List<Task<TResult>> tasks = [];
         Task<TResult>? last = null;
@@ -346,17 +391,19 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         }
         while (tasks.Count > 0)
         {
-            var t = Task.WhenAny(tasks);
-            t.Wait();
+            var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
-                return t.Result;
-            last = t.Result;
+                return await t;
+            last = t;
+            tasks.Remove(t);
         }
-        return last ?? throw new InvalidOperationException("没有已连接的客户端！");
+        if (last is null)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        return await last;
     }
 
     /// <inheritdoc/>
-    public override Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
+    public override async Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
     {
         List<Task<TResult>> tasks = [];
         Task<TResult>? last = null;
@@ -382,12 +429,14 @@ public class ReverseWebSocketClient : OnebotV11ClientBase
         }
         while (tasks.Count > 0)
         {
-            var t = Task.WhenAny(tasks);
-            t.Wait();
+            var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
-                return t.Result;
-            last = t.Result;
+                return await t;
+            last = t;
+            tasks.Remove(t);
         }
-        return last ?? throw new InvalidOperationException("没有已连接的客户端！");
+        if (last is null)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        return await last;
     }
 }

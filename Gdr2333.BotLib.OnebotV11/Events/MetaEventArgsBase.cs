@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -50,23 +49,16 @@ public enum MetaEventType
     Heartbeat
 };
 
-internal class MetaEventTypeConverter : JsonConverter<MetaEventType>
+internal sealed class MetaEventTypeConverter : StringEnumJsonConverter<MetaEventType>
 {
-    public override MetaEventType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public MetaEventTypeConverter() : base(
+        fallback: MetaEventType.Heartbeat,
+        throwOnUnknown: true,
+        mapping: new Dictionary<MetaEventType, string>
         {
-            "lifecycle" => MetaEventType.Lifecycle,
-            "heartbeat" => MetaEventType.Heartbeat,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, MetaEventType value, JsonSerializerOptions options)
+            { MetaEventType.Lifecycle, "lifecycle" },
+            { MetaEventType.Heartbeat, "heartbeat" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            MetaEventType.Heartbeat => "heartbeat",
-            MetaEventType.Lifecycle => "lifecycle",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

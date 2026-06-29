@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ public class MusicSharePart : MusicSharePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         MusicShareType = _data!.Type;
         MusicId = _data!.Id;
@@ -57,7 +57,7 @@ public class MusicSharePart : MusicSharePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing()
+    protected override void OnSerializing()
     {
         _data = new()
         {

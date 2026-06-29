@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public class RecordPart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public RecordPart(string fileName, bool useMagic = false, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public RecordPart(string fileName, bool useMagic = false, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : base("record", fileName, useCache, useProxy, timeOut)
     {
         UseMagic = useMagic;
@@ -61,7 +61,7 @@ public class RecordPart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public RecordPart(Uri file, bool useMagic = false, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public RecordPart(Uri file, bool useMagic = false, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : this(file.AbsoluteUri, useMagic, useCache, useProxy, timeOut)
     {
     }
@@ -81,7 +81,7 @@ public class RecordPart : FilePartBase
         "[语音]";
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         AfterJsonDeserialization(_data!);
         UseMagic = _data!.UseMagic ?? false;
@@ -89,7 +89,7 @@ public class RecordPart : FilePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing()
+    protected override void OnSerializing()
     {
         _data = new() { UseMagic = UseMagic };
         BeforeJsonSerialization(_data!);

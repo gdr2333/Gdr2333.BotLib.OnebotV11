@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ public abstract class FilePartBase : MessagePartBase
     /// <param name="useProxy">是否使用代理发送</param>
     /// <param name="useCache">是否使用缓存发送</param>
     /// <param name="timeOut">超时时长设置（null=不超时）</param>
-    public FilePartBase(string type, string fileName, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null) : base()
+    public FilePartBase(string type, string fileName, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null) : base()
     {
         FileName = fileName;
         UseProxy = useProxy;
@@ -91,7 +91,7 @@ public abstract class FilePartBase : MessagePartBase
         FileName = data.File;
         Url = data.Url;
         UseProxy = StaticData.CqUseProxyDefault;
-        UseCache = StaticData.CqUseCahceDefault;
+        UseCache = StaticData.CqUseCacheDefault;
         TimeOut = null;
     }
 

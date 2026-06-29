@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-using System.Text.Json;
+using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Data;
@@ -75,23 +75,17 @@ public enum MemberRole
     Member
 };
 
-internal class MemberRoleConverter : JsonConverter<MemberRole>
+internal sealed class MemberRoleConverter : StringEnumJsonConverter<MemberRole>
 {
-    public override MemberRole Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-    reader.GetString()?.ToLower() switch
-    {
-        "owner" => MemberRole.Owner,
-        "admin" => MemberRole.Admin,
-        _ => MemberRole.Member,
-    };
-
-    public override void Write(Utf8JsonWriter writer, MemberRole value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value switch
+    public MemberRoleConverter() : base(
+        fallback: MemberRole.Member,
+        throwOnUnknown: false,
+        mapping: new Dictionary<MemberRole, string>
         {
-            MemberRole.Owner => "owner",
-            MemberRole.Admin => "admin",
-            _ => "member"
-        });
+            { MemberRole.Owner, "owner" },
+            { MemberRole.Admin, "admin" },
+            { MemberRole.Member, "member" }
+        })
+    {
     }
 }

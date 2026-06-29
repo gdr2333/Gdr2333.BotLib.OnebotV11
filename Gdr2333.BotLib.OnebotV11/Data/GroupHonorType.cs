@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Data;
@@ -50,29 +49,19 @@ public enum GroupHonorType
     StrongNewbie
 }
 
-internal class GroupHonorTypeConverter : JsonConverter<GroupHonorType>
+internal sealed class GroupHonorTypeConverter : StringEnumJsonConverter<GroupHonorType>
 {
-    public override GroupHonorType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupHonorTypeConverter() : base(
+        fallback: GroupHonorType.Talkative,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupHonorType, string>
         {
-            "talkative" => GroupHonorType.Talkative,
-            "performer" => GroupHonorType.Performer,
-            "emotion" => GroupHonorType.Emotion,
-            "legend" => GroupHonorType.Legend,
-            "strong_newbie" => GroupHonorType.StrongNewbie,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupHonorType value, JsonSerializerOptions options)
+            { GroupHonorType.Talkative, "talkative" },
+            { GroupHonorType.Performer, "performer" },
+            { GroupHonorType.Emotion, "emotion" },
+            { GroupHonorType.Legend, "legend" },
+            { GroupHonorType.StrongNewbie, "strong_newbie" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupHonorType.Talkative => "talkative",
-            GroupHonorType.Performer => "performer",
-            GroupHonorType.Emotion => "emotion",
-            GroupHonorType.Legend => "legend",
-            GroupHonorType.StrongNewbie => "strong_newbie",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

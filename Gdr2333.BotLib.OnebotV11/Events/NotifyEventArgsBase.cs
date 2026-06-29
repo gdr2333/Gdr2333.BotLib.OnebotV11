@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -55,25 +54,17 @@ public enum NotifySubtype
     Honor
 }
 
-internal class NotifySubtypeConverter : JsonConverter<NotifySubtype>
+internal sealed class NotifySubtypeConverter : StringEnumJsonConverter<NotifySubtype>
 {
-    public override NotifySubtype Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public NotifySubtypeConverter() : base(
+        fallback: NotifySubtype.Poke,
+        throwOnUnknown: true,
+        mapping: new Dictionary<NotifySubtype, string>
         {
-            "poke" => NotifySubtype.Poke,
-            "lucky_king" => NotifySubtype.LuckyKing,
-            "honor" => NotifySubtype.Honor,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, NotifySubtype value, JsonSerializerOptions options)
+            { NotifySubtype.Poke, "poke" },
+            { NotifySubtype.LuckyKing, "lucky_king" },
+            { NotifySubtype.Honor, "honor" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            NotifySubtype.Poke => "poke",
-            NotifySubtype.LuckyKing => "lucky_king",
-            NotifySubtype.Honor => "honor",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

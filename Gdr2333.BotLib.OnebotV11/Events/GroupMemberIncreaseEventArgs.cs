@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 // 你的直觉没错，是从群成员减少事件直接改的
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -68,23 +67,16 @@ public enum GroupMemberIncreaseSubtype
     Invite
 }
 
-internal class GroupMemberIncreaseSubtypeConverter : JsonConverter<GroupMemberIncreaseSubtype>
+internal sealed class GroupMemberIncreaseSubtypeConverter : StringEnumJsonConverter<GroupMemberIncreaseSubtype>
 {
-    public override GroupMemberIncreaseSubtype Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupMemberIncreaseSubtypeConverter() : base(
+        fallback: GroupMemberIncreaseSubtype.Approve,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupMemberIncreaseSubtype, string>
         {
-            "approve" => GroupMemberIncreaseSubtype.Approve,
-            "invite" => GroupMemberIncreaseSubtype.Invite,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupMemberIncreaseSubtype value, JsonSerializerOptions options)
+            { GroupMemberIncreaseSubtype.Approve, "approve" },
+            { GroupMemberIncreaseSubtype.Invite, "invite" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupMemberIncreaseSubtype.Approve => "approve",
-            GroupMemberIncreaseSubtype.Invite => "invite",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

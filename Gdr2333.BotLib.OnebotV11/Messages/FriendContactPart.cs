@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ public class FriendContactPart : ContactPartBase
     }
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         if (_data!.Type != "qq")
             throw new InvalidOperationException("data的类型不是qq，你选错了反序列化的目标类型。");
@@ -50,7 +50,7 @@ public class FriendContactPart : ContactPartBase
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing() =>
+    protected override void OnSerializing() =>
         BeforeJsonSerialization(out _data!);
 
     /// <inheritdoc/>

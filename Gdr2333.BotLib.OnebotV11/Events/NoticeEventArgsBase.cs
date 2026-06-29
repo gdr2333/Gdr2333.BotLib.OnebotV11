@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Events;
@@ -88,37 +87,23 @@ public enum NoticeType
     Notify
 }
 
-internal class NoticeTypeConverter : JsonConverter<NoticeType>
+internal sealed class NoticeTypeConverter : StringEnumJsonConverter<NoticeType>
 {
-    public override NoticeType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public NoticeTypeConverter() : base(
+        fallback: NoticeType.Notify,
+        throwOnUnknown: true,
+        mapping: new Dictionary<NoticeType, string>
         {
-            "group_upload" => NoticeType.GroupFileUploaded,
-            "group_admin" => NoticeType.GroupAdminChanged,
-            "group_decrease" => NoticeType.GroupMemberDecrease,
-            "group_increase" => NoticeType.GroupMemberIncrease,
-            "group_ban" => NoticeType.GroupBanStatusChanged,
-            "friend_add" => NoticeType.FriendAdded,
-            "group_recall" => NoticeType.GroupMessageRecalled,
-            "friend_recall" => NoticeType.FriendMessageRecalled,
-            "notify" => NoticeType.Notify,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, NoticeType value, JsonSerializerOptions options)
+            { NoticeType.GroupFileUploaded, "group_upload" },
+            { NoticeType.GroupAdminChanged, "group_admin" },
+            { NoticeType.GroupMemberDecrease, "group_decrease" },
+            { NoticeType.GroupMemberIncrease, "group_increase" },
+            { NoticeType.GroupBanStatusChanged, "group_ban" },
+            { NoticeType.FriendAdded, "friend_add" },
+            { NoticeType.GroupMessageRecalled, "group_recall" },
+            { NoticeType.FriendMessageRecalled, "friend_recall" },
+            { NoticeType.Notify, "notify" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            NoticeType.GroupFileUploaded => "group_upload",
-            NoticeType.GroupAdminChanged => "group_admin",
-            NoticeType.GroupMemberDecrease => "group_decrease",
-            NoticeType.GroupMemberIncrease => "group_increase",
-            NoticeType.GroupBanStatusChanged => "group_ban",
-            NoticeType.FriendAdded => "friend_add",
-            NoticeType.GroupMessageRecalled => "group_recall",
-            NoticeType.FriendMessageRecalled => "friend_recall",
-            NoticeType.Notify => "notify",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

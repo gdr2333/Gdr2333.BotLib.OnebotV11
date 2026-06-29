@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class OnebotV11ClientException : ApplicationException
     /// 新建一个具有指定信息的客户端内部异常
     /// </summary>
     /// <param name="message">异常信息</param>
-    public OnebotV11ClientException(string? message) : base()
+    public OnebotV11ClientException(string? message) : base(message)
     {
     }
 
@@ -41,7 +41,7 @@ public class OnebotV11ClientException : ApplicationException
     /// </summary>
     /// <param name="message">异常信息</param>
     /// <param name="innerException">内部异常</param>
-    public OnebotV11ClientException(string? message, Exception? innerException) : base()
+    public OnebotV11ClientException(string? message, Exception? innerException) : base(message, innerException)
     {
     }
 }

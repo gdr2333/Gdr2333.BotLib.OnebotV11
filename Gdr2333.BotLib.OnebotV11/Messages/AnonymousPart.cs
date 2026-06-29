@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -51,14 +51,14 @@ public class AnonymousPart(bool ignore) : MessagePartBase
         string.Empty;
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         Ignore = _data?.Ignore ?? false;
         _data = null;
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing() =>
+    protected override void OnSerializing() =>
         _data = new()
         {
             Ignore = Ignore

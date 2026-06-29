@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ public class CustomForwardNodePart : MessagePartBase
     /// 转发的内容
     /// </summary>
     [JsonIgnore]
-    public Message Content { get; set; }
+    public Message Content { get; set; } = null!;
 
     [JsonInclude, JsonRequired, JsonPropertyName("data")]
     private CustomForwardNodePayload? _data;
@@ -63,7 +63,7 @@ public class CustomForwardNodePart : MessagePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         UserId = _data!.UserId;
         NickName = _data!.NickName;
@@ -72,11 +72,11 @@ public class CustomForwardNodePart : MessagePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing()
+    protected override void OnSerializing()
     {
         _data = new()
         {
-            Content = _data!.Content,
+            Content = Content,
             NickName = NickName,
             UserId = UserId
         };

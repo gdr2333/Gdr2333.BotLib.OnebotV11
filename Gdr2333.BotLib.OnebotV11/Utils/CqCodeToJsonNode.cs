@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -80,16 +80,29 @@ internal static class CqCodeToJsonNode
         }
         var nowBegin = 0;
         var ret = new JsonArray();
-        int nowEnd;
-        do
+        while (nowBegin < cqCode.Length)
         {
             var readingCqCode = cqCode[nowBegin] == '[';
-            nowEnd = readingCqCode ? cqCode.IndexOf(']', nowBegin) + 1 : cqCode.IndexOf('[', nowBegin);
-            if (nowEnd < 0)
-                nowEnd = cqCode.Length - 1;
+            int nowEnd;
+            if (readingCqCode)
+            {
+                var closeIdx = cqCode.IndexOf(']', nowBegin);
+                // 没有匹配的 ']' 时，把剩余部分当作 CQ 码本体然后结束
+                if (closeIdx < 0)
+                {
+                    ret.Add(ConvertPart(cqCode[nowBegin..]));
+                    break;
+                }
+                nowEnd = closeIdx + 1;
+            }
+            else
+            {
+                var openIdx = cqCode.IndexOf('[', nowBegin);
+                nowEnd = openIdx < 0 ? cqCode.Length : openIdx;
+            }
             ret.Add(ConvertPart(cqCode[nowBegin..nowEnd]));
             nowBegin = nowEnd;
-        } while (nowEnd < cqCode.Length - 1);
+        }
         return ret;
     }
 }

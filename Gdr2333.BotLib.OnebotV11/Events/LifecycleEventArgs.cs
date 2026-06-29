@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 namespace Gdr2333.BotLib.OnebotV11.Events;
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 /// <summary>
@@ -52,25 +51,17 @@ public enum LifecycleEventSubType
     Connect
 }
 
-internal class LifecycleEventSubTypeConverter : JsonConverter<LifecycleEventSubType>
+internal sealed class LifecycleEventSubTypeConverter : StringEnumJsonConverter<LifecycleEventSubType>
 {
-    public override LifecycleEventSubType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public LifecycleEventSubTypeConverter() : base(
+        fallback: LifecycleEventSubType.Enable,
+        throwOnUnknown: true,
+        mapping: new Dictionary<LifecycleEventSubType, string>
         {
-            "enable" => LifecycleEventSubType.Enable,
-            "disable" => LifecycleEventSubType.Disable,
-            "connect" => LifecycleEventSubType.Connect,
-            _ => throw new InvalidCastException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, LifecycleEventSubType value, JsonSerializerOptions options)
+            { LifecycleEventSubType.Enable, "enable" },
+            { LifecycleEventSubType.Disable, "disable" },
+            { LifecycleEventSubType.Connect, "connect" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            LifecycleEventSubType.Enable => "enable",
-            LifecycleEventSubType.Disable => "disable",
-            LifecycleEventSubType.Connect => "connect",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

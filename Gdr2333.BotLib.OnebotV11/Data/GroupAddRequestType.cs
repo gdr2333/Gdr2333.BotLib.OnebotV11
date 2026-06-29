@@ -1,5 +1,5 @@
 /*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 
 using Gdr2333.BotLib.OnebotV11.Utils;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Data;
@@ -36,23 +35,16 @@ public enum GroupAddRequestType
     Invite
 }
 
-internal class GroupAddRequestTypeConverter : JsonConverter<GroupAddRequestType>
+internal sealed class GroupAddRequestTypeConverter : StringEnumJsonConverter<GroupAddRequestType>
 {
-    public override GroupAddRequestType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        reader.GetString()?.ToLower() switch
+    public GroupAddRequestTypeConverter() : base(
+        fallback: GroupAddRequestType.Request,
+        throwOnUnknown: true,
+        mapping: new Dictionary<GroupAddRequestType, string>
         {
-            "add" => GroupAddRequestType.Request,
-            "invite" => GroupAddRequestType.Invite,
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        };
-
-    public override void Write(Utf8JsonWriter writer, GroupAddRequestType value, JsonSerializerOptions options)
+            { GroupAddRequestType.Request, "add" },
+            { GroupAddRequestType.Invite, "invite" }
+        })
     {
-        writer.WriteStringValue(value switch
-        {
-            GroupAddRequestType.Request => "add",
-            GroupAddRequestType.Invite => "invite",
-            _ => throw new InvalidDataException(StaticData.BadEnumValueMessage)
-        });
     }
 }

@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public class ImagePart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public ImagePart(string fileName, bool isFlash = false, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public ImagePart(string fileName, bool isFlash = false, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : base("image", fileName, useCache, useProxy, timeOut)
     {
         IsFlash = isFlash;
@@ -61,7 +61,7 @@ public class ImagePart : FilePartBase
     /// <param name="useCache">是否使用缓存</param>
     /// <param name="useProxy">是否使用代理</param>
     /// <param name="timeOut">超时时长</param>
-    public ImagePart(Uri file, bool isFlash = false, bool useCache = StaticData.CqUseCahceDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
+    public ImagePart(Uri file, bool isFlash = false, bool useCache = StaticData.CqUseCacheDefault, bool useProxy = StaticData.CqUseProxyDefault, TimeSpan? timeOut = null)
         : this(file.AbsoluteUri, isFlash, useCache, useProxy, timeOut)
     {
     }
@@ -81,7 +81,7 @@ public class ImagePart : FilePartBase
         "[图片]";
 
     /// <inheritdoc/>
-    public override void OnDeserialized()
+    protected override void OnDeserialized()
     {
         AfterJsonDeserialization(_data!);
         IsFlash = _data?.Type == "flash";
@@ -89,7 +89,7 @@ public class ImagePart : FilePartBase
     }
 
     /// <inheritdoc/>
-    public override void OnSerializing()
+    protected override void OnSerializing()
     {
         var data = new ImagePayload()
         {

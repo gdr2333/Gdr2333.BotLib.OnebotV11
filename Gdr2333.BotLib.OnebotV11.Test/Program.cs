@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2025 All contributors of Gdr2333.BotLib
+   Copyright 2025-2026 All contributors of Gdr2333.BotLib
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -28,9 +28,9 @@ bool rws = false;
 if (!File.Exists("AutoTest.txt"))
 {
     Console.WriteLine("是否使用反向Websocket链接？是输入Y。");
-    rws = Console.ReadLine().Equals("Y", StringComparison.CurrentCultureIgnoreCase);
+    rws = (Console.ReadLine() ?? "").Equals("Y", StringComparison.CurrentCultureIgnoreCase);
     Console.WriteLine("请输入目标URL：");
-    url = new(Console.ReadLine());
+    url = new(Console.ReadLine() ?? "");
     Console.WriteLine("请输入目标AccessToken，没有则留空：");
     ak = Console.ReadLine();
     human = true;
@@ -74,7 +74,7 @@ if (human)
     {
         while (!Console.KeyAvailable)
             await Task.Delay(100);
-        var s = Console.ReadLine().Split(' ');
+        var s = (Console.ReadLine() ?? "").Split(' ');
         if (s.Length <= 0)
             break;
         switch (s[0].ToLower())
@@ -103,7 +103,7 @@ if (human)
             case "getforwardmessage":
                 if (s.Length < 2)
                     goto default;
-                Console.WriteLine(string.Concat((await client.GetForwardMessageAsync(s[1])).ConvertAll(m => m as CustomForwardNodePart).ConvertAll(cfnp => $"[{GetObjectProps(cfnp)}]")));
+                Console.WriteLine(string.Concat((await client.GetForwardMessageAsync(s[1])).ConvertAll(m => m as CustomForwardNodePart).ConvertAll(cfnp => cfnp is null ? "[null]" : $"[{GetObjectProps(cfnp)}]")));
                 break;
             case "sendlike":
                 if (s.Length < 2)

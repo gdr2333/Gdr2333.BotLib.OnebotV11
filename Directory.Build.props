@@ -1,0 +1,13 @@
+<Project>
+  <!--
+    Solution-wide MSBuild properties for Gdr2333.BotLib.OnebotV11.
+    TreatWarningsAsErrors 在所有项目上统一开启，确保 CI 不会让 warning 累积。
+  -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>
