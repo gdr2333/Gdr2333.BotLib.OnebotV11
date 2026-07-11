@@ -105,9 +105,12 @@ internal static class OnebotV11EventDispatch
 
     private static OnebotV11EventArgsBase? DispatchNotify(JsonElement json, JsonSerializerOptions options)
     {
+        // OneBot 实现的 notify.sub_type 经常新增，SDK 的派发表无法覆盖全部。
+        // 未知子类型返回 null，由上层 OnExceptionOccurrence 上报后跳过此条，
+        // 不应当作致命错误中断事件循环。
         var subType = json.GetProperty("sub_type").GetString()?.ToLowerInvariant();
         if (subType is null || !_notifySubDispatch.TryGetValue(subType, out var factory))
-            throw new InvalidDataException($"未知通知事件子类型{subType}");
+            return null;
         return factory(json, options);
     }
 }

@@ -65,12 +65,14 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
+            // 连接级故障：通知上层回收当前连接
             onFail(this);
         }
         catch (Exception e)
         {
+            // 其它异常属于"单条消息"的软错误（如派发表未覆盖的未知 notice 子类型、
+            // 反序列化失败等），只上报、不终结循环。连接故障由 WebSocketException 单独处理。
             OnExceptionOccurrence?.Invoke(this, e);
-            onFail(this);
         }
     }
 
@@ -86,9 +88,16 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
                 var root = doc.RootElement;
                 if (root.TryGetProperty("echo", out _))
                 {
-                    var result = root.Deserialize<OnebotV11ApiResult>(_opt)
-                        ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(bytes)}");
-                    _dispatcher.TryDeliver(result);
+                    var result = root.Deserialize<OnebotV11ApiResult>(_opt);
+                    if (result is not null)
+                    {
+                        _dispatcher.TryDeliver(result);
+                    }
+                    else
+                    {
+                        OnExceptionOccurrence?.Invoke(this,
+                            new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(bytes)}"));
+                    }
                 }
                 else
                 {
@@ -96,19 +105,22 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
                     if (evt is not null)
                         OnEventOccurrence?.Invoke(this, evt);
                     else
-                        throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(bytes)}");
+                        OnExceptionOccurrence?.Invoke(this,
+                            new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(bytes)}"));
                 }
             }
         }
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
+            // 连接级故障：通知上层回收当前连接
             onFail(this);
         }
         catch (Exception e)
         {
+            // 其它异常属于"单条消息"的软错误，只上报、不终结循环，
+            // 与 EventLoop 的容错策略保持一致。
             OnExceptionOccurrence?.Invoke(this, e);
-            onFail(this);
         }
     }
 
