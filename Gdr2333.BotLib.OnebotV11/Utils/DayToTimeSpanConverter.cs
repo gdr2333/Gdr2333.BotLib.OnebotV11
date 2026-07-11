@@ -24,11 +24,19 @@ internal class DayToTimeSpanConverter : JsonConverter<TimeSpan>
     public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
         TimeSpan.FromDays(reader.TokenType switch
         {
-            JsonTokenType.String => double.Parse(reader.GetString() ?? throw new InvalidOperationException("这怎么可能？")),
+            JsonTokenType.String => ParseStringAsDouble(ref reader, "天数"),
             JsonTokenType.Number => reader.GetDouble(),
-            _ => throw new FormatException("无效的格式")
+            _ => throw new JsonException("天数字段收到非法 JSON 类型。")
         });
 
     public override void Write(Utf8JsonWriter writer, TimeSpan value, JsonSerializerOptions options) =>
         writer.WriteNumberValue((long)value.TotalDays);
+
+    internal static double ParseStringAsDouble(ref Utf8JsonReader reader, string unit)
+    {
+        var s = reader.GetString();
+        if (s is null || !double.TryParse(s, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d))
+            throw new JsonException($"{unit}字段字符串解析失败：\"{s}\"。");
+        return d;
+    }
 }

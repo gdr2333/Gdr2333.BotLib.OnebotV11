@@ -34,25 +34,32 @@ internal class OB11JsonBoolConverter : JsonConverter<bool>
                 return false;
             case JsonTokenType.Number:
                 var num = reader.GetInt64();
+                reader.Read();
                 return num != 0;
             case JsonTokenType.String:
                 var str = reader.GetString()?.ToLower();
-                if (long.TryParse(str, out var num2))
+                reader.Read();
+                if (str is null)
+                    throw new JsonException("布尔字段收到了字符串 null。");
+                // 字符串里允许 0/1（如 "1"）、true/false（大小写不敏感）、yes/no 等。
+                // 不接受小数、任意整数（即便溢出）一律按非法处理。
+                if (long.TryParse(str, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out var num2)
+                    && num2 >= 0 && num2 <= 1)
                     return num2 != 0;
-                // 能写出"true"的也是神人了
-                else if (bool.TryParse(str, out var num3))
+                if (bool.TryParse(str, out var num3))
                     return num3;
-                else if (str == "yes")
+                if (str == "yes")
                     return true;
-                else if (str == "no")
+                if (str == "no")
                     return false;
-                else
-                    throw new FormatException($"{str}是个啥啊？？？");
+                // 非法字符串：保留硬失败语义（让上层 OnExceptionOccurrence 收到），
+                // 但用 JsonException 让父级 STj 通道统一处理；事件循环不再因此终结。
+                throw new JsonException($"布尔字段收到非法字符串 \"{str}\"。");
             case JsonTokenType.Null:
                 reader.Read();
                 return false;
             default:
-                throw new FormatException($"{reader.TokenType}又是啥？？？");
+                throw new JsonException($"布尔字段收到非法 token {reader.TokenType}。");
         }
     }
 

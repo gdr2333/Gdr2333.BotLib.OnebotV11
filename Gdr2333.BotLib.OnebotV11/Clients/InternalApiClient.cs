@@ -58,12 +58,14 @@ internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToke
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
+            // 连接级故障：通知上层回收当前连接
             onFail(this);
         }
         catch (Exception e)
         {
+            // 其它异常属"单条请求"软错误（序列化失败、构造期 bug 等），
+            // 只上报、不终结循环；连接级故障由 WebSocketException 单独处理。
             OnExceptionOccurrence?.Invoke(null, e);
-            onFail(this);
         }
     }
 
@@ -75,21 +77,33 @@ internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToke
             while (!_cancellationToken.IsCancellationRequested)
             {
                 var bytes = await ReceiveMessageAsync(buffer, _apiWebSocket, _cancellationToken);
-                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(bytes, _opt)
-                    ?? throw new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(bytes)}");
+                var result = JsonSerializer.Deserialize<OnebotV11ApiResult>(bytes, _opt);
+                if (result is null)
+                {
+                    OnExceptionOccurrence?.Invoke(null,
+                        new InvalidDataException($"无法解析的API调用结果！返回原文：{Convert.ToBase64String(bytes)}"));
+                    continue;
+                }
                 if (!_dispatcher.TryDeliver(result))
-                    throw new InvalidDataException($"收到未匹配的 API 响应 Guid={result.Guid}");
+                {
+                    // 没有匹配的 guid 通常意味着"服务端在错误回复之前的请求"，
+                    // 属单条软错误，连接本身仍然健康——继续。
+                    OnExceptionOccurrence?.Invoke(null,
+                        new InvalidDataException($"收到未匹配的 API 响应 Guid={result.Guid}"));
+                }
             }
         }
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
+            // 连接级故障：通知上层回收当前连接
             onFail(this);
         }
         catch (Exception e)
         {
+            // 其它异常属"单条响应"软错误，只上报、不终结循环，
+            // 与 EventLoop / UniverseClient 策略保持一致。
             OnExceptionOccurrence?.Invoke(null, e);
-            onFail(this);
         }
     }
 

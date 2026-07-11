@@ -96,9 +96,16 @@ internal sealed class OnebotV11EventArgsConverter : JsonConverter<OnebotV11Event
     public override OnebotV11EventArgsBase? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var json = JsonElement.ParseValue(ref reader);
-        var postType = json.GetProperty("post_type").GetString()?.ToLowerInvariant();
-        if (postType is null || !OnebotV11EventDispatch.TryDispatch(postType, json, options, out var result))
-            throw new InvalidDataException($"未知事件类型{postType}");
+        if (!json.TryGetProperty("post_type", out var postTypeEl) || postTypeEl.GetString() is not { } postType)
+        {
+            // 缺失或非字符串 post_type：返回 null，由上层 ReceiveLoop/EventLoop 跳过
+            return null;
+        }
+        if (!OnebotV11EventDispatch.TryDispatch(postType, json, options, out var result))
+        {
+            // 未知 post_type 或派发表无对应条目：同上
+            return null;
+        }
         return result;
     }
 

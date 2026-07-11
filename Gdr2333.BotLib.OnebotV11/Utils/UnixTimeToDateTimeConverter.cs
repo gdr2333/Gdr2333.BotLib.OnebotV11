@@ -25,8 +25,8 @@ internal class UnixTimeToDateTimeConverter : JsonConverter<DateTime>
         DateTime.UnixEpoch.AddSeconds(reader.TokenType switch
         {
             JsonTokenType.Number => reader.GetDouble(),
-            JsonTokenType.String => double.Parse(reader.GetString() ?? throw new FormatException("这里读不到数据？？？什么情况")),
-            _ => throw new FormatException("时间戳解析失败：JSON类型不是数字也不是字符串")
+            JsonTokenType.String => DayToTimeSpanConverter.ParseStringAsDouble(ref reader, "Unix时间戳"),
+            _ => throw new JsonException("Unix时间戳解析失败：JSON类型不是数字也不是字符串。")
         });
 
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options) =>

@@ -74,12 +74,18 @@ internal abstract class StringEnumJsonConverter<T> : JsonConverter<T> where T : 
     {
         if (reader.TokenType == JsonTokenType.Null)
         {
+            // 修复：必须先消耗 Null token 再返回，否则后续解析器读到的 token 会错位
             reader.Read();
             return FallbackValue;
         }
         var s = reader.GetString();
         if (s is null)
+        {
+            // 字符串被读为 null（如某些 token 不是 String 也调到了这里）：丢弃 token + 兜底
+            reader.Read();
             return FallbackValue;
+        }
+        reader.Read();
         if (_toEnum is not null)
         {
             if (_toEnum.TryGetValue(s, out var mapped))

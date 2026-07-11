@@ -47,6 +47,8 @@ internal class ContactPartAlt : ContactPartBase
         else if (ContactType == "group")
             return new GroupContactPart(Id);
         else
-            throw new FormatException($"标准规定推荐类型只能是qq或group，但我们见到了{ContactType}。");
+            // 未知 type：保留为 ContactPartBase 让调用方按需处理；不再抛异常打断消息反序列化。
+            // 这是 OneBot 实现在 contact 段上新增 type（如 "channel"）时的兼容路径。
+            return new UnknownContactPart(ContactType, Id);
     }
 }

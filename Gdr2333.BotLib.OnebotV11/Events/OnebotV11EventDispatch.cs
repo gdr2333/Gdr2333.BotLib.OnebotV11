@@ -96,20 +96,29 @@ internal static class OnebotV11EventDispatch
 
     private static string? GetDispatchKey(JsonElement json, string postType) => postType switch
     {
-        "message" => json.GetProperty("message_type").GetString()?.ToLowerInvariant(),
-        "notice" => json.GetProperty("notice_type").GetString()?.ToLowerInvariant(),
-        "meta_event" => json.GetProperty("meta_event_type").GetString()?.ToLowerInvariant(),
-        "request" => json.GetProperty("request_type").GetString()?.ToLowerInvariant(),
+        "message" => TryGetStringProperty(json, "message_type"),
+        "notice" => TryGetStringProperty(json, "notice_type"),
+        "meta_event" => TryGetStringProperty(json, "meta_event_type"),
+        "request" => TryGetStringProperty(json, "request_type"),
         _ => null,
     };
+
+    private static string? TryGetStringProperty(JsonElement json, string name)
+    {
+        // 字段缺失或非字符串都视为未知——派发表会按"未知"返回 false，调用方跳过此条
+        if (!json.TryGetProperty(name, out var el) || el.ValueKind != JsonValueKind.String)
+            return null;
+        return el.GetString()?.ToLowerInvariant();
+    }
 
     private static OnebotV11EventArgsBase? DispatchNotify(JsonElement json, JsonSerializerOptions options)
     {
         // OneBot 实现的 notify.sub_type 经常新增，SDK 的派发表无法覆盖全部。
         // 未知子类型返回 null，由上层 OnExceptionOccurrence 上报后跳过此条，
         // 不应当作致命错误中断事件循环。
-        var subType = json.GetProperty("sub_type").GetString()?.ToLowerInvariant();
-        if (subType is null || !_notifySubDispatch.TryGetValue(subType, out var factory))
+        if (TryGetStringProperty(json, "sub_type") is not { } subType)
+            return null;
+        if (!_notifySubDispatch.TryGetValue(subType, out var factory))
             return null;
         return factory(json, options);
     }

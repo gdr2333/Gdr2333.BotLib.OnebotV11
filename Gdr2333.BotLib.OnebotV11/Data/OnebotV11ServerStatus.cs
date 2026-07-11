@@ -27,13 +27,13 @@ public class OnebotV11ServerStatus
     /// <summary>
     /// 服务器当前是否在线
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("online")]
+    [JsonInclude, JsonPropertyName("online")]
     public bool? IsOnline { get; internal set; }
 
     /// <summary>
-    /// 服务器是否正常工作
+    /// 服务器是否正常工作。OneBot 实现在服务端离线时常常省略该字段，缺省视为 <see langword="false"/>。
     /// </summary>
-    [JsonInclude, JsonRequired, JsonPropertyName("good")]
+    [JsonInclude, JsonPropertyName("good")]
     public bool EverythingIsFine { get; internal set; }
 
     /// <summary>

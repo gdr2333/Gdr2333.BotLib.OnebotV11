@@ -16,6 +16,7 @@
 using Gdr2333.BotLib.OnebotV11.Messages.TmpAlt;
 using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace Gdr2333.BotLib.OnebotV11.Messages;
@@ -51,6 +52,13 @@ public class Message : List<MessagePartBase>
     }
 
     /// <summary>
+    /// 构造一条空消息。仅由反序列化器内部使用。
+    /// </summary>
+    internal Message() : base()
+    {
+    }
+
+    /// <summary>
     /// 用指定文本初始化一条文本消息
     /// </summary>
     /// <param name="text">消息中的文本</param>
@@ -69,13 +77,54 @@ public class Message : List<MessagePartBase>
 
 internal class MessageConverter : JsonConverter<Message>
 {
-    public override Message? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-        new(Array.ConvertAll(reader.TokenType switch
+    public override Message? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType == JsonTokenType.String)
         {
-            JsonTokenType.StartArray => JsonSerializer.Deserialize<MessagePartBase[]>(ref reader, options) ?? throw new InvalidDataException("消息段解码失败！"),
-            JsonTokenType.String => CqCodeToJsonNode.Convert(reader.GetString()!).Deserialize<MessagePartBase[]>() ?? throw new FormatException("消息段无法解码！"),
-            _ => throw new FormatException("这什么消息段编码方式？")
-        }, inp => inp is ContactPartAlt inpalt ? inpalt.GetRealPart() : inp));
+            // CQ-code 字符串：解码为 JsonNode 走统一段循环
+            var cqNode = CqCodeToJsonNode.Convert(reader.GetString()!);
+            if (cqNode is not JsonArray cqArr)
+                return new Message();
+            return DeserializeSegments(cqArr, options);
+        }
+        if (reader.TokenType == JsonTokenType.StartArray)
+        {
+            // 已经是 JSON 数组：用 JsonDocument 拿到 JsonArray
+            using var doc = JsonDocument.ParseValue(ref reader);
+            if (doc.RootElement.ValueKind != JsonValueKind.Array)
+                return new Message();
+            var arr = JsonNode.Parse(doc.RootElement.GetRawText()) as JsonArray;
+            if (arr is null)
+                return new Message();
+            return DeserializeSegments(arr, options);
+        }
+        throw new FormatException("这什么消息段编码方式？");
+    }
+
+    private static Message DeserializeSegments(JsonArray arr, JsonSerializerOptions options)
+    {
+        var result = new Message();
+        // 单段反序列化失败时跳过该段，保留其余段；不再让坏段炸整条消息。
+        // 坏掉的段会用 TextPart 保留原始 JSON 文本，便于上游排查；无法获得原文时直接丢弃。
+        foreach (var element in arr)
+        {
+            if (element is null)
+                continue;
+            var raw = element.ToJsonString();
+            try
+            {
+                var part = JsonSerializer.Deserialize<MessagePartBase>(raw, options);
+                if (part is null)
+                    throw new JsonException("消息段反序列化为 null。");
+                result.Add(part is TmpAlt.ContactPartAlt alt ? alt.GetRealPart() : part);
+            }
+            catch (Exception ex) when (ex is JsonException || ex is FormatException || ex is InvalidDataException)
+            {
+                result.Add(new TextPart($"[无法解读的消息段：{raw}]"));
+            }
+        }
+        return result;
+    }
 
     public override void Write(Utf8JsonWriter writer, Message value, JsonSerializerOptions options) =>
         JsonSerializer.Serialize<List<MessagePartBase>>(writer, value);

@@ -24,9 +24,9 @@ internal class SecondToTimeSpanConverter : JsonConverter<TimeSpan>
     public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
         TimeSpan.FromSeconds(reader.TokenType switch
         {
-            JsonTokenType.String => double.Parse(reader.GetString() ?? throw new InvalidOperationException("这怎么可能？")),
+            JsonTokenType.String => DayToTimeSpanConverter.ParseStringAsDouble(ref reader, "秒数"),
             JsonTokenType.Number => reader.GetDouble(),
-            _ => throw new FormatException("无效的格式")
+            _ => throw new JsonException("秒数字段收到非法 JSON 类型。")
         });
 
     public override void Write(Utf8JsonWriter writer, TimeSpan value, JsonSerializerOptions options) =>

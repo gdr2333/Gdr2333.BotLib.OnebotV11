@@ -75,9 +75,14 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
                 input.AddRange(buffer[..res.Count]);
                 var result = JsonSerializer.Deserialize<OnebotV11EventArgsBase>(input.ToArray(), _opt);
                 if (result is not null)
+                {
                     OnEventOccurrence?.Invoke(_srcClient, result);
+                }
                 else
-                    throw new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(input.ToArray())}");
+                {
+                    OnExceptionOccurrence?.Invoke(_srcClient,
+                        new InvalidDataException($"无法解读的事件！缓存区域Base64：{Convert.ToBase64String(input.ToArray())}"));
+                }
             }
             catch (Exception e)
             {

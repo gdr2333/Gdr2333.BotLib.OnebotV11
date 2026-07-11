@@ -109,24 +109,30 @@ internal sealed class ApiRequestDispatcher
                         tcs.TrySetResult(default!);
                         return;
                     }
-                    if (result.Data is not null)
+                    if (result.Data is null)
                     {
-                        try
-                        {
-                            var deserialized = result.Data.Value.Deserialize<TResult>();
-                            if (deserialized is not null)
-                            {
-                                tcs.TrySetResult(deserialized);
-                                return;
-                            }
-                        }
-                        catch
-                        {
-                            // fall through to the "no usable data" case
-                        }
+                        tcs.TrySetException(new OnebotV11ClientException(
+                            $"服务端认为任务完成成功，但没有返回结果。调用ID={result.Guid}，错误码={result.Retcode}，错误={result.ErrorMessage}，错误描述={result.ErrorMessageEx}"));
+                        return;
                     }
-                    tcs.TrySetException(new OnebotV11ClientException(
-                        $"服务端认为任务完成成功，但没有返回结果。调用ID={result.Guid}，错误码={result.Retcode}，错误={result.ErrorMessage}，错误描述={result.ErrorMessageEx}"));
+                    try
+                    {
+                        var deserialized = result.Data.Value.Deserialize<TResult>();
+                        if (deserialized is not null)
+                        {
+                            tcs.TrySetResult(deserialized);
+                            return;
+                        }
+                        tcs.TrySetException(new OnebotV11ClientException(
+                            $"服务端返回的结果反序列化为 null。调用ID={result.Guid}"));
+                    }
+                    catch (Exception deserializationError)
+                    {
+                        // 反序列化失败保留原异常链路，调用方能直接定位数据格式问题
+                        tcs.TrySetException(new OnebotV11ClientException(
+                            $"服务端返回的结果反序列化失败。调用ID={result.Guid}，错误={result.ErrorMessage}，错误描述={result.ErrorMessageEx}",
+                            deserializationError));
+                    }
                     return;
                 case 1:
                     // retcode 1：原始实现在 CallApiAsync 上视为成功，在 InvokeApiAsync 上视为"无结果"异常

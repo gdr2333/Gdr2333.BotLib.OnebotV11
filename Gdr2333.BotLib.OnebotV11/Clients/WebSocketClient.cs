@@ -53,36 +53,76 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
         {
             _tokenSource.Dispose();
             _tokenSource = new();
+            _retry = 0;
         }
-        var websocket = new ClientWebSocket();
-        if (!string.IsNullOrEmpty(_accessToken))
-            websocket.Options.SetRequestHeader("Authorization", $"Bearer {_accessToken}");
-        await websocket.ConnectAsync(_target, default);
-        if (websocket.State == WebSocketState.Open)
+
+        while (!_disposed && !_tokenSource.IsCancellationRequested)
         {
-            _client = new(websocket, _tokenSource.Token, async (client) =>
+            ClientWebSocket? websocket = null;
+            try
             {
+                websocket = new ClientWebSocket();
+                if (!string.IsNullOrEmpty(_accessToken))
+                    websocket.Options.SetRequestHeader("Authorization", $"Bearer {_accessToken}");
+                await websocket.ConnectAsync(_target, _tokenSource.Token);
+
+                if (websocket.State != WebSocketState.Open)
+                    throw new WebSocketException("WebSocket 握手后未进入 Open 状态。");
+
+                var loopCts = CancellationTokenSource.CreateLinkedTokenSource(_tokenSource.Token);
+                var client = new InternalUniverseClient(websocket, loopCts.Token, FailUniverseClient);
+                client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
+                client.OnExceptionOccurrence += (_, e) => OnExceptionOccurrence?.Invoke(this, e);
+                websocket = null; // ownership transferred to client
+                _client = client;
+                client.Start();
+                return; // 成功建立连接，等待后续 onFail 触发重连
+            }
+            catch (OperationCanceledException)
+            {
+                websocket?.Dispose();
+                return;
+            }
+            catch (Exception e)
+            {
+                websocket?.Dispose();
+                _client = null;
+                OnExceptionOccurrence?.Invoke(this, e);
                 _retry++;
-                if (_retry < _maxRetry)
-                    await LinkAsync();
-                else
-                    throw new WebSocketException("无法连接！");
-            });
-            _client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
-            _client.OnExceptionOccurrence += async (_, e) =>
+                if (_retry >= _maxRetry)
+                    throw new WebSocketException("无法连接！", e);
+                // 简单线性退避，避免失败时打满 CPU
+                try
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(200 * _retry), _tokenSource.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    return;
+                }
+            }
+        }
+    }
+
+    private void FailUniverseClient(InternalUniverseClient client)
+    {
+        // 此方法由 InternalUniverseClient 在连接级故障时同步回调；
+        // 重连在后台触发（不阻塞当前堆栈），Dispose 配合取消令牌使其安全中止。
+        if (_disposed || _tokenSource.IsCancellationRequested)
+            return;
+        _ = RetryAsync();
+
+        async Task RetryAsync()
+        {
+            try
+            {
+                _retry = 0;
+                await LinkAsync();
+            }
+            catch (Exception e)
             {
                 OnExceptionOccurrence?.Invoke(this, e);
-            };
-            _client.Start();
-        }
-        else
-        {
-            websocket.Dispose();
-            _retry++;
-            if (_retry < _maxRetry)
-                await LinkAsync();
-            else
-                throw new WebSocketException("无法连接！");
+            }
         }
     }
 

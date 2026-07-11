@@ -295,148 +295,178 @@ public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
     public override async Task CallApiAsync(string apiName, CancellationToken? cancellationToken = null)
     {
         List<Task> tasks = [];
-        Task last = Task.CompletedTask;
+        List<Task> apiTasks = [];
         try
         {
             _apiClientsLock.EnterReadLock();
             foreach (var c in _apiClients)
-                tasks.Add(c.CallApiAsync(apiName, cancellationToken));
+                apiTasks.Add(c.CallApiAsync(apiName, cancellationToken));
         }
         finally
         {
             _apiClientsLock.ExitReadLock();
         }
+        List<Task> universeTasks = [];
         try
         {
             _universeClientsLock.EnterReadLock();
             foreach (var c in _universeClients)
-                tasks.Add(c.CallApiAsync(apiName, cancellationToken));
+                universeTasks.Add(c.CallApiAsync(apiName, cancellationToken));
         }
         finally
         {
             _universeClientsLock.ExitReadLock();
         }
+        if (apiTasks.Count == 0 && universeTasks.Count == 0)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        tasks.AddRange(apiTasks);
+        tasks.AddRange(universeTasks);
+        var exceptions = new List<Exception>();
         while (tasks.Count > 0)
         {
             var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
                 return;
-            last = t;
+            if (t.Exception is not null)
+                exceptions.Add(t.Exception);
             tasks.Remove(t);
         }
-        // 全部失败时，沿用旧的"返回最后一个失败 Task 让调用方 await"语义
-        await last;
+        // 全部失败时抛出聚合异常（保留 innerException）
+        if (exceptions.Count > 0)
+            throw new AggregateException("所有 OneBot 客户端均未能完成调用。", exceptions);
     }
 
     /// <inheritdoc/>
     public override async Task CallApiAsync<TRequest>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
     {
         List<Task> tasks = [];
-        Task last = Task.CompletedTask;
+        List<Task> apiTasks = [];
         try
         {
             _apiClientsLock.EnterReadLock();
             foreach (var c in _apiClients)
-                tasks.Add(c.CallApiAsync(apiName, requestData, cancellationToken));
+                apiTasks.Add(c.CallApiAsync(apiName, requestData, cancellationToken));
         }
         finally
         {
             _apiClientsLock.ExitReadLock();
         }
+        List<Task> universeTasks = [];
         try
         {
             _universeClientsLock.EnterReadLock();
             foreach (var c in _universeClients)
-                tasks.Add(c.CallApiAsync(apiName, requestData, cancellationToken));
+                universeTasks.Add(c.CallApiAsync(apiName, requestData, cancellationToken));
         }
         finally
         {
             _universeClientsLock.ExitReadLock();
         }
+        if (apiTasks.Count == 0 && universeTasks.Count == 0)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        tasks.AddRange(apiTasks);
+        tasks.AddRange(universeTasks);
+        var exceptions = new List<Exception>();
         while (tasks.Count > 0)
         {
             var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
                 return;
-            last = t;
+            if (t.Exception is not null)
+                exceptions.Add(t.Exception);
             tasks.Remove(t);
         }
-        await last;
+        if (exceptions.Count > 0)
+            throw new AggregateException("所有 OneBot 客户端均未能完成调用。", exceptions);
     }
 
     /// <inheritdoc/>
     public override async Task<TResult> InvokeApiAsync<TResult>(string apiName, CancellationToken? cancellationToken = null)
     {
         List<Task<TResult>> tasks = [];
-        Task<TResult>? last = null;
+        List<Task<TResult>> apiTasks = [];
         try
         {
             _apiClientsLock.EnterReadLock();
             foreach (var c in _apiClients)
-                tasks.Add(c.InvokeApiAsync<TResult>(apiName, cancellationToken));
+                apiTasks.Add(c.InvokeApiAsync<TResult>(apiName, cancellationToken));
         }
         finally
         {
             _apiClientsLock.ExitReadLock();
         }
+        List<Task<TResult>> universeTasks = [];
         try
         {
             _universeClientsLock.EnterReadLock();
             foreach (var c in _universeClients)
-                tasks.Add(c.InvokeApiAsync<TResult>(apiName, cancellationToken));
+                universeTasks.Add(c.InvokeApiAsync<TResult>(apiName, cancellationToken));
         }
         finally
         {
             _universeClientsLock.ExitReadLock();
         }
+        if (apiTasks.Count == 0 && universeTasks.Count == 0)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        tasks.AddRange(apiTasks);
+        tasks.AddRange(universeTasks);
+        var exceptions = new List<Exception>();
         while (tasks.Count > 0)
         {
             var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
                 return await t;
-            last = t;
+            if (t.Exception is not null)
+                exceptions.Add(t.Exception);
             tasks.Remove(t);
         }
-        if (last is null)
-            throw new InvalidOperationException("没有已连接的客户端！");
-        return await last;
+        if (exceptions.Count > 0)
+            throw new AggregateException("所有 OneBot 客户端均未能完成调用。", exceptions);
+        throw new InvalidOperationException("没有已连接的客户端！");
     }
 
     /// <inheritdoc/>
     public override async Task<TResult> InvokeApiAsync<TRequest, TResult>(string apiName, TRequest requestData, CancellationToken? cancellationToken = null)
     {
         List<Task<TResult>> tasks = [];
-        Task<TResult>? last = null;
+        List<Task<TResult>> apiTasks = [];
         try
         {
             _apiClientsLock.EnterReadLock();
             foreach (var c in _apiClients)
-                tasks.Add(c.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken));
+                apiTasks.Add(c.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken));
         }
         finally
         {
             _apiClientsLock.ExitReadLock();
         }
+        List<Task<TResult>> universeTasks = [];
         try
         {
             _universeClientsLock.EnterReadLock();
             foreach (var c in _universeClients)
-                tasks.Add(c.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken));
+                universeTasks.Add(c.InvokeApiAsync<TRequest, TResult>(apiName, requestData, cancellationToken));
         }
         finally
         {
             _universeClientsLock.ExitReadLock();
         }
+        if (apiTasks.Count == 0 && universeTasks.Count == 0)
+            throw new InvalidOperationException("没有已连接的客户端！");
+        tasks.AddRange(apiTasks);
+        tasks.AddRange(universeTasks);
+        var exceptions = new List<Exception>();
         while (tasks.Count > 0)
         {
             var t = await Task.WhenAny(tasks);
             if (t.IsCompletedSuccessfully)
                 return await t;
-            last = t;
+            if (t.Exception is not null)
+                exceptions.Add(t.Exception);
             tasks.Remove(t);
         }
-        if (last is null)
-            throw new InvalidOperationException("没有已连接的客户端！");
-        return await last;
+        if (exceptions.Count > 0)
+            throw new AggregateException("所有 OneBot 客户端均未能完成调用。", exceptions);
+        throw new InvalidOperationException("没有已连接的客户端！");
     }
 }
