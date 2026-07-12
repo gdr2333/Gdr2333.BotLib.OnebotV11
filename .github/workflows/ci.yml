@@ -1,0 +1,49 @@
+# CI workflow — 每次 PR / push 到 master 跑 build + test
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
+
+jobs:
+  build-and-test:
+    name: build + test (.NET 10)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10 SDK
+        # net10.0 在 2026-07 是 STS 周期,dotnet/setup-dotnet 显式 pin 到 10.0.x,
+        # 避免未来 ubuntu-latest 镜像里默认 SDK 漂移。
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore Gdr2333.BotLib.sln
+
+      - name: Build (Release)
+        # Release 触发 GeneratePackageOnBuild=true,顺便验证 NuGet 元数据合法。
+        run: dotnet build Gdr2333.BotLib.sln -c Release --no-restore
+
+      - name: Test
+        # 不传 --no-build 让 test 阶段自己编译 Tests 项目,确保测试项目本身也能编。
+        run: dotnet test Gdr2333.BotLib.sln -c Release --no-build --nologo --logger "trx;LogFileName=test-results.trx"
+
+      - name: Upload test results
+        # 让 PR / push 上能看到 xUnit 跑出来的详细结果。
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/TestResults/*.trx'
+          if-no-files-found: ignore

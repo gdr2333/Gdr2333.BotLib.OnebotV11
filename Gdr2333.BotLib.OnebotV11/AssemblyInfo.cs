@@ -14,10 +14,11 @@
    limitations under the License.
 */
 
-#if DEBUG
 using System.Runtime.CompilerServices;
 
-// 仅在 DEBUG 构建下向单元测试项目暴露 internal 成员。
-// Release 构建走 NuGet 包发布流程,这里不应当被打开。
+// 向单元测试项目暴露 internal 成员,Debug / Release 构建都生效。
+// InternalsVisibleTo 是"主项目对指定 friend assembly 名的可见性授权",
+// 不会泄露给普通 NuGet consumer(consumer 程序集名不匹配)——所以 Release NuGet
+// 包里的 internal 字段/类仍然对最终用户隐藏,只是测试项目在两种 build 下都能
+// 访问到 internal 以做白盒测试。
 [assembly: InternalsVisibleTo("Gdr2333.BotLib.OnebotV11.Tests")]
-#endif
