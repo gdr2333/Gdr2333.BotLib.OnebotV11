@@ -40,13 +40,13 @@ internal class FilePayload
     /// <summary>
     /// （发送时）是否使用缓存
     /// </summary>
-    [JsonInclude, JsonPropertyName("cache"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("cache"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? UseCache { get; set; }
 
     /// <summary>
     /// （发送时）是否使用代理
     /// </summary>
-    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("proxy"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? UseProxy { get; set; }
 
     /// <summary>

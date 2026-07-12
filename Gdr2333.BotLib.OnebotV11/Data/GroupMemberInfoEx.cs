@@ -39,7 +39,7 @@ public class GroupMemberInfoEx : GroupMemberInfo
     /// <summary>
     /// 被TX封过号
     /// </summary>
-    [JsonInclude, JsonPropertyName("unfriendly"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("unfriendly"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? IsUnfriendly { get; internal set; }
 
     /// <summary>
@@ -54,6 +54,6 @@ public class GroupMemberInfoEx : GroupMemberInfo
     /// <summary>
     /// 是否可以更改这位的群聊卡片
     /// </summary>
-    [JsonInclude, JsonPropertyName("card_changeable"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("card_changeable"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? CanChangeCard { get; internal set; }
 }

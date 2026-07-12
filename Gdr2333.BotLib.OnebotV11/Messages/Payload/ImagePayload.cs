@@ -20,6 +20,8 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Payload;
 
 internal class ImagePayload : FilePayload
 {
-    [JsonInclude, JsonPropertyName("type")]
+    // 显式声明 WhenWritingNull,避免写出 "type":null 半 null JSON
+    // (DefaultIgnoreCondition.WhenWritingNull 全局设置对此字段不生效)。
+    [JsonInclude, JsonPropertyName("type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Type { get; set; }
 }

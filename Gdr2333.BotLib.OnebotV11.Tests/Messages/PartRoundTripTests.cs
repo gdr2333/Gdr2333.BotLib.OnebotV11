@@ -80,15 +80,14 @@ public class PartRoundTripTests
     }
 
     [Fact]
-    public void ImagePart_FlashFalse_EmitsNullType()
+    public void ImagePart_FlashFalse_OmitsType()
     {
-        // 当前 DefaultIgnoreCondition.WhenWritingNull 对 ImagePayload.Type 字段不生效,
-        // 实际写出 "type":null。生产里一些严格 OneBot 实现可能拒收,这是一个潜在 bug。
-        // 修法:在 ImagePayload.Type 上显式加 [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]。
+        // 修复后 ImagePayload.Type 显式 [JsonIgnore(Condition=WhenWritingNull)],
+        // 非闪照时 type 字段不再写出,避免 "type":null 半 null JSON。
         var img = new ImagePart("hi.png");
         var json = JsonSerializer.Serialize(new Message(img), TestJson.Options);
+        Assert.DoesNotContain("\"type\":null", json);
         Assert.Contains("\"type\":\"image\"", json);
-        Assert.Contains("\"type\":null", json);
     }
 
     [Fact]
@@ -209,10 +208,12 @@ public class PartRoundTripTests
     // "read too much or not enough"。生产代码(WebSocketClient 走 JsonElement.Deserialize)
     // 也走同一条路径,这条 round-trip 因此在生产里也是炸的。
     // 修 OB11JsonBoolConverter(支持 bool? 或重写为 JsonConverter<bool?>)前先 Skip。
-    [Fact(Skip = "STj NullableConverter<bool>.VerifyRead 兼容性问题,与生产链路同根,待 OB11JsonBoolConverter 修复后启用")]
+    [Fact]
     public void ImagePart_RoundTrip_FromJsonElement()
     {
-        const string json = """{"type":"image","data":{"file":"hi.png","type":"flash","cache":1,"proxy":1}}""";
+        // OneBot v11 实际发的 ImagePart 包含 file + url 字段(可为相同),
+        // FilePayload.Url 是 [JsonRequired] 必须出现,这里锁定现网形态。
+        const string json = """{"type":"image","data":{"file":"hi.png","url":"hi.png","type":"flash","cache":1,"proxy":1}}""";
         using var doc = JsonDocument.Parse(json);
         var part = doc.RootElement.Deserialize<MessagePartBase>(TestJson.Options);
         var img = Assert.IsType<ImagePart>(part);
@@ -220,10 +221,10 @@ public class PartRoundTripTests
         Assert.Equal("hi.png", img.FileName);
     }
 
-    [Fact(Skip = "见 ImagePart_RoundTrip_FromJsonElement 说明")]
+    [Fact]
     public void RecordPart_RoundTrip_FromJsonElement()
     {
-        const string json = """{"type":"record","data":{"file":"a.amr","magic":1,"cache":1,"proxy":1}}""";
+        const string json = """{"type":"record","data":{"file":"a.amr","url":"a.amr","magic":1,"cache":1,"proxy":1}}""";
         using var doc = JsonDocument.Parse(json);
         var part = doc.RootElement.Deserialize<MessagePartBase>(TestJson.Options);
         var rec = Assert.IsType<RecordPart>(part);
@@ -231,10 +232,10 @@ public class PartRoundTripTests
         Assert.Equal("a.amr", rec.FileName);
     }
 
-    [Fact(Skip = "见 ImagePart_RoundTrip_FromJsonElement 说明")]
+    [Fact]
     public void VideoPart_RoundTrip_FromJsonElement()
     {
-        const string json = """{"type":"video","data":{"file":"a.mp4","cache":1,"proxy":1}}""";
+        const string json = """{"type":"video","data":{"file":"a.mp4","url":"a.mp4","cache":1,"proxy":1}}""";
         using var doc = JsonDocument.Parse(json);
         var part = doc.RootElement.Deserialize<MessagePartBase>(TestJson.Options);
         var vid = Assert.IsType<VideoPart>(part);

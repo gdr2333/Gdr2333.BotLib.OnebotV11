@@ -21,6 +21,6 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Payload;
 
 internal class AnonymousPayload
 {
-    [JsonInclude, JsonPropertyName("ignore"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("ignore"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? Ignore { get; set; }
 }

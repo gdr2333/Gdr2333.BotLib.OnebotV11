@@ -21,6 +21,6 @@ namespace Gdr2333.BotLib.OnebotV11.Messages.Payload;
 
 internal class RecordPayload : FilePayload
 {
-    [JsonInclude, JsonPropertyName("magic"), JsonConverter(typeof(OB11JsonBoolConverter))]
+    [JsonInclude, JsonPropertyName("magic"), JsonConverter(typeof(NullableBoolJsonConverter))]
     public bool? UseMagic { get; set; }
 }
