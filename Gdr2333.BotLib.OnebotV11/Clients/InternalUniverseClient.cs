@@ -18,6 +18,7 @@ using Gdr2333.BotLib.OnebotV11.Events;
 using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Net.WebSockets;
 using System.Text.Json;
+using System.Threading;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
@@ -32,6 +33,9 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
     private readonly ApiRequestDispatcher _dispatcher = new(cancellationToken);
     private bool _running;
+    // 防止 SendLoop/ReceiveLoop 都因 WebSocketException 重复触发 onFail，
+    // 否则两次 FailUniverseClient 都会进入重连流程——参见 Clients/WebSocketClient.cs 处修复说明。
+    private int _failSignaled;
 
     /// <summary>
     /// 当接受到 Onebot 事件时触发的事件
@@ -52,6 +56,26 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
         _ = ReceiveLoop();
     }
 
+    /// <summary>
+    /// 由父 <see cref="WebSocketClient"/> 在重连前调用：关掉 socket，让 SendLoop/ReceiveLoop 通过取消路径退出，
+    /// 让 <see cref="ApiRequestDispatcher"/> 上挂起的所有请求抛 <see cref="OperationCanceledException"/>。
+    /// </summary>
+    public async Task StopAsync()
+    {
+        try
+        {
+            if (_universeWebSocket.State == WebSocketState.Open)
+                await _universeWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "reconnect", CancellationToken.None);
+        }
+        catch
+        {
+            // 关闭失败也无所谓——目的只是取消挂起并释放资源。
+        }
+        // 退出时尽量主动让 onFail 兜底一次（如果 WebSocketException 没赶上）。
+        if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+            onFail(this);
+    }
+
     private async Task SendLoop()
     {
         try
@@ -65,8 +89,10 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
-            // 连接级故障：通知上层回收当前连接
-            onFail(this);
+            // 连接级故障：通知上层回收当前连接。
+            // 两条循环都可能抛 WebSocketException；latch 让 onFail 只触发一次。
+            if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+                onFail(this);
         }
         catch (Exception e)
         {
@@ -113,8 +139,9 @@ internal sealed class InternalUniverseClient(WebSocket universeWebSocket, Cancel
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
-            // 连接级故障：通知上层回收当前连接
-            onFail(this);
+            // 连接级故障：与 SendLoop 共享 latch，确保 onFail 只触发一次。
+            if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+                onFail(this);
         }
         catch (Exception e)
         {

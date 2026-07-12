@@ -107,7 +107,7 @@ internal sealed class GroupMessageReceivedSubTypeConverter : StringEnumJsonConve
         mapping: new Dictionary<GroupMessageReceivedSubType, string>
         {
             { GroupMessageReceivedSubType.Normal, "normal" },
-            { GroupMessageReceivedSubType.Anonymous, "anonumous" },
+            { GroupMessageReceivedSubType.Anonymous, "anonymous" },
             { GroupMessageReceivedSubType.Notice, "notice" }
         })
     {

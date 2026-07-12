@@ -83,6 +83,9 @@ public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
                 {
                     content.Response.StatusCode = 401;
                     content.Response.Close();
+                    // 不再让控制流 fallthrough 到 AcceptWebSocketAsync——
+                    // 否则会因 response 已关闭而抛 InvalidOperationException / HttpListenerException。
+                    continue;
                 }
                 var webSocket = await content.AcceptWebSocketAsync(null);
                 CancellationTokenSource cts = new();
@@ -144,15 +147,28 @@ public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
         {
             _apiClientsLock.EnterWriteLock();
             _apiClients.Remove(apiClient);
-            lock (_subTaskCTS)
-            {
-                _subTaskCTS[apiClient].Cancel();
-                _subTaskCTS.Remove(apiClient);
-            }
         }
         finally
         {
             _apiClientsLock.ExitWriteLock();
+        }
+        // C8 + M3：用 TryGetValue 防 KeyNotFoundException，拿到 cts 后 Dispose 它以避免泄漏。
+        CancellationTokenSource? cts;
+        lock (_subTaskCTS)
+        {
+            if (!_subTaskCTS.Remove(apiClient, out cts))
+                return;
+        }
+        if (cts is not null)
+        {
+            try
+            {
+                cts.Cancel();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+            cts.Dispose();
         }
     }
 
@@ -185,15 +201,27 @@ public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
         {
             _eventClientsLock.EnterWriteLock();
             _eventClients.Remove(eventClient);
-            lock (_subTaskCTS)
-            {
-                _subTaskCTS[eventClient].Cancel();
-                _subTaskCTS.Remove(eventClient);
-            }
         }
         finally
         {
             _eventClientsLock.ExitWriteLock();
+        }
+        CancellationTokenSource? cts;
+        lock (_subTaskCTS)
+        {
+            if (!_subTaskCTS.Remove(eventClient, out cts))
+                return;
+        }
+        if (cts is not null)
+        {
+            try
+            {
+                cts.Cancel();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+            cts.Dispose();
         }
     }
 
@@ -225,15 +253,27 @@ public sealed class ReverseWebSocketClient : OnebotV11ClientBase, IDisposable
         {
             _universeClientsLock.EnterWriteLock();
             _universeClients.Remove(universeClient);
-            lock (_subTaskCTS)
-            {
-                _subTaskCTS[universeClient].Cancel();
-                _subTaskCTS.Remove(universeClient);
-            }
         }
         finally
         {
             _universeClientsLock.ExitWriteLock();
+        }
+        CancellationTokenSource? cts;
+        lock (_subTaskCTS)
+        {
+            if (!_subTaskCTS.Remove(universeClient, out cts))
+                return;
+        }
+        if (cts is not null)
+        {
+            try
+            {
+                cts.Cancel();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+            cts.Dispose();
         }
     }
 

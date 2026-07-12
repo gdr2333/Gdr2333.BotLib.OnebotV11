@@ -35,6 +35,9 @@ internal class OB11JsonBoolConverter : JsonConverter<bool>
             case JsonTokenType.Number:
                 var num = reader.GetInt64();
                 reader.Read();
+                // 跟 String 分支保持一致：只接受 0 或 1，其它整数一律按非法处理，避免与 String 分支语义分裂。
+                if (num is < 0 or > 1)
+                    throw new JsonException($"布尔字段收到非法整数 {num}，仅接受 0 或 1。");
                 return num != 0;
             case JsonTokenType.String:
                 var str = reader.GetString()?.ToLower();

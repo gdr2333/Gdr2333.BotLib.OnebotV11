@@ -17,6 +17,7 @@
 using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Net.WebSockets;
 using System.Text.Json;
+using System.Threading;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
 
@@ -30,6 +31,9 @@ internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToke
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
     private readonly ApiRequestDispatcher _dispatcher = new(cancellationToken);
     private bool _running;
+    // SendLoop 与 ReceiveLoop 都会把 WebSocketException 转给 onFail——
+    // 共享 latch 才能保证 FailApiClient 只跑一次，否则会 KeyNotFoundException。
+    private int _failSignaled;
 
     /// <summary>
     /// 当事件接收器出现异常时触发的事件
@@ -58,8 +62,9 @@ internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToke
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
-            // 连接级故障：通知上层回收当前连接
-            onFail(this);
+            // 连接级故障：与 ReceiveLoop 共享 latch。
+            if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+                onFail(this);
         }
         catch (Exception e)
         {
@@ -96,8 +101,9 @@ internal sealed class InternalApiClient(WebSocket apiWebSocket, CancellationToke
         catch (OperationCanceledException) { }
         catch (WebSocketException)
         {
-            // 连接级故障：通知上层回收当前连接
-            onFail(this);
+            // 连接级故障：与 SendLoop 共享 latch。
+            if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+                onFail(this);
         }
         catch (Exception e)
         {

@@ -26,12 +26,21 @@ namespace Gdr2333.BotLib.OnebotV11.Clients;
 /// <param name="accessToken">访问令牌</param>
 public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? accessToken = null) : OnebotV11ClientBase, IDisposable
 {
-    private InternalUniverseClient? _client;
+    // M5：volatile 修可见性——后台重连线程写、API 调用线程读。
+    private volatile InternalUniverseClient? _client;
     private readonly Uri _target = target;
     private int _retry = 0;
     private readonly int _maxRetry = maxRetry;
     private readonly string? _accessToken = accessToken;
-    private CancellationTokenSource _tokenSource = new();
+
+    // C1：把"退出"令牌和"循环"令牌拆开——
+    // _exitCts 只跟整体生命周期（Dispose / 主动退出）相关；
+    // _loopCts 与每个 InternalUniverseClient 一一对应；重连前显式 Cancel+Dispose，
+    // 让旧客户端持有的所有 in-flight API 调用通过取消路径抛 OperationCanceledException。
+    // 不再有"循环 token 永远不会触发"导致的 API 调用永久挂起。
+    private CancellationTokenSource _exitCts = new();
+    private CancellationTokenSource _loopCts = new();
+    private readonly object _loopReplaceLock = new();
     private bool _disposed;
 
     /// <inheritdoc/>
@@ -49,14 +58,19 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
     public async Task LinkAsync()
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
-        if (_tokenSource.IsCancellationRequested)
+        if (_exitCts.IsCancellationRequested)
         {
-            _tokenSource.Dispose();
-            _tokenSource = new();
+            // 上次整体被退出过——重新创建退出 token，再清零重试计数。
+            _exitCts.Dispose();
+            _exitCts = new();
             _retry = 0;
         }
 
-        while (!_disposed && !_tokenSource.IsCancellationRequested)
+        // C1：进入新一轮连接前，主动取消并释放旧循环 token，确保旧的 InternalUniverseClient
+        // 上的所有 in-flight 请求能正常走取消路径，而不是永久挂起。
+        await StopLoopAsync();
+
+        while (!_disposed && !_exitCts.IsCancellationRequested)
         {
             ClientWebSocket? websocket = null;
             try
@@ -64,12 +78,18 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
                 websocket = new ClientWebSocket();
                 if (!string.IsNullOrEmpty(_accessToken))
                     websocket.Options.SetRequestHeader("Authorization", $"Bearer {_accessToken}");
-                await websocket.ConnectAsync(_target, _tokenSource.Token);
+                await websocket.ConnectAsync(_target, _exitCts.Token);
 
                 if (websocket.State != WebSocketState.Open)
                     throw new WebSocketException("WebSocket 握手后未进入 Open 状态。");
 
-                var loopCts = CancellationTokenSource.CreateLinkedTokenSource(_tokenSource.Token);
+                CancellationTokenSource loopCts;
+                lock (_loopReplaceLock)
+                {
+                    _loopCts.Dispose();
+                    _loopCts = CancellationTokenSource.CreateLinkedTokenSource(_exitCts.Token);
+                    loopCts = _loopCts;
+                }
                 var client = new InternalUniverseClient(websocket, loopCts.Token, FailUniverseClient);
                 client.OnEventOccurrence += (_, e) => OnEventOccurrence?.Invoke(this, e);
                 client.OnExceptionOccurrence += (_, e) => OnExceptionOccurrence?.Invoke(this, e);
@@ -94,7 +114,7 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
                 // 简单线性退避，避免失败时打满 CPU
                 try
                 {
-                    await Task.Delay(TimeSpan.FromMilliseconds(200 * _retry), _tokenSource.Token);
+                    await Task.Delay(TimeSpan.FromMilliseconds(200 * _retry), _exitCts.Token);
                 }
                 catch (OperationCanceledException)
                 {
@@ -104,11 +124,43 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
         }
     }
 
+    // C1 配套：取消并 Dispose 当前持有的循环 token，让旧 InternalUniverseClient 上的循环退出。
+    // 这会让 ApiRequestDispatcher 上挂着的所有请求通过取消路径抛 OperationCanceledException。
+    private Task StopLoopAsync()
+    {
+        CancellationTokenSource? oldCts;
+        InternalUniverseClient? oldClient;
+        lock (_loopReplaceLock)
+        {
+            oldCts = _loopCts;
+            oldClient = _client;
+            // 立即把字段清掉，避免后续 StopAsync 内 onFail 又反查到这一个；
+            // 真正的清理推迟到 await 完成，避免一次性释放双重访问。
+            _loopCts = CancellationTokenSource.CreateLinkedTokenSource(_exitCts.Token);
+            _client = null;
+        }
+        return CleanupOldAsync(oldCts, oldClient);
+    }
+
+    private static async Task CleanupOldAsync(CancellationTokenSource? cts, InternalUniverseClient? client)
+    {
+        if (client is not null)
+        {
+            try { await client.StopAsync(); }
+            catch { /* 关闭 socket 失败也无所谓 */ }
+        }
+        if (cts is not null)
+        {
+            try { cts.Cancel(); } catch (ObjectDisposedException) { }
+            cts.Dispose();
+        }
+    }
+
     private void FailUniverseClient(InternalUniverseClient client)
     {
         // 此方法由 InternalUniverseClient 在连接级故障时同步回调；
         // 重连在后台触发（不阻塞当前堆栈），Dispose 配合取消令牌使其安全中止。
-        if (_disposed || _tokenSource.IsCancellationRequested)
+        if (_disposed || _exitCts.IsCancellationRequested)
             return;
         _ = RetryAsync();
 
@@ -150,14 +202,35 @@ public sealed class WebSocketClient(Uri target, int maxRetry = 5, string? access
         if (_disposed)
             return;
         _disposed = true;
+        // 先整体退出令牌，让正在跑的循环主动结束。
         try
         {
-            _tokenSource.Cancel();
+            _exitCts.Cancel();
         }
         catch (ObjectDisposedException)
         {
         }
-        _tokenSource.Dispose();
+        // 再取消+释放循环 token：让 in-flight 请求走取消路径、并清理旧 InternalUniverseClient。
+        CancellationTokenSource? oldCts;
+        InternalUniverseClient? oldClient;
+        lock (_loopReplaceLock)
+        {
+            oldCts = _loopCts;
+            oldClient = _client;
+            _loopCts = new CancellationTokenSource();
+            _client = null;
+        }
+        if (oldClient is not null)
+        {
+            // 不 await——Dispose 同步路径。StopAsync 自己处理 best-effort。
+            _ = oldClient.StopAsync();
+        }
+        if (oldCts is not null)
+        {
+            try { oldCts.Cancel(); } catch (ObjectDisposedException) { }
+            oldCts.Dispose();
+        }
+        _exitCts.Dispose();
         GC.SuppressFinalize(this);
     }
 }

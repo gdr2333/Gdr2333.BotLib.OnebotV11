@@ -66,7 +66,7 @@ public class CustomMusicSharePart : MusicSharePartBase
     /// <param name="imageUrl">分享封面URL</param>
     public CustomMusicSharePart(Uri toUrl, Uri audioUrl, string title, string? content = null, Uri? imageUrl = null)
     {
-        MusicShareType = "costum";
+        MusicShareType = "custom";
         ToUrl = toUrl;
         AudioUrl = audioUrl;
         Title = title;
@@ -83,7 +83,7 @@ public class CustomMusicSharePart : MusicSharePartBase
         Title = data!.Title;
         Content = data!.Content;
         ImageUrl = data!.ImageUrl;
-        MusicShareType = "costum";
+        MusicShareType = "custom";
     }
 
     /// <inheritdoc/>

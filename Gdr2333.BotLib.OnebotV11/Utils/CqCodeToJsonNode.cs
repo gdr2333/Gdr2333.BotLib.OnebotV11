@@ -29,12 +29,14 @@ internal static class CqCodeToJsonNode
                     .Replace("&amp;", "&")
                     .Replace("&#91;", "[")
                     .Replace("&#93;", "]")
-                    .Replace("&#44;", ",");
+                    .Replace("&#44;", ",")
+                    .Replace("&quot;", "\"");
             static string TextDecode(string text) =>
                 text
                     .Replace("&amp;", "&")
                     .Replace("&#91;", "[")
-                    .Replace("&#93;", "]");
+                    .Replace("&#93;", "]")
+                    .Replace("&quot;", "\"");
             if (cqCode.StartsWith('[') && cqCode.EndsWith(']'))
             {
                 var ret = new JsonObject();

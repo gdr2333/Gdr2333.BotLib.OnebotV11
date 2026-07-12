@@ -18,6 +18,7 @@ using Gdr2333.BotLib.OnebotV11.Events;
 using Gdr2333.BotLib.OnebotV11.Utils;
 using System.Net.WebSockets;
 using System.Text.Json;
+using System.Threading;
 using static Gdr2333.BotLib.OnebotV11.Clients.OnebotV11ClientBase;
 
 namespace Gdr2333.BotLib.OnebotV11.Clients;
@@ -31,6 +32,10 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
     private readonly CancellationToken _cancellationToken = cancellationToken;
 
     private readonly JsonSerializerOptions _opt = StaticData.GetOptions();
+
+    // M11：EventLoop 在 WebSocketException 上 return 后，OnLoopExit 会被回调链多次访问；
+    // 先 latch，让 onFail 只触发一次，避免出现"刚 return，又被外部重复清理"的状态机缝隙。
+    private int _failSignaled;
 
     /// <summary>
     /// 当接受到Onebot事件时触发的事件
@@ -51,10 +56,15 @@ internal class InternalEventClient(WebSocket eventWebSocket, OnebotV11ClientBase
     {
         if (_cancellationToken.IsCancellationRequested)
             return;
-        else if (_eventWebSocket.State != WebSocketState.Open)
-            onFail(this);
-        else
-            loop().ContinueWith((_) => OnLoopExit(loop));
+        // M11：用 latch 替代可能漏判的 State 检查——WebSocket.State 在某些实现上从 Open 切到其它状态的瞬间存在 race，
+        // 一旦标过"已死"就不再重启循环；否则尝试重启。
+        if (_eventWebSocket.State != WebSocketState.Open)
+        {
+            if (Interlocked.Exchange(ref _failSignaled, 1) == 0)
+                onFail(this);
+            return;
+        }
+        loop().ContinueWith((_) => OnLoopExit(loop));
     }
 
     private async Task EventLoop()

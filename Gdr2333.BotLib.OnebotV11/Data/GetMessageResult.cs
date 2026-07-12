@@ -26,14 +26,14 @@ namespace Gdr2333.BotLib.OnebotV11.Data;
 public class GetMessageResult
 {
     [JsonConstructor]
-    internal GetMessageResult(DateTime sendTime, MessageType messageType, long messageId, long? realId, UserInfo sender, Message messsage)
+    internal GetMessageResult(DateTime sendTime, MessageType messageType, long messageId, long? realId, UserInfo sender, Message message)
     {
         SendTime = sendTime;
         MessageType = messageType;
         MessageId = messageId;
         RealId = realId;
         Sender = sender;
-        Messsage = messsage;
+        Message = message;
     }
 
     /// <summary>
@@ -70,5 +70,5 @@ public class GetMessageResult
     /// 消息内容
     /// </summary>
     [JsonInclude, JsonRequired, JsonPropertyName("message")]
-    public Message Messsage { get; internal set; }
+    public Message Message { get; internal set; }
 }
