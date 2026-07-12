@@ -72,20 +72,17 @@ internal abstract class StringEnumJsonConverter<T> : JsonConverter<T> where T : 
 
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
+        // STj 协议：GetString() 在 String token 上不前进 reader；外层在 converter 返回后自己 Read 一次。
+        // 唯一需要我们手动 Read 的是 Null 路径——因为 STj 在 Null 上不会替我们前进。
+        // 这是 System.Text.Json v8+ 的硬约束，VerifyRead 会校验 reader 推进边界。
         if (reader.TokenType == JsonTokenType.Null)
         {
-            // 修复：必须先消耗 Null token 再返回，否则后续解析器读到的 token 会错位
             reader.Read();
             return FallbackValue;
         }
         var s = reader.GetString();
         if (s is null)
-        {
-            // 字符串被读为 null（如某些 token 不是 String 也调到了这里）：丢弃 token + 兜底
-            reader.Read();
             return FallbackValue;
-        }
-        reader.Read();
         if (_toEnum is not null)
         {
             if (_toEnum.TryGetValue(s, out var mapped))
