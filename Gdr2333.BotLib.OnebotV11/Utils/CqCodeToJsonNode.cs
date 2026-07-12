@@ -39,6 +39,10 @@ internal static class CqCodeToJsonNode
                     .Replace("&quot;", "\"");
             if (cqCode.StartsWith('[') && cqCode.EndsWith(']'))
             {
+                // 协议 JSON 里 *Part 形如 { "type":"at", "data":{...} } — data 字段包所有负载属性。
+                // CQ 码串是给"用户写代码发消息"用的扁平字符串 [CQ:at,qq=12345],
+                // 需要把扁平属性塞到 data 子对象,才能被 MessagePartBase 派生类识别。
+                var data = new JsonObject();
                 var ret = new JsonObject();
                 // [CQ:
                 var nowBegin = 4;
@@ -47,6 +51,7 @@ internal static class CqCodeToJsonNode
                 {
                     nowEnd = cqCode.Length - 1;
                     ret.Add("type", cqCode[nowBegin..nowEnd]);
+                    ret.Add("data", data);
                     return ret;
                 }
                 ret.Add("type", cqCode[nowBegin..nowEnd]);
@@ -62,11 +67,12 @@ internal static class CqCodeToJsonNode
                         var splitIndex = propstr.IndexOf('=');
                         var propName = propstr[..splitIndex];
                         var propValue = PropValueDecode(propstr[(splitIndex + 1)..]);
-                        ret.Add(propName, propValue);
+                        data.Add(propName, propValue);
                     }
                     else
-                        ret.Add(propstr, null);
+                        data.Add(propstr, null);
                 } while (nowEnd < cqCode.Length - 1);
+                ret.Add("data", data);
                 return ret;
             }
             else
