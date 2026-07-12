@@ -1,3 +1,5 @@
+[![CI](https://github.com/gdr2333/Gdr2333.BotLib.OnebotV11/actions/workflows/ci.yml/badge.svg)](https://github.com/gdr2333/Gdr2333.BotLib.OnebotV11/actions/workflows/ci.yml)
+
 某个小孩做的OnebotV11协议实现库。
 
 本库的主旨是尽量*简单*，所以整个库的核心功能只聚焦在以下几个命名空间（省略库名前缀）：
